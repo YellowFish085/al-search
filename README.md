@@ -1,0 +1,2 @@
+# anisearch
+Anilist search webextension
