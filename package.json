@@ -1,0 +1,59 @@
+{
+  "name": "anisearch",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Anilist quick search in your browser.",
+  "author": {
+    "name": "Theo Costantini",
+    "email": "hello@theocostantini.com"
+  },
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "core-js": "^3.6.4",
+    "vue": "^2.6.11",
+    "vue-class-component": "^7.2.2",
+    "vue-property-decorator": "^8.3.0",
+    "vue-router": "^3.1.5",
+    "webextension-polyfill": "^0.6.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.18.0",
+    "@typescript-eslint/parser": "^2.18.0",
+    "@vue/cli-plugin-babel": "~4.2.0",
+    "@vue/cli-plugin-eslint": "~4.2.0",
+    "@vue/cli-plugin-router": "~4.2.0",
+    "@vue/cli-plugin-typescript": "~4.2.0",
+    "@vue/cli-service": "~4.2.0",
+    "@vue/eslint-config-airbnb": "^5.0.2",
+    "@vue/eslint-config-typescript": "^5.0.1",
+    "eslint": "^6.7.2",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-vue": "^6.1.2",
+    "sass": "^1.25.0",
+    "sass-loader": "^8.0.2",
+    "typescript": "~3.7.5",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "_id": "anisearch@1.0.0",
+  "bugs": {
+    "url": "https://github.com/YellowFish085/anisearch/issues"
+  },
+  "homepage": "https://github.com/YellowFish085/anisearch#readme",
+  "keywords": [
+    "Anilist",
+    "Anichart",
+    "Anisearch"
+  ],
+  "license": "GPL-3.0",
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YellowFish085/anisearch.git"
+  }
+}
