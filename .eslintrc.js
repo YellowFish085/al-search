@@ -12,6 +12,7 @@ module.exports = {
     ecmaVersion: 2020,
   },
   rules: {
-
+    'class-methods-use-this': 'off',
+    'no-console': 'off',
   },
 };

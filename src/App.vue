@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <Header />
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
@@ -7,6 +8,18 @@
     <router-view/>
   </div>
 </template>
+
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+import Header from '@/components/layout/Header.vue';
+
+@Component({
+  components: {
+    Header,
+  },
+})
+export default class App extends Vue {}
+</script>
 
 <style lang="scss">
 /* Font */
@@ -92,5 +105,23 @@ body {
   height: 600px;
   margin: 0;
   width: 500px;
+}
+
+.wrapper {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+
+  &--justify-between {
+    justify-content: space-between;
+  }
+
+  &--items-center {
+    align-items: center;
+  }
 }
 </style>
