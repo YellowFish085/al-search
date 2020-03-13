@@ -9,24 +9,62 @@
 </template>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+/* Font */
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+/* Theme */
+:root {
+  --color-background: 237,241,245;
+  --color-foreground: 250,250,250;
+  --color-foreground-grey: 245,246,246;
+  --color-foreground-grey-dark: 234,236,237;
+  --color-foreground-blue: 246,248,251;
+  --color-foreground-blue-dark: 241,243,247;
+  --color-background-blue-dark: 31,35,45;
+  --color-overlay: 31,38,49;
+  --color-shadow: 49,54,68;
+  --color-shadow-dark: 6,13,34;
+  --color-shadow-blue: 103,132,187;
+  --color-text: 92,114,138;
+  --color-text-light: 122,133,143;
+  --color-text-lighter: 146,153,161;
+  --color-text-bright: 237,241,245;
+  --color-blue: 61,180,242;
+  --color-blue-dim: 141,178,219;
+  --color-white: 255,255,255;
+  --color-black: 0,0,0;
+  --color-red: 232,93,117;
+  --color-peach: 250,122,122;
+  --color-orange: 247,154,99;
+  --color-yellow: 247,191,99;
+  --color-green: 123,213,85;
 }
 
-#nav {
-  padding: 30px;
+.theme-dark {
+  --color-background: 39,44,56;
+  --color-foreground: 31,35,45;
+  --color-foreground-grey: 25,29,38;
+  --color-foreground-grey-dark: 16,20,25;
+  --color-foreground-blue: 25,29,38;
+  --color-foreground-blue-dark: 19,23,29;
+  --color-text: 159,173,189;
+  --color-text-light: 129,140,153;
+  --color-text-lighter: 133,150,165;
+  --color-shadow-blue: 0,5,15;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.theme-contrast {
+  --color-background: 214,224,239;
+  --color-foreground: 245,246,249;
+  --color-foreground-grey: 229,233,245;
+  --color-foreground-grey-dark: 221,225,239;
+  --color-foreground-blue: 229,233,245;
+  --color-foreground-blue-dark: 221,225,239;
+  --color-text: 0,0,0;
+  --color-text-light: 94,101,111;
+  --color-text-lighter: 94,101,111;
+  --color-shadow: 37,41,51;
+  --color-blue: 18,172,253;
+  --color-blue-dim: 85,144,208;
 }
 </style>
