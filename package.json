@@ -2,7 +2,7 @@
   "name": "anisearch",
   "version": "1.0.0",
   "private": true,
-  "description": "Anilist quick search in your browser.",
+  "description": "AniList quick search in your browser.",
   "author": {
     "name": "Theo Costantini",
     "email": "hello@theocostantini.com"
@@ -49,9 +49,9 @@
   },
   "homepage": "https://github.com/YellowFish085/anisearch#readme",
   "keywords": [
-    "Anilist",
-    "Anichart",
-    "Anisearch"
+    "AniList",
+    "AniChart",
+    "AniSearch"
   ],
   "license": "GPL-3.0",
   "readme": "ERROR: No README data found!",

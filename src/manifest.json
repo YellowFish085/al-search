@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "author": "Theo Costantini",
   "name": "AniSearch",
-  "description": "Anilist quick search in your browser.",
+  "description": "AniList quick search in your browser.",
   "homepage_url": "https://github.com/YellowFish085/anisearch",
   "developer": {
     "name": "Theo Costantini",
