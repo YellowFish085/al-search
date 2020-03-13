@@ -67,4 +67,30 @@
   --color-blue: 18,172,253;
   --color-blue-dim: 85,144,208;
 }
+
+/* Main */
+html {
+  font-size: 16px;
+  line-height: 1.15rem;
+}
+
+body {
+  background: rgb(var(--color-background));
+  color: rgb(var(--color-text));
+  font-family: 'Roboto',
+    '-apple-system',
+    'BlinkMacSystemFont',
+    'Segoe UI',
+    'Oxygen',
+    'Ubuntu',
+    'Cantarell',
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
+    sans-serif;
+  font-size: 1.6rem;
+  height: 600px;
+  margin: 0;
+  width: 500px;
+}
 </style>
