@@ -5,7 +5,7 @@ const webpack = require('webpack');
 // Background & content scripts to build.
 scripts = {
   'background': {
-    'script': './src/background-scripts/script.ts',
+    // 'script': './src/background-scripts/script.ts',
   },
   'content': {
     // 'script': './src/content-scripts/script.ts',
