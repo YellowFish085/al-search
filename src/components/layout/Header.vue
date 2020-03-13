@@ -46,6 +46,9 @@ export default class Header extends Vue {
 header {
   background: rgb(var(--color-overlay));
   height: 50px;
+  left: 0;
+  position: fixed;
+  top: 0;
   width: 100%;
 
   .row {

@@ -23,7 +23,7 @@ export default class App extends Vue {}
 
 <style lang="scss">
 /* Font */
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i&display=swap');
 
 /* Theme */
 :root {
@@ -82,6 +82,12 @@ export default class App extends Vue {}
 }
 
 /* Main */
+* {
+  box-sizing: border-box;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
 html {
   font-size: 16px;
   line-height: 1.15rem;
@@ -101,15 +107,14 @@ body {
     'Droid Sans',
     'Helvetica Neue',
     sans-serif;
-  font-size: 1.6rem;
-  height: 600px;
+  font-size: 1rem;
   margin: 0;
-  width: 500px;
+  overflow: hidden;
 }
 
 .wrapper {
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 .row {
@@ -123,5 +128,13 @@ body {
   &--items-center {
     align-items: center;
   }
+}
+#app {
+  height: 550px;
+  margin-top: 50px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 500px;
+
 }
 </style>
