@@ -50,11 +50,11 @@ module.exports = {
   // Add webpack jobs.
   chainWebpack: (config) => {
     // Provide packages so that we don't have to import them everywhere.
-    config.plugin('provide-webextension-polyfill').use(webpack.ProvidePlugin, [
-      {
-        browser: 'webextension-polyfill',
-      },
-    ]);
+    // config.plugin('provide-webextension-polyfill').use(webpack.ProvidePlugin, [
+    //   {
+    //     browser: 'webextension-polyfill',
+    //   },
+    // ]);
 
     // Copy manifest.json.
     config.plugin('copy-manifest').use(CopyWebpackPlugin, [
