@@ -6,6 +6,7 @@ const packageJson = require('./package.json'); // eslint-disable-line
 const scripts = {
   background: {
     // 'script': './src/background-scripts/script.ts',
+    background: './src/background-scripts/background.ts',
   },
   content: {
     // 'script': './src/content-scripts/script.ts',

@@ -1,24 +1,44 @@
 <template>
   <div id="app">
-    <Header />
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <Notifications />
+    <ErrorComponent v-if="critError" :error="critError" />
+    <div v-else-if="initialized">
+      <Header />
+      <router-view/>
     </div>
-    <router-view/>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { State } from 'vuex-class';
+import ErrorComponent from '@/components/ErrorComponent.vue';
 import Header from '@/components/layout/Header.vue';
+import Notifications from '@/components/ui/Notifications.vue';
 
 @Component({
   components: {
+    ErrorComponent,
     Header,
+    Notifications,
   },
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  /**
+   * Store is initialized.
+   */
+  @State initialized!: boolean;
+
+  /**
+   * Store has critical error.
+   */
+  @State critError?: Error;
+
+  created(): void {
+    // Initialize store state from local storage.
+    this.$store.dispatch('init');
+  }
+}
 </script>
 
 <style lang="scss">
@@ -117,6 +137,14 @@ body {
   padding-right: 1.5rem;
 }
 
+.container {
+  background-color: rgb(var(--color-foreground));
+  border-radius: 3px;
+  margin-bottom: 15px;
+  padding: 15px;
+  width: 100%;
+}
+
 .row {
   display: flex;
   flex-direction: row;
@@ -125,10 +153,63 @@ body {
     justify-content: space-between;
   }
 
+  &--justify-start {
+    justify-content: flex-start;
+  }
+
   &--items-center {
     align-items: center;
   }
+
+  &--items-start {
+    align-items: flex-start;
+  }
 }
+
+h1 {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+h2 {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+h3 {
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+p {
+  font-size: 0.8rem;
+
+  &.note {
+    font-size: 0.7rem;
+  }
+}
+
+b {
+  color: rgb(var(--color-blue));
+  font-style: italic;
+}
+
+a {
+  color: rgb(var(--color-blue));
+}
+
+.container {
+  h1, h2, h3, h4, h5, h6, p {
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
 #app {
   height: 550px;
   margin-top: 50px;
@@ -136,5 +217,8 @@ body {
   overflow-y: auto;
   width: 500px;
 
+  > section {
+    width: 100%;
+  }
 }
 </style>

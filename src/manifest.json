@@ -8,8 +8,27 @@
     "name": "Theo Costantini",
     "url": "https://github.com/YellowFish085"
   },
+  "icons": {
+    "48": "img/logo.png"
+  },
+  "permissions": [
+    "identity",
+    "notifications",
+    "storage",
+    "tabs",
+    "*://anilist.co/*",
+    "*://graphql.anilist.co/*"
+  ],
   "browser_action": {
     "default_icon": "img/logo.png",
     "default_popup": "index.html"
+  },
+  "background": {
+    "scripts": ["js/background/background.js"]
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "dev@theocostantini.com"
+    }
   }
 }

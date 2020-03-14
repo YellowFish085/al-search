@@ -1,6 +1,6 @@
 <template>
   <button :title="title">
-    <font-awesome-icon :icon="['fas', icon]" size="sm" />
+    <font-awesome-icon :icon="['fas', icon]" :size="size || 'sm'" />
   </button>
 </template>
 
@@ -8,16 +8,21 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component
-export default class Button extends Vue {
+export default class ButtonIcon extends Vue {
   /**
    * FontAwesome icon class.
    */
-  @Prop(String) readonly icon: string | undefined
+  @Prop(String) readonly icon!: string
 
   /**
    * Button title.
    */
-  @Prop(String) readonly title: string | undefined
+  @Prop(String) readonly title!: string
+
+  /**
+   * Icon size.
+   */
+  @Prop(String) readonly size?: string;
 }
 </script>
 
@@ -29,7 +34,7 @@ button {
   font-size: 1.1rem;
   opacity: 0.8;
   padding: 0.5rem;
-  transition: opacity 0.1s ease;
+  transition: opacity 0.2s ease;
 
   svg {
     color: rgb(var(--color-text-bright));

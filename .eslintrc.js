@@ -14,5 +14,8 @@ module.exports = {
   rules: {
     'class-methods-use-this': 'off',
     'no-console': 'off',
+    'no-alert': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off',
   },
 };
