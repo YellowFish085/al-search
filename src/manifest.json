@@ -27,6 +27,15 @@
   "background": {
     "scripts": ["js/background/background.js"]
   },
+  "chrome_settings_overrides": {
+    "search_provider": {
+      "name": "AniList",
+      "encoding": "UTF-8",
+      "search_url": "https://anilist.co/search/anime?sort=SEARCH_MATCH&search={searchTerms}",
+      "keyword": "ani",
+      "favicon_url": "https://anilist.co/img/icons/icon.svg"
+    }
+  },
   "browser_specific_settings": {
     "gecko": {
       "id": "dev@theocostantini.com"
