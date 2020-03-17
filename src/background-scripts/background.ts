@@ -1,4 +1,5 @@
 import Auth from '@/anilist/Auth';
+import '@/background-scripts/_menus';
 
 const browser = require('webextension-polyfill'); // eslint-disable-line
 

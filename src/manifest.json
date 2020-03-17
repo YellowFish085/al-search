@@ -12,6 +12,7 @@
     "48": "img/logo.png"
   },
   "permissions": [
+    "contextMenus",
     "identity",
     "notifications",
     "storage",
