@@ -5,6 +5,10 @@ export interface UserSchema {
     medium: string;
   };
   siteUrl: string;
+  options: {
+    displayAdultContent: boolean;
+    titleLanguage: string;
+  };
 }
 
 /**
@@ -23,7 +27,11 @@ export function UserSchemaCheck(data: any): boolean {
     && Object.prototype.hasOwnProperty.call(data, 'avatar') && data.avatar !== null && typeof data.avatar === 'object'
     && Object.prototype.hasOwnProperty.call(data.avatar, 'medium') && typeof data.avatar.medium === 'string'
     // siteUrl
-    && Object.prototype.hasOwnProperty.call(data, 'siteUrl') && typeof data.siteUrl === 'string';
+    && Object.prototype.hasOwnProperty.call(data, 'siteUrl') && typeof data.siteUrl === 'string'
+    // options
+    && Object.prototype.hasOwnProperty.call(data, 'options') && data.options !== null && typeof data.options === 'object'
+    && Object.prototype.hasOwnProperty.call(data.options, 'displayAdultContent') && typeof data.options.displayAdultContent === 'boolean'
+    && Object.prototype.hasOwnProperty.call(data.options, 'titleLanguage') && typeof data.options.titleLanguage === 'string';
 }
 
 export default `
@@ -35,6 +43,10 @@ query {
       medium
     }
     siteUrl
+    options {
+      displayAdultContent
+      titleLanguage
+    }
   }
 }
 `;
