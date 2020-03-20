@@ -30,7 +30,7 @@ export default new Vuex.Store({
       state.initialized = storeData.initialized;
       state.critError = null;
       state.accessToken = storeData.accessToken;
-      state.user = storeData.user === null ? null : { ...storeData.user };
+      state.user = storeData.user ? { ...storeData.user } : null;
     },
 
     error(state: StoreState, error: Error): void {
@@ -77,7 +77,7 @@ export default new Vuex.Store({
           // Will either be null if not defined, or string.
           accessToken: storageAccessToken.accessToken,
           // Will either be null if not defined, or object that implements UserSchema.
-          user: storageUser.user === null ? null : storageUser.user as UserSchema,
+          user: storageUser.user ? storageUser.user as UserSchema : null,
         };
 
         commit('init', newState);
