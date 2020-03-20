@@ -1,4 +1,5 @@
 <template>
+  <!-- eslint-disable max-len -->
   <section id="settings">
     <div class="wrapper">
       <h1>Settings</h1>
@@ -7,6 +8,7 @@
       <UserSettings />
     </div>
   </section>
+  <!-- eslint-enable max-len -->
 </template>
 
 <script lang="ts">

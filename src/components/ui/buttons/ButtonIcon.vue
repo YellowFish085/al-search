@@ -1,7 +1,9 @@
 <template>
+  <!-- eslint-disable max-len -->
   <button :title="title">
     <font-awesome-icon :icon="['fas', icon]" :size="size || 'sm'" />
   </button>
+  <!-- eslint-enable max-len -->
 </template>
 
 <script lang="ts">

@@ -1,8 +1,10 @@
 <template>
+  <!-- eslint-disable max-len -->
   <ButtonBorder content="Logout"
                 title="Logout"
                 :onClick="handleClick"
                 :disabled="disabled" />
+  <!-- eslint-enable max-len -->
 </template>
 
 <script lang="ts">

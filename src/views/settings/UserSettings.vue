@@ -1,4 +1,5 @@
 <template>
+  <!-- eslint-disable max-len -->
   <div id="settings__account">
     <h2>Account</h2>
 
@@ -34,6 +35,7 @@
       </div>
     </div>
   </div>
+  <!-- eslint-enable max-len -->
 </template>
 
 <script lang="ts">

@@ -1,4 +1,5 @@
 <template>
+  <!-- eslint-disable max-len -->
   <notifications group="anisearch" animation-type="css" position="bottom center">
     <template slot="body" slot-scope="props">
       <div class="notification" :class="[props.item.type]">
@@ -16,6 +17,7 @@
       </div>
     </template>
   </notifications>
+  <!-- eslint-enable max-len -->
 </template>
 
 <style lang="scss" scoped>

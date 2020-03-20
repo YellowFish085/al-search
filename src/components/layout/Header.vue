@@ -1,4 +1,5 @@
 <template>
+  <!-- eslint-disable max-len -->
   <header>
     <div class="wrapper">
       <div class="row row--justify-between row--items-center">
@@ -18,6 +19,7 @@
       </div>
     </div>
   </header>
+  <!-- eslint-enable max-len -->
 </template>
 
 <script lang="ts">

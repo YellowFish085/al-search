@@ -1,8 +1,10 @@
 <template>
+  <!-- eslint-disable max-len -->
   <ButtonBg content="Refresh"
             title="Refresh my data"
             :onClick="handleClick"
             :disabled="disabled" />
+  <!-- eslint-enable max-len -->
 </template>
 
 <script lang="ts">

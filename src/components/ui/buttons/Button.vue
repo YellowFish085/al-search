@@ -1,9 +1,11 @@
 <template>
+  <!-- eslint-disable max-len -->
   <button :title="title"
           v-on:click="onClick"
           :class="[ disabled ? 'disabled' : '', size ]">
     <span>{{ content }}</span>
   </button>
+  <!-- eslint-enable max-len -->
 </template>
 
 <script lang="ts">

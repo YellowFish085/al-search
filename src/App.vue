@@ -1,4 +1,5 @@
 <template>
+  <!-- eslint-disable max-len -->
   <div id="app">
     <Notifications />
     <ErrorComponent v-if="critError" :error="critError" />
@@ -7,6 +8,7 @@
       <router-view/>
     </div>
   </div>
+  <!-- eslint-enable max-len -->
 </template>
 
 <script lang="ts">

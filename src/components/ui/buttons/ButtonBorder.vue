@@ -1,9 +1,11 @@
 <template>
+  <!-- eslint-disable max-len -->
   <Button :content="content"
           :title="title"
           :onClick="onClick"
           :disabled="disabled"
           :size="size" />
+  <!-- eslint-enable max-len -->
 </template>
 
 <script lang="ts">

@@ -1,9 +1,11 @@
 <template>
+  <!-- eslint-disable max-len -->
   <a :href="user.siteUrl"
      title="See my profile"
      :class="[ size ]"
      :style="{ 'background-image': `url(${user.avatar.medium})` }">
   </a>
+  <!-- eslint-enable max-len -->
 </template>
 
 <script lang="ts">

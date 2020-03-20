@@ -1,9 +1,11 @@
 <template>
+  <!-- eslint-disable max-len -->
   <ButtonBg content="Login"
             title="Login"
             :onClick="handleClick"
             :disabled="disabled"
             size="lg" />
+  <!-- eslint-enable max-len -->
 </template>
 
 <script lang="ts">
