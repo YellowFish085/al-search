@@ -18,13 +18,24 @@ export interface Settings {
   };
 }
 
+export enum ActivityType {
+  SEARCH,
+  VISITED_PAGE,
+}
+
+export interface Activity {
+  type: ActivityType;
+  label: string;
+  value: string|number;
+}
+
 export interface StoreState {
   initialized: boolean;
   critError: Error|null;
   settings: Settings;
   accessToken: string|null;
   user: UserSchema|null;
-  activity: string[];
+  activity: Activity[];
 }
 
 /**
