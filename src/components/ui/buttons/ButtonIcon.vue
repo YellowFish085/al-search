@@ -1,6 +1,6 @@
 <template>
   <!-- eslint-disable max-len -->
-  <button :title="title" v-on:click="e => onClick && onClick(e)">
+  <button :title="title" @click="e => onClick && onClick(e)">
     <font-awesome-icon :icon="['fas', icon]" :size="size || 'sm'" />
   </button>
   <!-- eslint-enable max-len -->

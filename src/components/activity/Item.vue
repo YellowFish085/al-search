@@ -1,5 +1,5 @@
 <template>
-  <div class="activity w-full" v-on:click="handleClick" :title="title">
+  <div class="activity w-full" :title="title" @click="handleClick">
     <div class="row row--justify-start row--items-center">
       <font-awesome-icon :icon="['fas', icon]" size="sm" class="icon blue" />
       <div class="activity__label">
