@@ -1,6 +1,6 @@
 <template>
   <!-- eslint-disable max-len -->
-  <button :title="title">
+  <button :title="title" v-on:click="e => onClick && onClick(e)">
     <font-awesome-icon :icon="['fas', icon]" :size="size || 'sm'" />
   </button>
   <!-- eslint-enable max-len -->
@@ -25,6 +25,11 @@ export default class ButtonIcon extends Vue {
    * Icon size.
    */
   @Prop(String) readonly size?: string;
+
+  /**
+   * Click.
+   */
+  @Prop(Function) readonly onClick?: Function;
 }
 </script>
 
