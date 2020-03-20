@@ -6,6 +6,15 @@
 
       <!-- Account -->
       <UserSettings />
+
+      <!-- Activity -->
+      <ActivitySettings />
+
+      <!-- Web integration -->
+      <IntegrationSettings />
+
+      <!-- Infos -->
+      <Infos />
     </div>
   </section>
   <!-- eslint-enable max-len -->
@@ -13,10 +22,16 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import ActivitySettings from '@/views/settings/ActivitySettings.vue';
+import Infos from '@/views/settings/Infos.vue';
+import IntegrationSettings from '@/views/settings/IntegrationSettings.vue';
 import UserSettings from '@/views/settings/UserSettings.vue';
 
 @Component({
   components: {
+    ActivitySettings,
+    Infos,
+    IntegrationSettings,
     UserSettings,
   },
 })

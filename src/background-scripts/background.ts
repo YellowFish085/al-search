@@ -31,6 +31,19 @@ function handleMessage(request: any, sender: any, sendResponse: any) { // eslint
       });
       break;
 
+    case 'ACTIVITY_CLEAR':
+      browser.storage.local.set({ activity: [] })
+        .then(() => {
+          sendResponse({ code: 'ACTIVITY_CLEAR_SUCCESS' });
+        })
+        .catch((e: Error) => {
+          sendResponse({
+            code: 'ACTIVITY_CLEAR_FAILED',
+            message: e.message,
+          });
+        });
+      break;
+
     default:
       break;
   }

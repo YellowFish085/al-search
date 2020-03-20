@@ -147,9 +147,13 @@ body {
   width: 100%;
 }
 
+.w-full {
+  width: 100%;
+}
+
+.col,
 .row {
   display: flex;
-  flex-direction: row;
 
   &--justify-between {
     justify-content: space-between;
@@ -166,6 +170,14 @@ body {
   &--items-start {
     align-items: flex-start;
   }
+}
+
+.col {
+  flex-direction: column;
+}
+
+.row {
+  flex-direction: row;
 }
 
 h1 {
@@ -209,6 +221,20 @@ a {
     &:last-child {
       margin-bottom: 0;
     }
+  }
+
+  p {
+    & + p {
+      margin-top: 0;
+    }
+  }
+}
+
+.icon {
+  margin: 0 0.2rem;
+
+  &.blue {
+    color: rgb(var(--color-blue));
   }
 }
 
