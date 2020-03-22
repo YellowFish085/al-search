@@ -45,6 +45,7 @@ function handleMessage(request: any, sender: any, sendResponse: any) { // eslint
       break;
 
     default:
+      sendResponse({ code: 'UNKNOWN_ACTION' });
       break;
   }
 
