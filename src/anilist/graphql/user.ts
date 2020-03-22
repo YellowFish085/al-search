@@ -1,16 +1,3 @@
-export interface UserSchema {
-  id: number;
-  name: string;
-  avatar: {
-    medium: string;
-  };
-  siteUrl: string;
-  options: {
-    displayAdultContent: boolean;
-    titleLanguage: string;
-  };
-}
-
 /**
  * Validate that the given data is a valid UserSchema object.
  *

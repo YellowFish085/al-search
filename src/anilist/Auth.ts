@@ -1,4 +1,3 @@
-import { UserSchema } from '@/anilist/graphql/user';
 import AniList from '@/anilist/AniList';
 import Notifications from '@/utils/Notifications';
 
@@ -44,7 +43,7 @@ export default class Auth {
    * Check if an access token is usable by AniSearch.
    * If the token is usable, return the user data.
    */
-  private async checkAccessToken(accessToken: string): Promise<UserSchema> {
+  private async checkAccessToken(accessToken: string): Promise<AniSearch.AniList.Schema.User> {
     const anilist = new AniList(accessToken);
 
     return anilist.user();
@@ -60,7 +59,7 @@ export default class Auth {
   /**
    * Store user data in local storage.
    */
-  private async storeUser(user: UserSchema): Promise<void> {
+  private async storeUser(user: AniSearch.AniList.Schema.User): Promise<void> {
     return browser.storage.local.set({ user });
   }
 

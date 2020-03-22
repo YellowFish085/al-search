@@ -1,47 +1,15 @@
+import * as Enum from '@/utils/Enum';
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { UserSchema } from '@/anilist/graphql/user';
 
 const browser = require("webextension-polyfill"); // eslint-disable-line
 
 Vue.use(Vuex);
 
-export interface Settings {
-  activity: {
-    search: boolean;
-    visitedPages: boolean;
-  };
-
-  integration: {
-    enabled: boolean;
-    toAnilist: boolean;
-  };
-}
-
-export enum ActivityType {
-  SEARCH,
-  VISITED_PAGE,
-}
-
-export interface Activity {
-  type: ActivityType;
-  label: string;
-  value: string|number;
-}
-
-export interface StoreState {
-  initialized: boolean;
-  critError: Error|null;
-  settings: Settings;
-  accessToken: string|null;
-  user: UserSchema|null;
-  activity: Activity[];
-}
-
 /**
  * Default storage state.
  */
-const defaultState: StoreState = {
+const defaultState: AniSearch.StoreState = {
   initialized: false,
   critError: null,
   settings: {
@@ -62,7 +30,7 @@ const defaultState: StoreState = {
 export default new Vuex.Store({
   state: defaultState,
   mutations: {
-    init(state: StoreState, storeData: StoreState): void {
+    init(state: AniSearch.StoreState, storeData: AniSearch.StoreState): void {
       state.initialized = storeData.initialized;
       state.critError = null;
       state.settings = { ...storeData.settings };
@@ -71,7 +39,7 @@ export default new Vuex.Store({
       state.activity = storeData.activity;
     },
 
-    error(state: StoreState, error: Error): void {
+    error(state: AniSearch.StoreState, error: Error): void {
       console.error(error);
       state.critError = error;
     },
@@ -79,7 +47,10 @@ export default new Vuex.Store({
     /**
      * Authentication.
      */
-    authenticated(state: StoreState, data: { accessToken: string; user: UserSchema }): void {
+    authenticated(
+      state: AniSearch.StoreState,
+      data: { accessToken: string; user: AniSearch.AniList.Schema.User },
+    ): void {
       state.accessToken = data.accessToken;
       state.user = { ...data.user };
     },
@@ -87,14 +58,14 @@ export default new Vuex.Store({
     /**
      * Refresh user data.
      */
-    refreshUserData(state: StoreState, user: UserSchema): void {
+    refreshUserData(state: AniSearch.StoreState, user: AniSearch.AniList.Schema.User): void {
       state.user = { ...user };
     },
 
     /**
      * Logout user.
      */
-    logout(state: StoreState): void {
+    logout(state: AniSearch.StoreState): void {
       state.accessToken = null;
       state.user = null;
     },
@@ -102,14 +73,14 @@ export default new Vuex.Store({
     /**
      * Update settings.
      */
-    updateSettings(state: StoreState, settings: Settings): void {
+    updateSettings(state: AniSearch.StoreState, settings: AniSearch.Settings): void {
       state.settings = { ...settings };
     },
 
     /**
      * Clear activity.
      */
-    clearActivity(state: StoreState): void {
+    clearActivity(state: AniSearch.StoreState): void {
       state.activity = [];
     },
   },
@@ -133,16 +104,18 @@ export default new Vuex.Store({
         }
 
         // Create state.
-        const newState: StoreState = {
+        const newState: AniSearch.StoreState = {
           initialized: true,
           critError: null,
-          settings: storageSettings.settings as Settings,
+          settings: storageSettings.settings as AniSearch.Settings,
           // Will either be empty if not defined, or string.
           accessToken: storageAccessToken.accessToken,
           // Will either be empty if not defined, or object that implements UserSchema.
-          user: storageUser.user ? storageUser.user as UserSchema : null,
+          user: storageUser.user ? storageUser.user as AniSearch.AniList.Schema.User : null,
           // Will either be empty if not defined, or array of string.
-          activity: storageActivity.activity ? storageActivity.activity as string[] : [],
+          activity: storageActivity.activity
+            ? storageActivity.activity as AniSearch.Activity.Activity[]
+            : [],
         };
 
         commit('init', newState);
@@ -191,7 +164,7 @@ export default new Vuex.Store({
     /**
      * Update settings.
      */
-    async updateSettings({ commit }, settings: Settings): Promise<void> {
+    async updateSettings({ commit }, settings: AniSearch.Settings): Promise<void> {
       console.log(settings);
 
       try {

@@ -10,22 +10,22 @@
 </template>
 
 <script lang="ts">
-import { Activity, ActivityType } from '@/store';
 import { Component, Prop, Vue } from 'vue-property-decorator';
+import * as Enum from '@/utils/Enum';
 
 @Component
 export default class Item extends Vue {
-  @Prop() data!: Activity;
+  @Prop() data!: AniSearch.Activity.Activity;
 
   /**
    * Return title string.
    */
   get title(): string {
     switch (this.data.type) {
-      case ActivityType.SEARCH:
+      case Enum.ActivityType.SEARCH:
         return `Search for ${this.data.value}`;
 
-      case ActivityType.VISITED_PAGE:
+      case Enum.ActivityType.VISITED_PAGE:
         return `See ${this.data.label} on AniList`;
 
       default:
@@ -38,10 +38,10 @@ export default class Item extends Vue {
    */
   get icon(): string {
     switch (this.data.type) {
-      case ActivityType.SEARCH:
+      case Enum.ActivityType.SEARCH:
         return 'search';
 
-      case ActivityType.VISITED_PAGE:
+      case Enum.ActivityType.VISITED_PAGE:
         return 'external-link-alt';
 
       default:
@@ -54,11 +54,11 @@ export default class Item extends Vue {
    */
   handleClick() {
     switch (this.data.type) {
-      case ActivityType.SEARCH:
+      case Enum.ActivityType.SEARCH:
         // TODO
         break;
 
-      case ActivityType.VISITED_PAGE:
+      case Enum.ActivityType.VISITED_PAGE:
         window.open(this.data.value as string);
         break;
 

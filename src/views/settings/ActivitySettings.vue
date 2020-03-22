@@ -32,7 +32,6 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { Settings } from '@/store';
 import { State } from 'vuex-class';
 import ButtonClear from '@/components/activity/ButtonClear.vue';
 
@@ -45,7 +44,7 @@ export default class ActivitySettings extends Vue {
   /**
    * Settings from store.
    */
-  @State settings!: Settings;
+  @State settings!: AniSearch.Settings;
 
   get search(): boolean {
     return this.settings.activity.search;

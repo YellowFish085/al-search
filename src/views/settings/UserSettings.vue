@@ -40,7 +40,6 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { UserSchema } from '@/anilist/graphql/user';
 import { State } from 'vuex-class';
 import ButtonLogin from '@/components/auth/ButtonLogin.vue';
 import ButtonLogout from '@/components/auth/ButtonLogout.vue';
@@ -64,7 +63,7 @@ export default class UserSettings extends Vue {
   /**
    * User data from store.
    */
-  @State user!: UserSchema|null;
+  @State user!: AniSearch.AniList.Schema.User|null;
 }
 </script>
 

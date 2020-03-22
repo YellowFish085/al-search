@@ -17,7 +17,6 @@
 </template>
 
 <script lang="ts">
-import { Activity } from '@/store';
 import { Component, Vue } from 'vue-property-decorator';
 import { State } from 'vuex-class';
 import ButtonClear from '@/components/activity/ButtonClear.vue';
@@ -33,7 +32,7 @@ export default class Home extends Vue {
   /**
    * Activity feed.
    */
-  @State activity!: Activity[];
+  @State activity!: AniSearch.Activity.Activity[];
 }
 </script>
 

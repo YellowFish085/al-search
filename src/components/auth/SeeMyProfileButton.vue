@@ -11,7 +11,6 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { State } from 'vuex-class';
-import { UserSchema } from '@/anilist/graphql/user';
 
 @Component
 export default class SeeMyProfileButton extends Vue {
@@ -20,7 +19,7 @@ export default class SeeMyProfileButton extends Vue {
   /**
    * User data from store.
    */
-  @State user!: UserSchema;
+  @State user!: AniSearch.AniList.Schema.User;
 }
 </script>
 

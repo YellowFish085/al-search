@@ -1,4 +1,4 @@
-import QueryUser, { UserSchema, UserSchemaCheck } from '@/anilist/graphql/user';
+import QueryUser, { UserSchemaCheck } from '@/anilist/graphql/user';
 
 export default class AniList {
   readonly token: string | null;
@@ -26,7 +26,7 @@ export default class AniList {
   /**
    * Get authenticated user data.
    */
-  public async user(): Promise<UserSchema> {
+  public async user(): Promise<AniSearch.AniList.Schema.User> {
     try {
       const response = await fetch(process.env.VUE_APP_ANILIST_GRAPHQL_URL, {
         method: 'POST',
@@ -40,7 +40,7 @@ export default class AniList {
 
       // Do we have the user data in the response?
       if (body.data && body.data.Viewer && UserSchemaCheck(body.data.Viewer)) {
-        return body.data.Viewer as UserSchema;
+        return body.data.Viewer as AniSearch.AniList.Schema.User;
       }
 
       throw new Error(`Anilist request failed: Response does not contains user data. Response: ${JSON.stringify(body)}`);
