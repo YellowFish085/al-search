@@ -2,6 +2,6 @@
  * Activity Types.
  */
 export enum ActivityType {
-  SEARCH,
-  VISITED_PAGE,
+  SEARCH = 'SEARCH',
+  VISITED_PAGE = 'VISITED_PAGE',
 }
