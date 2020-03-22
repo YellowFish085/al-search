@@ -33,9 +33,9 @@ export default new Vuex.Store({
     init(state: AniSearch.StoreState, storeData: AniSearch.StoreState): void {
       state.initialized = storeData.initialized;
       state.critError = null;
-      state.settings = { ...storeData.settings };
+      state.settings = JSON.parse(JSON.stringify(storeData.settings));
       state.accessToken = storeData.accessToken;
-      state.user = storeData.user ? { ...storeData.user } : null;
+      state.user = storeData.user ? JSON.parse(JSON.stringify(storeData.user)) : null;
       state.activity = storeData.activity;
     },
 
@@ -52,14 +52,14 @@ export default new Vuex.Store({
       data: { accessToken: string; user: AniSearch.AniList.Schema.User },
     ): void {
       state.accessToken = data.accessToken;
-      state.user = { ...data.user };
+      state.user = JSON.parse(JSON.stringify(data.user));
     },
 
     /**
      * Refresh user data.
      */
     refreshUserData(state: AniSearch.StoreState, user: AniSearch.AniList.Schema.User): void {
-      state.user = { ...user };
+      state.user = JSON.parse(JSON.stringify(user));
     },
 
     /**
@@ -74,7 +74,7 @@ export default new Vuex.Store({
      * Update settings.
      */
     updateSettings(state: AniSearch.StoreState, settings: AniSearch.Settings): void {
-      state.settings = { ...settings };
+      state.settings = JSON.parse(JSON.stringify(settings));
     },
 
     /**
