@@ -12,10 +12,11 @@ module.exports = {
     ecmaVersion: 2020,
   },
   rules: {
-    'class-methods-use-this': 'off',
-    'no-console': 'off',
-    'no-alert': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
+    'brace-style': ['error', 'stroustrup'],
+    'class-methods-use-this': 'off',
+    'no-alert': 'off',
+    'no-console': 'off',
   },
 };

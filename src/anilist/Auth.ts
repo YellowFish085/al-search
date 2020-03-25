@@ -88,7 +88,8 @@ export default class Auth {
       Notifications.create('auth_success', Notifications.messages.auth.success(user.name));
 
       return true;
-    } catch (e) {
+    }
+    catch (e) {
       Notifications.create('auth_failed', Notifications.messages.error('Authentication failed', e.message));
     }
 
@@ -112,7 +113,8 @@ export default class Auth {
 
       // Store new user data.
       await this.storeUser(user);
-    } catch (e) {
+    }
+    catch (e) {
       return e.message;
     }
 
@@ -126,7 +128,8 @@ export default class Auth {
     try {
       await browser.storage.local.remove('accessToken');
       await browser.storage.local.remove('user');
-    } catch (e) {
+    }
+    catch (e) {
       return e.message;
     }
 

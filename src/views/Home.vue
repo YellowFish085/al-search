@@ -7,9 +7,9 @@
       <div id="activity_feed" class="col col--justify-start col--items-center">
         <Item v-for="data in activity" :key="data" :data="data" />
         <ButtonClear v-if="activity.length > 0" />
-        <div v-else>
+        <template v-else>
           <p>Nothing in your activity feed.</p>
-        </div>
+        </template>
       </div>
     </div>
   </section>

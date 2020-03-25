@@ -3,11 +3,11 @@
   <div id="app">
     <Notifications />
     <ErrorComponent v-if="critError" :error="critError" />
-    <div v-else-if="initialized">
+    <template v-else-if="initialized">
       <Header />
       <router-view/>
+    </template>
     </div>
-  </div>
   <!-- eslint-enable max-len -->
 </template>
 

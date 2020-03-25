@@ -119,7 +119,8 @@ export default new Vuex.Store({
         };
 
         commit('init', newState);
-      } catch (e) {
+      }
+      catch (e) {
         commit('error', e);
       }
     },
@@ -136,7 +137,8 @@ export default new Vuex.Store({
           accessToken: stoAccessToken.accessToken,
           user: stoUser.user,
         });
-      } catch (e) {
+      }
+      catch (e) {
         commit('error', e);
       }
     },
@@ -149,7 +151,8 @@ export default new Vuex.Store({
         const stoUser = await browser.storage.local.get('user');
 
         commit('refreshUserData', stoUser.user);
-      } catch (e) {
+      }
+      catch (e) {
         commit('error', e);
       }
     },
@@ -165,17 +168,14 @@ export default new Vuex.Store({
      * Update settings.
      */
     async updateSettings({ commit }, settings: AniSearch.Settings): Promise<void> {
-      console.log(settings);
-
       try {
         // Store new settings in storage.
         await browser.storage.local.set({ settings });
 
-        console.log(await browser.storage.local.get('settings'));
-
         // Commit update to store.
         commit('updateSettings', settings);
-      } catch (e) {
+      }
+      catch (e) {
         commit('error', e);
       }
     },

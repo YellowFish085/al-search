@@ -44,7 +44,8 @@ export default class AniList {
       }
 
       throw new Error(`Anilist request failed: Response does not contains user data. Response: ${JSON.stringify(body)}`);
-    } catch (e) {
+    }
+    catch (e) {
       throw new Error(`Anilist request failed: ${e.message}`);
     }
   }
