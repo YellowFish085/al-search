@@ -43,6 +43,7 @@ export default class ButtonLogout extends Vue {
         break;
 
       case 'USER_LOGOUT_FAILED':
+      default:
         this.$notify({
           group: 'anisearch',
           type: 'error',
@@ -50,9 +51,6 @@ export default class ButtonLogout extends Vue {
           title: 'Logout failure:',
           text: response.message,
         });
-        break;
-
-      default:
         break;
     }
 

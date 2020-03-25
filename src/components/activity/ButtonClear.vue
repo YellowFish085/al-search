@@ -43,6 +43,7 @@ export default class ButtonClear extends Vue {
         break;
 
       case 'ACTIVITY_CLEAR_FAILED':
+      default:
         this.$notify({
           group: 'anisearch',
           type: 'error',
@@ -50,9 +51,6 @@ export default class ButtonClear extends Vue {
           title: 'Failed to clear your activity:',
           text: response.message,
         });
-        break;
-
-      default:
         break;
     }
 

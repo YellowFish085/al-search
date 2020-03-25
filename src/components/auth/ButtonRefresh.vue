@@ -43,6 +43,7 @@ export default class ButtonRefresh extends Vue {
         break;
 
       case 'USER_REFRESH_FAILED':
+      default:
         this.$notify({
           group: 'anisearch',
           type: 'error',
@@ -50,9 +51,6 @@ export default class ButtonRefresh extends Vue {
           title: 'Failed to refresh your data:',
           text: response.message,
         });
-        break;
-
-      default:
         break;
     }
 
