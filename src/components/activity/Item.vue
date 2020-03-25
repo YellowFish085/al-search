@@ -2,7 +2,7 @@
   <div class="activity w-full" :title="title" @click="handleClick">
     <div class="row row--justify-start row--items-center">
       <font-awesome-icon :icon="['fas', icon]" size="sm" class="icon blue" />
-      <div class="activity__label">
+      <div class="activity__label w-full">
         <span>{{ data.label }}</span>
       </div>
     </div>
@@ -81,7 +81,7 @@ export default class Item extends Vue {
     margin-right: 1rem;
   }
 
-  .activity__label {
+  &__label {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
