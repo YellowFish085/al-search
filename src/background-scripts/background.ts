@@ -1,5 +1,5 @@
 import Auth from '@/anilist/Auth';
-import '@/background-scripts/_menus';
+import * as Menus from '@/background-scripts/_menus';
 
 const browser = require('webextension-polyfill'); // eslint-disable-line
 
@@ -44,6 +44,11 @@ function handleMessage(request: any, sender: any, sendResponse: any) { // eslint
         });
       break;
 
+    case 'MENUS_TOGGLE':
+      Menus.toggle(request.value);
+      sendResponse({ code: 'SUCCESS' });
+      break;
+
     default:
       sendResponse({ code: 'UNKNOWN_ACTION' });
       break;
@@ -54,3 +59,6 @@ function handleMessage(request: any, sender: any, sendResponse: any) { // eslint
 }
 
 browser.runtime.onMessage.addListener(handleMessage);
+
+// Init contextual menus.
+Menus.init();

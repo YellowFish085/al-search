@@ -18,8 +18,8 @@ const defaultState: AniSearch.StoreState = {
       visitedPages: true,
     },
     integration: {
-      enabled: true,
-      toAnilist: false,
+      webEnabled: true,
+      menusEnabled: true,
     },
   },
   accessToken: null,

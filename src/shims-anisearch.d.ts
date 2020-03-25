@@ -12,8 +12,8 @@ export interface Settings {
   };
 
   integration: {
-    enabled: boolean;
-    toAnilist: boolean;
+    webEnabled: boolean;
+    menusEnabled: boolean;
   };
 }
 
