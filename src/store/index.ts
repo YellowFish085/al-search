@@ -1,4 +1,5 @@
 import * as Enum from '@/utils/Enum';
+import Notifications from '@/utils/Notifications';
 import Vue from 'vue';
 import Vuex from 'vuex';
 
@@ -123,6 +124,18 @@ export default new Vuex.Store({
           storageSettings.settings = settings;
 
           await browser.storage.local.set({ settings });
+        }
+
+        // If user exists, check token usability in case token is not usable.
+        if (storageUser.user) {
+          const response = await browser.runtime.sendMessage({ code: 'USER_REFRESH' });
+
+          if (response.code === 'USER_REFRESH_FAILED') {
+            Notifications.create(
+              'auth_failed',
+              'We couldn\'t get your account information, your token might be invalid. Please login again.'
+            );
+          }
         }
       }
       catch (e) {
