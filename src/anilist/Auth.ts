@@ -66,7 +66,7 @@ export default class Auth {
   /**
    * Launch OAuth flow with AniList.
    */
-  async launch(): Promise<boolean> {
+  async launch(): Promise<void> {
     try {
       // Start auth flow. Once finished, `redirectUrl` will contains the
       // redirect url from the OAuth flow with AniList.
@@ -76,7 +76,7 @@ export default class Auth {
       // user probably canceled the authentication.
       const accessToken = this.getURLAccessToken(this.getURL(redirectUrl));
 
-      if (accessToken === null) return false;
+      if (accessToken === null) throw new Error('Missing access token after AniList authentication');
 
       // Try to get user data to be sure the token works.
       const user = await this.checkAccessToken(accessToken);
@@ -85,54 +85,37 @@ export default class Auth {
       await this.storeAccessToken(accessToken);
       await this.storeUser(user);
 
-      Notifications.create('auth_success', Notifications.messages.auth.success(user.name));
-
-      return true;
+      Notifications.create('auth_success', `You are now logged in as ${user.name}`);
     }
     catch (e) {
-      Notifications.create('auth_failed', Notifications.messages.error('Authentication failed', e.message));
+      Notifications.create('auth_failed', `Authentication failed: ${e.message}`);
+      throw e;
     }
-
-    return false;
   }
 
   /**
    * Refresh user data in local storage.
    */
-  async refreshUser(): Promise<undefined|string> {
-    try {
-      // Get access token from storage.
-      const accessToken = await browser.storage.local.get('accessToken');
+  async refreshUser(): Promise<void> {
+    // Get access token from storage.
+    const accessToken = await browser.storage.local.get('accessToken');
 
-      if (accessToken.accessToken === null) return 'Missing access token';
+    if (accessToken.accessToken === null) throw new Error('Missing access token in local storage');
 
-      // Fetch user data.
-      const anilist = new AniList(accessToken.accessToken);
+    // Fetch user data.
+    const anilist = new AniList(accessToken.accessToken);
 
-      const user = await anilist.user();
+    const user = await anilist.user();
 
-      // Store new user data.
-      await this.storeUser(user);
-    }
-    catch (e) {
-      return e.message;
-    }
-
-    return undefined;
+    // Store new user data.
+    await this.storeUser(user);
   }
 
   /**
    * Logout user by removing its data from local storage.
    */
-  async logout(): Promise<undefined|string> {
-    try {
-      await browser.storage.local.remove('accessToken');
-      await browser.storage.local.remove('user');
-    }
-    catch (e) {
-      return e.message;
-    }
-
-    return undefined;
+  async logout(): Promise<void> {
+    await browser.storage.local.remove('accessToken');
+    await browser.storage.local.remove('user');
   }
 }
