@@ -1,3 +1,4 @@
+import Activity from '@/background-scripts/_activity';
 import Auth from '@/anilist/Auth';
 import * as Menus from '@/background-scripts/_menus';
 
@@ -49,6 +50,9 @@ function handleMessage(request: any, sender: any, sendResponse: Function) { // e
       sendResponse({ code: 'SUCCESS' });
       break;
 
+    case 'SAVE_ACTIVITY':
+      Activity.saveActivity(request.data as AniSearch.Activity.Activity, sendResponse);
+      break;
 
     case 'SEARCH':
       // TODO:

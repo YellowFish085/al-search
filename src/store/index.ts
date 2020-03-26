@@ -88,6 +88,13 @@ export default new Vuex.Store({
     },
 
     /**
+     * Refresh activity feed.
+     */
+    refreshActivity(state: AniSearch.StoreState, activity: AniSearch.Activity.Activity[]): void {
+      state.activity = activity;
+    },
+
+    /**
      * Start search from an activity item.
      */
     updateSearch(state: AniSearch.StoreState, search: AniSearch.Search.StoreSearch): void {
@@ -198,6 +205,22 @@ export default new Vuex.Store({
      */
     clearActivity({ commit }): void {
       commit('clearActivity');
+    },
+
+    /**
+     * Refresh activity feed.
+     */
+    async refreshActivity({ commit }): Promise<void> {
+      try {
+        const storageActivity = await browser.storage.local.get('activity');
+
+        if (storageActivity.activity && Array.isArray(storageActivity.activity)) {
+          commit('refreshActivity', storageActivity.activity);
+        }
+      }
+      catch (e) {
+        commit('error', e);
+      }
     },
 
     /**

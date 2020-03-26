@@ -61,6 +61,8 @@ const browser = require('webextension-polyfill') // eslint-disable-line
   },
 })
 export default class SearchForm extends Vue {
+  @State('settings') settings!: AniSearch.Settings;
+
   @State('search') storeSearch!: AniSearch.Search.StoreSearch;
 
   /** Search string. */
@@ -151,6 +153,9 @@ export default class SearchForm extends Vue {
 
     switch (response.code) {
       case 'SEARCH_SUCCESS':
+        // Save search activity and refresh store asynchronously.
+        this.saveActivity(search, type, year, season);
+
         // TODO: Continue
         break;
 
@@ -165,6 +170,49 @@ export default class SearchForm extends Vue {
         });
         break;
     }
+  }
+
+  /**
+   * Save executed search asynchronously.
+   */
+  saveActivity(
+    search: string,
+    type: Enum.SearchType,
+    year: number|null,
+    season: Enum.SearchSeason|null,
+  ) {
+    if (!this.settings.activity.search) return;
+
+    const activity: AniSearch.Activity.Activity = {
+      type: Enum.ActivityType.SEARCH,
+      label: search,
+      value: search,
+      params: {
+        type,
+        year: year || undefined,
+        season: season || undefined,
+      },
+    };
+
+    browser.runtime.sendMessage({
+      code: 'SAVE_ACTIVITY',
+      data: activity,
+    })
+      .then((response: any) => {
+        if (response.code !== 'SAVE_ACTIVITY_SUCCESS') {
+          this.$notify({
+            group: 'anisearch',
+            type: 'error',
+            duration: -1,
+            title: 'Failed to save search:',
+            text: response.message,
+          });
+
+          return;
+        }
+
+        this.$store.dispatch('refreshActivity');
+      });
   }
 }
 </script>
