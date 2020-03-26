@@ -6,6 +6,19 @@ const browser = require('webextension-polyfill'); // eslint-disable-line
 
 function handleMessage(request: any, sender: any, sendResponse: Function) { // eslint-disable-line
   switch (request.code) {
+    /**
+     * Menus
+     */
+
+    case 'MENUS_TOGGLE':
+      Menus.toggle(request.value);
+      sendResponse({ code: 'SUCCESS' });
+      break;
+
+    /**
+     * Auth
+     */
+
     case 'AUTH_START':
       Auth.authStart(sendResponse);
       break;
@@ -18,18 +31,21 @@ function handleMessage(request: any, sender: any, sendResponse: Function) { // e
       Auth.userLogout(sendResponse);
       break;
 
+    /**
+     * Activity
+     */
+
     case 'ACTIVITY_CLEAR':
       Activity.clearActivity(sendResponse);
-      break;
-
-    case 'MENUS_TOGGLE':
-      Menus.toggle(request.value);
-      sendResponse({ code: 'SUCCESS' });
       break;
 
     case 'SAVE_ACTIVITY':
       Activity.saveActivity(request.data as AniSearch.Activity.Activity, sendResponse);
       break;
+
+    /**
+     * Search
+     */
 
     case 'SEARCH':
       // TODO:
