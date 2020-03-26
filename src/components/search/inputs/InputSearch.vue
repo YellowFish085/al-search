@@ -16,8 +16,8 @@
           class="search_input__search__input h-full w-full"
           placeholder="Search..."
           @input="handleSearch"
-          @focus="this.$emit('focus')"
-          @blur="this.$emit('blur')" />
+          @focus="$emit('focus')"
+          @blur="$emit('blur')" />
 
     <!-- Underline -->
     <div class="search_input__search__underline"></div>
