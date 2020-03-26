@@ -106,11 +106,16 @@ export default new Vuex.Store({
      * Initialize state with data from storage.
      */
     async init({ state, commit }): Promise<void> {
+      let storageSettings;
+      let storageAccessToken;
+      let storageUser;
+      let storageActivity;
+
       try {
-        const storageSettings = await browser.storage.local.get('settings');
-        const storageAccessToken = await browser.storage.local.get('accessToken');
-        const storageUser = await browser.storage.local.get('user');
-        const storageActivity = await browser.storage.local.get('activity');
+        storageSettings = await browser.storage.local.get('settings');
+        storageAccessToken = await browser.storage.local.get('accessToken');
+        storageUser = await browser.storage.local.get('user');
+        storageActivity = await browser.storage.local.get('activity');
 
         // Init settings are not yet stored in storage, save them.
         if (!storageSettings.settings) {
@@ -119,62 +124,67 @@ export default new Vuex.Store({
 
           await browser.storage.local.set({ settings });
         }
-
-        // Create state.
-        const newState: AniSearch.StoreState = {
-          initialized: true,
-          critError: null,
-          settings: storageSettings.settings as AniSearch.Settings,
-          // Will either be empty if not defined, or string.
-          accessToken: storageAccessToken.accessToken,
-          // Will either be empty if not defined, or object that implements UserSchema.
-          user: storageUser.user ? storageUser.user as AniSearch.AniList.Schema.User : null,
-          // Will either be empty if not defined, or array of string.
-          activity: storageActivity.activity
-            ? storageActivity.activity as AniSearch.Activity.Activity[]
-            : [],
-          search: {
-            type: Enum.SearchType.ANIME,
-          },
-        };
-
-        commit('init', newState);
       }
       catch (e) {
         commit('error', e);
       }
+
+      // Create state.
+      const newState: AniSearch.StoreState = {
+        initialized: true,
+        critError: null,
+        settings: storageSettings.settings as AniSearch.Settings,
+        // Will either be empty if not defined, or string.
+        accessToken: storageAccessToken.accessToken,
+        // Will either be empty if not defined, or object that implements UserSchema.
+        user: storageUser.user ? storageUser.user as AniSearch.AniList.Schema.User : null,
+        // Will either be empty if not defined, or array of string.
+        activity: storageActivity.activity
+          ? storageActivity.activity as AniSearch.Activity.Activity[]
+          : [],
+        search: {
+          type: Enum.SearchType.ANIME,
+        },
+      };
+
+      commit('init', newState);
     },
 
     /**
      * Authentication.
      */
     async authenticated({ commit }): Promise<void> {
-      try {
-        const stoAccessToken = await browser.storage.local.get('accessToken');
-        const stoUser = await browser.storage.local.get('user');
+      let storageAccessToken;
+      let storageUser;
 
-        commit('authenticated', {
-          accessToken: stoAccessToken.accessToken,
-          user: stoUser.user,
-        });
+      try {
+        storageAccessToken = await browser.storage.local.get('accessToken');
+        storageUser = await browser.storage.local.get('user');
       }
       catch (e) {
         commit('error', e);
       }
+
+      commit('authenticated', {
+        accessToken: storageAccessToken.accessToken,
+        user: storageUser.user,
+      });
     },
 
     /**
      * Refresh user data.
      */
     async refreshUserData({ commit }): Promise<void> {
-      try {
-        const stoUser = await browser.storage.local.get('user');
+      let storageUser;
 
-        commit('refreshUserData', stoUser.user);
+      try {
+        storageUser = await browser.storage.local.get('user');
       }
       catch (e) {
         commit('error', e);
       }
+
+      commit('refreshUserData', storageUser.user);
     },
 
     /**
@@ -191,13 +201,13 @@ export default new Vuex.Store({
       try {
         // Store new settings in storage.
         await browser.storage.local.set({ settings });
-
-        // Commit update to store.
-        commit('updateSettings', settings);
       }
       catch (e) {
         commit('error', e);
       }
+
+      // Commit update to store.
+      commit('updateSettings', settings);
     },
 
     /**
@@ -211,15 +221,17 @@ export default new Vuex.Store({
      * Refresh activity feed.
      */
     async refreshActivity({ commit }): Promise<void> {
-      try {
-        const storageActivity = await browser.storage.local.get('activity');
+      let storageActivity;
 
-        if (storageActivity.activity && Array.isArray(storageActivity.activity)) {
-          commit('refreshActivity', storageActivity.activity);
-        }
+      try {
+        storageActivity = await browser.storage.local.get('activity');
       }
       catch (e) {
         commit('error', e);
+      }
+
+      if (storageActivity.activity && Array.isArray(storageActivity.activity)) {
+        commit('refreshActivity', storageActivity.activity);
       }
     },
 
