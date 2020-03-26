@@ -27,6 +27,7 @@ export interface StoreState {
   accessToken: string | null;
   user: AniSearch.AniList.Schema.User | null;
   activity: AniSearch.Activity.Activity[];
+  search: AniSearch.Search.StoreSearch;
 }
 
 /**
@@ -49,6 +50,18 @@ export namespace AniList {
         titleLanguage: string;
       };
     }
+  }
+}
+
+/**
+ * Search.
+ */
+export namespace Search {
+  export interface StoreSearch {
+    type: Enum.SearchType;
+    value?: string;
+    year?: number;
+    season?: Enum.SearchSeason;
   }
 }
 

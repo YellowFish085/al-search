@@ -7,8 +7,8 @@
       </div>
       <div class="activity__params">
         <span>{{ paramsString }}</span>
+      </div>
     </div>
-  </div>
   </div>
 </template>
 
@@ -78,7 +78,7 @@ export default class Item extends Vue {
   handleClick() {
     switch (this.data.type) {
       case Enum.ActivityType.SEARCH:
-        // TODO
+        this.$store.dispatch('searchFromActivity', JSON.parse(JSON.stringify(this.data)));
         break;
 
       case Enum.ActivityType.VISITED_PAGE:

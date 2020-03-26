@@ -25,6 +25,9 @@ const defaultState: AniSearch.StoreState = {
   accessToken: null,
   user: null,
   activity: [],
+  search: {
+    type: Enum.SearchType.ANIME,
+  },
 };
 
 export default new Vuex.Store({
@@ -83,6 +86,13 @@ export default new Vuex.Store({
     clearActivity(state: AniSearch.StoreState): void {
       state.activity = [];
     },
+
+    /**
+     * Start search from an activity item.
+     */
+    updateSearch(state: AniSearch.StoreState, search: AniSearch.Search.StoreSearch): void {
+      state.search = JSON.parse(JSON.stringify(search));
+    },
   },
   actions: {
     /**
@@ -116,6 +126,9 @@ export default new Vuex.Store({
           activity: storageActivity.activity
             ? storageActivity.activity as AniSearch.Activity.Activity[]
             : [],
+          search: {
+            type: Enum.SearchType.ANIME,
+          },
         };
 
         commit('init', newState);
@@ -185,6 +198,20 @@ export default new Vuex.Store({
      */
     clearActivity({ commit }): void {
       commit('clearActivity');
+    },
+
+    /**
+     * Start search from an activity item.
+     */
+    searchFromActivity({ commit }, data: AniSearch.Activity.Activity): void {
+      const search: AniSearch.Search.StoreSearch = {
+        value: data.value as string,
+        type: data.params!.type,
+        year: data.params!.year,
+        season: data.params!.season,
+      };
+
+      commit('updateSearch', search);
     },
   },
   modules: {},

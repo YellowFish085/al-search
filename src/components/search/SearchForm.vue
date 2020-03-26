@@ -42,7 +42,8 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Watch } from 'vue-property-decorator';
+import { State } from 'vuex-class';
 import * as Enum from '@/utils/Enum';
 import InputSearch from '@/components/search/inputs/InputSearch.vue';
 import InputSeason from '@/components/search/inputs/InputSeason.vue';
@@ -60,6 +61,8 @@ const browser = require('webextension-polyfill') // eslint-disable-line
   },
 })
 export default class SearchForm extends Vue {
+  @State('search') storeSearch!: AniSearch.Search.StoreSearch;
+
   /** Search string. */
   search = '';
 
@@ -91,6 +94,23 @@ export default class SearchForm extends Vue {
    */
   handleBlur() {
     this.$emit('searching', this.search !== '');
+  }
+
+  /**
+   * Watch for store search changes.
+   */
+  @Watch('storeSearch')
+  onStoreSearchChanged(newValue: AniSearch.Search.StoreSearch) {
+    if (!newValue.value) return;
+
+    this.search = newValue.value;
+    this.type = newValue.type;
+    this.year = newValue.year || null;
+    this.season = newValue.season || null;
+
+    this.$emit('searching', true);
+
+    this.preSearch();
   }
 
   /**
