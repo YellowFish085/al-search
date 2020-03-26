@@ -3,7 +3,7 @@ import * as Menus from '@/background-scripts/_menus';
 
 const browser = require('webextension-polyfill'); // eslint-disable-line
 
-function handleMessage(request: any, sender: any, sendResponse: any) { // eslint-disable-line
+function handleMessage(request: any, sender: any, sendResponse: Function) { // eslint-disable-line
   const auth = new Auth();
 
   switch (request.code) {
@@ -47,6 +47,12 @@ function handleMessage(request: any, sender: any, sendResponse: any) { // eslint
     case 'MENUS_TOGGLE':
       Menus.toggle(request.value);
       sendResponse({ code: 'SUCCESS' });
+      break;
+
+
+    case 'SEARCH':
+      // TODO:
+      sendResponse({ code: 'SEARCH_SUCCESS' });
       break;
 
     default:

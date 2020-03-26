@@ -7,7 +7,7 @@
       <Header />
       <router-view/>
     </template>
-    </div>
+  </div>
   <!-- eslint-enable max-len -->
 </template>
 
@@ -135,8 +135,9 @@ body {
 }
 
 .wrapper {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  position: relative;
 }
 
 .container {
@@ -145,6 +146,10 @@ body {
   margin-bottom: 15px;
   padding: 15px;
   width: 100%;
+}
+
+.h-full {
+  height: 100%;
 }
 
 .w-full {
@@ -157,6 +162,10 @@ body {
 
   &--justify-between {
     justify-content: space-between;
+  }
+
+  &--justify-center {
+    justify-content: center;
   }
 
   &--justify-start {
@@ -239,13 +248,14 @@ a {
 }
 
 #app {
-  height: 550px;
-  margin-top: 50px;
+  height: 500px;
+  margin-top: 85px;
   overflow-x: hidden;
   overflow-y: auto;
   width: 500px;
 
   > section {
+    padding-bottom: 25px;
     width: 100%;
   }
 }

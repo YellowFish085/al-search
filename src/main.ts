@@ -1,6 +1,7 @@
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faChevronDown,
+  faChevronLeft,
   faCogs,
   faExternalLinkAlt,
   faSearch,
@@ -15,7 +16,16 @@ import router from './router';
 import store from './store';
 
 // Setup Font Awesome available icons.
-library.add(faChevronDown, faCogs, faExternalLinkAlt, faSearch, faTimes, faUserCircle);
+library.add(
+  faChevronDown,
+  faChevronLeft,
+  faCogs,
+  faExternalLinkAlt,
+  faSearch,
+  faTimes,
+  faUserCircle,
+);
+
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 // Add libs.
