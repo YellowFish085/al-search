@@ -60,5 +60,10 @@ export namespace Activity {
     type: Enum.ActivityType;
     label: string;
     value: string | number;
+    params?: {
+      type: Enum.SearchType;
+      year?: number;
+      season?: Enum.SearchSeason;
+    };
   }
 }

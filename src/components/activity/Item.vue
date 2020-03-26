@@ -5,7 +5,10 @@
       <div class="activity__label w-full">
         <span>{{ data.label }}</span>
       </div>
+      <div class="activity__params">
+        <span>{{ paramsString }}</span>
     </div>
+  </div>
   </div>
 </template>
 
@@ -50,6 +53,26 @@ export default class Item extends Vue {
   }
 
   /**
+   * Return search params as string.
+   */
+  get paramsString(): string {
+    if (this.data.type !== Enum.ActivityType.SEARCH) return '';
+
+    const parts = [];
+
+    // Add type part.
+    parts.push(this.data.params!.type);
+
+    // Add year part if present.
+    if (this.data.params!.year) parts.push(this.data.params!.year);
+
+    // Add season part if present.
+    if (this.data.params!.season) parts.push(this.data.params!.season);
+
+    return parts.join(' / ');
+  }
+
+  /**
    * Handle activity click.
    */
   handleClick() {
@@ -84,6 +107,14 @@ export default class Item extends Vue {
   &__label {
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__params {
+    color: rgb(var(--color-text-lighter));
+    font-size: 0.7rem;
+    font-weight: lighter;
+    text-transform: capitalize;
     white-space: nowrap;
   }
 }
