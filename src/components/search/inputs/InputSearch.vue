@@ -16,6 +16,7 @@
           class="search_input__search__input h-full w-full"
           placeholder="Search..."
           @input="handleSearch"
+          @keyup.enter="emitUpdate"
           @focus="$emit('focus')"
           @blur="$emit('blur')" />
 
@@ -45,13 +46,20 @@ export default class InputSearch extends Vue {
   timeout: number | null = null;
 
   /**
+   * Emit input update event.
+   */
+  emitUpdate(evt: any) {
+    this.$emit('update:value', evt.target.value);
+  }
+
+  /**
    * Handle search input changes.
    */
   handleSearch(evt: any) {
     if (this.timeout !== null) clearTimeout(this.timeout);
 
     this.timeout = setTimeout(() => {
-      this.$emit('update:value', evt.target.value);
+      this.emitUpdate(evt);
     }, 300);
   }
 
