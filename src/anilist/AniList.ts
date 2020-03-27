@@ -67,7 +67,7 @@ export default class AniList {
   /**
    * Search something on AniList.
    */
-  public async search(variables: AniSearch.Search.Search): Promise<AniSearch.Search.Search> {
+  public async search(variables: AniSearch.Search.Search): Promise<AniSearch.Search.Results> {
     // Get correct query based on search type.
     const query = QueriesSearch[variables.type];
 
