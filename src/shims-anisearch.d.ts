@@ -157,7 +157,7 @@ export namespace Search {
    * Search options.
    */
   export interface Options {
-    displayAdultContent: Boolean;
+    displayAdultContent: boolean;
   }
 
   /**
