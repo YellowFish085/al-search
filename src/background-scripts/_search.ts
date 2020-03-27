@@ -7,7 +7,12 @@ import AniList from '@/anilist/AniList';
 async function search(variables: AniSearch.Search.Search, sendResponse: Function) {
   try {
     const accessToken = await StorageHelper.getAccessToken();
+    const user = await StorageHelper.getUser();
     const client = new AniList(accessToken);
+
+    if (user) {
+      client.setOptions(user.options as AniSearch.Search.Options);
+    }
 
     const results = await client.search(variables);
 

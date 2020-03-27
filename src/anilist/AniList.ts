@@ -5,8 +5,13 @@ import * as Enum from '@/utils/Enum';
 export default class AniList {
   readonly token: string | null;
 
+  private options: AniSearch.Search.Options;
+
   constructor(token?: string | null) {
     this.token = token || null;
+    this.options = {
+      displayAdultContent: false,
+    };
   }
 
   /**
@@ -23,6 +28,13 @@ export default class AniList {
     }
 
     return headers;
+  }
+
+  /**
+   * Set options for requests.
+   */
+  public setOptions(options: AniSearch.Search.Options): void {
+    this.options = options;
   }
 
   /**
@@ -71,6 +83,7 @@ export default class AniList {
             type: variables.type,
             year: variables.year ? `${variables.year}%` : undefined,
             season: variables.season,
+            isAdult: this.options.displayAdultContent,
           },
         }),
       });

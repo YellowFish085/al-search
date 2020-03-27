@@ -153,6 +153,13 @@ export namespace AniList {
  */
 export namespace Search {
   /**
+   * Search options.
+   */
+  export interface Options {
+    displayAdultContent: Boolean;
+  }
+
+  /**
    * Search data.
    */
   export interface Search {
