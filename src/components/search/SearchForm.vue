@@ -211,7 +211,7 @@ export default class SearchForm extends Vue {
           return;
         }
 
-        this.$store.dispatch('refreshActivity');
+        this.$store.dispatch('refreshActivityFeed');
       });
   }
 }

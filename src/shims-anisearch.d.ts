@@ -26,7 +26,7 @@ export interface StoreState {
   settings: Settings;
   accessToken: string | null;
   user: AniSearch.AniList.Schema.User | null;
-  activity: AniSearch.Activity.Activity[];
+  activityFeed: AniSearch.Activity.Activity[];
   search: AniSearch.Search.StoreSearch;
 }
 

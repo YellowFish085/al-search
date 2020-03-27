@@ -3,13 +3,13 @@ const browser = require('webextension-polyfill'); // eslint-disable-line
 /**
  * Clear activity feed.
  */
-async function clearActivity(sendResponse: Function) {
+async function clearActivityFeed(sendResponse: Function) {
   try {
-    await browser.storage.Local.set({ activity: [] });
-    sendResponse({ code: 'ACTIVITY_CLEAR_SUCCESS' });
+    await browser.storage.Local.set({ activityFeed: [] });
+    sendResponse({ code: 'ACTIVITY_FEED_CLEAR_SUCCESS' });
   }
   catch (e) {
-    sendResponse({ code: 'ACTIVITY_CLEAR_FAILED', message: e.message });
+    sendResponse({ code: 'ACTIVITY_FEED_CLEAR_FAILED', message: e.message });
   }
 }
 
@@ -18,18 +18,18 @@ async function clearActivity(sendResponse: Function) {
  */
 async function saveActivity(newActivity: AniSearch.Activity.Activity, sendResponse: Function) {
   try {
-    const storageActivity = await browser.storage.local.get('activity');
+    const storageActivityFeed = await browser.storage.local.get('activityFeed');
 
-    let activity = storageActivity.activity && Array.isArray(storageActivity.activity)
-      ? storageActivity.activity
+    let activityFeed = storageActivityFeed.activityFeed && Array.isArray(storageActivityFeed.activityFeed)
+      ? storageActivityFeed.activityFeed
       : [];
 
     // Max activity size to 10.
-    activity.unshift(newActivity);
-    activity = activity.slice(0, 10);
+    activityFeed.unshift(newActivity);
+    activityFeed = activityFeed.slice(0, 10);
 
     // Store activity.
-    await browser.storage.local.set({ activity });
+    await browser.storage.local.set({ activityFeed });
 
     sendResponse({ code: 'SAVE_ACTIVITY_SUCCESS' });
   }
@@ -42,6 +42,6 @@ async function saveActivity(newActivity: AniSearch.Activity.Activity, sendRespon
 }
 
 export default {
-  clearActivity,
+  clearActivityFeed,
   saveActivity,
 }

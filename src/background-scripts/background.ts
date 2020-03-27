@@ -35,8 +35,8 @@ function handleMessage(request: any, sender: any, sendResponse: Function) { // e
      * Activity
      */
 
-    case 'ACTIVITY_CLEAR':
-      Activity.clearActivity(sendResponse);
+    case 'ACTIVITY_FEED_CLEAR':
+      Activity.clearActivityFeed(sendResponse);
       break;
 
     case 'SAVE_ACTIVITY':

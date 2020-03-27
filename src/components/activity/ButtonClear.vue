@@ -28,27 +28,27 @@ export default class ButtonClear extends Vue {
     this.disabled = true;
 
     // Let the background script handle the clear process.
-    const response = await browser.runtime.sendMessage({ code: 'ACTIVITY_CLEAR' });
+    const response = await browser.runtime.sendMessage({ code: 'ACTIVITY_FEED_CLEAR' });
 
     switch (response.code) {
-      case 'ACTIVITY_CLEAR_SUCCESS':
-        await this.$store.dispatch('clearActivity');
+      case 'ACTIVITY_FEED_CLEAR_SUCCESS':
+        await this.$store.dispatch('clearActivityFeed');
         this.$notify({
           group: 'anisearch',
           type: 'success',
           duration: 3000,
           title: 'Success',
-          text: 'Your activity have been cleared.',
+          text: 'Your activity feed have been cleared.',
         });
         break;
 
-      case 'ACTIVITY_CLEAR_FAILED':
+      case 'ACTIVITY_FEED_CLEAR_FAILED':
       default:
         this.$notify({
           group: 'anisearch',
           type: 'error',
           duration: -1,
-          title: 'Failed to clear your activity:',
+          title: 'Failed to clear your activity feed:',
           text: response.message,
         });
         break;

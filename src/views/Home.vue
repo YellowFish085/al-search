@@ -5,8 +5,8 @@
       <h1>Activity</h1>
 
       <div id="activity_feed" class="col col--justify-start col--items-center">
-        <Item v-for="data in activity" :key="data" :data="data" />
-        <ButtonClear v-if="activity.length > 0" />
+        <Item v-for="data in activityFeed" :key="data" :data="data" />
+        <ButtonClear v-if="activityFeed.length > 0" />
         <template v-else>
           <p>Nothing in your activity feed.</p>
         </template>
@@ -32,7 +32,7 @@ export default class Home extends Vue {
   /**
    * Activity feed.
    */
-  @State activity!: AniSearch.Activity.Activity[];
+  @State activityFeed!: AniSearch.Activity.Activity[];
 }
 </script>
 

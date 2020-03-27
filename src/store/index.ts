@@ -25,7 +25,7 @@ const defaultState: AniSearch.StoreState = {
   },
   accessToken: null,
   user: null,
-  activity: [],
+  activityFeed: [],
   search: {
     type: Enum.SearchType.ANIME,
   },
@@ -40,7 +40,7 @@ export default new Vuex.Store({
       state.settings = JSON.parse(JSON.stringify(storeData.settings));
       state.accessToken = storeData.accessToken;
       state.user = storeData.user ? JSON.parse(JSON.stringify(storeData.user)) : null;
-      state.activity = storeData.activity;
+      state.activityFeed = storeData.activityFeed;
     },
 
     error(state: AniSearch.StoreState, error: Error): void {
@@ -82,17 +82,20 @@ export default new Vuex.Store({
     },
 
     /**
-     * Clear activity.
+     * Clear activity feed.
      */
-    clearActivity(state: AniSearch.StoreState): void {
-      state.activity = [];
+    clearActivityFeed(state: AniSearch.StoreState): void {
+      state.activityFeed = [];
     },
 
     /**
      * Refresh activity feed.
      */
-    refreshActivity(state: AniSearch.StoreState, activity: AniSearch.Activity.Activity[]): void {
-      state.activity = activity;
+    refreshActivityFeed(
+      state: AniSearch.StoreState,
+      activityFeed: AniSearch.Activity.Activity[],
+    ): void {
+      state.activityFeed = activityFeed;
     },
 
     /**
@@ -110,13 +113,13 @@ export default new Vuex.Store({
       let storageSettings;
       let storageAccessToken;
       let storageUser;
-      let storageActivity;
+      let storageActivityFeed;
 
       try {
         storageSettings = await browser.storage.local.get('settings');
         storageAccessToken = await browser.storage.local.get('accessToken');
         storageUser = await browser.storage.local.get('user');
-        storageActivity = await browser.storage.local.get('activity');
+        storageActivityFeed = await browser.storage.local.get('activityFeed');
 
         // Init settings are not yet stored in storage, save them.
         if (!storageSettings.settings) {
@@ -152,8 +155,8 @@ export default new Vuex.Store({
         // Will either be empty if not defined, or object that implements UserSchema.
         user: storageUser.user ? storageUser.user as AniSearch.AniList.Schema.User : null,
         // Will either be empty if not defined, or array of string.
-        activity: storageActivity.activity
-          ? storageActivity.activity as AniSearch.Activity.Activity[]
+        activityFeed: storageActivityFeed.activityFeed
+          ? storageActivityFeed.activityFeed as AniSearch.Activity.Activity[]
           : [],
         search: {
           type: Enum.SearchType.ANIME,
@@ -226,25 +229,25 @@ export default new Vuex.Store({
     /**
      * Clear activity.
      */
-    clearActivity({ commit }): void {
-      commit('clearActivity');
+    clearActivityFeed({ commit }): void {
+      commit('clearActivityFeed');
     },
 
     /**
      * Refresh activity feed.
      */
-    async refreshActivity({ commit }): Promise<void> {
-      let storageActivity;
+    async refreshActivityFeed({ commit }): Promise<void> {
+      let storageActivityFeed;
 
       try {
-        storageActivity = await browser.storage.local.get('activity');
+        storageActivityFeed = await browser.storage.local.get('activityFeed');
       }
       catch (e) {
         commit('error', e);
       }
 
-      if (storageActivity.activity && Array.isArray(storageActivity.activity)) {
-        commit('refreshActivity', storageActivity.activity);
+      if (storageActivityFeed.activityFeed && Array.isArray(storageActivityFeed.activityFeed)) {
+        commit('refreshActivityFeed', storageActivityFeed.activityFeed);
       }
     },
 
