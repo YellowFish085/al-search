@@ -1,5 +1,6 @@
 import StorageHelper from '@/utils/StorageHelper';
 import AniList from '@/anilist/AniList';
+import * as Enum from '@/utils/Enum';
 
 /**
  * Search something on AniList.
@@ -10,8 +11,11 @@ async function search(variables: AniSearch.Search.Search, sendResponse: Function
     const user = await StorageHelper.getUser();
     const client = new AniList(accessToken);
 
+    // Set user options if available.
     if (user) {
-      client.setOptions(user.options as AniSearch.Search.Options);
+      client.setOptions({
+        displayAdultContent: user.options.displayAdultContent,
+      });
     }
 
     const searchResult: AniSearch.Store.SearchResults = {
