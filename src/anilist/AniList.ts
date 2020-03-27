@@ -43,10 +43,10 @@ export default class AniList {
         return body.data.Viewer as AniSearch.AniList.Schema.User;
       }
 
-      throw new Error(`Anilist request failed: Response does not contains user data. Response: ${JSON.stringify(body)}`);
+      throw new Error(`AniList request failed: Response does not contains user data. Response: ${JSON.stringify(body)}`);
     }
     catch (e) {
-      throw new Error(`Anilist request failed: ${e.message}`);
+      throw new Error(`AniList request failed: ${e.message}`);
     }
   }
 }
