@@ -1,5 +1,6 @@
 import AniList from '@/anilist/AniList';
 import Notifications from '@/utils/Notifications';
+import StorageHelper from '@/utils/StorageHelper';
 
 const browser = require('webextension-polyfill'); // eslint-disable-line
 
@@ -52,15 +53,15 @@ export default class Auth {
   /**
    * Store access token in local storage.
    */
-  private async storeAccessToken(accessToken: string): Promise<void> {
-    return browser.storage.local.set({ accessToken });
+  private storeAccessToken(accessToken: string): Promise<void> {
+    return StorageHelper.setAccessToken(accessToken);
   }
 
   /**
    * Store user data in local storage.
    */
-  private async storeUser(user: AniSearch.AniList.Schema.User): Promise<void> {
-    return browser.storage.local.set({ user });
+  private storeUser(user: AniSearch.AniList.Schema.User): Promise<void> {
+    return StorageHelper.setUser(user);
   }
 
   /**
@@ -82,8 +83,10 @@ export default class Auth {
       const user = await this.checkAccessToken(accessToken);
 
       // Token is valid, store it and the user data.
-      await this.storeAccessToken(accessToken);
-      await this.storeUser(user);
+      await Promise.all([
+        this.storeAccessToken(accessToken),
+        this.storeUser(user),
+      ]);
 
       Notifications.create('auth_success', `You are now logged in as ${user.name}`);
     }
@@ -98,12 +101,12 @@ export default class Auth {
    */
   async refreshUser(): Promise<void> {
     // Get access token from storage.
-    const accessToken = await browser.storage.local.get('accessToken');
+    const accessToken = await StorageHelper.getAccessToken();
 
-    if (accessToken.accessToken === null) throw new Error('Missing access token in local storage');
+    if (accessToken === null) throw new Error('Missing access token in local storage');
 
     // Fetch user data.
-    const anilist = new AniList(accessToken.accessToken);
+    const anilist = new AniList(accessToken);
 
     const user = await anilist.user();
 
@@ -115,7 +118,9 @@ export default class Auth {
    * Logout user by removing its data from local storage.
    */
   async logout(): Promise<void> {
-    await browser.storage.local.remove('accessToken');
-    await browser.storage.local.remove('user');
+    await Promise.all([
+      StorageHelper.removeAccessToken(),
+      StorageHelper.removeUser(),
+    ]);
   }
 }

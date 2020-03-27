@@ -1,3 +1,5 @@
+import StorageHelper from '@/utils/StorageHelper';
+
 const browser = require('webextension-polyfill'); // eslint-disable-line
 
 /**
@@ -49,8 +51,6 @@ export function toggle(show = true) {
 }
 
 export async function init() {
-  const settings = (await browser.storage.local.get('settings')).settings as AniSearch.Settings | null;
-
   // Menus handlers.
   browser.contextMenus.onClicked.addListener((info: any) => {
     const value = info.selectionText;
@@ -86,5 +86,7 @@ export async function init() {
   });
 
   // Add contextual menus.
+  const settings = await StorageHelper.getSettings();
+
   toggle(!settings || settings.integration.menusEnabled);
 }

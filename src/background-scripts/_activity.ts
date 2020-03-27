@@ -1,11 +1,11 @@
-const browser = require('webextension-polyfill'); // eslint-disable-line
+import StorageHelper from '@/utils/StorageHelper';
 
 /**
  * Clear activity feed.
  */
 async function clearActivityFeed(sendResponse: Function) {
   try {
-    await browser.storage.Local.set({ activityFeed: [] });
+    await StorageHelper.setActivityFeed([]);
     sendResponse({ code: 'ACTIVITY_FEED_CLEAR_SUCCESS' });
   }
   catch (e) {
@@ -18,18 +18,14 @@ async function clearActivityFeed(sendResponse: Function) {
  */
 async function saveActivity(newActivity: AniSearch.Activity.Activity, sendResponse: Function) {
   try {
-    const storageActivityFeed = await browser.storage.local.get('activityFeed');
-
-    let activityFeed = storageActivityFeed.activityFeed && Array.isArray(storageActivityFeed.activityFeed)
-      ? storageActivityFeed.activityFeed
-      : [];
+    let activityFeed = await StorageHelper.getActivityFeed();
 
     // Max activity size to 10.
     activityFeed.unshift(newActivity);
     activityFeed = activityFeed.slice(0, 10);
 
-    // Store activity.
-    await browser.storage.local.set({ activityFeed });
+    // Store activity feed.
+    await StorageHelper.setActivityFeed(activityFeed);
 
     sendResponse({ code: 'SAVE_ACTIVITY_SUCCESS' });
   }

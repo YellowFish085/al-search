@@ -1,5 +1,6 @@
 import * as Enum from '@/utils/Enum';
 import Notifications from '@/utils/Notifications';
+import StorageHelper from '@/utils/StorageHelper';
 import Vue from 'vue';
 import Vuex from 'vuex';
 
@@ -110,97 +111,85 @@ export default new Vuex.Store({
      * Initialize state with data from storage.
      */
     async init({ state, commit }): Promise<void> {
-      let storageSettings;
-      let storageAccessToken;
-      let storageUser;
-      let storageActivityFeed;
-
       try {
-        storageSettings = await browser.storage.local.get('settings');
-        storageAccessToken = await browser.storage.local.get('accessToken');
-        storageUser = await browser.storage.local.get('user');
-        storageActivityFeed = await browser.storage.local.get('activityFeed');
+        let settings = await StorageHelper.getSettings();
+        const [accessToken, user, activityFeed] = await Promise.all([
+          StorageHelper.getAccessToken(),
+          StorageHelper.getUser(),
+          StorageHelper.getActivityFeed(),
+        ]);
 
         // Init settings are not yet stored in storage, save them.
-        if (!storageSettings.settings) {
-          const settings = JSON.parse(JSON.stringify(state.settings));
-          storageSettings.settings = settings;
+        if (!settings) {
+          settings = JSON.parse(JSON.stringify(state.settings)) as AniSearch.Settings;
 
-          await browser.storage.local.set({ settings });
+          await StorageHelper.setSettings(settings);
         }
 
         // If user exists, check token usability in case token is not usable.
-        if (storageUser.user) {
+        if (user) {
           const response = await browser.runtime.sendMessage({ code: 'USER_REFRESH' });
 
           if (response.code === 'USER_REFRESH_FAILED') {
             Notifications.create(
               'auth_failed',
-              'We couldn\'t get your account information, your token might be invalid. Please login again.'
+              'We couldn\'t get your account information, your token might be invalid. Please login again.',
             );
           }
         }
+
+        // Create state.
+        const newState: AniSearch.StoreState = {
+          initialized: true,
+          critError: null,
+          settings,
+          accessToken,
+          user,
+          activityFeed: activityFeed!,
+          search: {
+            type: Enum.SearchType.ANIME,
+          },
+        };
+
+        commit('init', newState);
       }
       catch (e) {
         commit('error', e);
       }
-
-      // Create state.
-      const newState: AniSearch.StoreState = {
-        initialized: true,
-        critError: null,
-        settings: storageSettings.settings as AniSearch.Settings,
-        // Will either be empty if not defined, or string.
-        accessToken: storageAccessToken.accessToken,
-        // Will either be empty if not defined, or object that implements UserSchema.
-        user: storageUser.user ? storageUser.user as AniSearch.AniList.Schema.User : null,
-        // Will either be empty if not defined, or array of string.
-        activityFeed: storageActivityFeed.activityFeed
-          ? storageActivityFeed.activityFeed as AniSearch.Activity.Activity[]
-          : [],
-        search: {
-          type: Enum.SearchType.ANIME,
-        },
-      };
-
-      commit('init', newState);
     },
 
     /**
      * Authentication.
      */
     async authenticated({ commit }): Promise<void> {
-      let storageAccessToken;
-      let storageUser;
-
       try {
-        storageAccessToken = await browser.storage.local.get('accessToken');
-        storageUser = await browser.storage.local.get('user');
+        const [accessToken, user] = await Promise.all([
+          StorageHelper.getAccessToken(),
+          StorageHelper.getUser(),
+        ]);
+
+        commit('authenticated', {
+          accessToken,
+          user,
+        });
       }
       catch (e) {
         commit('error', e);
       }
-
-      commit('authenticated', {
-        accessToken: storageAccessToken.accessToken,
-        user: storageUser.user,
-      });
     },
 
     /**
      * Refresh user data.
      */
     async refreshUserData({ commit }): Promise<void> {
-      let storageUser;
-
       try {
-        storageUser = await browser.storage.local.get('user');
+        const user = await StorageHelper.getUser();
+
+        commit('refreshUserData', user);
       }
       catch (e) {
         commit('error', e);
       }
-
-      commit('refreshUserData', storageUser.user);
     },
 
     /**
@@ -216,14 +205,14 @@ export default new Vuex.Store({
     async updateSettings({ commit }, settings: AniSearch.Settings): Promise<void> {
       try {
         // Store new settings in storage.
-        await browser.storage.local.set({ settings });
+        await StorageHelper.setSettings(settings);
+
+        // Commit update to store.
+        commit('updateSettings', settings);
       }
       catch (e) {
         commit('error', e);
       }
-
-      // Commit update to store.
-      commit('updateSettings', settings);
     },
 
     /**
@@ -237,17 +226,13 @@ export default new Vuex.Store({
      * Refresh activity feed.
      */
     async refreshActivityFeed({ commit }): Promise<void> {
-      let storageActivityFeed;
-
       try {
-        storageActivityFeed = await browser.storage.local.get('activityFeed');
+        const activityFeed = await StorageHelper.getActivityFeed();
+
+        commit('refreshActivityFeed', activityFeed);
       }
       catch (e) {
         commit('error', e);
-      }
-
-      if (storageActivityFeed.activityFeed && Array.isArray(storageActivityFeed.activityFeed)) {
-        commit('refreshActivityFeed', storageActivityFeed.activityFeed);
       }
     },
 
