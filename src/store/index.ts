@@ -87,7 +87,10 @@ export default new Vuex.Store({
     /**
      * Update search results.
      */
-    setSearchResults(state: AniSearch.Store.State, data: AniSearch.Store.SearchResults | null): void {
+    setSearchResults(
+      state: AniSearch.Store.State,
+      data: AniSearch.Store.SearchResults | null
+    ): void {
       state.searchResults = data;
     },
   },
