@@ -144,7 +144,6 @@ export namespace AniList {
     siteUrl: string;
     options: {
       displayAdultContent: boolean;
-      titleLanguage: string;
     };
   }
 }

@@ -17,8 +17,7 @@ export function UserSchemaCheck(data: any): boolean {
     && Object.prototype.hasOwnProperty.call(data, 'siteUrl') && typeof data.siteUrl === 'string'
     // options
     && Object.prototype.hasOwnProperty.call(data, 'options') && data.options !== null && typeof data.options === 'object'
-    && Object.prototype.hasOwnProperty.call(data.options, 'displayAdultContent') && typeof data.options.displayAdultContent === 'boolean'
-    && Object.prototype.hasOwnProperty.call(data.options, 'titleLanguage') && typeof data.options.titleLanguage === 'string';
+    && Object.prototype.hasOwnProperty.call(data.options, 'displayAdultContent') && typeof data.options.displayAdultContent === 'boolean';
 }
 
 export default `
@@ -32,7 +31,6 @@ query {
     siteUrl
     options {
       displayAdultContent
-      titleLanguage
     }
   }
 }
