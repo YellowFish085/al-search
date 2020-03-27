@@ -1,5 +1,6 @@
 import Activity from '@/background-scripts/_activity';
 import Auth from '@/background-scripts/_auth';
+import Search from '@/background-scripts/_search';
 import * as Menus from '@/background-scripts/_menus';
 
 const browser = require('webextension-polyfill'); // eslint-disable-line
@@ -15,7 +16,7 @@ function handleMessage(request: any, sender: any, sendResponse: Function) { // e
       sendResponse({ code: 'SUCCESS' });
       break;
 
-    /**
+      /**
      * Auth
      */
 
@@ -31,7 +32,7 @@ function handleMessage(request: any, sender: any, sendResponse: Function) { // e
       Auth.userLogout(sendResponse);
       break;
 
-    /**
+      /**
      * Activity
      */
 
@@ -43,13 +44,12 @@ function handleMessage(request: any, sender: any, sendResponse: Function) { // e
       Activity.saveActivity(request.data as AniSearch.Activity.Activity, sendResponse);
       break;
 
-    /**
+      /**
      * Search
      */
 
     case 'SEARCH':
-      // TODO:
-      sendResponse({ code: 'SEARCH_SUCCESS' });
+      Search.search(request.data as AniSearch.Search.StoreSearch, sendResponse);
       break;
 
     default:

@@ -164,7 +164,10 @@ export default class SearchForm extends Vue {
         // Save search activity and refresh store asynchronously.
         this.saveActivity(value, type, year, season);
 
-        // TODO: Continue
+        this.$store.dispatch('searchResults', {
+          type,
+          results: response.results,
+        });
         break;
 
       case 'SEARCH_FAILED':

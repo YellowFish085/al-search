@@ -26,3 +26,14 @@ export enum ActivityType {
   SEARCH = 'SEARCH',
   VISITED_PAGE = 'VISITED_PAGE',
 }
+
+/**
+ * Key in AniList search response that contains search results.
+ */
+export enum ResponseTypeKeys {
+  ANIME = 'media',
+  MANGA = 'media',
+  STUDIOS = 'studios',
+  CHARACTERS = 'characters',
+  STAFF = 'staff',
+}

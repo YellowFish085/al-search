@@ -105,6 +105,13 @@ export default new Vuex.Store({
     updateSearch(state: AniSearch.StoreState, search: AniSearch.Search.StoreSearch): void {
       state.search = JSON.parse(JSON.stringify(search));
     },
+
+    /**
+     * Search results.
+     */
+    searchResults(state: AniSearch.StoreState, data: AniSearch.Search.StoreSearchResults): void {
+      state.searchResults = data;
+    },
   },
   actions: {
     /**
@@ -248,6 +255,13 @@ export default new Vuex.Store({
       };
 
       commit('updateSearch', search);
+    },
+
+    /**
+     * Search results.
+     */
+    searchResults({ commit }, data: AniSearch.Search.StoreSearchResults): void {
+      commit('searchResults', data);
     },
   },
   modules: {},

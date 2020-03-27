@@ -28,6 +28,7 @@ export interface StoreState {
   user: AniSearch.AniList.Schema.User | null;
   activityFeed: AniSearch.Activity.Activity[];
   search: AniSearch.Search.StoreSearch;
+  searchResults?: AniSearch.Search.StoreSearchResults;
 }
 
 /**
@@ -35,6 +36,93 @@ export interface StoreState {
  */
 export namespace AniList {
   export namespace Schema {
+    /**
+     * Media schema (anime & manga).
+     */
+    export interface Media {
+      id: number;
+      isAdult: boolean;
+      type: string;
+      title: {
+        userPreferred: string;
+      };
+      description: string|null;
+      banneImage: string|null;
+      coverImage: {
+        large: string|null;
+        color: string|null;
+      };
+      startDate: {
+        year: number|null;
+        month: number|null;
+        day: number|null;
+      };
+      endDate: {
+        year: number|null;
+        month: number|null;
+        day: number|null;
+      };
+      season: Enum.SearchSeason;
+      format: string|null;
+      status: string|null;
+      genres: string[];
+      averageScore: number|null;
+      popularity: number|null;
+      nextAiringEpisode: {
+        airingAt: number;
+        timeUntilAiring: number;
+        episode: number;
+      }|null;
+      studios: {
+        edges: {
+          isMain: boolean;
+          node: {
+            id: number;
+            name: string;
+          };
+        }[];
+      };
+    }
+
+    /**
+     * Studio schema.
+     */
+    export interface Studio {
+      id: number;
+      name: string;
+      media: {
+        edges: {
+          node: AniSearch.AniList.Schema.Media;
+        }[];
+      };
+    }
+
+    /**
+     * Character schema.
+     */
+    export interface Character {
+      id: number;
+      name: {
+        full: string;
+      };
+      image: {
+        large: string|null;
+      };
+    }
+
+    /**
+     * Staff schema.
+     */
+    export interface Staff {
+      id: number;
+      name: {
+        full: string;
+      };
+      image: {
+        large: string|null;
+      };
+    }
+
     /**
      * User schema.
      */
@@ -62,6 +150,16 @@ export namespace Search {
     value?: string;
     year?: number;
     season?: Enum.SearchSeason;
+  }
+
+  export type SearchResults = AniSearch.AniList.Schema.Media[]
+    | AniSearch.AniList.Schema.Studio[]
+    | AniSearch.AniList.Schema.Character[]
+    | AniSearch.AniList.Schema.Staff[];
+
+  export interface StoreSearchResults {
+    type: Enum.SearchType;
+    results: AniSearch.Search.SearchResults;
   }
 }
 
