@@ -92,7 +92,7 @@ export default new Vuex.Store({
      */
     setSearchResults(
       state: AniSearch.Store.State,
-      data: AniSearch.Store.SearchResults | null
+      data: AniSearch.Store.SearchResults | null,
     ): void {
       state.searchResults = data;
     },
