@@ -40,4 +40,4 @@ async function saveActivity(newActivity: AniSearch.Activity.Activity, sendRespon
 export default {
   clearActivityFeed,
   saveActivity,
-}
+};
