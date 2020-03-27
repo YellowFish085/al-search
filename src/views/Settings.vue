@@ -13,6 +13,9 @@
       <!-- Web integration -->
       <IntegrationSettings />
 
+      <!-- Search -->
+      <SearchSettings />
+
       <!-- Infos -->
       <Infos />
     </div>
@@ -25,6 +28,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import ActivitySettings from '@/views/settings/ActivitySettings.vue';
 import Infos from '@/views/settings/Infos.vue';
 import IntegrationSettings from '@/views/settings/IntegrationSettings.vue';
+import SearchSettings from '@/views/settings/SearchSettings.vue';
 import UserSettings from '@/views/settings/UserSettings.vue';
 
 @Component({
@@ -32,6 +36,7 @@ import UserSettings from '@/views/settings/UserSettings.vue';
     ActivitySettings,
     Infos,
     IntegrationSettings,
+    SearchSettings,
     UserSettings,
   },
 })

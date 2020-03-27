@@ -22,6 +22,9 @@ const defaultState: AniSearch.Store.State = {
       webEnabled: true,
       menusEnabled: true,
     },
+    search: {
+      onListFirst: true,
+    },
   },
   accessToken: null,
   user: null,

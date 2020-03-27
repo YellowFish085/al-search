@@ -15,6 +15,10 @@ export interface Settings {
     webEnabled: boolean;
     menusEnabled: boolean;
   };
+
+  search: {
+    onListFirst: boolean;
+  };
 }
 
 /**
