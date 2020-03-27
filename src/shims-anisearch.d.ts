@@ -24,6 +24,7 @@ export namespace Store {
   export interface SearchResults {
     type: Enum.SearchType;
     results: AniSearch.Search.Results;
+    resultsOnList?: AniSearch.Search.Results;
   }
 
   /**

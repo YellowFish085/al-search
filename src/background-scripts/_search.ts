@@ -14,9 +14,18 @@ async function search(variables: AniSearch.Search.Search, sendResponse: Function
       client.setOptions(user.options as AniSearch.Search.Options);
     }
 
-    const results = await client.search(variables);
+    const searchResult: AniSearch.Store.SearchResults = {
+      type: variables.type,
+      results: await client.search(variables),
+    };
 
-    sendResponse({ code: 'SEARCH_SUCCESS', results });
+    // If user is logged in and searching for an anime or a manga,
+    // add personal lists results to the search results.
+    if (user && [Enum.SearchType.ANIME, Enum.SearchType.MANGA].includes(variables.type)) {
+      searchResult.resultsOnList = await client.search(variables, true);
+    }
+
+    sendResponse({ code: 'SEARCH_SUCCESS', searchResult });
   }
   catch (e) {
     sendResponse({ code: 'SEARCH_FAILED', message: e.message });

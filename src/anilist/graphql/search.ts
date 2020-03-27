@@ -12,6 +12,7 @@ query (
   $type: MediaType,
   $year: String,
   $season: MediaSeason,
+  $onList: Boolean,
 ) {
   Page (page: $page, perPage: 20) {
     media(
@@ -21,6 +22,7 @@ query (
       type: $type,
       startDate_like: $year,
       season: $season,
+      onList: $onList,
     ) {
       id
       isAdult

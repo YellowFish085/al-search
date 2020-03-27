@@ -67,7 +67,10 @@ export default class AniList {
   /**
    * Search something on AniList.
    */
-  public async search(variables: AniSearch.Search.Search): Promise<AniSearch.Search.Results> {
+  public async search(
+    variables: AniSearch.Search.Search,
+    onList = false,
+  ): Promise<AniSearch.Search.Results> {
     // Get correct query based on search type.
     const query = QueriesSearch[variables.type];
 
@@ -84,6 +87,7 @@ export default class AniList {
             year: variables.year ? `${variables.year}%` : undefined,
             season: variables.season,
             isAdult: this.options.displayAdultContent,
+            onList,
           },
         }),
       });
