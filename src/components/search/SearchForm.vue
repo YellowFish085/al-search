@@ -122,8 +122,12 @@ export default class SearchForm extends Vue {
     // Prepare search values.
     const search = this.search.trim();
     const { type } = this;
-    const year = [Enum.SearchType.ANIME, Enum.SearchType.MANGA].includes(type) ? this.year : null;
-    const season = [Enum.SearchType.ANIME].includes(type) ? this.season : null;
+    const year = [Enum.SearchType.ANIME, Enum.SearchType.MANGA].includes(type) && this.year
+      ? this.year
+      : undefined;
+    const season = [Enum.SearchType.ANIME].includes(type) && this.season
+      ? this.season
+      : undefined;
 
     // If search string is empty, do not execute search.
     if (!search || search === '') return;
@@ -138,23 +142,27 @@ export default class SearchForm extends Vue {
    * Start search flow.
    */
   async startSearch(
-    search: string,
+    value: string,
     type: Enum.SearchType,
-    year: number|null,
-    season: Enum.SearchSeason|null,
+    year: number|undefined,
+    season: Enum.SearchSeason|undefined,
   ) {
-    const response = await browser.runtime.sendMessage({
-      code: 'SEARCH',
-      search,
+    const data: AniSearch.Search.StoreSearch = {
+      value,
       type,
       year,
       season,
+    };
+
+    const response = await browser.runtime.sendMessage({
+      code: 'SEARCH',
+      data,
     });
 
     switch (response.code) {
       case 'SEARCH_SUCCESS':
         // Save search activity and refresh store asynchronously.
-        this.saveActivity(search, type, year, season);
+        this.saveActivity(value, type, year, season);
 
         // TODO: Continue
         break;
@@ -178,8 +186,8 @@ export default class SearchForm extends Vue {
   saveActivity(
     search: string,
     type: Enum.SearchType,
-    year: number|null,
-    season: Enum.SearchSeason|null,
+    year: number|undefined,
+    season: Enum.SearchSeason|undefined,
   ) {
     if (!this.settings.activity.search) return;
 
@@ -189,8 +197,8 @@ export default class SearchForm extends Vue {
       value: search,
       params: {
         type,
-        year: year || undefined,
-        season: season || undefined,
+        year,
+        season,
       },
     };
 
