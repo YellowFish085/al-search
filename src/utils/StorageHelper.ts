@@ -30,12 +30,12 @@ class StorageHelper {
   }
 
   /**
-   * Return data from storage or default value if not found.
+   * Return data from storage or `null`
    */
-  async get(key: string, defaultValue: any = null): Promise<any> {
+  async get(key: string): Promise<any> {
     const data = await browser.storage.local.get(key);
 
-    return data[key] || defaultValue;
+    return data[key] || null;
   }
 
   //
@@ -52,7 +52,7 @@ class StorageHelper {
   /**
    * Get settings from storage.
    */
-  getSettings(): Promise<AniSearch.Settings|null> {
+  getSettings(): Promise<AniSearch.Settings | null> {
     return this.get(this.keys.settings);
   }
 
@@ -77,7 +77,7 @@ class StorageHelper {
   /**
    * Get access token from storage.
    */
-  getAccessToken(): Promise<string|null> {
+  getAccessToken(): Promise<string | null> {
     return this.get(this.keys.accessToken);
   }
 
@@ -88,7 +88,7 @@ class StorageHelper {
   /**
    * Store user.
    */
-  setUser(user: AniSearch.AniList.Schema.User): Promise<void> {
+  setUser(user: AniSearch.AniList.User): Promise<void> {
     return this.set(this.keys.user, user);
   }
 
@@ -102,7 +102,7 @@ class StorageHelper {
   /**
    * Get user from storage.
    */
-  getUser(): Promise<AniSearch.AniList.Schema.User|null> {
+  getUser(): Promise<AniSearch.AniList.User | null> {
     return this.get(this.keys.user);
   }
 
@@ -120,8 +120,8 @@ class StorageHelper {
   /**
    * Get activity feed from storage.
    */
-  getActivityFeed(): Promise<AniSearch.Activity.Activity[]> {
-    return this.get(this.keys.activityFeed, []);
+  getActivityFeed(): Promise<AniSearch.Activity.Activity[] | null> {
+    return this.get(this.keys.activityFeed);
   }
 }
 

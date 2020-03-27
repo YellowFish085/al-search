@@ -23,7 +23,7 @@ export default class InputYear extends Vue {
   @Prop(String) type!: Enum.SearchType;
 
   /** Value */
-  @Prop(String) value?: number|null;
+  @Prop(String) value?: number | null;
 
   /** Search years. */
   years = new Array(new Date().getFullYear() - 1950 + 1)

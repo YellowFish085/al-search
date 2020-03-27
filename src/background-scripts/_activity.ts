@@ -20,6 +20,8 @@ async function saveActivity(newActivity: AniSearch.Activity.Activity, sendRespon
   try {
     let activityFeed = await StorageHelper.getActivityFeed();
 
+    if (!activityFeed) activityFeed = [];
+
     // Max activity size to 10.
     activityFeed.unshift(newActivity);
     activityFeed = activityFeed.slice(0, 10);

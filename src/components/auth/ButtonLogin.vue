@@ -36,7 +36,7 @@ export default class ButtonLogin extends Vue {
     // resolve if the user already gave permissions), update the store.
     switch (response.code) {
       case 'AUTH_SUCCESS':
-        this.$store.dispatch('authenticated');
+        this.$store.dispatch('refreshUserData');
         break;
 
       case 'AUTH_FAILED':

@@ -1,4 +1,3 @@
-import * as Enum from '@/utils/Enum';
 import Notifications from '@/utils/Notifications';
 import StorageHelper from '@/utils/StorageHelper';
 import Vue from 'vue';
@@ -11,7 +10,7 @@ Vue.use(Vuex);
 /**
  * Default storage state.
  */
-const defaultState: AniSearch.StoreState = {
+const defaultState: AniSearch.Store.State = {
   initialized: false,
   critError: null,
   settings: {
@@ -26,90 +25,69 @@ const defaultState: AniSearch.StoreState = {
   },
   accessToken: null,
   user: null,
-  activityFeed: [],
-  search: {
-    type: Enum.SearchType.ANIME,
-  },
+  activityFeed: null,
+  search: null,
+  searchResults: null,
 };
 
 export default new Vuex.Store({
   state: defaultState,
   mutations: {
-    init(state: AniSearch.StoreState, storeData: AniSearch.StoreState): void {
+    init(state: AniSearch.Store.State, storeData: AniSearch.Store.State): void {
       state.initialized = storeData.initialized;
       state.critError = null;
       state.settings = JSON.parse(JSON.stringify(storeData.settings));
       state.accessToken = storeData.accessToken;
-      state.user = storeData.user ? JSON.parse(JSON.stringify(storeData.user)) : null;
-      state.activityFeed = storeData.activityFeed;
+      state.user = JSON.parse(JSON.stringify(storeData.user));
+      state.activityFeed = JSON.parse(JSON.stringify(storeData.activityFeed));
+      state.search = null;
+      state.searchResults = null;
     },
 
-    error(state: AniSearch.StoreState, error: Error): void {
+    error(state: AniSearch.Store.State, error: Error): void {
       console.error(error);
       state.critError = error;
     },
 
     /**
-     * Authentication.
+     * Update user data.
      */
-    authenticated(
-      state: AniSearch.StoreState,
-      data: { accessToken: string; user: AniSearch.AniList.Schema.User },
+    setUserData(
+      state: AniSearch.Store.State,
+      data: { accessToken: string | null; user: AniSearch.AniList.User | null },
     ): void {
       state.accessToken = data.accessToken;
       state.user = JSON.parse(JSON.stringify(data.user));
     },
 
     /**
-     * Refresh user data.
-     */
-    refreshUserData(state: AniSearch.StoreState, user: AniSearch.AniList.Schema.User): void {
-      state.user = JSON.parse(JSON.stringify(user));
-    },
-
-    /**
-     * Logout user.
-     */
-    logout(state: AniSearch.StoreState): void {
-      state.accessToken = null;
-      state.user = null;
-    },
-
-    /**
      * Update settings.
      */
-    updateSettings(state: AniSearch.StoreState, settings: AniSearch.Settings): void {
+    setSettings(state: AniSearch.Store.State, settings: AniSearch.Settings): void {
       state.settings = JSON.parse(JSON.stringify(settings));
     },
 
     /**
-     * Clear activity feed.
+     * Update activity feed.
      */
-    clearActivityFeed(state: AniSearch.StoreState): void {
-      state.activityFeed = [];
-    },
-
-    /**
-     * Refresh activity feed.
-     */
-    refreshActivityFeed(
-      state: AniSearch.StoreState,
-      activityFeed: AniSearch.Activity.Activity[],
+    setActivityFeed(
+      state: AniSearch.Store.State,
+      activityFeed: AniSearch.Activity.Activity[] | null,
     ): void {
       state.activityFeed = activityFeed;
     },
 
     /**
-     * Start search from an activity item.
+     * Update search data.
      */
-    updateSearch(state: AniSearch.StoreState, search: AniSearch.Search.StoreSearch): void {
+    setSearch(state: AniSearch.Store.State, search: AniSearch.Search.Search | null): void {
       state.search = JSON.parse(JSON.stringify(search));
     },
 
     /**
-     * Search results.
+     * Update search results.
      */
-    searchResults(state: AniSearch.StoreState, data: AniSearch.Search.StoreSearchResults): void {
+    setSearchResults(state: AniSearch.Store.State, data: AniSearch.Store.SearchResults | null): void {
       state.searchResults = data;
     },
   },
@@ -146,39 +124,18 @@ export default new Vuex.Store({
         }
 
         // Create state.
-        const newState: AniSearch.StoreState = {
+        const newState: AniSearch.Store.State = {
           initialized: true,
-          critError: null,
           settings,
+          critError: null,
           accessToken,
           user,
-          activityFeed: activityFeed!,
-          search: {
-            type: Enum.SearchType.ANIME,
-          },
+          activityFeed,
+          search: null,
+          searchResults: null,
         };
 
         commit('init', newState);
-      }
-      catch (e) {
-        commit('error', e);
-      }
-    },
-
-    /**
-     * Authentication.
-     */
-    async authenticated({ commit }): Promise<void> {
-      try {
-        const [accessToken, user] = await Promise.all([
-          StorageHelper.getAccessToken(),
-          StorageHelper.getUser(),
-        ]);
-
-        commit('authenticated', {
-          accessToken,
-          user,
-        });
       }
       catch (e) {
         commit('error', e);
@@ -190,9 +147,12 @@ export default new Vuex.Store({
      */
     async refreshUserData({ commit }): Promise<void> {
       try {
-        const user = await StorageHelper.getUser();
+        const [accessToken, user] = await Promise.all([
+          StorageHelper.getAccessToken(),
+          StorageHelper.getUser(),
+        ]);
 
-        commit('refreshUserData', user);
+        commit('setUserData', { accessToken, user });
       }
       catch (e) {
         commit('error', e);
@@ -203,7 +163,7 @@ export default new Vuex.Store({
      * Logout user.
      */
     logout({ commit }): void {
-      commit('logout');
+      commit('setUserData', { accessToken: null, user: null });
     },
 
     /**
@@ -215,7 +175,7 @@ export default new Vuex.Store({
         await StorageHelper.setSettings(settings);
 
         // Commit update to store.
-        commit('updateSettings', settings);
+        commit('setSettings', settings);
       }
       catch (e) {
         commit('error', e);
@@ -226,7 +186,7 @@ export default new Vuex.Store({
      * Clear activity.
      */
     clearActivityFeed({ commit }): void {
-      commit('clearActivityFeed');
+      commit('setActivityFeed', null);
     },
 
     /**
@@ -236,7 +196,7 @@ export default new Vuex.Store({
       try {
         const activityFeed = await StorageHelper.getActivityFeed();
 
-        commit('refreshActivityFeed', activityFeed);
+        commit('setActivityFeed', activityFeed);
       }
       catch (e) {
         commit('error', e);
@@ -247,21 +207,21 @@ export default new Vuex.Store({
      * Start search from an activity item.
      */
     searchFromActivity({ commit }, data: AniSearch.Activity.Activity): void {
-      const search: AniSearch.Search.StoreSearch = {
+      const search: AniSearch.Search.Search = {
         value: data.value as string,
         type: data.params!.type,
         year: data.params!.year,
         season: data.params!.season,
       };
 
-      commit('updateSearch', search);
+      commit('setSearch', search);
     },
 
     /**
      * Search results.
      */
-    searchResults({ commit }, data: AniSearch.Search.StoreSearchResults): void {
-      commit('searchResults', data);
+    searchResults({ commit }, data: AniSearch.Store.SearchResults | null): void {
+      commit('setSearchResults', data);
     },
   },
   modules: {},

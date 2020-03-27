@@ -63,7 +63,7 @@ const browser = require('webextension-polyfill') // eslint-disable-line
 export default class SearchForm extends Vue {
   @State('settings') settings!: AniSearch.Settings;
 
-  @State('search') storeSearch!: AniSearch.Search.StoreSearch;
+  @State('search') storeSearch!: AniSearch.Search.Search | null;
 
   /** Search string. */
   search = '';
@@ -72,10 +72,10 @@ export default class SearchForm extends Vue {
   type: Enum.SearchType = Enum.SearchType.ANIME;
 
   /** Search year. */
-  year: number|null = null;
+  year: number | null = null;
 
   /** Search season. */
-  season: Enum.SearchSeason|null = null;
+  season: Enum.SearchSeason | null = null;
 
   /**
    * Handle input change.
@@ -102,8 +102,8 @@ export default class SearchForm extends Vue {
    * Watch for store search changes.
    */
   @Watch('storeSearch')
-  onStoreSearchChanged(newValue: AniSearch.Search.StoreSearch) {
-    if (!newValue.value) return;
+  onStoreSearchChanged(newValue: AniSearch.Search.Search | null) {
+    if (!newValue || !newValue.value) return;
 
     this.search = newValue.value;
     this.type = newValue.type;
@@ -121,11 +121,10 @@ export default class SearchForm extends Vue {
   preSearch() {
     // Prepare search values.
     const search = this.search.trim();
-    const { type } = this;
-    const year = [Enum.SearchType.ANIME, Enum.SearchType.MANGA].includes(type) && this.year
+    const year = [Enum.SearchType.ANIME, Enum.SearchType.MANGA].includes(this.type) && this.year
       ? this.year
       : undefined;
-    const season = [Enum.SearchType.ANIME].includes(type) && this.season
+    const season = [Enum.SearchType.ANIME].includes(this.type) && this.season
       ? this.season
       : undefined;
 
@@ -135,7 +134,7 @@ export default class SearchForm extends Vue {
     // Set active page to search results.
     if (this.$route.name !== 'search') this.$router.push('search');
 
-    this.startSearch(search, type, year, season);
+    this.startSearch(search, this.type, year, season);
   }
 
   /**
@@ -144,10 +143,10 @@ export default class SearchForm extends Vue {
   async startSearch(
     value: string,
     type: Enum.SearchType,
-    year: number|undefined,
-    season: Enum.SearchSeason|undefined,
+    year: number | undefined,
+    season: Enum.SearchSeason | undefined,
   ) {
-    const data: AniSearch.Search.StoreSearch = {
+    const data: AniSearch.Search.Search = {
       value,
       type,
       year,
@@ -189,8 +188,8 @@ export default class SearchForm extends Vue {
   saveActivity(
     search: string,
     type: Enum.SearchType,
-    year: number|undefined,
-    season: Enum.SearchSeason|undefined,
+    year: number | undefined,
+    season: Enum.SearchSeason | undefined,
   ) {
     if (!this.settings.activity.search) return;
 

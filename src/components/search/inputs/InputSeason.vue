@@ -23,7 +23,7 @@ export default class InputSeason extends Vue {
   @Prop(String) type!: Enum.SearchType;
 
   /** Value */
-  @Prop(String) value!: Enum.SearchSeason|null;
+  @Prop(String) value!: Enum.SearchSeason | null;
 
   /** Search season. */
   seasons = Enum.SearchSeason;

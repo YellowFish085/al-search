@@ -18,126 +18,134 @@ export interface Settings {
 }
 
 /**
- * Store state.
+ * Store.
  */
-export interface StoreState {
-  initialized: boolean;
-  critError: Error | null;
-  settings: Settings;
-  accessToken: string | null;
-  user: AniSearch.AniList.Schema.User | null;
-  activityFeed: AniSearch.Activity.Activity[];
-  search: AniSearch.Search.StoreSearch;
-  searchResults?: AniSearch.Search.StoreSearchResults;
+export namespace Store {
+  export interface SearchResults {
+    type: Enum.SearchType;
+    results: AniSearch.Search.Results;
+  }
+
+  /**
+   * Store state.
+   */
+  export interface State {
+    initialized: boolean;
+    critError: Error | null;
+    settings: Settings;
+    accessToken: string | null;
+    user: AniSearch.AniList.User | null;
+    activityFeed: AniSearch.Activity.Activity[] | null;
+    search: AniSearch.Search.Search | null;
+    searchResults: AniSearch.Store.SearchResults | null;
+  }
 }
 
 /**
  * AniList.
  */
 export namespace AniList {
-  export namespace Schema {
-    /**
-     * Media schema (anime & manga).
-     */
-    export interface Media {
-      id: number;
-      isAdult: boolean;
-      type: string;
-      title: {
-        userPreferred: string;
-      };
-      description: string|null;
-      banneImage: string|null;
-      coverImage: {
-        large: string|null;
-        color: string|null;
-      };
-      startDate: {
-        year: number|null;
-        month: number|null;
-        day: number|null;
-      };
-      endDate: {
-        year: number|null;
-        month: number|null;
-        day: number|null;
-      };
-      season: Enum.SearchSeason;
-      format: string|null;
-      status: string|null;
-      genres: string[];
-      averageScore: number|null;
-      popularity: number|null;
-      nextAiringEpisode: {
-        airingAt: number;
-        timeUntilAiring: number;
-        episode: number;
-      }|null;
-      studios: {
-        edges: {
-          isMain: boolean;
-          node: {
-            id: number;
-            name: string;
-          };
-        }[];
-      };
-    }
+  /**
+   * Media schema (anime & manga).
+   */
+  export interface Media {
+    id: number;
+    isAdult: boolean;
+    type: string;
+    title: {
+      userPreferred: string;
+    };
+    description: string | null;
+    banneImage: string | null;
+    coverImage: {
+      large: string | null;
+      color: string | null;
+    };
+    startDate: {
+      year: number | null;
+      month: number | null;
+      day: number | null;
+    };
+    endDate: {
+      year: number | null;
+      month: number | null;
+      day: number | null;
+    };
+    season: Enum.SearchSeason;
+    format: string | null;
+    status: string | null;
+    genres: string[];
+    averageScore: number | null;
+    popularity: number | null;
+    nextAiringEpisode: {
+      airingAt: number;
+      timeUntilAiring: number;
+      episode: number;
+    } | null;
+    studios: {
+      edges: {
+        isMain: boolean;
+        node: {
+          id: number;
+          name: string;
+        };
+      }[];
+    };
+  }
 
-    /**
-     * Studio schema.
-     */
-    export interface Studio {
-      id: number;
-      name: string;
-      media: {
-        edges: {
-          node: AniSearch.AniList.Schema.Media;
-        }[];
-      };
-    }
+  /**
+   * Studio schema.
+   */
+  export interface Studio {
+    id: number;
+    name: string;
+    media: {
+      edges: {
+        node: AniSearch.AniList.Media;
+      }[];
+    };
+  }
 
-    /**
-     * Character schema.
-     */
-    export interface Character {
-      id: number;
-      name: {
-        full: string;
-      };
-      image: {
-        large: string|null;
-      };
-    }
+  /**
+   * Character schema.
+   */
+  export interface Character {
+    id: number;
+    name: {
+      full: string;
+    };
+    image: {
+      large: string | null;
+    };
+  }
 
-    /**
-     * Staff schema.
-     */
-    export interface Staff {
-      id: number;
-      name: {
-        full: string;
-      };
-      image: {
-        large: string|null;
-      };
-    }
+  /**
+   * Staff schema.
+   */
+  export interface Staff {
+    id: number;
+    name: {
+      full: string;
+    };
+    image: {
+      large: string | null;
+    };
+  }
 
-    /**
-     * User schema.
-     */
-    export interface User {
-      id: number;
-      name: string;
-      avatar: {
-        medium: string;
-      };
-      siteUrl: string;
-      options: {
-        displayAdultContent: boolean;
-        titleLanguage: string;
-      };
-    }
+  /**
+   * User schema.
+   */
+  export interface User {
+    id: number;
+    name: string;
+    avatar: {
+      medium: string;
+    };
+    siteUrl: string;
+    options: {
+      displayAdultContent: boolean;
+      titleLanguage: string;
+    };
   }
 }
 
@@ -145,22 +153,23 @@ export namespace AniList {
  * Search.
  */
 export namespace Search {
-  export interface StoreSearch {
+  /**
+   * Search data.
+   */
+  export interface Search {
+    value: string;
     type: Enum.SearchType;
-    value?: string;
     year?: number;
     season?: Enum.SearchSeason;
   }
 
-  export type SearchResults = AniSearch.AniList.Schema.Media[]
-    | AniSearch.AniList.Schema.Studio[]
-    | AniSearch.AniList.Schema.Character[]
-    | AniSearch.AniList.Schema.Staff[];
-
-  export interface StoreSearchResults {
-    type: Enum.SearchType;
-    results: AniSearch.Search.SearchResults;
-  }
+  /**
+   * Search results.
+   */
+  export type Results = AniSearch.AniList.Media[]
+    | AniSearch.AniList.Studio[]
+    | AniSearch.AniList.Character[]
+    | AniSearch.AniList.Staff[];
 }
 
 /**

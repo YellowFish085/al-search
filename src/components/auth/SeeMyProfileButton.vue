@@ -1,6 +1,7 @@
 <template>
   <!-- eslint-disable max-len -->
-  <a :href="user.siteUrl"
+  <a v-if="user"
+     :href="user.siteUrl"
      title="See my profile"
      :class="[ size ]"
      :style="{ 'background-image': `url(${user.avatar.medium})` }">
@@ -19,7 +20,7 @@ export default class SeeMyProfileButton extends Vue {
   /**
    * User data from store.
    */
-  @State user!: AniSearch.AniList.Schema.User;
+  @State user!: AniSearch.AniList.User | null;
 }
 </script>
 

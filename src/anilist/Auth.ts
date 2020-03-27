@@ -34,7 +34,7 @@ export default class Auth {
   /**
    * Get the `access_token` parameter from the given URL.
    */
-  private getURLAccessToken(url: URL): string|null {
+  private getURLAccessToken(url: URL): string | null {
     const urlParams = new URLSearchParams(url.search);
 
     return urlParams.get('access_token');
@@ -44,7 +44,7 @@ export default class Auth {
    * Check if an access token is usable by AniSearch.
    * If the token is usable, return the user data.
    */
-  private async checkAccessToken(accessToken: string): Promise<AniSearch.AniList.Schema.User> {
+  private async checkAccessToken(accessToken: string): Promise<AniSearch.AniList.User> {
     const anilist = new AniList(accessToken);
 
     return anilist.user();
@@ -60,7 +60,7 @@ export default class Auth {
   /**
    * Store user data in local storage.
    */
-  private storeUser(user: AniSearch.AniList.Schema.User): Promise<void> {
+  private storeUser(user: AniSearch.AniList.User): Promise<void> {
     return StorageHelper.setUser(user);
   }
 

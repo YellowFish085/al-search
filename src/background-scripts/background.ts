@@ -49,7 +49,7 @@ function handleMessage(request: any, sender: any, sendResponse: Function) { // e
      */
 
     case 'SEARCH':
-      Search.search(request.data as AniSearch.Search.StoreSearch, sendResponse);
+      Search.search(request.data as AniSearch.Search.Search, sendResponse);
       break;
 
     default:

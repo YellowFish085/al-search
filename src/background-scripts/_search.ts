@@ -4,10 +4,10 @@ import AniList from '@/anilist/AniList';
 /**
  * Search something on AniList.
  */
-async function search(variables: AniSearch.Search.StoreSearch, sendResponse: Function) {
+async function search(variables: AniSearch.Search.Search, sendResponse: Function) {
   try {
     const accessToken = await StorageHelper.getAccessToken();
-    const client = new AniList(accessToken || undefined);
+    const client = new AniList(accessToken);
 
     const results = await client.search(variables);
 

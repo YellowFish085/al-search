@@ -5,7 +5,7 @@ import * as Enum from '@/utils/Enum';
 export default class AniList {
   readonly token: string | null;
 
-  constructor(token?: string) {
+  constructor(token?: string | null) {
     this.token = token || null;
   }
 
@@ -28,7 +28,7 @@ export default class AniList {
   /**
    * Get authenticated user data.
    */
-  public async user(): Promise<AniSearch.AniList.Schema.User> {
+  public async user(): Promise<AniSearch.AniList.User> {
     try {
       const response = await fetch(process.env.VUE_APP_ANILIST_GRAPHQL_URL, {
         method: 'POST',
@@ -42,7 +42,7 @@ export default class AniList {
 
       // Do we have the user data in the response?
       if (body.data && body.data.Viewer && UserSchemaCheck(body.data.Viewer)) {
-        return body.data.Viewer as AniSearch.AniList.Schema.User;
+        return body.data.Viewer as AniSearch.AniList.User;
       }
 
       throw new Error(`AniList request failed: Response does not contains user data. Response: ${JSON.stringify(body)}`);
@@ -55,7 +55,7 @@ export default class AniList {
   /**
    * Search something on AniList.
    */
-  public async search(variables: AniSearch.Search.StoreSearch): Promise<AniSearch.Search.SearchResults> {
+  public async search(variables: AniSearch.Search.Search): Promise<AniSearch.Search.Search> {
     // Get correct query based on search type.
     const query = QueriesSearch[variables.type];
 

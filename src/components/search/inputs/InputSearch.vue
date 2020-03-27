@@ -35,14 +35,14 @@ import ButtonIcon from '@/components/ui/buttons/ButtonIcon.vue';
 })
 export default class InputSearch extends Vue {
   /** Value */
-  @Prop(String) value?: number|null;
+  @Prop(String) value?: number | null;
 
   $refs!: {
     search: HTMLInputElement;
   };
 
   /** Search timeout. */
-  timeout: number|null = null;
+  timeout: number | null = null;
 
   /**
    * Handle search input changes.

@@ -14,7 +14,7 @@
       </div>
       <div class="btn btn--profile row row--justify-center row--items-center">
         <div class="btn__wrapper">
-          <SeeMyProfileButton v-if="accessToken" />
+          <SeeMyProfileButton />
         </div>
       </div>
     </div>
@@ -25,7 +25,6 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { State } from 'vuex-class';
 import ButtonIcon from '@/components/ui/buttons/ButtonIcon.vue';
 import SearchForm from '@/components/search/SearchForm.vue';
 import SeeMyProfileButton from '@/components/auth/SeeMyProfileButton.vue';
@@ -40,11 +39,6 @@ import SeeMyProfileButton from '@/components/auth/SeeMyProfileButton.vue';
 export default class Header extends Vue {
   /** Searching? */
   isSearching = false;
-
-  /**
-   * User access token.
-   */
-  @State accessToken!: string|null;
 
   /**
    * Are we on settings pages?

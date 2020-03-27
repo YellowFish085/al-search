@@ -5,7 +5,7 @@
 
     <div class="container">
       <!-- Authenticated -->
-      <div v-if="accessToken" class="logged-in">
+      <div v-if="accessToken && user" class="logged-in">
         <div class="row row--justify-start row-items-start">
           <SeeMyProfileButton size="lg" />
           <div class="logged-in__details">
@@ -58,12 +58,12 @@ export default class UserSettings extends Vue {
   /**
    * Access token from store.
    */
-  @State accessToken!: string|null;
+  @State accessToken!: string | null;
 
   /**
    * User data from store.
    */
-  @State user!: AniSearch.AniList.Schema.User|null;
+  @State user!: AniSearch.AniList.User | null;
 }
 </script>
 
