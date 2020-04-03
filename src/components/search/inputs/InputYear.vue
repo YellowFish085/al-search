@@ -6,7 +6,7 @@
           :class="{ active: value }"
           title="Filter by year"
           :disabled="disabled"
-          @change="$emit('update:value', $event.target.value)">
+          @change="$emit('update:value', $event.target.value || null)">
     <option :value="null">All years</option>
     <option v-for="y in years" :key="y" :value="y">{{ y }}</option>
   </select>

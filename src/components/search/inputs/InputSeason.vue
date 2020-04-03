@@ -6,7 +6,7 @@
           :class="{ active: value }"
           title="Filter by season"
           :disabled="disabled"
-          @change="$emit('update:value', $event.target.value)">
+          @change="$emit('update:value', $event.target.value || null)">
     <option :value="null">All seasons</option>
     <option v-for="y in seasons" :key="y" :value="y">{{ y }}</option>
   </select>
