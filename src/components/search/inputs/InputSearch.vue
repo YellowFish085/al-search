@@ -14,7 +14,9 @@
           name="search"
           id="search"
           class="search_input__search__input h-full w-full"
+          :class="{ disabled: disabled }"
           placeholder="Search..."
+          :disabled="disabled"
           @input="handleSearch"
           @keyup.enter="emitUpdate"
           @focus="$emit('focus')"
@@ -37,6 +39,9 @@ import ButtonIcon from '@/components/ui/buttons/ButtonIcon.vue';
 export default class InputSearch extends Vue {
   /** Value */
   @Prop(String) value?: number | null;
+
+  /** Disabled */
+  @Prop(Boolean) disabled!: boolean;
 
   $refs!: {
     search: HTMLInputElement;
@@ -102,6 +107,12 @@ export default class InputSearch extends Vue {
     font-size: 1.4rem;
     padding: 0 2rem;
     text-align: center;
+
+    &.disabled {
+      cursor: initial !important;
+      opacity: 0.4 !important;
+      pointer-events: none !important;
+    }
   }
 
   &__underline {

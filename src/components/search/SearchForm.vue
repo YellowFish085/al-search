@@ -9,7 +9,7 @@
 
           <div class="search_input h-full w-full">
             <!-- Input + clear button -->
-            <InputSearch :value.sync="search" @focus="handleFocus" @blur="handleBlur" @update:value="handleInputChange" >
+            <InputSearch :value.sync="search" :disabled="disabled" @focus="handleFocus" @blur="handleBlur" @update:value="handleInputChange" >
           </div>
 
           <div class="spacer"></div>
@@ -23,17 +23,17 @@
         <div class="search_filters h-full row row--justify-between row--items-center" :class="[ type ]">
           <!-- Year select -->
           <div class="search_filters__year">
-            <InputYear :value.sync="year" :type="type" @update:value="handleInputChange" />
+            <InputYear :value.sync="year" :disabled="disabled" :type="type" @update:value="handleInputChange" />
           </div>
 
           <!-- Type radios -->
           <div class="search_filters__type">
-            <InputType :value.sync="type" @update:value="handleInputChange" />
+            <InputType :value.sync="type" :disabled="disabled" @update:value="handleInputChange" />
           </div>
 
           <!-- Season select -->
           <div class="search_filters__season">
-            <InputSeason :value.sync="season" :type="type" @update:value="handleInputChange" />
+            <InputSeason :value.sync="season" :disabled="disabled" :type="type" @update:value="handleInputChange" />
           </div>
       </div>
     </div>
@@ -64,6 +64,9 @@ export default class SearchForm extends Vue {
   @State('settings') settings!: AniSearch.Settings;
 
   @State('search') storeSearch!: AniSearch.Search.Search | null;
+
+  /** Form disabled? */
+  disabled = false;
 
   /** Search string. */
   search = '';
@@ -119,6 +122,10 @@ export default class SearchForm extends Vue {
    * Pre search flow.
    */
   preSearch() {
+    if (this.disabled) return;
+
+    this.disabled = true;
+
     // Prepare search values.
     const search = this.search.trim();
     const year = [Enum.SearchType.ANIME, Enum.SearchType.MANGA].includes(this.type) && this.year
@@ -177,6 +184,8 @@ export default class SearchForm extends Vue {
         });
         break;
     }
+
+    this.disabled = false;
   }
 
   /**

@@ -3,9 +3,9 @@
   <select v-model="value"
           name="search_season"
           id="search_season"
-          :class="{ active: value }"
+          :class="{ active: value, disabled: invalidType || disabled }"
           title="Filter by season"
-          :disabled="disabled"
+          :disabled="invalidType || disabled"
           @change="$emit('update:value', $event.target.value || null)">
     <option :value="null">All seasons</option>
     <option v-for="y in seasons" :key="y" :value="y">{{ y }}</option>
@@ -25,13 +25,16 @@ export default class InputSeason extends Vue {
   /** Value */
   @Prop(String) value!: Enum.SearchSeason | null;
 
+  /** Disabled */
+  @Prop(Boolean) disabled!: boolean;
+
   /** Search season. */
   seasons = Enum.SearchSeason;
 
   /**
    * Disabled?
    */
-  get disabled(): boolean {
+  get invalidType(): boolean {
     return ![Enum.SearchType.ANIME].includes(this.type);
   }
 }
@@ -50,6 +53,12 @@ select {
   &:not(.active) {
     font-style: italic;
     opacity: 0.6;
+  }
+
+  &.disabled {
+    cursor: initial !important;
+    opacity: 0.4 !important;
+    pointer-events: none !important;
   }
 
   option {

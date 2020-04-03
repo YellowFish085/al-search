@@ -3,9 +3,9 @@
   <select v-model="value"
           name="search_year"
           id="search_year"
-          :class="{ active: value }"
+          :class="{ active: value, disabled: invalidType || disabled }"
           title="Filter by year"
-          :disabled="disabled"
+          :disabled="invalidType || disabled"
           @change="$emit('update:value', $event.target.value || null)">
     <option :value="null">All years</option>
     <option v-for="y in years" :key="y" :value="y">{{ y }}</option>
@@ -25,6 +25,9 @@ export default class InputYear extends Vue {
   /** Value */
   @Prop(String) value?: number | null;
 
+  /** Disabled */
+  @Prop(Boolean) disabled!: boolean;
+
   /** Search years. */
   years = new Array(new Date().getFullYear() - 1950 + 1)
     .fill(undefined)
@@ -33,7 +36,7 @@ export default class InputYear extends Vue {
   /**
    * Disabled?
    */
-  get disabled(): boolean {
+  get invalidType(): boolean {
     return ![Enum.SearchType.ANIME, Enum.SearchType.MANGA].includes(this.type);
   }
 }
@@ -51,6 +54,12 @@ select {
   &:not(.active) {
     font-style: italic;
     opacity: 0.6;
+  }
+
+  &.disabled {
+    cursor: initial !important;
+    opacity: 0.4 !important;
+    pointer-events: none !important;
   }
 
   option {

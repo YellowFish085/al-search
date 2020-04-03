@@ -5,36 +5,41 @@
            :value="types.ANIME"
            type="radio"
            :id="`search_type_${types.ANIME}`"
+           :disabled="disabled"
            @change="$emit('update:value', $event.target.value)">
-    <label :for="`search_type_${types.ANIME}`" :class="{ active: value === types.ANIME }">Anime</label>
+    <label :for="`search_type_${types.ANIME}`" :class="{ active: value === types.ANIME, disabled: disabled }">Anime</label>
 
     <input v-model="value"
            :value="types.MANGA"
            type="radio"
            :id="`search_type_${types.MANGA}`"
+           :disabled="disabled"
            @change="$emit('update:value', $event.target.value)">
-    <label :for="`search_type_${types.MANGA}`" :class="{ active: value === types.MANGA }">Manga</label>
+    <label :for="`search_type_${types.MANGA}`" :class="{ active: value === types.MANGA, disabled: disabled }">Manga</label>
 
     <input v-model="value"
            :value="types.STUDIOS"
            type="radio"
            :id="`search_type_${types.STUDIOS}`"
+           :disabled="disabled"
            @change="$emit('update:value', $event.target.value)">
-    <label :for="`search_type_${types.STUDIOS}`" :class="{ active: value === types.STUDIOS }">Studios</label>
+    <label :for="`search_type_${types.STUDIOS}`" :class="{ active: value === types.STUDIOS, disabled: disabled }">Studios</label>
 
     <input v-model="value"
            :value="types.CHARACTERS"
            type="radio"
            :id="`search_type_${types.CHARACTERS}`"
+           :disabled="disabled"
            @change="$emit('update:value', $event.target.value)">
-    <label :for="`search_type_${types.CHARACTERS}`" :class="{ active: value === types.CHARACTERS }">Characters</label>
+    <label :for="`search_type_${types.CHARACTERS}`" :class="{ active: value === types.CHARACTERS, disabled: disabled }">Characters</label>
 
     <input v-model="value"
            :value="types.STAFF"
            type="radio"
            :id="`search_type_${types.STAFF}`"
+           :disabled="disabled"
            @change="$emit('update:value', $event.target.value)">
-    <label :for="`search_type_${types.STAFF}`" :class="{ active: value === types.STAFF }">Staff</label>
+    <label :for="`search_type_${types.STAFF}`" :class="{ active: value === types.STAFF, disabled: disabled }">Staff</label>
   </div>
   <!-- eslint-enable max-len -->
 </template>
@@ -47,6 +52,9 @@ import * as Enum from '@/utils/Enum';
 export default class InputType extends Vue {
   /** Value */
   @Prop(String) value!: Enum.SearchType;
+
+  /** Disabled */
+  @Prop(Boolean) disabled!: boolean;
 
   /** Search types. */
   types = Enum.SearchType;
@@ -65,6 +73,12 @@ label {
 
   &:not(.active) {
     opacity: 0.6;
+  }
+
+  &.disabled {
+    cursor: initial !important;
+    opacity: 0.4 !important;
+    pointer-events: none !important;
   }
 }
 </style>
