@@ -44,15 +44,15 @@ export default class Button extends Vue {
 button {
   border-radius: 3px;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 1.45rem;
   font-weight: 700;
-  padding: 0.6rem 1.3rem;
+  padding: 0.7rem 1.8rem;
   text-transform: uppercase;
   transition: opacity .1s ease;
 
   &.lg {
-    font-size: 1.2rem;
-    padding: 0.7rem 1.8rem;
+    font-size: 1.6rem;
+    padding: 1rem 2.3rem;
   }
 
   &.disabled {

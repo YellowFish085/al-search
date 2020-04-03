@@ -31,10 +31,10 @@ a {
   border-radius: 3px;
   border: none;
   display: inline-block;
-  height: 2rem;
+  height: 2.5rem;
   opacity: 0.8;
   transition: opacity 0.2s ease;
-  width: 2rem;
+  width: 2.5rem;
 
   &.lg {
     height: 4rem;

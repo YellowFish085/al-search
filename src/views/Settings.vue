@@ -44,5 +44,11 @@ export default class Settings extends Vue {}
 </script>
 
 <style lang="scss" scoped>
-
+#settings {
+  .wrapper {
+    > div {
+      margin-bottom: 30px;
+    }
+  }
+}
 </style>

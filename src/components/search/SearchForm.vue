@@ -239,7 +239,7 @@ export default class SearchForm extends Vue {
 
   #search_row_filters {
     color: rgb(var(--color-text-bright));
-    font-size: 0.8rem;
+    font-size: 1.3rem;
     height: 35px;
     z-index: 9;
   }

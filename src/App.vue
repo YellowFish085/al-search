@@ -111,8 +111,8 @@ export default class App extends Vue {
 }
 
 html {
-  font-size: 16px;
-  line-height: 1.15rem;
+  font-size: 62.5%;
+  line-height: 1.15;
 }
 
 body {
@@ -129,7 +129,7 @@ body {
     'Droid Sans',
     'Helvetica Neue',
     sans-serif;
-  font-size: 1rem;
+  font-size: 1.6rem;
   margin: 0;
   overflow: hidden;
 }
@@ -189,26 +189,35 @@ body {
   flex-direction: row;
 }
 
+h1, h2, h3 {
+  margin: 0;
+}
+
 h1 {
-  font-size: 1.2rem;
+  font-size: 1.9rem;
   font-weight: 400;
+  margin-bottom: 15px;
 }
 
 h2 {
-  font-size: 1rem;
+  font-size: 1.4rem;
   font-weight: 500;
+  margin-bottom: 10px;
 }
 
 h3 {
-  font-size: 0.9rem;
-  font-weight: 400;
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 10px;
 }
 
 p {
-  font-size: 0.8rem;
+  color: rgb(var(--color-text-light));
+  font-size: 1.2rem;
+  line-height: 1.3;
 
   &.note {
-    font-size: 0.7rem;
+    color: rgb(var(--color-text-lighter));
   }
 }
 
@@ -222,17 +231,11 @@ a {
 }
 
 .container {
-  h1, h2, h3, h4, h5, h6, p {
-    &:first-child {
-      margin-top: 0;
-    }
-
+  p {
     &:last-child {
       margin-bottom: 0;
     }
-  }
 
-  p {
     & + p {
       margin-top: 0;
     }
@@ -256,6 +259,7 @@ a {
 
   > section {
     padding-bottom: 25px;
+    padding-top: 25px;
     width: 100%;
   }
 }

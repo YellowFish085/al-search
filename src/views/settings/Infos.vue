@@ -4,7 +4,8 @@
     <h2>Informations about data</h2>
 
     <div class="container">
-      <p><strong>TL;DR We do not collect any of your data in any way, we don't care what you're whatching or reading. Just enjoy this extension :)</strong></p>
+      <h3>TL;DR</h3>
+      <p>We do not collect any of your data in any way, we don't care what you're whatching or reading. Just enjoy this extension :)</p>
 
       <h3>Activity</h3>
       <p>Search history and visited pages are stored locally, on your browser.</p>

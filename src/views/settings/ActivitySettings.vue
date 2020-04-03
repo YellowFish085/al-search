@@ -24,7 +24,7 @@
           </div>
           <ButtonClear />
         </div>
-        <p class="note"><b>AniSearch</b> can save your search history and visited pages (anime, manga, studio, character and staff). This is here to help you quickly go back to a previous search or a previously visited page.</p>
+        <p><b>AniSearch</b> can save your search history and visited pages (anime, manga, studio, character and staff). This is here to help you quickly go back to a previous search or a previously visited page.</p>
       </div>
   </div>
   <!-- eslint-enable max-len -->
@@ -83,7 +83,7 @@ export default class ActivitySettings extends Vue {
 
     label {
       margin-left: 0.5rem;
-      font-size: 0.9rem;
+      font-size: 1.4rem;
     }
   }
 }

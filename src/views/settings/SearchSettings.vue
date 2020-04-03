@@ -14,7 +14,7 @@
                     v-model="onListFirst">
               <label for="settings__activity__onListFirst">Display search from your list first</label>
             </div>
-            <p class="note">Wether to display search results from your personal lists or global search results first</p>
+            <p>Wether to display search results from your personal lists or global search results first</p>
           </div>
         </div>
       </div>
@@ -58,7 +58,7 @@ export default class SearchSettings extends Vue {
 
     label {
       margin-left: 0.5rem;
-      font-size: 0.9rem;
+      font-size: 1.4rem;
     }
   }
 }

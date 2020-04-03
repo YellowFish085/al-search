@@ -5,7 +5,7 @@
       <div class="btn btn--settings row row--justify-center row--items-center">
         <div class="btn__wrapper row row--justify-center row--items-center">
           <router-link to="/settings" v-if="!isSettingsPage">
-            <ButtonIcon icon="cogs" title="Settings" />
+            <ButtonIcon icon="cogs" title="Settings" size="lg" />
           </router-link>
           <router-link to="/" v-else>
             <ButtonIcon icon="chevron-left" title="Back to home" />

@@ -3,7 +3,7 @@
     <!-- Clear search input button -->
     <div class="search_input__search__clear h-full" :class="{ active: value !== '' }">
       <div class="h-full row row--justify-center row--items-center">
-        <ButtonIcon icon="times" title="Clear" size="xs" :onClick="handleClearClick" />
+        <ButtonIcon icon="times" title="Clear" size="sm" :onClick="handleClearClick" />
       </div>
     </div>
 
@@ -99,7 +99,7 @@ export default class InputSearch extends Vue {
     background: none;
     border: none;
     color: rgb(var(--color-text-bright));
-    font-size: 0.9rem;
+    font-size: 1.4rem;
     padding: 0 2rem;
     text-align: center;
   }

@@ -105,6 +105,7 @@ export default class Item extends Vue {
   }
 
   &__label {
+    font-size: 1.4rem;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -112,7 +113,7 @@ export default class Item extends Vue {
 
   &__params {
     color: rgb(var(--color-text-lighter));
-    font-size: 0.7rem;
+    font-size: 1.1rem;
     font-weight: lighter;
     text-transform: capitalize;
     white-space: nowrap;
