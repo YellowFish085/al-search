@@ -25,6 +25,7 @@ query (
       onList: $onList,
     ) {
       id
+      siteUrl
       isAdult
       type
       title {
@@ -33,7 +34,7 @@ query (
       description
       bannerImage
       coverImage {
-        large: extraLarge
+        large
         color
       }
       startDate {
@@ -57,12 +58,17 @@ query (
         timeUntilAiring
         episode
       }
+      mediaListEntry {
+        id
+        status
+      }
       studios(isMain: true) {
         edges {
           isMain
           node {
             id
             name
+            siteUrl
           }
         }
       }
@@ -86,6 +92,7 @@ query (
       search: $search
     ) {
       id
+      siteUrl
       name
       media (
         isMain: true,
@@ -97,13 +104,14 @@ query (
             id
             isAdult
             type
+            siteUrl
             title {
               userPreferred
             }
             description
             bannerImage
             coverImage {
-              large: extraLarge
+              large
               color
             }
             startDate {
@@ -126,6 +134,10 @@ query (
               airingAt
               timeUntilAiring
               episode
+            }
+            mediaListEntry {
+              id
+              status
             }
           }
         }
@@ -150,6 +162,7 @@ query (
       search: $search,
     ) {
       id
+      siteUrl
       name {
         full
       }
@@ -176,6 +189,7 @@ query (
       search: $search
     ) {
       id
+      siteUrl
       name {
         full
       }

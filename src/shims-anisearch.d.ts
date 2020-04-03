@@ -55,6 +55,7 @@ export namespace AniList {
    */
   export interface Media {
     id: number;
+    siteUrl: string;
     isAdult: boolean;
     type: string;
     title: {
@@ -76,7 +77,7 @@ export namespace AniList {
       month: number | null;
       day: number | null;
     };
-    season: Enum.SearchSeason;
+    season: Enum.SearchSeason | null;
     format: string | null;
     status: string | null;
     genres: string[];
@@ -87,12 +88,17 @@ export namespace AniList {
       timeUntilAiring: number;
       episode: number;
     } | null;
+    mediaListEntry: {
+      id: number;
+      status: String;
+    } | null;
     studios: {
       edges: {
         isMain: boolean;
         node: {
           id: number;
           name: string;
+          siteUrl: string;
         };
       }[];
     };
@@ -103,6 +109,7 @@ export namespace AniList {
    */
   export interface Studio {
     id: number;
+    siteUrl: string;
     name: string;
     media: {
       edges: {
@@ -116,6 +123,7 @@ export namespace AniList {
    */
   export interface Character {
     id: number;
+    siteUrl: string;
     name: {
       full: string;
     };
@@ -129,6 +137,7 @@ export namespace AniList {
    */
   export interface Staff {
     id: number;
+    siteUrl: string;
     name: {
       full: string;
     };
