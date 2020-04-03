@@ -8,7 +8,7 @@
             <ButtonIcon icon="cogs" title="Settings" size="lg" />
           </router-link>
           <router-link to="/" v-else>
-            <ButtonIcon icon="chevron-left" title="Back to home" />
+            <ButtonIcon icon="chevron-left" title="Back to home" size="lg" />
           </router-link>
         </div>
       </div>
