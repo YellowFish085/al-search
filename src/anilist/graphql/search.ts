@@ -7,6 +7,7 @@ const media = `
 query (
   $page: Int = 1,
   $sort: [MediaSort] = [SEARCH_MATCH],
+  $isAdult: Boolean = false,
   $search: String,
   $type: MediaType,
   $year: String,
