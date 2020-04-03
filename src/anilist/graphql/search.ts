@@ -6,8 +6,7 @@ import * as Enum from '@/utils/Enum';
 const media = `
 query (
   $page: Int = 1,
-  $sort: [MediaSort] = [SCORE_DESC,POPULARITY_DESC],
-  $isAdult: Boolean,
+  $sort: [MediaSort] = [SEARCH_MATCH],
   $search: String,
   $type: MediaType,
   $year: String,
@@ -77,7 +76,7 @@ query (
 const studios = `
 query (
   $page: Int = 1,
-  $sort: [StudioSort] = [FAVOURITES_DESC],
+  $sort: [StudioSort] = [SEARCH_MATCH],
   $search: String,
 ) {
   Page (page: $page, perPage: 5) {
@@ -141,7 +140,7 @@ query (
 const characters = `
 query (
   $page: Int = 1,
-  $sort: [CharacterSort] = [FAVOURITES_DESC],
+  $sort: [CharacterSort] = [SEARCH_MATCH],
   $search: String,
 ) {
   Page (page: $page, perPage: 20) {
@@ -167,7 +166,7 @@ query (
 const staff = `
 query (
   $page: Int = 1,
-  $sort: [StaffSort] = [FAVOURITES_DESC],
+  $sort: [StaffSort] = [SEARCH_MATCH],
   $search: String
 ) {
   Page (page: $page, perPage: 20) {
