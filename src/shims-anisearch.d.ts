@@ -26,8 +26,9 @@ export interface Settings {
  */
 export namespace Store {
   export interface SearchResults {
+    loading: boolean;
     type: Enum.SearchType;
-    results: AniSearch.Search.Results;
+    results?: AniSearch.Search.Results;
     resultsOnList?: AniSearch.Search.Results;
   }
 

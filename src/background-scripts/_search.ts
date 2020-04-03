@@ -19,6 +19,7 @@ async function search(variables: AniSearch.Search.Search, sendResponse: Function
     }
 
     const searchResult: AniSearch.Store.SearchResults = {
+      loading: false,
       type: variables.type,
       results: await client.search(variables),
     };

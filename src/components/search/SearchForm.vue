@@ -153,6 +153,13 @@ export default class SearchForm extends Vue {
     year: number | undefined,
     season: Enum.SearchSeason | undefined,
   ) {
+    // Init search results in store.
+    this.$store.dispatch('searchResults', {
+      loading: true,
+      type,
+    } as AniSearch.Store.SearchResults);
+
+    // Let the background script handle the search process.
     const data: AniSearch.Search.Search = {
       value,
       type,
