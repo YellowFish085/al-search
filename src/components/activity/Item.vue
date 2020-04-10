@@ -56,7 +56,7 @@ export default class Item extends Vue {
    * Return search params as string.
    */
   get paramsString(): string {
-    if (this.data.type !== Enum.ActivityType.SEARCH) return '';
+    if (!this.data.params) return '';
 
     const parts = [];
 
