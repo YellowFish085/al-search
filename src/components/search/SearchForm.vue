@@ -142,7 +142,10 @@ export default class SearchForm extends Mixins(Vue, SaveActivity) {
       : undefined;
 
     // If search string is empty, do not execute search.
-    if (!search || search === '') return;
+    if (!search || search === '') {
+      this.disabled = false;
+      return;
+    }
 
     // Set active page to search results.
     if (this.$route.name !== 'search') this.$router.push('search');
