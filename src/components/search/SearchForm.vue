@@ -42,7 +42,13 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Watch } from 'vue-property-decorator';
+import {
+  Component,
+  Mixins,
+  Vue,
+  Watch,
+} from 'vue-property-decorator';
+import { SaveActivity } from '@/mixins/Activity';
 import { State } from 'vuex-class';
 import * as Enum from '@/utils/Enum';
 import InputSearch from '@/components/search/inputs/InputSearch.vue';
@@ -60,7 +66,7 @@ const browser = require('webextension-polyfill') // eslint-disable-line
     InputYear,
   },
 })
-export default class SearchForm extends Vue {
+export default class SearchForm extends Mixins(Vue, SaveActivity) {
   @State('settings') settings!: AniSearch.Settings;
 
   @State('search') storeSearch!: AniSearch.Search.Search | null;
@@ -175,7 +181,7 @@ export default class SearchForm extends Vue {
     switch (response.code) {
       case 'SEARCH_SUCCESS':
         // Save search activity and refresh store asynchronously.
-        this.saveActivity(value, type, year, season);
+        this.preSaveActivity(value, type, year, season);
 
         this.$store.dispatch('searchResults', response.searchResult);
         break;
@@ -198,7 +204,7 @@ export default class SearchForm extends Vue {
   /**
    * Save executed search asynchronously.
    */
-  saveActivity(
+  preSaveActivity(
     search: string,
     type: Enum.SearchType,
     year: number | undefined,
@@ -217,25 +223,7 @@ export default class SearchForm extends Vue {
       },
     };
 
-    browser.runtime.sendMessage({
-      code: 'SAVE_ACTIVITY',
-      data: activity,
-    })
-      .then((response: any) => {
-        if (response.code !== 'SAVE_ACTIVITY_SUCCESS') {
-          this.$notify({
-            group: 'anisearch',
-            type: 'error',
-            duration: -1,
-            title: 'Failed to save search:',
-            text: response.message,
-          });
-
-          return;
-        }
-
-        this.$store.dispatch('refreshActivityFeed');
-      });
+    this.saveActivity(activity);
   }
 }
 </script>
