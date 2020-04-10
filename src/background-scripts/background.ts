@@ -1,6 +1,8 @@
 import Activity from '@/background-scripts/_activity';
 import Auth from '@/background-scripts/_auth';
+import Notifications from '@/utils/Notifications';
 import Search from '@/background-scripts/_search';
+import StorageHelper from '@/utils/StorageHelper';
 import * as Menus from '@/background-scripts/_menus';
 
 const browser = require('webextension-polyfill'); // eslint-disable-line
@@ -63,5 +65,35 @@ function handleMessage(request: any, sender: any, sendResponse: Function) { // e
 
 browser.runtime.onMessage.addListener(handleMessage);
 
-// Init contextual menus.
-Menus.init();
+/**
+ * Init webextension on browser startup.
+ */
+async function init() {
+  try {
+    // Init settings in storage if not yet present.
+    if (!await StorageHelper.getSettings()) {
+      const settings: AniSearch.Settings = {
+        activity: {
+          search: true,
+          visitedPages: true,
+        },
+        integration: {
+          webEnabled: true,
+          menusEnabled: true,
+        },
+        search: {
+          onListFirst: true,
+        },
+      };
+
+      await StorageHelper.setSettings(settings);
+    }
+  } catch (e) {
+    Notifications.create('init_failed', `Init failed: ${e.message}`);
+  }
+
+  // Init contextual menus.
+  Menus.init();
+}
+
+init();

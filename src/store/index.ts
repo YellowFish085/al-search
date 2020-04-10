@@ -111,6 +111,7 @@ export default new Vuex.Store({
         ]);
 
         // Init settings are not yet stored in storage, save them.
+        // This should be done by the background script, but just in case.
         if (!settings) {
           settings = JSON.parse(JSON.stringify(state.settings)) as AniSearch.Settings;
 
