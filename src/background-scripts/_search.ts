@@ -11,13 +11,6 @@ async function search(variables: AniSearch.Search.Search, sendResponse: Function
     const user = await StorageHelper.getUser();
     const client = new AniList(accessToken);
 
-    // Set user options if available.
-    if (user) {
-      client.setOptions({
-        displayAdultContent: user.options.displayAdultContent,
-      });
-    }
-
     const searchResult: AniSearch.Store.SearchResults = {
       loading: false,
       type: variables.type,

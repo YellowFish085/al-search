@@ -159,9 +159,6 @@ export namespace AniList {
       medium: string;
     };
     siteUrl: string;
-    options: {
-      displayAdultContent: boolean;
-    };
   }
 }
 
@@ -169,13 +166,6 @@ export namespace AniList {
  * Search.
  */
 export namespace Search {
-  /**
-   * Search options.
-   */
-  export interface Options {
-    displayAdultContent: boolean;
-  }
-
   /**
    * Search data.
    */
