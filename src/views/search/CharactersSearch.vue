@@ -1,7 +1,7 @@
 <template>
   <!-- eslint-disable max-len -->
-  <div id="characters_search_results" class="search-results">
-    <div class="search-wrapper">
+  <div class="search-results">
+    <div class="results-wrapper">
       <transition appear name="fade">
         <!-- Placeholder -->
         <div v-if="!results || results.loading" :key="'loading'" class="grid grid--person results-placeholder w-full">

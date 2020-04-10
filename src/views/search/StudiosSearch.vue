@@ -1,7 +1,7 @@
 <template>
   <!-- eslint-disable max-len -->
-  <div id="studios_search_results" class="search-results">
-    <div class="search-wrapper">
+  <div class="search-results">
+    <div class="results-wrapper">
       <transition appear name="fade">
         <!-- Placeholder -->
         <div v-if="!results || results.loading" :key="'loading'" class="results-placeholder">
@@ -89,20 +89,18 @@ export default class StudiosSearch extends Mixins(Vue, SaveActivity) {
 </script>
 
 <style lang="scss" scoped>
-#studios_search_results {
-  .studio-link {
-    color: rgb(var(--color-text));
-    font-size: 1.4rem;
-    text-decoration: none;
-    transition: 0.15s color;
+.studio-link {
+  color: rgb(var(--color-text));
+  font-size: 1.4rem;
+  text-decoration: none;
+  transition: 0.15s color;
 
-    &:hover {
-      color: rgb(var(--color-blue));
-    }
+  &:hover {
+    color: rgb(var(--color-blue));
+  }
 
-    svg {
-      margin-left: 0.5em;
-    }
+  svg {
+    margin-left: 0.5em;
   }
 }
 </style>

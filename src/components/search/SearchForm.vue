@@ -1,13 +1,13 @@
 <template>
   <!-- eslint-disable max-len -->
-  <div id="search_form">
+  <div>
     <!-- Search input -->
-    <div id="search_row_input">
+    <div class="search-row-input">
       <div class="wrapper h-full">
         <div class="h-full row row--justify-center row--items-center">
           <div class="spacer"></div>
 
-          <div class="search_input h-full w-full">
+          <div class="search-input-wrapper h-full w-full">
             <!-- Input + clear button -->
             <InputSearch :value.sync="search" :disabled="disabled" @focus="handleFocus" @blur="handleBlur" @update:value="handleInputChange" >
           </div>
@@ -18,21 +18,21 @@
     </div>
 
     <!-- Search filters -->
-    <div id="search_row_filters">
+    <div class="search-row-filters">
       <div class="wrapper h-full">
-        <div class="search_filters h-full row row--justify-between row--items-center" :class="[ type ]">
+        <div class="search-filters-wrapper h-full row row--justify-between row--items-center" :class="[ type ]">
           <!-- Year select -->
-          <div class="search_filters__year">
+          <div class="year">
             <InputYear :value.sync="year" :disabled="disabled" :type="type" @update:value="handleInputChange" />
           </div>
 
           <!-- Type radios -->
-          <div class="search_filters__type">
+          <div class="type">
             <InputType :value.sync="type" :disabled="disabled" @update:value="handleInputChange" />
           </div>
 
           <!-- Season select -->
-          <div class="search_filters__season">
+          <div class="season">
             <InputSeason :value.sync="season" :disabled="disabled" :type="type" @update:value="handleInputChange" />
           </div>
       </div>
@@ -232,53 +232,51 @@ export default class SearchForm extends Mixins(Vue, SaveActivity) {
 </script>
 
 <style lang="scss" scoped>
-#search_form{
-  #search_row_input,
-  #search_row_filters {
-    background-color: rgb(var(--color-overlay));
-    position: relative;
-  }
+.search-row-input,
+.search-row-filters {
+  background-color: rgb(var(--color-overlay));
+  position: relative;
+}
 
-  #search_row_input {
-    height: 50px;
-    z-index: 10;
-  }
+.search-row-input {
+  height: 50px;
+  z-index: 10;
+}
 
-  #search_row_filters {
-    color: rgb(var(--color-text-bright));
-    font-size: 1.3rem;
-    height: 35px;
-    z-index: 9;
-  }
+.search-row-filters {
+  color: rgb(var(--color-text-bright));
+  font-size: 1.3rem;
+  height: 35px;
+  z-index: 9;
+}
 
-  .spacer {
-    width: 40px;
-  }
+.spacer {
+  width: 40px;
+}
 
-  .search_input {
-    margin: 0 1.5rem;
-    position: relative;
-    text-align: center;
-  }
+.search-input-wrapper {
+  margin: 0 1.5rem;
+  position: relative;
+  text-align: center;
+}
 
-  .search_filters {
-    &.MANGA,
-    &.STUDIOS,
-    &.CHARACTERS,
-    &.STAFF {
-      .search_filters__season {
-        pointer-events: none;
-        opacity: 0.2;
-      }
+.search-filters-wrapper {
+  &.MANGA,
+  &.STUDIOS,
+  &.CHARACTERS,
+  &.STAFF {
+    .season {
+      pointer-events: none;
+      opacity: 0.2;
     }
+  }
 
-    &.STUDIOS,
-    &.CHARACTERS,
-    &.STAFF {
-      .search_filters__year {
-        pointer-events: none;
-        opacity: 0.2;
-      }
+  &.STUDIOS,
+  &.CHARACTERS,
+  &.STAFF {
+    .year {
+      pointer-events: none;
+      opacity: 0.2;
     }
   }
 }

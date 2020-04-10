@@ -1,10 +1,10 @@
 <template>
   <!-- eslint-disable max-len -->
-  <section id="home">
+  <section>
     <div class="wrapper">
       <h1>Activity</h1>
 
-      <div id="activity_feed" class="col col--justify-start col--items-center">
+      <div class="col col--justify-start col--items-center">
         <Item v-for="data in activityFeed" :key="data" :data="data" />
         <ButtonClear v-if="activityFeed && activityFeed.length > 0" />
         <template v-else>

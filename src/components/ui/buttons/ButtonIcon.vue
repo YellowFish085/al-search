@@ -43,12 +43,12 @@ button {
   padding: 0.5rem;
   transition: opacity 0.2s ease;
 
-  svg {
-    color: rgb(var(--color-text-bright));
-  }
-
   &:hover {
     opacity: 1;
   }
+}
+
+svg {
+  color: rgb(var(--color-text-bright));
 }
 </style>

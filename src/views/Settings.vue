@@ -1,6 +1,6 @@
 <template>
   <!-- eslint-disable max-len -->
-  <section id="settings">
+  <section>
     <div class="wrapper">
       <h1>Settings</h1>
 
@@ -44,11 +44,9 @@ export default class Settings extends Vue {}
 </script>
 
 <style lang="scss" scoped>
-#settings {
-  .wrapper {
-    > div {
-      margin-bottom: 30px;
-    }
+.wrapper {
+  > div {
+    margin-bottom: 30px;
   }
 }
 </style>

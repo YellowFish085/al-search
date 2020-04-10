@@ -1,6 +1,6 @@
 <template>
   <!-- eslint-disable max-len -->
-  <div id="settings_infos">
+  <div>
     <h2>Informations about data</h2>
 
     <div class="container">
@@ -15,7 +15,7 @@
       <h3>Account</h3>
       <p>When you log in to your <b>AniList</b> account through <b>AniSearch</b>, we will use some of your data in the extension.</p>
       <p>Here is the full list of what we use and how we use it:
-        <ul class="account__list">
+        <ul class="list">
           <li>Your profile picture and user name
             <ul>
               <li>We use it to show you to which account your are logged in to.</li>
@@ -52,15 +52,13 @@ export default class Infos extends Vue {}
 </script>
 
 <style lang="scss" scoped>
-#settings_infos {
-  .account__list {
-    list-style-position: inside;
-    padding-left: 0;
+.list {
+  list-style-position: inside;
+  padding-left: 0;
 
-    ul {
-      list-style-position: inside;
-      padding-left: 1rem;
-    }
+  ul {
+    list-style-position: inside;
+    padding-left: 1rem;
   }
 }
 </style>

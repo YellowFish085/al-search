@@ -1,6 +1,6 @@
 <template>
   <!-- eslint-disable max-len -->
-  <section id="error">
+  <section>
     <div class="wrapper">
       <h1>Error</h1>
 
@@ -20,10 +20,8 @@ export default class ErrorComponent extends Vue {
 </script>
 
 <style lang="scss" scoped>
-#error {
-  span {
-    display: inline-block;
-    margin-bottom: 0.2rem;
-  }
+span {
+  display: inline-block;
+  margin-bottom: 0.2rem;
 }
 </style>

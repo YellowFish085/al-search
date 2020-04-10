@@ -2,10 +2,10 @@
   <div class="activity w-full" :title="title" @click="handleClick">
     <div class="row row--justify-start row--items-center">
       <font-awesome-icon :icon="['fas', icon]" size="sm" class="icon blue" />
-      <div class="activity__label w-full">
+      <div class="label w-full">
         <span>{{ data.label }}</span>
       </div>
-      <div class="activity__params">
+      <div class="params">
         <span>{{ paramsString }}</span>
       </div>
     </div>
@@ -103,20 +103,20 @@ export default class Item extends Vue {
   svg {
     margin-right: 1rem;
   }
+}
 
-  &__label {
-    font-size: 1.4rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
+.label {
+  font-size: 1.4rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
-  &__params {
-    color: rgb(var(--color-text-lighter));
-    font-size: 1.1rem;
-    font-weight: lighter;
-    text-transform: capitalize;
-    white-space: nowrap;
-  }
+.params {
+  color: rgb(var(--color-text-lighter));
+  font-size: 1.1rem;
+  font-weight: lighter;
+  text-transform: capitalize;
+  white-space: nowrap;
 }
 </style>

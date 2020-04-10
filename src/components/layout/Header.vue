@@ -2,8 +2,8 @@
   <!-- eslint-disable max-len -->
   <header :class="{ searching: isSearching }">
     <div class="wrapper">
-      <div class="btn btn--settings row row--justify-center row--items-center">
-        <div class="btn__wrapper row row--justify-center row--items-center">
+      <div class="btn-wrapper row row--justify-center row--items-center">
+        <div class="btn row row--justify-center row--items-center">
           <router-link to="/settings" v-if="!isSettingsPage">
             <ButtonIcon icon="cogs" title="Settings" size="lg" />
           </router-link>
@@ -12,8 +12,8 @@
           </router-link>
         </div>
       </div>
-      <div class="btn btn--profile row row--justify-center row--items-center">
-        <div class="btn__wrapper">
+      <div class="btn-wrapper row row--justify-center row--items-center">
+        <div class="btn">
           <SeeMyProfileButton />
         </div>
       </div>
@@ -66,32 +66,31 @@ header {
   width: 100%;
   z-index: 100;
 
-  .btn {
+  .btn-wrapper {
     height: 50px;
     position: absolute;
     top: 0;
     width: 40px;
     z-index: 11;
 
-    &--settings {
+    &:first-child {
       left: 0;
     }
 
-    &--profile {
+    &:last-child {
       right: 0;
     }
 
-    &__wrapper {
-      transform: scale(1);
-      transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    }
+  }
+
+  .btn {
+    transform: scale(1);
+    transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
 
   &.searching {
     .btn {
-      &__wrapper {
-        transform: scale(0.8);
-      }
+      transform: scale(0.8);
     }
   }
 }

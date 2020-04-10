@@ -1,5 +1,5 @@
 <template>
-  <section id="search_results" class="vw" :class="{ loading: !results || results.loading }">
+  <section class="search-results-wrapper vw" :class="{ loading: !results || results.loading }">
     <div class="wrapper">
       <h1>Search results</h1>
 
@@ -43,7 +43,7 @@ export default class Search extends Vue {
 </script>
 
 <style lang="scss" scoped>
-#search_results {
+.search-results-wrapper {
   &.loading {
     height: 100%;
     overflow: hidden;

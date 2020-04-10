@@ -1,6 +1,6 @@
 <template>
   <!-- eslint-disable max-len -->
-  <div id="settings__account">
+  <div>
     <h2>Account</h2>
 
     <div class="container">
@@ -8,9 +8,9 @@
       <div v-if="accessToken && user" class="logged-in">
         <div class="row row--justify-start row-items-start">
           <SeeMyProfileButton size="lg" />
-          <div class="logged-in__details">
+          <div class="details">
             <h3>Logged in as <b>{{ user.name }}</b></h3>
-            <div class="logged-in__details__actions row row--justify-start row-items-start">
+            <div class="actions row row--justify-start row-items-start">
               <ButtonRefresh />
               <ButtonLogout />
             </div>
@@ -28,7 +28,7 @@
             <h3>You are currently not logged in.</h3>
             <p>Log in to enable search on your personal Anime and Manga lists.</p>
           </div>
-          <div class="logged-out__actions">
+          <div class="actions">
             <ButtonLogin />
           </div>
         </div>
@@ -68,27 +68,25 @@ export default class UserSettings extends Vue {
 </script>
 
 <style lang="scss" scoped>
-#settings__account {
-  .logged-in {
-    &__details {
-      padding-left: 1.5rem;
+.logged-in {
+  .details {
+    padding-left: 1.5rem;
+  }
 
-      &__actions {
-        > * {
-          margin-right: 1rem;
-        }
-      }
+  .actions {
+    > * {
+      margin-right: 1rem;
     }
   }
+}
 
-  .logged-out {
-    &__actions {
-      padding: 0 2rem 0 2.5rem;
-    }
+.logged-out {
+  .actions {
+    padding: 0 2rem 0 2.5rem;
   }
+}
 
-  .note {
-    margin-top: 1rem;
-  }
+.note {
+  margin-top: 1rem;
 }
 </style>

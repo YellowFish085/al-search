@@ -283,7 +283,7 @@ a {
 }
 
 .search-results {
-  .search-wrapper {
+  .results-wrapper {
     position: relative;
   }
 
@@ -328,25 +328,25 @@ a {
         }
       }
 
-      &__cover {
+      .cover {
         background-position: 50%;
         background-repeat: no-repeat;
         background-size: cover;
         position: relative;
 
-        &__overlay {
+        .overlay {
           background: rgba(var(--color-overlay), 0.8);
           color: rgba(var(--color-text-bright));
           padding: 12px;
           position: relative;
 
-          &__title {
+          .title {
             color: rgb(var(--color-text-bright));
             font-size: 1.4rem;
             line-height: 17px;
           }
 
-          &__subtitle {
+          .subtitle {
             color: rgb(var(--color-blue));
             font-size: 1.2rem;
             margin-top: 8px;
@@ -355,7 +355,7 @@ a {
       }
 
       &--placeholder {
-        &__cover {
+        .cover {
           background-color: rgba(var(--color-background), 0.8);
           border-radius: 3px;
           overflow: hidden;
@@ -376,7 +376,7 @@ a {
           }
         }
 
-        &__block {
+        .block {
           background-color: rgba(var(--color-background), 0.8);
           border-radius: 2px;
           margin: 14px 20px;

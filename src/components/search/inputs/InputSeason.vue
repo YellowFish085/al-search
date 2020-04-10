@@ -60,10 +60,10 @@ select {
     opacity: 0.4 !important;
     pointer-events: none !important;
   }
+}
 
-  option {
-    color: initial;
-    font-style: initial;
-  }
+option {
+  color: initial;
+  font-style: initial;
 }
 </style>

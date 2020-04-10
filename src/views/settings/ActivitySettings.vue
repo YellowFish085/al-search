@@ -1,6 +1,6 @@
 <template>
   <!-- eslint-disable max-len -->
-  <div id="settings__activity">
+  <div>
     <h2>Activity</h2>
 
     <div class="container">
@@ -9,16 +9,16 @@
           <div class="col col--justify-start col--items-start">
             <div class="field">
               <input type="checkbox"
-                    name="search"
-                    id="settings__activity__search"
-                    v-model="search">
+                     name="search"
+                     id="settings__activity__search"
+                     v-model="search">
               <label for="settings__activity__search">Save search <font-awesome-icon :icon="['fas', 'search']" size="xs" class="icon blue" /></label>
             </div>
             <div class="field">
               <input type="checkbox"
-                    name="visitedPages"
-                    id="settings__activity__visitedPages"
-                    v-model="visitedPages">
+                     name="visitedPages"
+                     id="settings__activity__visitedPages"
+                     v-model="visitedPages">
               <label for="settings__activity__visitedPages">Save visited pages <font-awesome-icon :icon="['fas', 'external-link-alt']" size="xs" class="icon blue" /></label>
             </div>
           </div>
@@ -73,18 +73,16 @@ export default class ActivitySettings extends Vue {
 </script>
 
 <style lang="scss" scoped>
-#settings__activity {
-  .field {
-    margin-bottom: 0.25rem;
+.field {
+  margin-bottom: 0.25rem;
+}
 
-    input {
-      cursor: pointer;
-    }
+input {
+  cursor: pointer;
+}
 
-    label {
-      margin-left: 0.5rem;
-      font-size: 1.4rem;
-    }
-  }
+label {
+  margin-left: 0.5rem;
+  font-size: 1.4rem;
 }
 </style>
