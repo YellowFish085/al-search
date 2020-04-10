@@ -23,10 +23,9 @@ export default class Auth {
    */
   private getURL(url: string): URL {
     /**
-     * INFO: Writing this on 13/03/2020
-     * AniList uses a special url syntax where instead of having
-     * `?access_token=` it has `#access_token=`. So we need to
-     * change the url to make it "generic".
+     * Anilist returns the access token as an url fragment `#access_token=...`,
+     * followed by query params `&X=...`.
+     * It's a pain to handle, so we "transform" the hash as a query param.
      */
     return new URL(url.replace(`${browser.identity.getRedirectURL()}#`, `${browser.identity.getRedirectURL()}?`));
   }
