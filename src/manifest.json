@@ -30,7 +30,7 @@
   },
   "chrome_settings_overrides": {
     "search_provider": {
-      "name": "AniList",
+      "name": "AniSearch",
       "encoding": "UTF-8",
       "search_url": "https://anilist.co/search/anime?sort=SEARCH_MATCH&search={searchTerms}",
       "keyword": "ani",
