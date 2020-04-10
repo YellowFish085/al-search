@@ -1,5 +1,6 @@
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
+  faAngleDoubleRight,
   faChevronDown,
   faChevronLeft,
   faCogs,
@@ -17,6 +18,7 @@ import store from './store';
 
 // Setup Font Awesome available icons.
 library.add(
+  faAngleDoubleRight,
   faChevronDown,
   faChevronLeft,
   faCogs,
