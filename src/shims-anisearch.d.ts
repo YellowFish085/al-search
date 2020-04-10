@@ -93,7 +93,7 @@ export namespace AniList {
     } | null;
     mediaListEntry: {
       id: number;
-      status: String;
+      status: string;
     } | null;
     studios?: {
       edges: {

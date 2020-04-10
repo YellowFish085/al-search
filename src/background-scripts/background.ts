@@ -90,7 +90,8 @@ async function init() {
 
       await StorageHelper.setSettings(settings);
     }
-  } catch (e) {
+  }
+  catch (e) {
     Notifications.create('init_failed', `Init failed: ${e.message}`);
   }
 
