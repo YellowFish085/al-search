@@ -9,8 +9,10 @@
   },
   "scripts": {
     "serve": "vue-cli-service serve",
-    "watch": "vue-cli-service build --watch --mode production",
-    "build": "vue-cli-service build",
+    "watch_firefox": "vue-cli-service build --watch --mode firefox",
+    "watch_chrome": "vue-cli-service build --watch --mode chrome",
+    "build_firefox": "vue-cli-service build --mode firefox",
+    "build_chrome": "vue-cli-service build --mode chrome",
     "lint": "vue-cli-service lint",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

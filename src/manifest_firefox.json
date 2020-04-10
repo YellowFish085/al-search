@@ -34,7 +34,8 @@
       "encoding": "UTF-8",
       "search_url": "https://anilist.co/search/anime?sort=SEARCH_MATCH&search={searchTerms}",
       "keyword": "ani",
-      "favicon_url": "logo-48.png"
+      "favicon_url": "logo.svg",
+      "is_default": false
     }
   },
   "browser_specific_settings": {

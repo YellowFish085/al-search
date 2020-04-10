@@ -1,0 +1,37 @@
+{
+  "manifest_version": 2,
+  "author": "Theo Costantini",
+  "name": "AniSearch",
+  "description": "AniList quick search in your browser.",
+  "homepage_url": "https://github.com/YellowFish085/anisearch",
+  "icons": {
+    "48": "logo-48.png",
+    "96": "logo-96.png"
+  },
+  "permissions": [
+    "contextMenus",
+    "identity",
+    "notifications",
+    "storage",
+    "tabs",
+    "*://anilist.co/*",
+    "*://graphql.anilist.co/*"
+  ],
+  "browser_action": {
+    "default_icon": "logo-48.png",
+    "default_popup": "index.html"
+  },
+  "background": {
+    "scripts": ["js/background/background.js"]
+  },
+  "chrome_settings_overrides": {
+    "search_provider": {
+      "name": "AniSearch",
+      "encoding": "UTF-8",
+      "search_url": "https://anilist.co/search/anime?sort=SEARCH_MATCH&search={searchTerms}",
+      "keyword": "ani",
+      "favicon_url": "https://raw.githubusercontent.com/YellowFish085/anisearch/master/public/logo.svg",
+      "is_default": false
+    }
+  }
+}

@@ -4,11 +4,13 @@
     <div class="wrapper">
       <h1>Activity</h1>
 
-      <div class="col col--justify-start col--items-center">
+      <div class="activity-feed col col--justify-start col--items-center">
         <Item v-for="data in activityFeed" :key="data" :data="data" />
         <ButtonClear v-if="activityFeed && activityFeed.length > 0" />
         <template v-else>
-          <p>Nothing in your activity feed.</p>
+          <div class="container">
+            <span>Nothing in your activity feed. Search something!</span>
+          </div>
         </template>
       </div>
     </div>
@@ -37,5 +39,11 @@ export default class Home extends Vue {
 </script>
 
 <style lang="scss" scoped>
-
+.activity-feed {
+  > * {
+    &:last-child {
+      margin-top: 25px;
+    }
+  }
+}
 </style>

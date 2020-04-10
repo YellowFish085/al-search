@@ -61,7 +61,7 @@ module.exports = {
     config.plugin('copy-manifest').use(CopyWebpackPlugin, [
       [
         {
-          from: './src/manifest.json',
+          from: process.env.VUE_APP_BROWSER === 'firefox' ? './src/manifest_firefox.json' : './src/manifest_chrome.json',
           to: 'manifest.json',
           transform: (content) => {
             const m = JSON.parse(content);

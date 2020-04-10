@@ -187,7 +187,7 @@ body {
   }
 
   &--justify-end {
-    justify-content: end;
+    justify-content: flex-end;
   }
 
   &--justify-start {

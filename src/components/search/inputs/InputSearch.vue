@@ -120,6 +120,10 @@ export default class InputSearch extends Vue {
   padding: 0 2rem;
   text-align: center;
 
+  &::-webkit-search-cancel-button{
+    display: none;
+  }
+
   &.disabled {
     cursor: initial !important;
     opacity: 0.4 !important;
