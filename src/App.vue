@@ -12,7 +12,13 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { ChangeTheme } from '@/mixins/Theme';
+import {
+  Component,
+  Mixins,
+  Vue,
+  Watch,
+} from 'vue-property-decorator';
 import { State } from 'vuex-class';
 import ErrorComponent from '@/components/ErrorComponent.vue';
 import Header from '@/components/layout/Header.vue';
@@ -25,20 +31,30 @@ import Notifications from '@/components/ui/Notifications.vue';
     Notifications,
   },
 })
-export default class App extends Vue {
+export default class App extends Mixins(Vue, ChangeTheme) {
+  @State('settings') settings!: AniSearch.Settings;
+
   /**
    * Store is initialized.
    */
-  @State initialized!: boolean;
+  @State('initialized') initialized!: boolean;
 
   /**
    * Store has critical error.
    */
-  @State critError?: Error;
+  @State('critError') critError?: Error;
+
 
   created(): void {
     // Initialize store state from local storage.
     this.$store.dispatch('init');
+  }
+
+  @Watch('settings')
+  onSettingsChanged(newValue: AniSearch.Settings | null, oldValue: AniSearch.Settings | null) {
+    if (!newValue) return;
+
+    if (!oldValue || oldValue.theme !== newValue.theme) this.changeTheme(newValue.theme);
   }
 }
 </script>

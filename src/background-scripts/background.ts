@@ -3,6 +3,7 @@ import Auth from '@/background-scripts/_auth';
 import Notifications from '@/utils/Notifications';
 import Search from '@/background-scripts/_search';
 import StorageHelper from '@/utils/StorageHelper';
+import * as Enum from '@/utils/Enum';
 import * as Menus from '@/background-scripts/_menus';
 
 const browser = require('webextension-polyfill'); // eslint-disable-line
@@ -84,6 +85,7 @@ async function init() {
         search: {
           onListFirst: true,
         },
+        theme: Enum.Theme.DEFAULT,
       };
 
       await StorageHelper.setSettings(settings);

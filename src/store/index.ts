@@ -2,6 +2,7 @@ import Notifications from '@/utils/Notifications';
 import StorageHelper from '@/utils/StorageHelper';
 import Vue from 'vue';
 import Vuex from 'vuex';
+import * as Enum from '@/utils/Enum';
 
 const browser = require("webextension-polyfill"); // eslint-disable-line
 
@@ -25,6 +26,7 @@ const defaultState: AniSearch.Store.State = {
     search: {
       onListFirst: true,
     },
+    theme: Enum.Theme.DEFAULT,
   },
   accessToken: null,
   user: null,

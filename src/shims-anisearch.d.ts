@@ -19,6 +19,8 @@ export interface Settings {
   search: {
     onListFirst: boolean;
   };
+
+  theme: Enum.Theme;
 }
 
 /**

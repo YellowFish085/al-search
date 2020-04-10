@@ -1,4 +1,13 @@
 /**
+ * Theme choices.
+ */
+export enum Theme {
+  DEFAULT = 'theme-default',
+  DARK = 'theme-dark',
+  CONTRAST = 'theme-contrast',
+}
+
+/**
  * Search types.
  */
 export enum SearchType {

@@ -16,6 +16,9 @@
       <!-- Search -->
       <SearchSettings />
 
+      <!-- Theme -->
+      <ThemeSettings />
+
       <!-- Infos -->
       <Infos />
     </div>
@@ -29,6 +32,7 @@ import ActivitySettings from '@/views/settings/ActivitySettings.vue';
 import Infos from '@/views/settings/Infos.vue';
 import IntegrationSettings from '@/views/settings/IntegrationSettings.vue';
 import SearchSettings from '@/views/settings/SearchSettings.vue';
+import ThemeSettings from '@/views/settings/ThemeSettings.vue';
 import UserSettings from '@/views/settings/UserSettings.vue';
 
 @Component({
@@ -37,6 +41,7 @@ import UserSettings from '@/views/settings/UserSettings.vue';
     Infos,
     IntegrationSettings,
     SearchSettings,
+    ThemeSettings,
     UserSettings,
   },
 })

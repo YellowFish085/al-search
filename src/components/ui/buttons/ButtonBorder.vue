@@ -48,7 +48,7 @@ export default class ButtonBorder extends Vue {
 <style lang="scss" scoped>
 button {
   background-color: rgb(var(--color-foreground));
-  border: 1px solid rgba(var(--color-overlay), 0.2);
+  border: 1px solid rgba(var(--color-text), 0.2);
   color: rgb(var(--color-blue));
 }
 </style>
