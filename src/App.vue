@@ -2,11 +2,13 @@
   <!-- eslint-disable max-len -->
   <div id="app">
     <Notifications />
-    <ErrorComponent v-if="critError" :error="critError" />
-    <template v-else-if="initialized">
-      <Header />
-      <router-view/>
-    </template>
+    <transition appear name="init">
+      <ErrorComponent v-if="critError" :error="critError" key="error"/>
+      <div id="content" v-else-if="initialized" key="content">
+        <Header />
+        <router-view/>
+      </div>
+    </transition>
   </div>
   <!-- eslint-enable max-len -->
 </template>
@@ -277,13 +279,17 @@ a {
   overflow-y: auto;
   width: 500px;
 
-  > section {
-    padding-bottom: 25px;
-    padding-top: 25px;
-    width: 100%;
+  #content {
+    height: 100%;
 
-    &.vw {
-      width: 100vw;
+    > section {
+      padding-bottom: 25px;
+      padding-top: 25px;
+      width: 100%;
+
+      &.vw {
+        width: 100vw;
+      }
     }
   }
 }
@@ -438,12 +444,44 @@ a {
   }
 }
 
-
 /* Components transitions */
+.init-enter-active, .init-leave-active {
+  transition: opacity 0.2s;
+}
+.init-enter, .init-leave-to {
+  opacity: 0;
+}
+
 .fade-enter-active, .fade-leave-active {
   transition: opacity 0.5s;
 }
 .fade-enter, .fade-leave-to {
   opacity: 0;
+}
+
+.translate-small-enter-active, .translate-small-leave-active {
+  transition: all 0.2s;
+}
+.translate-small-enter, .translate-small-leave-active {
+  opacity: 0;
+}
+.translate-small-enter {
+  transform: translateX(10px);
+}
+.translate-small-leave-active {
+  transform: translateX(-10px);
+}
+
+.translate-enter-active, .translate-leave-active {
+  transition: all 0.2s;
+}
+.translate-enter, .translate-leave-active {
+  opacity: 0;
+}
+.translate-enter {
+  transform: translateX(30px);
+}
+.translate-leave-active {
+  transform: translateX(-30px);
 }
 </style>

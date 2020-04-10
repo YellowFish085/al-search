@@ -48,7 +48,7 @@ button {
   font-weight: 700;
   padding: 0.7rem 1.8rem;
   text-transform: uppercase;
-  transition: opacity .1s ease;
+  transition: opacity .1s ease, box-shadow .1s ease;
 
   &.lg {
     font-size: 1.6rem;
@@ -59,6 +59,10 @@ button {
     pointer-events: none;
     cursor: not-allowed;
     opacity: 0.5;
+  }
+
+  &:hover {
+    box-shadow: 0 1px 5px rgba(var(--color-shadow), 0.15);
   }
 }
 </style>

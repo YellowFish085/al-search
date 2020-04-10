@@ -1,11 +1,13 @@
 <template>
   <!-- eslint-disable max-len -->
-  <a v-if="user"
-     :href="user.siteUrl"
-     title="See my profile"
-     :class="[ size ]"
-     :style="{ 'background-image': `url(${user.avatar.medium})` }">
-  </a>
+  <transition name="quick-fade">
+    <a v-if="user"
+      :href="user.siteUrl"
+      title="See my profile"
+      :class="[ size ]"
+      :style="{ 'background-image': `url(${user.avatar.medium})` }">
+    </a>
+  </transition>
   <!-- eslint-enable max-len -->
 </template>
 
@@ -25,6 +27,13 @@ export default class SeeMyProfileButton extends Vue {
 </script>
 
 <style lang="scss" scoped>
+.quick-fade-enter-active, .quick-fade-leave-active {
+  transition: opacity 0.2s;
+}
+.quick-fade-enter, .quick-fade-leave-to {
+  opacity: 0;
+}
+
 a {
   background-position: center;
   background-size: cover;

@@ -3,18 +3,22 @@
   <header :class="{ searching: isSearching }">
     <div class="wrapper">
       <div class="btn-wrapper row row--justify-center row--items-center">
-        <div class="btn row row--justify-center row--items-center">
-          <router-link to="/settings" v-if="!isSettingsPage">
-            <ButtonIcon icon="cogs" title="Settings" size="lg" />
-          </router-link>
-          <router-link to="/" v-else>
-            <ButtonIcon icon="chevron-left" title="Back to home" size="lg" />
-          </router-link>
+        <div class="btn h-full w-full">
+          <transition name="translate-small">
+            <router-link to="/settings" v-if="!isSettingsPage" key="settings" class="h-full w-full row row--justify-center row--items-center">
+              <ButtonIcon icon="cogs" title="Settings" size="lg" />
+            </router-link>
+            <router-link to="/" v-else key="back" class="h-full w-full row row--justify-center row--items-center">
+              <ButtonIcon icon="chevron-left" title="Back to home" size="lg" />
+            </router-link>
+          </transition>
         </div>
       </div>
       <div class="btn-wrapper row row--justify-center row--items-center">
-        <div class="btn">
-          <SeeMyProfileButton />
+        <div class="btn h-full w-full">
+          <div class="h-full w-full row row--justify-center row--items-center">
+            <SeeMyProfileButton />
+          </div>
         </div>
       </div>
     </div>
@@ -84,8 +88,13 @@ header {
   }
 
   .btn {
+    position: relative;
     transform: scale(1);
     transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    > * {
+      position: absolute;
+    }
   }
 
   &.searching {
