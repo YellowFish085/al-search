@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <rect width="200" height="200" x="0" y="0" fill="rgb(31,38,49)"/>
+  <text font-size="0" style="white-space:pre">
+    <tspan x="84" y="153" fill="rgb(61,180,242)" font-family="Roboto" font-size="155" font-weight="900" style="white-space:pre;text-transform:none" letter-spacing="2.167">S</tspan>
+  </text>
+  <rect width="156.25" height="221.511" x="-61.888" y="4.427" fill="rgb(31,38,49)" transform="rotate(-20.000007 16.2376102 115.18207279)"/>
+  <text font-size="0" style="white-space:pre">
+    <tspan x="24" y="153" fill="rgb(255,255,255)" font-family="Roboto" font-size="155" font-weight="900" style="white-space:pre;text-transform:none" letter-spacing="2.167">A</tspan>
+  </text>
+</svg>

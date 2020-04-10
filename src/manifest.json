@@ -9,7 +9,8 @@
     "url": "https://github.com/YellowFish085"
   },
   "icons": {
-    "48": "img/logo.png"
+    "48": "logo-48.png",
+    "96": "logo-96.png"
   },
   "permissions": [
     "contextMenus",
@@ -21,7 +22,7 @@
     "*://graphql.anilist.co/*"
   ],
   "browser_action": {
-    "default_icon": "img/logo.png",
+    "default_icon": "logo-48.png",
     "default_popup": "index.html"
   },
   "background": {
@@ -33,7 +34,7 @@
       "encoding": "UTF-8",
       "search_url": "https://anilist.co/search/anime?sort=SEARCH_MATCH&search={searchTerms}",
       "keyword": "ani",
-      "favicon_url": "https://anilist.co/img/icons/icon.svg"
+      "favicon_url": "logo-48.png"
     }
   },
   "browser_specific_settings": {
