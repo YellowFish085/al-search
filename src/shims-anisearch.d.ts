@@ -93,7 +93,7 @@ export namespace AniList {
       id: number;
       status: String;
     } | null;
-    studios: {
+    studios?: {
       edges: {
         isMain: boolean;
         node: {
