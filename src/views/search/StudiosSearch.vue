@@ -45,17 +45,17 @@ import {
   Prop,
   Vue,
 } from 'vue-property-decorator';
-import { SaveActivity } from '@/mixins/Activity';
 import { State } from 'vuex-class';
 import CardMedia from '@/components/search/cards/Media.vue';
 import * as Enum from '@/utils/Enum';
+import MixinSaveActivity from '@/mixins/Activity';
 
 @Component({
   components: {
     CardMedia,
   },
 })
-export default class StudiosSearch extends Mixins(Vue, SaveActivity) {
+export default class StudiosSearch extends Mixins(Vue, MixinSaveActivity) {
   @State('settings') settings!: AniSearch.Settings;
 
   @Prop() results!: AniSearch.Store.SearchResults | null;

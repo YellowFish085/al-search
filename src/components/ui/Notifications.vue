@@ -22,20 +22,22 @@
 
 <style lang="scss" scoped>
 .notification {
+  background-color: rgb(var(--color-foreground));
   border-radius: 3px;
-  color: rgb(var(--color-white));
+  color: rgb(var(--color-text));
   margin-bottom: 0.2rem;
+  padding: 0.2em;
 
   &.error {
-    background-color: rgb(var(--color-red));
+    border: 2px solid rgb(var(--color-red));
   }
 
   &.success {
-    background-color: rgb(var(--color-green));
+    border: 2px solid rgb(var(--color-green));
   }
 
   &.warn {
-    background-color: rgb(var(--color-orange));
+    border: 2px solid rgb(var(--color-orange));
   }
 }
 
@@ -44,7 +46,7 @@
 }
 
 .title {
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   font-weight: 500;
 }
 

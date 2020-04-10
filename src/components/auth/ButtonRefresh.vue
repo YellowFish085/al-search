@@ -8,8 +8,9 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Mixins, Vue } from 'vue-property-decorator';
 import ButtonBg from '@/components/ui/buttons/ButtonBg.vue';
+import MixinNotify from '@/mixins/Notify';
 
 const browser = require('webextension-polyfill'); // eslint-disable-line
 
@@ -18,7 +19,7 @@ const browser = require('webextension-polyfill'); // eslint-disable-line
     ButtonBg,
   },
 })
-export default class ButtonRefresh extends Vue {
+export default class ButtonRefresh extends Mixins(Vue, MixinNotify) {
   /**
    * Disable button.
    */
@@ -33,24 +34,13 @@ export default class ButtonRefresh extends Vue {
     switch (response.code) {
       case 'USER_REFRESH_SUCCESS':
         await this.$store.dispatch('refreshUserData');
-        this.$notify({
-          group: 'anisearch',
-          type: 'success',
-          duration: 3000,
-          title: 'Success',
-          text: 'Your data have successfully been refreshed.',
-        });
+
+        this.notify('success', 'Success', 'Your data have successfully been refreshed.');
         break;
 
       case 'USER_REFRESH_FAILED':
       default:
-        this.$notify({
-          group: 'anisearch',
-          type: 'error',
-          duration: -1,
-          title: 'Failed to refresh your data:',
-          text: response.message,
-        });
+        this.notify('error', 'Failed to refresh your data:', response.message);
         break;
     }
 

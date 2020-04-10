@@ -14,7 +14,6 @@
 </template>
 
 <script lang="ts">
-import { ChangeTheme } from '@/mixins/Theme';
 import {
   Component,
   Mixins,
@@ -24,6 +23,7 @@ import {
 import { State } from 'vuex-class';
 import ErrorComponent from '@/components/ErrorComponent.vue';
 import Header from '@/components/layout/Header.vue';
+import MixinChangeTheme from '@/mixins/Theme';
 import Notifications from '@/components/ui/Notifications.vue';
 
 @Component({
@@ -33,7 +33,7 @@ import Notifications from '@/components/ui/Notifications.vue';
     Notifications,
   },
 })
-export default class App extends Mixins(Vue, ChangeTheme) {
+export default class App extends Mixins(Vue, MixinChangeTheme) {
   @State('settings') settings!: AniSearch.Settings;
 
   /**

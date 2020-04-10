@@ -35,18 +35,18 @@
 </template>
 
 <script lang="ts">
-import { ChangeTheme } from '@/mixins/Theme';
 import { Component, Mixins, Vue } from 'vue-property-decorator';
 import { State } from 'vuex-class';
 import * as Enum from '@/utils/Enum';
 import ButtonClear from '@/components/activity/ButtonClear.vue';
+import MixinChangeTheme from '@/mixins/Theme';
 
 @Component({
   components: {
     ButtonClear,
   },
 })
-export default class ThemeSettings extends Mixins(Vue, ChangeTheme) {
+export default class ThemeSettings extends Mixins(Vue, MixinChangeTheme) {
   /**
    * Settings from store.
    */

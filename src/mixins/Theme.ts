@@ -2,7 +2,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import * as Enum from '@/utils/Enum';
 
 @Component
-export class ChangeTheme extends Vue {
+export default class ChangeTheme extends Vue {
   /**
    * Change popup theme.
    */

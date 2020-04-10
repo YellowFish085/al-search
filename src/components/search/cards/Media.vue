@@ -55,12 +55,12 @@ import {
   Prop,
   Vue,
 } from 'vue-property-decorator';
-import { SaveActivity } from '@/mixins/Activity';
 import { State } from 'vuex-class';
 import * as Enum from '@/utils/Enum';
+import MixinSaveActivity from '@/mixins/Activity';
 
 @Component
-export default class Media extends Mixins(Vue, SaveActivity) {
+export default class Media extends Mixins(Vue, MixinSaveActivity) {
   @State('settings') settings!: AniSearch.Settings;
 
   @Prop() readonly data?: AniSearch.AniList.Media;

@@ -48,13 +48,14 @@ import {
   Vue,
   Watch,
 } from 'vue-property-decorator';
-import { SaveActivity } from '@/mixins/Activity';
 import { State } from 'vuex-class';
 import * as Enum from '@/utils/Enum';
 import InputSearch from '@/components/search/inputs/InputSearch.vue';
 import InputSeason from '@/components/search/inputs/InputSeason.vue';
 import InputType from '@/components/search/inputs/InputType.vue';
 import InputYear from '@/components/search/inputs/InputYear.vue';
+import MixinNotify from '@/mixins/Notify';
+import MixinSaveActivity from '@/mixins/Activity';
 
 const browser = require('webextension-polyfill') // eslint-disable-line
 
@@ -66,7 +67,7 @@ const browser = require('webextension-polyfill') // eslint-disable-line
     InputYear,
   },
 })
-export default class SearchForm extends Mixins(Vue, SaveActivity) {
+export default class SearchForm extends Mixins(Vue, MixinNotify, MixinSaveActivity) {
   @State('settings') settings!: AniSearch.Settings;
 
   @State('search') storeSearch!: AniSearch.Search.Search | null;
@@ -191,13 +192,7 @@ export default class SearchForm extends Mixins(Vue, SaveActivity) {
 
       case 'SEARCH_FAILED':
       default:
-        this.$notify({
-          group: 'anisearch',
-          type: 'error',
-          duration: -1,
-          title: 'Failed to search on AniList:',
-          text: response.message,
-        });
+        this.notify('error', 'Failed to search on AniList:', response.message);
         break;
     }
 

@@ -11,17 +11,17 @@ import {
   Prop,
   Vue,
 } from 'vue-property-decorator';
-import { SaveActivity } from '@/mixins/Activity';
 import { State } from 'vuex-class';
 import * as Enum from '@/utils/Enum';
 import CardPerson from '@/components/search/cards/Person.vue';
+import MixinSaveActivity from '@/mixins/Activity';
 
 @Component({
   components: {
     CardPerson,
   },
 })
-export default class Staff extends Mixins(Vue, SaveActivity) {
+export default class Staff extends Mixins(Vue, MixinSaveActivity) {
   @State('settings') settings!: AniSearch.Settings;
 
   @Prop() readonly data!: AniSearch.AniList.Staff;

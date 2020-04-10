@@ -8,8 +8,9 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Mixins, Vue } from 'vue-property-decorator';
 import ButtonBorder from '@/components/ui/buttons/ButtonBorder.vue';
+import MixinNotify from '@/mixins/Notify';
 
 const browser = require('webextension-polyfill'); // eslint-disable-line
 
@@ -18,7 +19,7 @@ const browser = require('webextension-polyfill'); // eslint-disable-line
     ButtonBorder,
   },
 })
-export default class ButtonClear extends Vue {
+export default class ButtonClear extends Mixins(Vue, MixinNotify) {
   /**
    * Disable button.
    */
@@ -33,24 +34,13 @@ export default class ButtonClear extends Vue {
     switch (response.code) {
       case 'ACTIVITY_FEED_CLEAR_SUCCESS':
         await this.$store.dispatch('clearActivityFeed');
-        this.$notify({
-          group: 'anisearch',
-          type: 'success',
-          duration: 3000,
-          title: 'Success',
-          text: 'Your activity feed have been cleared.',
-        });
+
+        this.notify('success', 'Success', 'Your activity feed have been cleared.');
         break;
 
       case 'ACTIVITY_FEED_CLEAR_FAILED':
       default:
-        this.$notify({
-          group: 'anisearch',
-          type: 'error',
-          duration: -1,
-          title: 'Failed to clear your activity feed:',
-          text: response.message,
-        });
+        this.notify('error', 'Failed to clear your activity feed:', response.message);
         break;
     }
 
