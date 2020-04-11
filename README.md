@@ -43,9 +43,6 @@ npm run build_chrome
 npm run lint --fix
 ```
 
-#### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
-
 ### Notes
 
 #### Search provider limitations
