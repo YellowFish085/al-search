@@ -200,3 +200,14 @@ export namespace Activity {
     };
   }
 }
+
+/**
+ * Github
+ */
+export namespace Github {
+  export interface Release {
+    tag_name: string;
+    published_at: string;
+    body: string;
+  }
+}

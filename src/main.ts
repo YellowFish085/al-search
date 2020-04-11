@@ -1,4 +1,4 @@
-import { library } from '@fortawesome/fontawesome-svg-core';
+import { library, IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import {
   faAngleDoubleRight,
   faChevronDown,
@@ -9,6 +9,7 @@ import {
   faTimes,
   faUserCircle,
 } from '@fortawesome/free-solid-svg-icons';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import Notifications from 'vue-notification';
 import Vue from 'vue';
@@ -18,6 +19,7 @@ import store from './store';
 
 // Setup Font Awesome available icons.
 library.add(
+  // Regular icons.
   faAngleDoubleRight,
   faChevronDown,
   faChevronLeft,
@@ -26,6 +28,8 @@ library.add(
   faSearch,
   faTimes,
   faUserCircle,
+  // Brands icons.
+  faGithub as IconDefinition,
 );
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);

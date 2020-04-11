@@ -8,7 +8,7 @@
           :disabled="invalidType || disabled"
           @change="$emit('update:value', $event.target.value || null)">
     <option :value="null">All seasons</option>
-    <option v-for="y in seasons" :key="y" :value="y">{{ y }}</option>
+    <option v-for="y in seasons" :key="y" :value="y">{{ strings[y] }}</option>
   </select>
   <!-- eslint-enable max-len -->
 </template>
@@ -30,6 +30,9 @@ export default class InputSeason extends Vue {
 
   /** Search season. */
   seasons = Enum.SearchSeason;
+
+  /** Strings */
+  strings = Enum.Strings;
 
   /**
    * Disabled?

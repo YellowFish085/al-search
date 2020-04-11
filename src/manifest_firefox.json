@@ -34,7 +34,7 @@
       "encoding": "UTF-8",
       "search_url": "https://anilist.co/search/anime?sort=SEARCH_MATCH&search={searchTerms}",
       "keyword": "ani",
-      "favicon_url": "logo.svg",
+      "favicon_url": "https://yellowfish085.github.io/anisearch/img/logo.svg",
       "is_default": false
     }
   },

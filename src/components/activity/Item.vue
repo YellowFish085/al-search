@@ -61,13 +61,13 @@ export default class Item extends Vue {
     const parts = [];
 
     // Add type part.
-    parts.push(this.data.params!.type);
+    parts.push(Enum.Strings[this.data.params!.type]);
 
     // Add year part if present.
     if (this.data.params!.year) parts.push(this.data.params!.year);
 
     // Add season part if present.
-    if (this.data.params!.season) parts.push(this.data.params!.season);
+    if (this.data.params!.season) parts.push(Enum.Strings[this.data.params!.season]);
 
     return parts.join(' / ');
   }
@@ -99,9 +99,14 @@ export default class Item extends Vue {
   cursor: pointer;
   margin-bottom: 0.5rem;
   padding: 0.8rem;
+  transition: color 0.2s ease-in-out;
 
   svg {
     margin-right: 1rem;
+  }
+
+  &:hover {
+    color: rgb(var(--color-blue));
   }
 }
 
