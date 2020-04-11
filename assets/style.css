@@ -1,0 +1,223 @@
+/* Font */
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i&display=swap');
+
+/* Theme */
+:root {
+  --color-background: 237, 241, 245;
+  --color-foreground: 250, 250, 250;
+  --color-foreground-grey: 245, 246, 246;
+  --color-foreground-grey-dark: 234, 236, 237;
+  --color-foreground-blue: 246, 248, 251;
+  --color-foreground-blue-dark: 241, 243, 247;
+  --color-background-blue-dark: 31, 35, 45;
+  --color-overlay: 31, 38, 49;
+  --color-shadow: 49, 54, 68;
+  --color-shadow-dark: 6, 13, 34;
+  --color-shadow-blue: 103, 132, 187;
+  --color-text: 92, 114, 138;
+  --color-text-light: 122, 133, 143;
+  --color-text-lighter: 146, 153, 161;
+  --color-text-bright: 237, 241, 245;
+  --color-blue: 61, 180, 242;
+  --color-blue-dim: 141, 178, 219;
+  --color-white: 255, 255, 255;
+  --color-black: 0, 0, 0;
+  --color-red: 232, 93, 117;
+  --color-peach: 250, 122, 122;
+  --color-orange: 247, 154, 99;
+  --color-yellow: 247, 191, 99;
+  --color-green: 123, 213, 85;
+}
+
+/* Main */
+* {
+  box-sizing: border-box;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  font-size: 62.5%;
+  line-height: 1.15;
+}
+
+body {
+  background: rgb(var(--color-background));
+  color: rgb(var(--color-text));
+  font-family: 'Roboto',
+    '-apple-system',
+    'BlinkMacSystemFont',
+    'Segoe UI',
+    'Oxygen',
+    'Ubuntu',
+    'Cantarell',
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
+    sans-serif;
+  font-size: 1.6rem;
+  margin: 0;
+}
+
+.wrapper {
+  margin: 0 auto;
+  max-width: 960px;
+  padding: 0 1.5rem;
+  position: relative;
+}
+
+.container {
+  background-color: rgb(var(--color-foreground));
+  border-radius: 3px;
+  margin-bottom: 15px;
+  padding: 15px;
+  width: 100%;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+h3 {
+  font-size: 1.9rem;
+  font-weight: 400;
+  margin-bottom: 1.2rem;
+}
+
+h4 {
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: 1.2rem;
+}
+
+p {
+  color: rgb(var(--color-text-light));
+  font-size: 1.4rem;
+  line-height: 1.5;
+}
+
+p.big {
+  font-size: 1.6rem;
+}
+
+p.note {
+  color: rgb(var(--color-text-lighter));
+  font-size: 1.2rem;
+}
+
+b {
+  color: rgb(var(--color-blue));
+  font-style: italic;
+}
+
+a {
+  color: rgb(var(--color-blue));
+  text-decoration: none;
+}
+
+/* Header */
+header {
+  align-items: center;
+  background-color: rgb(var(--color-overlay));
+  color: rgb(var(--color-text-bright));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2em;
+}
+
+header img {
+  margin-bottom: 4rem;
+  max-height: 150px;
+  width: auto;
+}
+
+header h1 {
+  font-size: 3rem;
+  font-weight: 400;
+  margin-bottom: 2rem;
+}
+
+header h2 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 4rem;
+}
+
+header .extension-links {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+header .extension-links a {
+  display: block;
+  font-size: 5em;
+  margin: 0 0.5em;
+}
+
+/* Content */
+section {
+  margin-top: 4rem;
+}
+
+section .block:not(:last-child) {
+  margin-bottom: 6rem;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.row > *:first-child {
+  margin-right: 2rem;
+}
+
+.col > *:first-child {
+  margin-bottom: 2rem;
+}
+
+.screenshot {
+  box-shadow: 0 2px 20px rgba(var(--color-shadow), .09);
+  width: 100%;
+}
+
+.screenshot img {
+  border-radius: 3px;
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+/* Footer */
+footer {
+  align-items: center;
+  background-color: rgb(var(--color-overlay));
+  color: rgb(var(--color-text-light));
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 10rem;
+  padding: 1.5rem;
+}
+
+footer > * {
+  margin: 0 1rem;
+}
+
+footer span {
+  font-size: 1.2rem;
+}
