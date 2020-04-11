@@ -46,3 +46,20 @@ export enum ResponseTypeKeys {
   CHARACTERS = 'characters',
   STAFF = 'staff',
 }
+
+/**
+ * Strings
+ */
+export enum Strings {
+  // Search type.
+  ANIME = 'Anime',
+  MANGA = 'Manga',
+  STUDIOS = 'Studios',
+  CHARACTERS = 'Characters',
+  STAFF = 'Staff',
+  // Search season.
+  SPRING = 'Spring',
+  SUMMER = 'Summer',
+  FALL = 'Fall',
+  WINTER = 'Winter',
+}
