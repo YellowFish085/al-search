@@ -6,7 +6,9 @@
       <ErrorComponent v-if="critError" :error="critError" key="error"/>
       <div id="content" v-else-if="initialized" key="content">
         <Header />
-        <router-view/>
+        <transition appear name="pages" mode="out-in">
+          <router-view/>
+        </transition>
       </div>
     </transition>
   </div>
@@ -455,6 +457,13 @@ a {
   transition: opacity 0.2s;
 }
 .init-enter, .init-leave-to {
+  opacity: 0;
+}
+
+.pages-enter-active, .pages-leave-active {
+  transition: opacity 0.025s;
+}
+.pages-enter, .pages-leave-to {
   opacity: 0;
 }
 
