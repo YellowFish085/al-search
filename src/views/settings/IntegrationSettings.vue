@@ -12,8 +12,8 @@
                  v-model="webEnabled">
           <label for="settings__integration__web_enabled">Enable web integration</label>
         </div>
-        <p><b>AniSearch</b> comes with a web integration feature that adds buttons and links to some website related to anime and manga culture (e.g. Crunchyroll).</p>
-        <p>For instance, you will see a button near an anime title on Crunchyroll that will allow you to do a quick search on the anime title with <b>AniSearch</b> (or directly to <b>AniList</b> if you selected the <strong>Open AniList search results page</strong> option).</p> -->
+        <p><b>AniListSearch</b> comes with a web integration feature that adds buttons and links to some website related to anime and manga culture (e.g. Crunchyroll).</p>
+        <p>For instance, you will see a button near an anime title on Crunchyroll that will allow you to do a quick search on the anime title with <b>AniListSearch</b> (or directly to <b>AniList</b> if you selected the <strong>Open AniList search results page</strong> option).</p> -->
         <div class="field">
           <input type="checkbox"
                  name="menus_enabled"
@@ -21,7 +21,7 @@
                  v-model="menusEnabled">
           <label for="settings__integration__menus_enabled">Enable contextual menus</label>
         </div>
-        <p><b>AniSearch</b> adds contextual actions to quickly execute a search a selected text on a page.</p>
+        <p><b>AniListSearch</b> adds contextual actions to quickly execute a search a selected text on a page.</p>
       </div>
   </div>
   <!-- eslint-enable max-len -->
@@ -38,7 +38,7 @@ export default class IntegrationSettings extends Vue {
   /**
    * Settings from store.
    */
-  @State settings!: AniSearch.Settings;
+  @State settings!: AniListSearch.Settings;
 
   get webEnabled(): boolean {
     return this.settings.integration.webEnabled;

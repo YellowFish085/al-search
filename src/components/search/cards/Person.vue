@@ -28,7 +28,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component
 export default class Person extends Vue {
-  @Prop() readonly data!: AniSearch.AniList.Character | AniSearch.AniList.Staff;
+  @Prop() readonly data!: AniListSearch.AniList.Character | AniListSearch.AniList.Staff;
 
   /**
    * Click.

@@ -1,15 +1,15 @@
 <p align="center"><img src="./public/logo.svg"></p>
-<h3 align="center">AniSearch</h3>
+<h3 align="center">AniListSearch</h3>
 <p align="center">Quickly search information on AniList</p>
 
 <hr>
 
-<p align="center">AniSearch is an unofficial browser extension for AniList which allows you to quickly search information on AniList.</p>
-<p align="center">The extension is available on <a href="https://addons.mozilla.org/en-US/firefox/addon/anisearch/" title="See AniSearch on Firefox">Firefox</a> and <a href="" title="See AniSearch on Chrom">Chrome</a>.</p>
+<p align="center">AniListSearch is an unofficial browser extension for AniList which allows you to quickly search information on AniList.</p>
+<p align="center">The extension is available on <a href="https://addons.mozilla.org/en-US/firefox/addon/anilistsearch/" title="See AniListSearch on Firefox">Firefox</a> and <a href="" title="See AniListSearch on Chrom">Chrome</a>.</p>
 
 <br>
 
-<p align="center">For more information, see the <a href="https://yellowfish085.github.io/anisearch/" title="AniSearch">dedicated page</a>.
+<p align="center">For more information, see the <a href="https://yellowfish085.github.io/anilistsearch/" title="AniListSearch">dedicated page</a>.
 
 <hr>
 
@@ -51,7 +51,7 @@ AniList uses one search url per type of data (anime, manga...), and doesn't have
 
 But, `chrome_settings_overrides.search_provider` configuration key, which is used by this extension to add a custom search engine to the browser, only has a single search url parameter, and we can't dynamically change its value. It's also impossible (?) to add multiple search providers with a single extension.
 
-Due to this limitation on the browser side and to the way AniList search pages are built, the search provider configured by AniSearch can only search on one specific type of data.
+Due to this limitation on the browser side and to the way AniList search pages are built, the search provider configured by AniListSearch can only search on one specific type of data.
 
 For the time being, the search url is set to anime search, as it's _probably_ the one users will use the most.
 
@@ -63,4 +63,4 @@ This bug only appears on MacOS and Chrome.
 
 When opening the popup, if the browser is displayed on an external monitor, the bottom of the popup seems to "lag" when the user click on an input, select text, etc.
 
-This bug is not related to AniSearch and is a known bug of chrome (see the [bug report](https://bugs.chromium.org/p/chromium/issues/detail?id=971701&q=component%3APlatform%3EExtensions%20Lag&colspec=ID%20Pri%20M%20Stars%20ReleaseBlock%20Component%20Status%20Owner%20Summary%20OS%20Modified)).
+This bug is not related to AniListSearch and is a known bug of chrome (see the [bug report](https://bugs.chromium.org/p/chromium/issues/detail?id=971701&q=component%3APlatform%3EExtensions%20Lag&colspec=ID%20Pri%20M%20Stars%20ReleaseBlock%20Component%20Status%20Owner%20Summary%20OS%20Modified)).

@@ -35,7 +35,7 @@ import StudiosSearch from '@/views/search/StudiosSearch.vue';
   },
 })
 export default class Search extends Vue {
-  @State('searchResults') results!: AniSearch.Store.SearchResults | null;
+  @State('searchResults') results!: AniListSearch.Store.SearchResults | null;
 
   /** Search types. */
   types = Enum.SearchType;

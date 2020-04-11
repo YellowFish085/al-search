@@ -1,6 +1,6 @@
 <template>
   <!-- eslint-disable max-len -->
-  <notifications group="anisearch" animation-type="css" position="bottom center">
+  <notifications group="anilistsearch" animation-type="css" position="bottom center">
     <template slot="body" slot-scope="props">
       <div class="notification" :class="[props.item.type]">
         <div class="header row row--justify-between row--items-start">

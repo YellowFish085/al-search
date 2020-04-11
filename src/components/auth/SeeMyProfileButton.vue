@@ -22,7 +22,7 @@ export default class SeeMyProfileButton extends Vue {
   /**
    * User data from store.
    */
-  @State user!: AniSearch.AniList.User | null;
+  @State user!: AniListSearch.AniList.User | null;
 }
 </script>
 

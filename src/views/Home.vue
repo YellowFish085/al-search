@@ -34,7 +34,7 @@ export default class Home extends Vue {
   /**
    * Activity feed.
    */
-  @State activityFeed!: AniSearch.Activity.Activity[] | null;
+  @State activityFeed!: AniListSearch.Activity.Activity[] | null;
 }
 </script>
 

@@ -22,16 +22,16 @@ import MixinSaveActivity from '@/mixins/Activity';
   },
 })
 export default class Character extends Mixins(Vue, MixinSaveActivity) {
-  @State('settings') settings!: AniSearch.Settings;
+  @State('settings') settings!: AniListSearch.Settings;
 
-  @Prop() readonly data!: AniSearch.AniList.Character;
+  @Prop() readonly data!: AniListSearch.AniList.Character;
 
   handleClick(e: Event): void {
     e.stopPropagation();
     e.preventDefault();
 
     if (this.settings.activity.visitedPages) {
-      const activity: AniSearch.Activity.Activity = {
+      const activity: AniListSearch.Activity.Activity = {
         type: Enum.ActivityType.VISITED_PAGE,
         label: this.data!.name.full,
         value: this.data!.siteUrl,

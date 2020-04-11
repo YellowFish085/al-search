@@ -1,5 +1,5 @@
 {
-  "name": "anisearch",
+  "name": "anilistsearch",
   "version": "1.0.1",
   "private": true,
   "description": "AniList quick search in your browser.",
@@ -51,20 +51,20 @@
     "typescript": "~3.7.5",
     "vue-template-compiler": "^2.6.11"
   },
-  "_id": "anisearch@1.0.0",
+  "_id": "anilistsearch@1.0.0",
   "bugs": {
-    "url": "https://github.com/YellowFish085/anisearch/issues"
+    "url": "https://github.com/YellowFish085/anilistsearch/issues"
   },
-  "homepage": "https://github.com/YellowFish085/anisearch#readme",
+  "homepage": "https://github.com/YellowFish085/anilistsearch#readme",
   "keywords": [
     "AniList",
     "AniChart",
-    "AniSearch"
+    "AniListSearch"
   ],
   "license": "GPL-3.0",
   "readme": "ERROR: No README data found!",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/YellowFish085/anisearch.git"
+    "url": "git+https://github.com/YellowFish085/anilistsearch.git"
   }
 }

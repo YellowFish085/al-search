@@ -31,7 +31,7 @@ export default class SearchSettings extends Vue {
   /**
    * Settings from store.
    */
-  @State settings!: AniSearch.Settings;
+  @State settings!: AniListSearch.Settings;
 
   get onListFirst(): boolean {
     return this.settings.search.onListFirst;
