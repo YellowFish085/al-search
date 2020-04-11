@@ -8,7 +8,7 @@ export default class SaveActivity extends Mixins(Vue, MixinNotify) {
   /**
    * Save activity asynchronously.
    */
-  async saveActivity(activity: AniSearch.Activity.Activity): Promise<void> {
+  async saveActivity(activity: AniListSearch.Activity.Activity): Promise<void> {
     const response = await browser.runtime.sendMessage({
       code: 'SAVE_ACTIVITY',
       data: activity,

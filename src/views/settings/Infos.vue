@@ -9,7 +9,7 @@
 
       <h3>Activity</h3>
       <p>Search history and visited pages are stored locally, on your browser.</p>
-      <p>This means that if you have <b>AniSearch</b> installed in multiple browsers on the same computer, or in multiple browsers on different computers, each <b>AniSearch</b> extension will have its own activity feed.</p>
+      <p>This means that if you have <b>AniListSearch</b> installed in multiple browsers on the same computer, or in multiple browsers on different computers, each <b>AniListSearch</b> extension will have its own activity feed.</p>
     </div>
   </div>
   <!-- eslint-enable max-len -->
