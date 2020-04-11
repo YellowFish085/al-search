@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.0.2
+
+- Renamed extension to AniListSearch
+
 ## v1.0.1
 
 - [Add] Added enums strings (d9204fc)
