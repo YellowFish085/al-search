@@ -31,7 +31,8 @@ export default class InputYear extends Vue {
   /** Search years. */
   years = new Array(new Date().getFullYear() - 1950 + 1)
     .fill(undefined)
-    .map((value, index) => index + 1950);
+    .map((value, index) => index + 1950)
+    .reverse();
 
   /**
    * Disabled?
