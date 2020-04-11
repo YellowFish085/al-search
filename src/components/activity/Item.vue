@@ -99,9 +99,14 @@ export default class Item extends Vue {
   cursor: pointer;
   margin-bottom: 0.5rem;
   padding: 0.8rem;
+  transition: color 0.2s ease-in-out;
 
   svg {
     margin-right: 1rem;
+  }
+
+  &:hover {
+    color: rgb(var(--color-blue));
   }
 }
 
