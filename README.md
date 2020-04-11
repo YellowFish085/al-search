@@ -15,9 +15,14 @@
 
 ## Development
 
+### Requirements
+
+- NodeJS 10
+- NPM 6
+
 ### Project setup
 ```bash
-npm install
+npm ci
 ```
 
 #### Compiles and watch for development
