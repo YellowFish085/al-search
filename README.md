@@ -54,3 +54,13 @@ But, `chrome_settings_overrides.search_provider` configuration key, which is use
 Due to this limitation on the browser side and to the way AniList search pages are built, the search provider configured by AniSearch can only search on one specific type of data.
 
 For the time being, the search url is set to anime search, as it's _probably_ the one users will use the most.
+
+### Known issues
+
+#### Bottom of the popup "lags" on external monitor on Chrome/MacOS
+
+This bug only appears on MacOS and Chrome.
+
+When opening the popup, if the browser is displayed on an external monitor, the bottom of the popup seems to "lag" when the user click on an input, select text, etc.
+
+This bug is not related to AniSearch and is a known bug of chrome (see the [bug report](https://bugs.chromium.org/p/chromium/issues/detail?id=971701&q=component%3APlatform%3EExtensions%20Lag&colspec=ID%20Pri%20M%20Stars%20ReleaseBlock%20Component%20Status%20Owner%20Summary%20OS%20Modified)).
