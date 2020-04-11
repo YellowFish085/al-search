@@ -14,7 +14,8 @@
       <h3>Links</h3>
       <div class="links row row--justify-start row--items-center">
         <a href="https://anilist.co" title="Visit AniList" class="anilist"></a>
-        <a href="https://github.com/YellowFish085/anisearch" title="Visit AniSearch repository" class="anisearch"></a>
+        <a href="https://yellowfish085.github.io/anisearch/" title="Visit AniSearch website" class="anisearch"></a>
+        <a href="https://github.com/YellowFish085/anisearch" title="Visit AniSearch repository" class="github"><font-awesome-icon :icon="['fab', 'github']" size="3x" /></a>
       </div>
     </div>
   </div>
@@ -55,6 +56,18 @@ export default class Infos extends Vue {}
 
     &.anisearch {
       background-image: url('../../../public/logo.svg');
+    }
+
+    &.github {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+
+      svg {
+        width: 80%;
+        height: 80%;
+      }
     }
   }
 }
