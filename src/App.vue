@@ -233,6 +233,12 @@ h3 {
   margin-bottom: 10px;
 }
 
+h4 {
+  font-size: 1.2rem;
+  font-style: italic;
+  margin-bottom: 5px;
+}
+
 p {
   color: rgb(var(--color-text-light));
   font-size: 1.2rem;

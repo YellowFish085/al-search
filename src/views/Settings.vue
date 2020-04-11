@@ -21,6 +21,9 @@
 
       <!-- Infos -->
       <Infos />
+
+      <!-- About -->
+      <About />
     </div>
   </section>
   <!-- eslint-enable max-len -->
@@ -28,6 +31,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import About from '@/views/settings/About.vue';
 import ActivitySettings from '@/views/settings/ActivitySettings.vue';
 import Infos from '@/views/settings/Infos.vue';
 import IntegrationSettings from '@/views/settings/IntegrationSettings.vue';
@@ -37,6 +41,7 @@ import UserSettings from '@/views/settings/UserSettings.vue';
 
 @Component({
   components: {
+    About,
     ActivitySettings,
     Infos,
     IntegrationSettings,

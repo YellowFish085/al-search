@@ -10,13 +10,6 @@
       <h3>Activity</h3>
       <p>Search history and visited pages are stored locally, on your browser.</p>
       <p>This means that if you have <b>AniSearch</b> installed in multiple browsers on the same computer, or in multiple browsers on different computers, each <b>AniSearch</b> extension will have its own activity feed.</p>
-
-      <h3>Links</h3>
-      <div class="links row row--justify-start row--items-center">
-        <a href="https://anilist.co" title="Visit AniList" class="anilist"></a>
-        <a href="https://yellowfish085.github.io/anisearch/" title="Visit AniSearch website" class="anisearch"></a>
-        <a href="https://github.com/YellowFish085/anisearch" title="Visit AniSearch repository" class="github"><font-awesome-icon :icon="['fab', 'github']" size="3x" /></a>
-      </div>
     </div>
   </div>
   <!-- eslint-enable max-len -->
@@ -30,45 +23,5 @@ export default class Infos extends Vue {}
 </script>
 
 <style lang="scss" scoped>
-.list {
-  list-style-position: inside;
-  padding-left: 0;
 
-  ul {
-    list-style-position: inside;
-    padding-left: 1rem;
-  }
-}
-
-.links {
-  a {
-    background-color: rgb(var(--color-overlay));
-    background-position: center;
-    background-size: cover;
-    border-radius: 3px;
-    height: 50px;
-    margin-right: 10px;
-    width: 50px;
-
-    &.anilist {
-      background-image: url('https://anilist.co/img/icons/icon.svg');
-    }
-
-    &.anisearch {
-      background-image: url('../../../public/logo.svg');
-    }
-
-    &.github {
-      align-items: center;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-
-      svg {
-        width: 80%;
-        height: 80%;
-      }
-    }
-  }
-}
 </style>
