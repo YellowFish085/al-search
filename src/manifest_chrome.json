@@ -13,7 +13,6 @@
     "identity",
     "notifications",
     "storage",
-    "tabs",
     "*://anilist.co/*",
     "*://graphql.anilist.co/*"
   ],
