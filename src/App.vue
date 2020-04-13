@@ -139,7 +139,7 @@ html {
 }
 
 body {
-  background: rgb(var(--color-background));
+  background: rgb(var(--color-overlay));
   color: rgb(var(--color-text));
   font-family: 'Roboto',
     '-apple-system',
@@ -284,6 +284,7 @@ a {
 }
 
 #app {
+  background: rgb(var(--color-background));
   height: 500px;
   margin-top: 85px;
   overflow-x: hidden;
