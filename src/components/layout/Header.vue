@@ -63,8 +63,9 @@ export default class Header extends Vue {
 <style lang="scss" scoped>
 header {
   background: rgb(var(--color-overlay));
-  height: 50px;
+  height: 85px;
   left: 0;
+  overflow: hidden;
   position: fixed;
   top: 0;
   width: 100%;
