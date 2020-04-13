@@ -18,7 +18,7 @@ import * as Enum from '@/utils/Enum';
 
 @Component
 export default class Item extends Vue {
-  @Prop() data!: AniListSearch.Activity.Activity;
+  @Prop() data!: AniSearch.Activity.Activity;
 
   /**
    * Return title string.

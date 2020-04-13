@@ -50,7 +50,7 @@ export default class ThemeSettings extends Mixins(Vue, MixinChangeTheme) {
   /**
    * Settings from store.
    */
-  @State settings!: AniListSearch.Settings;
+  @State settings!: AniSearch.Settings;
 
   /* Themes */
   themes = Enum.Theme;

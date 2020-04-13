@@ -5,13 +5,13 @@
 
     <div class="container">
       <h3>Legal</h3>
-      <p><b>AniListSearch</b> is an open source project not affiliated with <b>AniList</b>.</p>
+      <p><b>Ani-Search</b> is an open source project not affiliated with <b>AniList</b>.</p>
 
       <h3>Links</h3>
       <p class="links row row--justify-start row--items-center">
         <a href="https://anilist.co" title="Visit AniList" class="anilist"></a>
-        <a href="https://yellowfish085.github.io/anilistsearch/" title="Visit AniListSearch website" class="anilistsearch"></a>
-        <a href="https://github.com/YellowFish085/anilistsearch" title="Visit AniListSearch repository" class="github"><font-awesome-icon :icon="['fab', 'github']" size="3x" /></a>
+        <a href="https://yellowfish085.github.io/ani-search/" title="Visit Ani-Search website" class="ani-search"></a>
+        <a href="https://github.com/YellowFish085/ani-search" title="Visit Ani-Search repository" class="github"><font-awesome-icon :icon="['fab', 'github']" size="3x" /></a>
       </p>
 
       <h3>Build information</h3>
@@ -39,7 +39,7 @@ const browser = require('webextension-polyfill'); // eslint-disable-line
 @Component
 export default class About extends Vue {
   /** Changelog from repository as a JSON. */
-  releases: AniListSearch.Github.Release[] | null = null;
+  releases: AniSearch.Github.Release[] | null = null;
 
   get browser() {
     return browser;
@@ -47,9 +47,9 @@ export default class About extends Vue {
 
   async created() {
     try {
-      const response = await fetch('https://api.github.com/repos/YellowFish085/anilistsearch/releases');
+      const response = await fetch('https://api.github.com/repos/YellowFish085/ani-search/releases');
 
-      this.releases = (await response.json()) as AniListSearch.Github.Release[];
+      this.releases = (await response.json()) as AniSearch.Github.Release[];
     }
     catch (e) {
       console.error(e);
@@ -73,7 +73,7 @@ export default class About extends Vue {
       background-image: url('https://anilist.co/img/icons/icon.svg');
     }
 
-    &.anilistsearch {
+    &.ani-search {
       background-image: url('../../../public/logo.svg');
     }
 

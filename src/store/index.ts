@@ -11,7 +11,7 @@ Vue.use(Vuex);
 /**
  * Default storage state.
  */
-const defaultState: AniListSearch.Store.State = {
+const defaultState: AniSearch.Store.State = {
   initialized: false,
   critError: null,
   settings: {
@@ -38,7 +38,7 @@ const defaultState: AniListSearch.Store.State = {
 export default new Vuex.Store({
   state: defaultState,
   mutations: {
-    init(state: AniListSearch.Store.State, storeData: AniListSearch.Store.State): void {
+    init(state: AniSearch.Store.State, storeData: AniSearch.Store.State): void {
       state.initialized = storeData.initialized;
       state.critError = null;
       state.settings = JSON.parse(JSON.stringify(storeData.settings));
@@ -49,7 +49,7 @@ export default new Vuex.Store({
       state.searchResults = null;
     },
 
-    error(state: AniListSearch.Store.State, error: Error): void {
+    error(state: AniSearch.Store.State, error: Error): void {
       console.error(error);
       state.critError = error;
     },
@@ -58,8 +58,8 @@ export default new Vuex.Store({
      * Update user data.
      */
     setUserData(
-      state: AniListSearch.Store.State,
-      data: { accessToken: string | null; user: AniListSearch.AniList.User | null },
+      state: AniSearch.Store.State,
+      data: { accessToken: string | null; user: AniSearch.AniList.User | null },
     ): void {
       state.accessToken = data.accessToken;
       state.user = JSON.parse(JSON.stringify(data.user));
@@ -68,7 +68,7 @@ export default new Vuex.Store({
     /**
      * Update settings.
      */
-    setSettings(state: AniListSearch.Store.State, settings: AniListSearch.Settings): void {
+    setSettings(state: AniSearch.Store.State, settings: AniSearch.Settings): void {
       state.settings = JSON.parse(JSON.stringify(settings));
     },
 
@@ -76,8 +76,8 @@ export default new Vuex.Store({
      * Update activity feed.
      */
     setActivityFeed(
-      state: AniListSearch.Store.State,
-      activityFeed: AniListSearch.Activity.Activity[] | null,
+      state: AniSearch.Store.State,
+      activityFeed: AniSearch.Activity.Activity[] | null,
     ): void {
       state.activityFeed = activityFeed;
     },
@@ -85,7 +85,7 @@ export default new Vuex.Store({
     /**
      * Update search data.
      */
-    setSearch(state: AniListSearch.Store.State, search: AniListSearch.Search.Search | null): void {
+    setSearch(state: AniSearch.Store.State, search: AniSearch.Search.Search | null): void {
       state.search = JSON.parse(JSON.stringify(search));
     },
 
@@ -93,8 +93,8 @@ export default new Vuex.Store({
      * Update search results.
      */
     setSearchResults(
-      state: AniListSearch.Store.State,
-      data: AniListSearch.Store.SearchResults | null,
+      state: AniSearch.Store.State,
+      data: AniSearch.Store.SearchResults | null,
     ): void {
       state.searchResults = data;
     },
@@ -115,7 +115,7 @@ export default new Vuex.Store({
         // Init settings are not yet stored in storage, save them.
         // This should be done by the background script, but just in case.
         if (!settings) {
-          settings = JSON.parse(JSON.stringify(state.settings)) as AniListSearch.Settings;
+          settings = JSON.parse(JSON.stringify(state.settings)) as AniSearch.Settings;
 
           await StorageHelper.setSettings(settings);
         }
@@ -133,7 +133,7 @@ export default new Vuex.Store({
         }
 
         // Create state.
-        const newState: AniListSearch.Store.State = {
+        const newState: AniSearch.Store.State = {
           initialized: true,
           settings,
           critError: null,
@@ -178,7 +178,7 @@ export default new Vuex.Store({
     /**
      * Update settings.
      */
-    async updateSettings({ commit }, settings: AniListSearch.Settings): Promise<void> {
+    async updateSettings({ commit }, settings: AniSearch.Settings): Promise<void> {
       try {
         // Store new settings in storage.
         await StorageHelper.setSettings(settings);
@@ -215,8 +215,8 @@ export default new Vuex.Store({
     /**
      * Start search from an activity item.
      */
-    searchFromActivity({ commit }, data: AniListSearch.Activity.Activity): void {
-      const search: AniListSearch.Search.Search = {
+    searchFromActivity({ commit }, data: AniSearch.Activity.Activity): void {
+      const search: AniSearch.Search.Search = {
         value: data.value as string,
         type: data.params!.type,
         year: data.params!.year,
@@ -229,7 +229,7 @@ export default new Vuex.Store({
     /**
      * Search results.
      */
-    searchResults({ commit }, data: AniListSearch.Store.SearchResults | null): void {
+    searchResults({ commit }, data: AniSearch.Store.SearchResults | null): void {
       commit('setSearchResults', data);
     },
   },

@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
   "author": "Theo Costantini",
-  "name": "AniListSearch",
+  "name": "Ani-Search",
   "description": "AniList quick search in your browser.",
-  "homepage_url": "https://github.com/YellowFish085/anilistsearch",
+  "homepage_url": "https://github.com/YellowFish085/ani-search",
   "developer": {
     "name": "Theo Costantini",
     "url": "https://github.com/YellowFish085"
@@ -29,11 +29,11 @@
   },
   "chrome_settings_overrides": {
     "search_provider": {
-      "name": "AniListSearch",
+      "name": "Ani-Search",
       "encoding": "UTF-8",
       "search_url": "https://anilist.co/search/anime?sort=SEARCH_MATCH&search={searchTerms}",
       "keyword": "ani",
-      "favicon_url": "https://yellowfish085.github.io/anilistsearch/img/logo.svg",
+      "favicon_url": "https://yellowfish085.github.io/ani-search/img/logo.svg",
       "is_default": false
     }
   },

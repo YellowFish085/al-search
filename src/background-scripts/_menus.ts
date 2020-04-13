@@ -11,42 +11,42 @@ export function toggle(show = true) {
   if (show) {
     // Add contextual menus to quick search selected text on AniList.
     browser.contextMenus.create({
-      id: 'AniListSearch__Anime',
+      id: 'Ani-Search__Anime',
       type: 'normal',
       title: 'AniList anime search for "%s"',
       contexts: ['selection'],
     });
     browser.contextMenus.create({
-      id: 'AniListSearch__Manga',
+      id: 'Ani-Search__Manga',
       type: 'normal',
       title: 'AniList manga search for "%s"',
       contexts: ['selection'],
     });
     browser.contextMenus.create({
-      id: 'AniListSearch__Studios',
+      id: 'Ani-Search__Studios',
       type: 'normal',
       title: 'AniList studios search for "%s"',
       contexts: ['selection'],
     });
     browser.contextMenus.create({
-      id: 'AniListSearch__Characters',
+      id: 'Ani-Search__Characters',
       type: 'normal',
       title: 'AniList characters search for "%s"',
       contexts: ['selection'],
     });
     browser.contextMenus.create({
-      id: 'AniListSearch__Staff',
+      id: 'Ani-Search__Staff',
       type: 'normal',
       title: 'AniList staff search for "%s"',
       contexts: ['selection'],
     });
   }
   else {
-    browser.contextMenus.remove('AniListSearch__Anime');
-    browser.contextMenus.remove('AniListSearch__Manga');
-    browser.contextMenus.remove('AniListSearch__Studios');
-    browser.contextMenus.remove('AniListSearch__Characters');
-    browser.contextMenus.remove('AniListSearch__Staff');
+    browser.contextMenus.remove('Ani-Search__Anime');
+    browser.contextMenus.remove('Ani-Search__Manga');
+    browser.contextMenus.remove('Ani-Search__Studios');
+    browser.contextMenus.remove('Ani-Search__Characters');
+    browser.contextMenus.remove('Ani-Search__Staff');
   }
 }
 
@@ -57,23 +57,23 @@ export async function init() {
     let url = `?sort=SEARCH_MATCH&search=${value}`;
 
     switch (info.menuItemId) {
-      case 'AniListSearch__Anime':
+      case 'Ani-Search__Anime':
         url = `${process.env.VUE_APP_ANILIST_ANIME_URL}${url}`;
         break;
 
-      case 'AniListSearch__Manga':
+      case 'Ani-Search__Manga':
         url = `${process.env.VUE_APP_ANILIST_MANGA_URL}${url}`;
         break;
 
-      case 'AniListSearch__Studios':
+      case 'Ani-Search__Studios':
         url = `${process.env.VUE_APP_ANILIST_STUDIOS_URL}${url}`;
         break;
 
-      case 'AniListSearch__Characters':
+      case 'Ani-Search__Characters':
         url = `${process.env.VUE_APP_ANILIST_CHARACTERS_URL}${url}`;
         break;
 
-      case 'AniListSearch__Staff':
+      case 'Ani-Search__Staff':
         url = `${process.env.VUE_APP_ANILIST_STAFF_URL}${url}`;
         break;
 

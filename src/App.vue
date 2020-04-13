@@ -36,7 +36,7 @@ import Notifications from '@/components/ui/Notifications.vue';
   },
 })
 export default class App extends Mixins(Vue, MixinChangeTheme) {
-  @State('settings') settings!: AniListSearch.Settings;
+  @State('settings') settings!: AniSearch.Settings;
 
   /**
    * Store is initialized.
@@ -56,8 +56,8 @@ export default class App extends Mixins(Vue, MixinChangeTheme) {
 
   @Watch('settings')
   onSettingsChanged(
-    newValue: AniListSearch.Settings | null,
-    oldValue: AniListSearch.Settings | null,
+    newValue: AniSearch.Settings | null,
+    oldValue: AniSearch.Settings | null,
   ) {
     if (!newValue) return;
 

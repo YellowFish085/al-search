@@ -6,7 +6,7 @@ const browser = require('webextension-polyfill'); // eslint-disable-line
 function create(id: string, message: string) {
   browser.notifications.create(id, {
     type: 'basic',
-    title: 'AniListSearch',
+    title: 'Ani-Search',
     iconUrl: browser.extension.getURL('img/logo.svg'),
     message,
   });
