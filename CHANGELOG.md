@@ -1,10 +1,16 @@
 # Changelog
 
-## v1.0.2
+## v1.0.3 (13/04/2020)
+
+- [Remove] Removed search provider for Chrome (47597b6)
+- [Remove] Removed unused tabs permission (8add3ee)
+- Renamed (once again) extension to Ani-Search
+
+## v1.0.2 (11/04/2020)
 
 - Renamed extension to AniListSearch
 
-## v1.0.1
+## v1.0.1 (11/04/2020)
 
 - [Add] Added enums strings (d9204fc)
 - [Change] Changed used images in certain parts of the extension (33b61cd)
@@ -14,6 +20,6 @@
 - Various css changes
 
 
-## v1.0.0
+## v1.0.0 (11/04/2020)
 
 - Initial release
