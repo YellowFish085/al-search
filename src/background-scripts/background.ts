@@ -44,7 +44,7 @@ function handleMessage(request: any, sender: any, sendResponse: Function) { // e
       break;
 
     case 'SAVE_ACTIVITY':
-      Activity.saveActivity(request.data as AniListSearch.Activity.Activity, sendResponse);
+      Activity.saveActivity(request.data as AniSearch.Activity.Activity, sendResponse);
       break;
 
       /**
@@ -52,7 +52,7 @@ function handleMessage(request: any, sender: any, sendResponse: Function) { // e
      */
 
     case 'SEARCH':
-      Search.search(request.data as AniListSearch.Search.Search, sendResponse);
+      Search.search(request.data as AniSearch.Search.Search, sendResponse);
       break;
 
     default:
@@ -73,7 +73,7 @@ async function init() {
   try {
     // Init settings in storage if not yet present.
     if (!await StorageHelper.getSettings()) {
-      const settings: AniListSearch.Settings = {
+      const settings: AniSearch.Settings = {
         activity: {
           search: true,
           visitedPages: true,

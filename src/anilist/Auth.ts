@@ -40,10 +40,10 @@ export default class Auth {
   }
 
   /**
-   * Check if an access token is usable by AniListSearch.
+   * Check if an access token is usable by Ani-Search.
    * If the token is usable, return the user data.
    */
-  private async checkAccessToken(accessToken: string): Promise<AniListSearch.AniList.User> {
+  private async checkAccessToken(accessToken: string): Promise<AniSearch.AniList.User> {
     const anilist = new AniList(accessToken);
 
     return anilist.user();
@@ -59,7 +59,7 @@ export default class Auth {
   /**
    * Store user data in local storage.
    */
-  private storeUser(user: AniListSearch.AniList.User): Promise<void> {
+  private storeUser(user: AniSearch.AniList.User): Promise<void> {
     return StorageHelper.setUser(user);
   }
 

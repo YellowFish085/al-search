@@ -45,14 +45,14 @@ class StorageHelper {
   /**
    * Store settings.
    */
-  setSettings(settings: AniListSearch.Settings): Promise<void> {
+  setSettings(settings: AniSearch.Settings): Promise<void> {
     return this.set(this.keys.settings, settings);
   }
 
   /**
    * Get settings from storage.
    */
-  getSettings(): Promise<AniListSearch.Settings | null> {
+  getSettings(): Promise<AniSearch.Settings | null> {
     return this.get(this.keys.settings);
   }
 
@@ -88,7 +88,7 @@ class StorageHelper {
   /**
    * Store user.
    */
-  setUser(user: AniListSearch.AniList.User): Promise<void> {
+  setUser(user: AniSearch.AniList.User): Promise<void> {
     return this.set(this.keys.user, user);
   }
 
@@ -102,7 +102,7 @@ class StorageHelper {
   /**
    * Get user from storage.
    */
-  getUser(): Promise<AniListSearch.AniList.User | null> {
+  getUser(): Promise<AniSearch.AniList.User | null> {
     return this.get(this.keys.user);
   }
 
@@ -113,14 +113,14 @@ class StorageHelper {
   /**
    * Store activity feed.
    */
-  setActivityFeed(activityFeed: AniListSearch.Activity.Activity[]): Promise<void> {
+  setActivityFeed(activityFeed: AniSearch.Activity.Activity[]): Promise<void> {
     return this.set(this.keys.activityFeed, activityFeed);
   }
 
   /**
    * Get activity feed from storage.
    */
-  getActivityFeed(): Promise<AniListSearch.Activity.Activity[] | null> {
+  getActivityFeed(): Promise<AniSearch.Activity.Activity[] | null> {
     return this.get(this.keys.activityFeed);
   }
 }

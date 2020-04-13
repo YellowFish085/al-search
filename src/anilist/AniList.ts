@@ -28,7 +28,7 @@ export default class AniList {
   /**
    * Get authenticated user data.
    */
-  public async user(): Promise<AniListSearch.AniList.User> {
+  public async user(): Promise<AniSearch.AniList.User> {
     try {
       const response = await fetch(process.env.VUE_APP_ANILIST_GRAPHQL_URL, {
         method: 'POST',
@@ -42,7 +42,7 @@ export default class AniList {
 
       // Do we have the user data in the response?
       if (body.data && body.data.Viewer && UserSchemaCheck(body.data.Viewer)) {
-        return body.data.Viewer as AniListSearch.AniList.User;
+        return body.data.Viewer as AniSearch.AniList.User;
       }
 
       throw new Error(`AniList request failed: Response does not contains user data. Response: ${JSON.stringify(body)}`);
@@ -56,9 +56,9 @@ export default class AniList {
    * Search something on AniList.
    */
   public async search(
-    variables: AniListSearch.Search.Search,
+    variables: AniSearch.Search.Search,
     onList = false,
-  ): Promise<AniListSearch.Search.Results> {
+  ): Promise<AniSearch.Search.Results> {
     // Get correct query based on search type.
     const query = QueriesSearch[variables.type];
 

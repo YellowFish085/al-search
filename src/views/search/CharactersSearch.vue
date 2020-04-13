@@ -27,7 +27,7 @@ import CardCharacter from '@/components/search/cards/Character.vue';
   },
 })
 export default class CharactersSearch extends Vue {
-  @Prop() results!: AniListSearch.Store.SearchResults | null;
+  @Prop() results!: AniSearch.Store.SearchResults | null;
 
   /**
    * Get list to display.

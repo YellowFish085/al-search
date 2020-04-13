@@ -33,18 +33,18 @@ export default class MediaSearch extends Vue {
   /**
    * Settings from store.
    */
-  @State settings!: AniListSearch.Settings;
+  @State settings!: AniSearch.Settings;
 
   /**
    * User from store.
    */
-  @State user!: AniListSearch.AniList.User | null;
+  @State user!: AniSearch.AniList.User | null;
 
   /**
    * Search from state.
    */
 
-  @Prop() results!: AniListSearch.Store.SearchResults | null;
+  @Prop() results!: AniSearch.Store.SearchResults | null;
 
   /**
    * Get list order string.

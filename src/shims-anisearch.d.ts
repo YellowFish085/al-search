@@ -1,6 +1,6 @@
 import * as Enum from '@/utils/Enum';
 
-export as namespace AniListSearch;
+export as namespace AniSearch;
 
 /**
  * App settings.
@@ -30,8 +30,8 @@ export namespace Store {
   export interface SearchResults {
     loading: boolean;
     type: Enum.SearchType;
-    results?: AniListSearch.Search.Results;
-    resultsOnList?: AniListSearch.Search.Results;
+    results?: AniSearch.Search.Results;
+    resultsOnList?: AniSearch.Search.Results;
   }
 
   /**
@@ -42,10 +42,10 @@ export namespace Store {
     critError: Error | null;
     settings: Settings;
     accessToken: string | null;
-    user: AniListSearch.AniList.User | null;
-    activityFeed: AniListSearch.Activity.Activity[] | null;
-    search: AniListSearch.Search.Search | null;
-    searchResults: AniListSearch.Store.SearchResults | null;
+    user: AniSearch.AniList.User | null;
+    activityFeed: AniSearch.Activity.Activity[] | null;
+    search: AniSearch.Search.Search | null;
+    searchResults: AniSearch.Store.SearchResults | null;
   }
 }
 
@@ -116,7 +116,7 @@ export namespace AniList {
     name: string;
     media: {
       edges: {
-        node: AniListSearch.AniList.Media;
+        node: AniSearch.AniList.Media;
       }[];
     };
   }
@@ -179,10 +179,10 @@ export namespace Search {
   /**
    * Search results.
    */
-  export type Results = AniListSearch.AniList.Media[]
-    | AniListSearch.AniList.Studio[]
-    | AniListSearch.AniList.Character[]
-    | AniListSearch.AniList.Staff[];
+  export type Results = AniSearch.AniList.Media[]
+    | AniSearch.AniList.Studio[]
+    | AniSearch.AniList.Character[]
+    | AniSearch.AniList.Staff[];
 }
 
 /**

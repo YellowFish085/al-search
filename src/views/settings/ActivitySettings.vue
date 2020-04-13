@@ -24,7 +24,7 @@
           </div>
           <ButtonClear />
         </div>
-        <p><b>AniListSearch</b> can save your search history and visited pages (anime, manga, studio, character and staff). This is here to help you quickly go back to a previous search or a previously visited page.</p>
+        <p><b>Ani-Search</b> can save your search history and visited pages (anime, manga, studio, character and staff). This is here to help you quickly go back to a previous search or a previously visited page.</p>
       </div>
   </div>
   <!-- eslint-enable max-len -->
@@ -44,7 +44,7 @@ export default class ActivitySettings extends Vue {
   /**
    * Settings from store.
    */
-  @State settings!: AniListSearch.Settings;
+  @State settings!: AniSearch.Settings;
 
   get search(): boolean {
     return this.settings.activity.search;

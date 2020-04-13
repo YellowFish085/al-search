@@ -5,13 +5,13 @@ import * as Enum from '@/utils/Enum';
 /**
  * Search something on AniList.
  */
-async function search(variables: AniListSearch.Search.Search, sendResponse: Function) {
+async function search(variables: AniSearch.Search.Search, sendResponse: Function) {
   try {
     const accessToken = await StorageHelper.getAccessToken();
     const user = await StorageHelper.getUser();
     const client = new AniList(accessToken);
 
-    const searchResult: AniListSearch.Store.SearchResults = {
+    const searchResult: AniSearch.Store.SearchResults = {
       loading: false,
       type: variables.type,
       results: await client.search(variables),
