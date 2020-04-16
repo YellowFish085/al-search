@@ -5,7 +5,7 @@
 <hr>
 
 <p align="center">Ani-Search is an unofficial browser extension for AniList which allows you to quickly search information on AniList.</p>
-<p align="center">The extension is available on <a href="https://addons.mozilla.org/en-US/firefox/addon/ani-search/" title="See Ani-Search on Firefox">Firefox</a> and <a href="" title="See Ani-Search on Chrome">Chrome</a>.</p>
+<p align="center">The extension is available on <a href="https://addons.mozilla.org/en-US/firefox/addon/ani-search/" title="See Ani-Search on Firefox">Firefox</a> and <a href="https://chrome.google.com/webstore/detail/cfgahmhilacehicbomiciimpemjhpalc" title="See Ani-Search on Chrome">Chrome</a>.</p>
 
 <br>
 
