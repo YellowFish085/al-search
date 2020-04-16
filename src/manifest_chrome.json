@@ -6,7 +6,8 @@
   "homepage_url": "https://github.com/YellowFish085/ani-search",
   "icons": {
     "48": "logo-48.png",
-    "96": "logo-96.png"
+    "96": "logo-96.png",
+    "128": "logo-128.png"
   },
   "permissions": [
     "contextMenus",
