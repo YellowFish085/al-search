@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.0.4 (16/04/2020)
+
+- [Fix] Fixed header height (54739bc)
+- [Fix] Fixed Firefox popup arrow color (3323b91)
+- [Add] Added logo 128 (0e8bf4e)
+
 ## v1.0.3 (13/04/2020)
 
 - [Remove] Removed search provider for Chrome (47597b6)
