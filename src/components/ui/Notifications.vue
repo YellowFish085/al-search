@@ -21,6 +21,10 @@
 </template>
 
 <style lang="scss" scoped>
+.notification-group {
+  z-index: 9999;
+}
+
 .notification {
   background-color: rgb(var(--color-foreground));
   border-radius: 3px;
