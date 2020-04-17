@@ -21,7 +21,7 @@
                  v-model="menusEnabled">
           <label for="settings__integration__menus_enabled">Enable contextual menus</label>
         </div>
-        <p><b>Ani-Search</b> adds contextual actions to quickly execute a search a selected text on a page.</p>
+        <p><b>Ani-Search</b> adds contextual actions to quickly search the selected text on a page.</p>
       </div>
   </div>
   <!-- eslint-enable max-len -->

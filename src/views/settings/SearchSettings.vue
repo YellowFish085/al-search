@@ -14,7 +14,7 @@
                      v-model="onListFirst">
               <label for="settings__activity__onListFirst">Display search from your list first</label>
             </div>
-            <p>Wether to display search results from your personal lists or global search results first</p>
+            <p>Wether to display search results from your personal lists or global search results first.</p>
           </div>
         </div>
       </div>
