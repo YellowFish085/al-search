@@ -92,7 +92,7 @@ async function init() {
     }
   }
   catch (e) {
-    Notifications.create('init_failed', `Init failed: ${e.message}`);
+    Notifications.create('init_failed', browser.i18n.getMessage('E_InitFailed', e.message));
   }
 
   // Init contextual menus.

@@ -1,10 +1,11 @@
 import { Component, Mixins, Vue } from 'vue-property-decorator';
+import MixinI18n from '@/mixins/I18n';
 import MixinNotify from '@/mixins/Notify';
 
 const browser = require('webextension-polyfill'); // eslint-disable-line
 
 @Component
-export default class SaveActivity extends Mixins(Vue, MixinNotify) {
+export default class SaveActivity extends Mixins(Vue, MixinI18n, MixinNotify) {
   /**
    * Save activity asynchronously.
    */
@@ -15,7 +16,7 @@ export default class SaveActivity extends Mixins(Vue, MixinNotify) {
     });
 
     if (response.code !== 'SAVE_ACTIVITY_SUCCESS') {
-      this.notify('error', 'Failed to save activity:', response.message);
+      this.notify('error', this.i18n('S_Error'), response.message);
       return;
     }
 

@@ -1,7 +1,7 @@
 <template>
   <!-- eslint-disable max-len -->
   <div>
-    <h2>Integration</h2>
+    <h2>{{ i18n('S_Integration') }}</h2>
 
     <div class="container">
       <div class="col col--justify-start col--items-start">
@@ -19,22 +19,23 @@
                  name="menus_enabled"
                  id="settings__integration__menus_enabled"
                  v-model="menusEnabled">
-          <label for="settings__integration__menus_enabled">Enable contextual menus</label>
+          <label for="settings__integration__menus_enabled">{{ i18n('S_EnableContextualMenus') }}</label>
         </div>
-        <p><b>Ani-Search</b> adds contextual actions to quickly search the selected text on a page.</p>
+        <p v-html="i18n('S_EnableContextualMenusDescription')"></p>
       </div>
   </div>
   <!-- eslint-enable max-len -->
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Mixins, Vue } from 'vue-property-decorator';
 import { State } from 'vuex-class';
+import MixinI18n from '@/mixins/I18n';
 
 const browser = require('webextension-polyfill') // eslint-disable-line
 
 @Component
-export default class IntegrationSettings extends Vue {
+export default class IntegrationSettings extends Mixins(Vue, MixinI18n) {
   /**
    * Settings from store.
    */

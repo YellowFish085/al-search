@@ -125,10 +125,7 @@ export default new Vuex.Store({
           const response = await browser.runtime.sendMessage({ code: 'USER_REFRESH' });
 
           if (response.code === 'USER_REFRESH_FAILED') {
-            Notifications.create(
-              'auth_failed',
-              'We couldn\'t get your account information, your token might be invalid. Please login again.',
-            );
+            Notifications.create('auth_failed', browser.i18n.getMessage('E_UserRefreshFailed'));
           }
         }
 

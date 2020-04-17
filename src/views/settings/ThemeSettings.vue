@@ -1,7 +1,7 @@
 <template>
   <!-- eslint-disable max-len -->
   <div>
-    <h2>Theme</h2>
+    <h2>{{ i18n('S_Theme') }}</h2>
 
     <div class="container">
       <div class="col col--justify-start col--items-start">
@@ -13,19 +13,19 @@
                          type="radio"
                          :id="`search_type_${themes.DEFAULT}`"
                          @change="$emit('update:value', $event.target.value)">
-                  <label :for="`search_type_${themes.DEFAULT}`" class="default" title="Default theme">A</label>
+                  <label :for="`search_type_${themes.DEFAULT}`" class="default" :title="i18n('S_ThemeDefault')">A</label>
                   <input v-model="theme"
                          :value="themes.DARK"
                          type="radio"
                          :id="`search_type_${themes.DARK}`"
                          @change="$emit('update:value', $event.target.value)">
-                  <label :for="`search_type_${themes.DARK}`" class="dark" title="Dark theme">A</label>
+                  <label :for="`search_type_${themes.DARK}`" class="dark" :title="i18n('S_ThemeDark')">A</label>
                   <input v-model="theme"
                          :value="themes.CONTRAST"
                          type="radio"
                          :id="`search_type_${themes.CONTRAST}`"
                          @change="$emit('update:value', $event.target.value)">
-                  <label :for="`search_type_${themes.CONTRAST}`" class="contrast" title="Contrast theme">A</label>
+                  <label :for="`search_type_${themes.CONTRAST}`" class="contrast" :title="i18n('S_ThemeContrast')">A</label>
             </div>
           </div>
         </div>
@@ -40,13 +40,14 @@ import { State } from 'vuex-class';
 import * as Enum from '@/utils/Enum';
 import ButtonClear from '@/components/activity/ButtonClear.vue';
 import MixinChangeTheme from '@/mixins/Theme';
+import MixinI18n from '@/mixins/I18n';
 
 @Component({
   components: {
     ButtonClear,
   },
 })
-export default class ThemeSettings extends Mixins(Vue, MixinChangeTheme) {
+export default class ThemeSettings extends Mixins(Vue, MixinChangeTheme, MixinI18n) {
   /**
    * Settings from store.
    */

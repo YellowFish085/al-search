@@ -2,7 +2,7 @@
   <!-- eslint-disable max-len -->
   <div v-if="data" class="card card--media" :style="{ '--media-color': data.coverImage.color }">
     <a :href="data.siteUrl"
-       :title="`See ${data.title.userPreferred} on AniList`"
+       :title="i18n('S_SeeOnAnilist', data.title.userPreferred)"
        class="cover col col--justify-end"
        :style="{ 'background-image': `url(${data.coverImage.large})` }"
        @click="handleClick">
@@ -16,7 +16,7 @@
            @click="handleClick">{{ data.title.userPreferred }}</a>
         <div v-if="studio" class="subtitle w-full">
           <a :href="studio.siteUrl"
-             :title="`See ${studio.name} on AniList`">{{ studio.name }}</a>
+             :title="i18n('S_SeeOnAnilist', studio.name)">{{ studio.name }}</a>
         </div>
       </div>
     </a>
@@ -57,10 +57,11 @@ import {
 } from 'vue-property-decorator';
 import { State } from 'vuex-class';
 import * as Enum from '@/utils/Enum';
+import MixinI18n from '@/mixins/I18n';
 import MixinSaveActivity from '@/mixins/Activity';
 
 @Component
-export default class Media extends Mixins(Vue, MixinSaveActivity) {
+export default class Media extends Mixins(Vue, MixinI18n, MixinSaveActivity) {
   @State('settings') settings!: AniSearch.Settings;
 
   @Prop() readonly data?: AniSearch.AniList.Media;
@@ -76,7 +77,7 @@ export default class Media extends Mixins(Vue, MixinSaveActivity) {
 
     if (this.data!.nextAiringEpisode) str = `Ep ${this.data!.nextAiringEpisode.episode} - ${this.timeUntilAiring()}`;
     else if (this.data!.type === this.types.MANGA) str = this.startDate();
-    else if (this.data!.season) str = `${this.data!.season.toLowerCase()} ${this.data!.startDate.year}`;
+    else if (this.data!.season) str = `${this.i18n(`ENUM_${this.data!.season}`)} ${this.data!.startDate.year}`;
 
     return str;
   }

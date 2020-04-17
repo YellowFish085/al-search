@@ -2,11 +2,13 @@
   <!-- eslint-disable max-len -->
   <div v-if="data" class="card card--person" >
     <a :href="data.siteUrl"
+      :title="i18n('S_SeeOnAnilist', data.name.full)"
        class="cover col col--justify-end h-full w-full"
        :style="{ 'background-image' : `url(${data.image.large})` }"
        @click="onClick">
       <div class="overlay w-full">
         <a :href="data.siteUrl"
+           :title="i18n('S_SeeOnAnilist', data.name.full)"
            class="title w-full"
            @click="onClick">{{ data.name.full }}</a>
       </div>
@@ -24,10 +26,16 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import {
+  Component,
+  Mixins,
+  Prop,
+  Vue,
+} from 'vue-property-decorator';
+import MixinI18n from '@/mixins/I18n';
 
 @Component
-export default class Person extends Vue {
+export default class Person extends Mixins(Vue, MixinI18n) {
   @Prop() readonly data!: AniSearch.AniList.Character | AniSearch.AniList.Staff;
 
   /**

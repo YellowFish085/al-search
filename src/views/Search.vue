@@ -1,7 +1,7 @@
 <template>
   <section class="search-results-wrapper vw" :class="{ loading: !results || results.loading }">
     <div class="wrapper">
-      <h1>Search results</h1>
+      <h1>{{ i18n('S_SearchResults') }}</h1>
 
       <!-- Anime & Manga search results -->
       <MediaSearch v-if="[types.ANIME, types.MANGA].includes(results.type)" :results="results" />
@@ -18,11 +18,12 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Mixins, Vue } from 'vue-property-decorator';
 import { State } from 'vuex-class';
 import * as Enum from '@/utils/Enum';
 import CharactersSearch from '@/views/search/CharactersSearch.vue';
 import MediaSearch from '@/views/search/MediaSearch.vue';
+import MixinI18n from '@/mixins/I18n';
 import StaffSearch from '@/views/search/StaffSearch.vue';
 import StudiosSearch from '@/views/search/StudiosSearch.vue';
 
@@ -34,7 +35,7 @@ import StudiosSearch from '@/views/search/StudiosSearch.vue';
     StudiosSearch,
   },
 })
-export default class Search extends Vue {
+export default class Search extends Mixins(Vue, MixinI18n) {
   @State('searchResults') results!: AniSearch.Store.SearchResults | null;
 
   /** Search types. */

@@ -13,11 +13,17 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import {
+  Component,
+  Mixins,
+  Prop,
+  Vue,
+} from 'vue-property-decorator';
 import * as Enum from '@/utils/Enum';
+import MixinsI18n from '@/mixins/I18n';
 
 @Component
-export default class Item extends Vue {
+export default class Item extends Mixins(Vue, MixinsI18n) {
   @Prop() data!: AniSearch.Activity.Activity;
 
   /**
@@ -26,10 +32,10 @@ export default class Item extends Vue {
   get title(): string {
     switch (this.data.type) {
       case Enum.ActivityType.SEARCH:
-        return `Search for ${this.data.value}`;
+        return this.i18n('S_SearchFor', this.data.value);
 
       case Enum.ActivityType.VISITED_PAGE:
-        return `See ${this.data.label} on AniList`;
+        return this.i18n('S_SeeOnAniList', this.data.label);
 
       default:
         return '';
@@ -61,13 +67,13 @@ export default class Item extends Vue {
     const parts = [];
 
     // Add type part.
-    parts.push(Enum.Strings[this.data.params!.type]);
+    parts.push(this.i18n(`ENUM_${this.data.params!.type}`));
 
     // Add year part if present.
     if (this.data.params!.year) parts.push(this.data.params!.year);
 
     // Add season part if present.
-    if (this.data.params!.season) parts.push(Enum.Strings[this.data.params!.season]);
+    if (this.data.params!.season) parts.push(this.i18n(`ENUM_${this.data.params!.season}`));
 
     return parts.join(' / ');
   }

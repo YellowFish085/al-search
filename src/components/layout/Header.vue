@@ -6,10 +6,10 @@
         <div class="btn h-full w-full">
           <transition name="translate-small">
             <router-link to="/settings" v-if="!isSettingsPage" key="settings" class="h-full w-full row row--justify-center row--items-center">
-              <ButtonIcon icon="cogs" title="Settings" size="lg" />
+              <ButtonIcon icon="cogs" :title="i18n('S_Settings')" size="lg" />
             </router-link>
             <router-link to="/" v-else key="back" class="h-full w-full row row--justify-center row--items-center">
-              <ButtonIcon icon="chevron-left" title="Back to home" size="lg" />
+              <ButtonIcon icon="chevron-left" :title="i18n('S_BackToHome')" size="lg" />
             </router-link>
           </transition>
         </div>
@@ -28,8 +28,9 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Mixins, Vue } from 'vue-property-decorator';
 import ButtonIcon from '@/components/ui/buttons/ButtonIcon.vue';
+import MixinI18n from '@/mixins/I18n';
 import SearchForm from '@/components/search/SearchForm.vue';
 import SeeMyProfileButton from '@/components/auth/SeeMyProfileButton.vue';
 
@@ -40,7 +41,7 @@ import SeeMyProfileButton from '@/components/auth/SeeMyProfileButton.vue';
     SeeMyProfileButton,
   },
 })
-export default class Header extends Vue {
+export default class Header extends Mixins(Vue, MixinI18n) {
   /** Searching? */
   isSearching = false;
 

@@ -20,16 +20,22 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import {
+  Component,
+  Mixins,
+  Prop,
+  Vue,
+} from 'vue-property-decorator';
 import { State } from 'vuex-class';
 import CardMedia from '@/components/search/cards/Media.vue';
+import MixinI18n from '@/mixins/I18n';
 
 @Component({
   components: {
     CardMedia,
   },
 })
-export default class MediaSearch extends Vue {
+export default class MediaSearch extends Mixins(Vue, MixinI18n) {
   /**
    * Settings from store.
    */
@@ -51,7 +57,7 @@ export default class MediaSearch extends Vue {
    */
   get listsOrder() {
     if (this.user) {
-      return this.settings.search.onListFirst ? 'Results from your list first' : 'Global results first';
+      return this.settings.search.onListFirst ? this.i18n('S_ResultsOnListFirst') : this.i18n('S_ResultsGlobalFirst');
     }
 
     // If user not logged in, don't display content.

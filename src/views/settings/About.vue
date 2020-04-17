@@ -1,24 +1,24 @@
 <template>
   <!-- eslint-disable max-len -->
   <div>
-    <h2>About</h2>
+    <h2>{{ i18n('S_About') }}</h2>
 
     <div class="container">
-      <h3>Legal</h3>
-      <p><b>Ani-Search</b> is an open source project not affiliated with <b>AniList</b>.</p>
+      <h3>{{ i18n('S_Legal') }}</h3>
+      <p v-html="i18n('S_LegalDescription')"></p>
 
-      <h3>Links</h3>
+      <h3>{{ i18n('S_Links') }}</h3>
       <p class="links row row--justify-start row--items-center">
-        <a href="https://anilist.co" title="Visit AniList" class="anilist"></a>
-        <a href="https://yellowfish085.github.io/ani-search/" title="Visit Ani-Search website" class="ani-search"></a>
-        <a href="https://github.com/YellowFish085/ani-search" title="Visit Ani-Search repository" class="github"><font-awesome-icon :icon="['fab', 'github']" size="3x" /></a>
+        <a href="https://anilist.co" :title="i18n('S_VisitWebsite', 'AniList')" class="anilist"></a>
+        <a href="https://yellowfish085.github.io/ani-search/" :title="i18n('S_VisitWebsite', 'Ani-Search')" class="ani-search"></a>
+        <a href="https://github.com/YellowFish085/ani-search" :title="i18n('S_VisitRepository', 'Ani-Search')" class="github"><font-awesome-icon :icon="['fab', 'github']" size="3x" /></a>
       </p>
 
-      <h3>Build information</h3>
-      <h4>Version</h4>
+      <h3>{{ i18n('S_BuildInformation') }}</h3>
+      <h4>{{ i18n('S_CurrentVersion') }}</h4>
       <p> v{{ browser.runtime.getManifest().version }}</p>
 
-      <h4>Changelog</h4>
+      <h4>{{ i18n('S_Changelog') }}</h4>
       <div class="releases">
         <div v-for="release in releases" :key="release" class="release">
           <p class="version">{{ release.tag_name }}</p>
@@ -32,12 +32,13 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Mixins, Vue } from 'vue-property-decorator';
+import MixinI18n from '@/mixins/I18n';
 
 const browser = require('webextension-polyfill'); // eslint-disable-line
 
 @Component
-export default class About extends Vue {
+export default class About extends Mixins(Vue, MixinI18n) {
   /** Changelog from repository as a JSON. */
   releases: AniSearch.Github.Release[] | null = null;
 

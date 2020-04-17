@@ -75,6 +75,16 @@ module.exports = {
       ],
     ]);
 
+    // Copy locales.
+    config.plugin('copy-locales').use(CopyWebpackPlugin, [
+      [
+        {
+          from: './src/_locales',
+          to: '_locales',
+        },
+      ],
+    ]);
+
     // Add background & content scripts to build list.
     config.merge({ entry });
 

@@ -15,7 +15,7 @@
           <div v-for="studio in list" :key="studio.id">
             <p>
               <a :href="studio.siteUrl"
-                :title="`See ${studio.name} on AniList`"
+                :title="i18n('S_SeeOnAnilist', studio.name)"
                 :data-url="studio.siteUrl"
                 :data-label="studio.name"
                 class="studio-link"
@@ -27,7 +27,7 @@
             <div class="grid grid--media w-full">
               <CardMedia v-for="media in studio.media.edges" :key="media.node.id" :data="media.node" />
               <div v-if="studio.media.edges.length <= 0">
-                <p>No media to preview for this studio.</p>
+                <p>{{ i18n('S_NoMediaForStudio') }}</p>
               </div>
             </div>
           </div>
@@ -48,6 +48,7 @@ import {
 import { State } from 'vuex-class';
 import CardMedia from '@/components/search/cards/Media.vue';
 import * as Enum from '@/utils/Enum';
+import MixinI18n from '@/mixins/I18n';
 import MixinSaveActivity from '@/mixins/Activity';
 
 @Component({
@@ -55,7 +56,7 @@ import MixinSaveActivity from '@/mixins/Activity';
     CardMedia,
   },
 })
-export default class StudiosSearch extends Mixins(Vue, MixinSaveActivity) {
+export default class StudiosSearch extends Mixins(Vue, MixinI18n, MixinSaveActivity) {
   @State('settings') settings!: AniSearch.Settings;
 
   @Prop() results!: AniSearch.Store.SearchResults | null;

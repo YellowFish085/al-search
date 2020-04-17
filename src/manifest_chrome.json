@@ -1,14 +1,15 @@
 {
   "manifest_version": 2,
   "author": "Theo Costantini",
-  "name": "Ani-Search",
-  "description": "AniList quick search in your browser.",
+  "name": "__MSG_APP_Name__",
+  "description": "__MSG_APP_Description__",
   "homepage_url": "https://github.com/YellowFish085/ani-search",
   "icons": {
     "48": "logo-48.png",
     "96": "logo-96.png",
     "128": "logo-128-padded.png"
   },
+  "default_locale": "en",
   "permissions": [
     "contextMenus",
     "identity",

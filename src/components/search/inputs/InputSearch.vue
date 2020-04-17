@@ -3,7 +3,7 @@
     <!-- Clear search input button -->
     <div class="clear h-full" :class="{ active: value !== '' }">
       <div class="h-full row row--justify-center row--items-center">
-        <ButtonIcon icon="times" title="Clear" size="sm" :onClick="handleClearClick" />
+        <ButtonIcon icon="times" :title="i18n('S_Clear')" size="sm" :onClick="handleClearClick" />
       </div>
     </div>
 
@@ -15,7 +15,7 @@
           id="search"
           class="input h-full w-full"
           :class="{ disabled: disabled }"
-          placeholder="Search..."
+          :placeholder="i18n('S_SearchPlaceholder')"
           :disabled="disabled"
           @input="handleSearch"
           @keyup.enter="emitUpdate"
@@ -28,15 +28,21 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import {
+  Component,
+  Mixins,
+  Prop,
+  Vue,
+} from 'vue-property-decorator';
 import ButtonIcon from '@/components/ui/buttons/ButtonIcon.vue';
+import MixinI18n from '@/mixins/I18n';
 
 @Component({
   components: {
     ButtonIcon,
   },
 })
-export default class InputSearch extends Vue {
+export default class InputSearch extends Mixins(Vue, MixinI18n) {
   /** Value */
   @Prop(String) value?: number | null;
 

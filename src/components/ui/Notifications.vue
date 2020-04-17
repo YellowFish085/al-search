@@ -7,7 +7,7 @@
           <div class="title">
             <span>{{ props.item.title }}</span>
           </div>
-          <div class="close" title="Close notification" @click="props.close" >
+          <div class="close" @click="props.close" >
             <font-awesome-icon :icon="['fas', 'times']" size="sm" />
           </div>
         </div>

@@ -54,6 +54,7 @@ import InputSearch from '@/components/search/inputs/InputSearch.vue';
 import InputSeason from '@/components/search/inputs/InputSeason.vue';
 import InputType from '@/components/search/inputs/InputType.vue';
 import InputYear from '@/components/search/inputs/InputYear.vue';
+import MixinI18n from '@/mixins/I18n';
 import MixinNotify from '@/mixins/Notify';
 import MixinSaveActivity from '@/mixins/Activity';
 
@@ -67,7 +68,7 @@ const browser = require('webextension-polyfill') // eslint-disable-line
     InputYear,
   },
 })
-export default class SearchForm extends Mixins(Vue, MixinNotify, MixinSaveActivity) {
+export default class SearchForm extends Mixins(Vue, MixinI18n, MixinNotify, MixinSaveActivity) {
   @State('settings') settings!: AniSearch.Settings;
 
   @State('search') storeSearch!: AniSearch.Search.Search | null;
@@ -192,7 +193,7 @@ export default class SearchForm extends Mixins(Vue, MixinNotify, MixinSaveActivi
 
       case 'SEARCH_FAILED':
       default:
-        this.notify('error', 'Failed to search on AniList:', response.message);
+        this.notify('error', this.i18n('S_Error'), response.message);
         break;
     }
 

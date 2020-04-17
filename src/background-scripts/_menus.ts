@@ -13,31 +13,31 @@ export function toggle(show = true) {
     browser.contextMenus.create({
       id: 'Ani-Search__Anime',
       type: 'normal',
-      title: 'AniList anime search for "%s"',
+      title: browser.i18n.getMessage('MENUS_SearchAnime'),
       contexts: ['selection'],
     });
     browser.contextMenus.create({
       id: 'Ani-Search__Manga',
       type: 'normal',
-      title: 'AniList manga search for "%s"',
+      title: browser.i18n.getMessage('MENUS_SearchManga'),
       contexts: ['selection'],
     });
     browser.contextMenus.create({
       id: 'Ani-Search__Studios',
       type: 'normal',
-      title: 'AniList studios search for "%s"',
+      title: browser.i18n.getMessage('MENUS_SearchStudios'),
       contexts: ['selection'],
     });
     browser.contextMenus.create({
       id: 'Ani-Search__Characters',
       type: 'normal',
-      title: 'AniList characters search for "%s"',
+      title: browser.i18n.getMessage('MENUS_SearchCharacters'),
       contexts: ['selection'],
     });
     browser.contextMenus.create({
       id: 'Ani-Search__Staff',
       type: 'normal',
-      title: 'AniList staff search for "%s"',
+      title: browser.i18n.getMessage('MENUS_SearchStaff'),
       contexts: ['selection'],
     });
   }

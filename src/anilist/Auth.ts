@@ -76,7 +76,7 @@ export default class Auth {
       // user probably canceled the authentication.
       const accessToken = this.getURLAccessToken(this.getURL(redirectUrl));
 
-      if (accessToken === null) throw new Error('Missing access token after AniList authentication');
+      if (accessToken === null) throw new Error(browser.i18n.getMessage('E_AuthMissingAccessToken'));
 
       // Try to get user data to be sure the token works.
       const user = await this.checkAccessToken(accessToken);
@@ -87,10 +87,10 @@ export default class Auth {
         this.storeUser(user),
       ]);
 
-      Notifications.create('auth_success', `You are now logged in as ${user.name}`);
+      Notifications.create('auth_success', browser.i18n.getMessage('AUTH_Success', user.name));
     }
     catch (e) {
-      Notifications.create('auth_failed', `Authentication failed: ${e.message}`);
+      Notifications.create('auth_failed', browser.i18n.getMessage('E_AuthFailed', e.message));
       throw e;
     }
   }
@@ -102,7 +102,7 @@ export default class Auth {
     // Get access token from storage.
     const accessToken = await StorageHelper.getAccessToken();
 
-    if (accessToken === null) throw new Error('Missing access token in local storage');
+    if (accessToken === null) throw new Error(browser.i18n.getMessage('E_StorageMissingAccessToken'));
 
     // Fetch user data.
     const anilist = new AniList(accessToken);
