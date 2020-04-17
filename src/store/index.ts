@@ -122,11 +122,15 @@ export default new Vuex.Store({
 
         // If user exists, check token usability in case token is not usable.
         if (user) {
-          const response = await browser.runtime.sendMessage({ code: 'USER_REFRESH' });
-
-          if (response.code === 'USER_REFRESH_FAILED') {
-            Notifications.create('auth_failed', browser.i18n.getMessage('E_UserRefreshFailed'));
-          }
+          // As the check is only meant to display a notification to the user,
+          // we don't have to wait for the asynchronous method to finish to
+          // allow the rest of the method to continue.
+          browser.runtime.sendMessage({ code: 'USER_REFRESH' })
+            .then((response: any) => {
+              if (response.code === 'USER_REFRESH_FAILED') {
+                Notifications.create('auth_failed', browser.i18n.getMessage('E_UserRefreshFailed'));
+              }
+            });
         }
 
         // Create state.
