@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.1.1 (18/04/2020)
+
+- [Fix] Fixed external links not opening on Chrome (d12df24)
+- [Remove] Removed unused Firefox extension parameter (aa0dad5)
+
 ## v1.1.0 (18/04/2020)
 
 ### New features
