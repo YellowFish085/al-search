@@ -43,7 +43,7 @@ function getSearchUrl(value: string, type: Enum.SearchType): string {
 function getHtml(
   value: string,
   type: Enum.SearchType,
-  entry: AniSearch.AniList.Data | null,
+  entry: ALSearch.AniList.Data | null,
 ): HTMLDivElement {
   // eslint-disable max-len
 
@@ -68,7 +68,7 @@ function getHtml(
 
   const style = `
   <style>
-    @keyframes ani-search-enter {
+    @keyframes al-search-enter {
       0% {
         opacity: 0;
         transform: translateX(5px);
@@ -80,9 +80,9 @@ function getHtml(
       }
     }
 
-    #ani-search {
+    #al-search {
       align-items: stretch;
-      animation: ani-search-enter 0.2s ease;
+      animation: al-search-enter 0.2s ease;
       bottom: 20px;
       display: flex;
       flex-direction: row;
@@ -93,9 +93,9 @@ function getHtml(
       z-index: 99999;
     }
 
-    #ani-search__button {
+    #al-search__button {
       background-color: rgb(31, 38, 49);
-      background-image: url('https://yellowfish085.github.io/ani-search/img/logo.svg');
+      background-image: url('https://yellowfish085.github.io/al-search/img/logo.svg');
       background-position: center;
       background-repeat: no-repeat;
       background-size: 60%;
@@ -106,7 +106,7 @@ function getHtml(
       padding: 15px;
     }
 
-    #ani-search__menu {
+    #al-search__menu {
       background-color: rgb(31, 38, 49);
       border-radius: 3px;
       box-shadow: 0 2px 20px rgba(49, 54, 68, .09);
@@ -118,7 +118,7 @@ function getHtml(
       width: 0;
     }
 
-    #ani-search__menu > ul {
+    #al-search__menu > ul {
       align-items: center;
       color: rgb(237, 241, 245);
       display: flex;
@@ -128,18 +128,18 @@ function getHtml(
       padding: 0 12px;
     }
 
-    #ani-search__menu > ul > li:first-child {
+    #al-search__menu > ul > li:first-child {
       font-weight: bold;
       margin-right: 20px;
       white-space: nowrap;
     }
 
-    #ani-search__menu > ul > li:first-child span {
+    #al-search__menu > ul > li:first-child span {
       font-weight: normal;
       margin-left: 4px;
     }
 
-    #ani-search__menu > ul > li.action {
+    #al-search__menu > ul > li.action {
       align-items: center;
       display: flex;
       flex-direction: row;
@@ -147,21 +147,21 @@ function getHtml(
       white-space: nowrap;
     }
 
-    #ani-search__menu > ul > li.action:not(:last-child) {
+    #al-search__menu > ul > li.action:not(:last-child) {
       margin-right: 14px;
     }
 
-    #ani-search__menu > ul > li.action > a {
+    #al-search__menu > ul > li.action > a {
       display: block;
       height: 12px;
       width: 12px;
     }
 
-    #ani-search__menu > ul > li.action > a > svg {
+    #al-search__menu > ul > li.action > a > svg {
       color: rgb(61,180,242);
     }
 
-    #ani-search__arrow {
+    #al-search__arrow {
       border-color: transparent;
       border-left-color: rgb(31, 38, 49);
       border-style: solid;
@@ -176,7 +176,7 @@ function getHtml(
       z-index: 999999;
     }
 
-    #ani-search:hover #ani-search__menu {
+    #al-search:hover #al-search__menu {
       opacity: 1;
       pointer-events: initial;
       transform: translateX(0px);
@@ -185,12 +185,12 @@ function getHtml(
     }
   </style>`;
 
-  const content = `<div id="ani-search__menu"><ul><li>${value}<span>on AniList</span></li>${showButton}${searchButton}</ul><div id="ani-search__arrow"></div></div><span id="ani-search__button" title="Ani-Search"></span>${style}`;
+  const content = `<div id="al-search__menu"><ul><li>${value}<span>on AniList</span></li>${showButton}${searchButton}</ul><div id="al-search__arrow"></div></div><span id="al-search__button" title="AL Search"></span>${style}`;
   // eslint-enable max-len
 
   // Create node and return it.
   const node = document.createElement('div');
-  node.setAttribute('id', 'ani-search');
+  node.setAttribute('id', 'al-search');
   node.innerHTML = content;
 
   return node;
@@ -199,8 +199,8 @@ function getHtml(
 /**
  * Find something on AniList.
  */
-async function find(value: string, type: Enum.SearchType): Promise<AniSearch.AniList.Data | null> {
-  const data: AniSearch.Search.Search = {
+async function find(value: string, type: Enum.SearchType): Promise<ALSearch.AniList.Data | null> {
+  const data: ALSearch.Search.Search = {
     value,
     type,
   };
@@ -225,7 +225,7 @@ async function isEnabled(): Promise<boolean> {
 }
 
 /**
- * Display Ani-Search button on page.
+ * Display AL Search button on page.
  */
 async function displayButton(value: string, type: Enum.SearchType): Promise<void> {
   try {

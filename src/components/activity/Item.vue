@@ -24,7 +24,7 @@ import MixinsI18n from '@/mixins/I18n';
 
 @Component
 export default class Item extends Mixins(Vue, MixinsI18n) {
-  @Prop() data!: AniSearch.Activity.Activity;
+  @Prop() data!: ALSearch.Activity.Activity;
 
   /**
    * Return title string.

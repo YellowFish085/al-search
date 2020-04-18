@@ -10,8 +10,8 @@
       <h3>{{ i18n('S_Links') }}</h3>
       <p class="links row row--justify-start row--items-center">
         <a href="https://anilist.co" :title="i18n('S_VisitWebsite', 'AniList')" class="anilist"></a>
-        <a href="https://yellowfish085.github.io/ani-search/" :title="i18n('S_VisitWebsite', 'Ani-Search')" class="ani-search"></a>
-        <a href="https://github.com/YellowFish085/ani-search" :title="i18n('S_VisitRepository', 'Ani-Search')" class="github"><font-awesome-icon :icon="['fab', 'github']" size="3x" /></a>
+        <a href="https://yellowfish085.github.io/al-search/" :title="i18n('S_VisitWebsite', 'AL Search')" class="al-search"></a>
+        <a href="https://github.com/YellowFish085/al-search" :title="i18n('S_VisitRepository', 'AL Search')" class="github"><font-awesome-icon :icon="['fab', 'github']" size="3x" /></a>
       </p>
 
       <h3>{{ i18n('S_BuildInformation') }}</h3>
@@ -40,7 +40,7 @@ const browser = require('webextension-polyfill'); // eslint-disable-line
 @Component
 export default class About extends Mixins(Vue, MixinI18n) {
   /** Changelog from repository as a JSON. */
-  releases: AniSearch.Github.Release[] | null = null;
+  releases: ALSearch.Github.Release[] | null = null;
 
   get browser() {
     return browser;
@@ -48,9 +48,9 @@ export default class About extends Mixins(Vue, MixinI18n) {
 
   async created() {
     try {
-      const response = await fetch('https://api.github.com/repos/YellowFish085/ani-search/releases');
+      const response = await fetch('https://api.github.com/repos/YellowFish085/al-search/releases');
 
-      this.releases = (await response.json()) as AniSearch.Github.Release[];
+      this.releases = (await response.json()) as ALSearch.Github.Release[];
     }
     catch (e) {
       console.error(e);
@@ -74,7 +74,7 @@ export default class About extends Mixins(Vue, MixinI18n) {
       background-image: url('https://anilist.co/img/icons/icon.svg');
     }
 
-    &.ani-search {
+    &.al-search {
       background-image: url('../../../public/logo.svg');
     }
 

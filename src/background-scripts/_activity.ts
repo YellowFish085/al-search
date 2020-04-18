@@ -16,7 +16,7 @@ async function clearActivityFeed(sendResponse: Function) {
 /**
  * Save new activity in activity feed.
  */
-async function saveActivity(newActivity: AniSearch.Activity.Activity, sendResponse: Function) {
+async function saveActivity(newActivity: ALSearch.Activity.Activity, sendResponse: Function) {
   try {
     let activityFeed = await StorageHelper.getActivityFeed();
 

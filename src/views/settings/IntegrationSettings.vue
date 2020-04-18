@@ -38,7 +38,7 @@ export default class IntegrationSettings extends Mixins(Vue, MixinI18n) {
   /**
    * Settings from store.
    */
-  @State settings!: AniSearch.Settings;
+  @State settings!: ALSearch.Settings;
 
   get webEnabled(): boolean {
     return this.settings.integration.webEnabled;

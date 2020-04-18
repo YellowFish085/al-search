@@ -35,7 +35,7 @@ export default class Home extends Mixins(Vue, MixinI18n) {
   /**
    * Activity feed.
    */
-  @State activityFeed!: AniSearch.Activity.Activity[] | null;
+  @State activityFeed!: ALSearch.Activity.Activity[] | null;
 }
 </script>
 

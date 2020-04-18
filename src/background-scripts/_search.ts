@@ -5,13 +5,13 @@ import * as Enum from '@/utils/Enum';
 /**
  * Search something on AniList.
  */
-async function search(variables: AniSearch.Search.Search, sendResponse: Function) {
+async function search(variables: ALSearch.Search.Search, sendResponse: Function) {
   try {
     const accessToken = await StorageHelper.getAccessToken();
     const user = await StorageHelper.getUser();
     const client = new AniList(accessToken);
 
-    const searchResult: AniSearch.Store.SearchResults = {
+    const searchResult: ALSearch.Store.SearchResults = {
       loading: false,
       type: variables.type,
       results: await client.search(variables),
@@ -35,11 +35,11 @@ async function search(variables: AniSearch.Search.Search, sendResponse: Function
  *
  * This search is done without the user access token.
  */
-async function searchSingle(variables: AniSearch.Search.Search, sendResponse: Function) {
+async function searchSingle(variables: ALSearch.Search.Search, sendResponse: Function) {
   try {
     const client = new AniList();
 
-    const searchResult: AniSearch.Store.SearchResults = {
+    const searchResult: ALSearch.Store.SearchResults = {
       loading: false,
       type: variables.type,
       results: await client.search(variables),

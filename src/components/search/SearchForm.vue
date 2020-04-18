@@ -69,9 +69,9 @@ const browser = require('webextension-polyfill') // eslint-disable-line
   },
 })
 export default class SearchForm extends Mixins(Vue, MixinI18n, MixinNotify, MixinSaveActivity) {
-  @State('settings') settings!: AniSearch.Settings;
+  @State('settings') settings!: ALSearch.Settings;
 
-  @State('search') storeSearch!: AniSearch.Search.Search | null;
+  @State('search') storeSearch!: ALSearch.Search.Search | null;
 
   /** Form disabled? */
   disabled = false;
@@ -113,7 +113,7 @@ export default class SearchForm extends Mixins(Vue, MixinI18n, MixinNotify, Mixi
    * Watch for store search changes.
    */
   @Watch('storeSearch')
-  onStoreSearchChanged(newValue: AniSearch.Search.Search | null) {
+  onStoreSearchChanged(newValue: ALSearch.Search.Search | null) {
     if (!newValue || !newValue.value) return;
 
     this.search = newValue.value;
@@ -168,10 +168,10 @@ export default class SearchForm extends Mixins(Vue, MixinI18n, MixinNotify, Mixi
     this.$store.dispatch('searchResults', {
       loading: true,
       type,
-    } as AniSearch.Store.SearchResults);
+    } as ALSearch.Store.SearchResults);
 
     // Let the background script handle the search process.
-    const data: AniSearch.Search.Search = {
+    const data: ALSearch.Search.Search = {
       value,
       type,
       year,
@@ -211,7 +211,7 @@ export default class SearchForm extends Mixins(Vue, MixinI18n, MixinNotify, Mixi
   ) {
     if (!this.settings.activity.search) return;
 
-    const activity: AniSearch.Activity.Activity = {
+    const activity: ALSearch.Activity.Activity = {
       type: Enum.ActivityType.SEARCH,
       label: search,
       value: search,

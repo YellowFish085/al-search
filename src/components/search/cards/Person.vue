@@ -36,7 +36,7 @@ import MixinI18n from '@/mixins/I18n';
 
 @Component
 export default class Person extends Mixins(Vue, MixinI18n) {
-  @Prop() readonly data!: AniSearch.AniList.Character | AniSearch.AniList.Staff;
+  @Prop() readonly data!: ALSearch.AniList.Character | ALSearch.AniList.Staff;
 
   /**
    * Click.

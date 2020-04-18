@@ -32,7 +32,7 @@ export default class SearchSettings extends Mixins(Vue, MixinI18n) {
   /**
    * Settings from store.
    */
-  @State settings!: AniSearch.Settings;
+  @State settings!: ALSearch.Settings;
 
   get onListFirst(): boolean {
     return this.settings.search.onListFirst;

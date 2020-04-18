@@ -57,9 +57,9 @@ import MixinSaveActivity from '@/mixins/Activity';
   },
 })
 export default class StudiosSearch extends Mixins(Vue, MixinI18n, MixinSaveActivity) {
-  @State('settings') settings!: AniSearch.Settings;
+  @State('settings') settings!: ALSearch.Settings;
 
-  @Prop() results!: AniSearch.Store.SearchResults | null;
+  @Prop() results!: ALSearch.Store.SearchResults | null;
 
   /**
    * Get list to display.
@@ -72,7 +72,7 @@ export default class StudiosSearch extends Mixins(Vue, MixinI18n, MixinSaveActiv
     e.preventDefault();
 
     if (this.settings.activity.visitedPages) {
-      const activity: AniSearch.Activity.Activity = {
+      const activity: ALSearch.Activity.Activity = {
         type: Enum.ActivityType.VISITED_PAGE,
         label: (e.currentTarget as Element).getAttribute('data-label')!,
         value: (e.currentTarget as Element).getAttribute('data-url')!,

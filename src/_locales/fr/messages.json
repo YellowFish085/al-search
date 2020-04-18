@@ -1,6 +1,6 @@
 {
   "APP_Name": {
-    "message": "Ani-Search, pour AniList",
+    "message": "AL Search, pour AniList",
     "description": "Add-on title."
   },
   "APP_Description": {
@@ -151,7 +151,7 @@
     "message": "Activité"
   },
   "S_ActivityDescription": {
-    "message": "<b>Ani-Search</b> peut sauvegarder votre historique de recherche et les pages visitées (anime, manga, studio, personnnage et staff) pour vous permettre d'y accéder de nouveau rapidement."
+    "message": "<b>AL Search</b> peut sauvegarder votre historique de recherche et les pages visitées (anime, manga, studio, personnnage et staff) pour vous permettre d'y accéder de nouveau rapidement."
   },
   "S_ActivityEmpty": {
     "message": "Votre fil d'activité est vide. Recherchez quelque chose !"
@@ -196,13 +196,13 @@
     "message": "Activer les menus contextuels"
   },
   "S_EnableContextualMenusDescription": {
-    "message": "<b>Ani-Search</b> ajoute des menus contextuels au navigateur pour vous permettre de faire une recherche rapide sur un texte sélectionné."
+    "message": "<b>AL Search</b> ajoute des menus contextuels au navigateur pour vous permettre de faire une recherche rapide sur un texte sélectionné."
   },
   "S_EnableWebIntegration": {
     "message": "Activer l'integration web"
   },
   "S_EnableWebIntegrationDescription": {
-    "message": "<b>Ani-Search</b> ajoute un bouton en bas à droite de la fenêtre du navigateur sur certains sites liés à l'univers anime et manga (comme Crunchyroll). Ce bouton vous donne accès à certaines actions rapides."
+    "message": "<b>AL Search</b> ajoute un bouton en bas à droite de la fenêtre du navigateur sur certains sites liés à l'univers anime et manga (comme Crunchyroll). Ce bouton vous donne accès à certaines actions rapides."
   },
   "S_Error": {
     "message": "Erreur"
@@ -211,7 +211,7 @@
     "message": "Informations"
   },
   "S_InformationActivityDescription": {
-    "message": "Les données du fil d'activité sont sauvegardées localement sur le navigateur.<br><br>Si vous installez <b>Ani-Search</b> sur un autre navigateur de votre ordinateur, ou sur différents ordinateurs, chaque extension aura son propre fil d'activité."
+    "message": "Les données du fil d'activité sont sauvegardées localement sur le navigateur.<br><br>Si vous installez <b>AL Search</b> sur un autre navigateur de votre ordinateur, ou sur différents ordinateurs, chaque extension aura son propre fil d'activité."
   },
   "S_Integration": {
     "message": "Intégration"
@@ -220,7 +220,7 @@
     "message": "Légal"
   },
   "S_LegalDescription": {
-    "message": "<b>Ani-Search</b> est un projet open-source non affilié à <b>AniList</b>."
+    "message": "<b>AL Search</b> est un projet open-source non affilié à <b>AniList</b>."
   },
   "S_Links": {
     "message": "Liens"

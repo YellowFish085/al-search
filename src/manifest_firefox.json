@@ -3,7 +3,7 @@
   "author": "Theo Costantini",
   "name": "__MSG_APP_Name__",
   "description": "__MSG_APP_Description__",
-  "homepage_url": "https://github.com/YellowFish085/ani-search",
+  "homepage_url": "https://github.com/YellowFish085/al-search",
   "developer": {
     "name": "Theo Costantini",
     "url": "https://github.com/YellowFish085"
@@ -41,7 +41,7 @@
       "encoding": "UTF-8",
       "search_url": "https://anilist.co/search/anime?sort=SEARCH_MATCH&search={searchTerms}",
       "keyword": "ani",
-      "favicon_url": "https://yellowfish085.github.io/ani-search/img/logo.svg",
+      "favicon_url": "https://yellowfish085.github.io/al-search/img/logo.svg",
       "is_default": false
     }
   },

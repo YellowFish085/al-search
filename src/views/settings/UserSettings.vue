@@ -66,7 +66,7 @@ export default class UserSettings extends Mixins(Vue, MixinI18n) {
   /**
    * User data from store.
    */
-  @State user!: AniSearch.AniList.User | null;
+  @State user!: ALSearch.AniList.User | null;
 }
 </script>
 

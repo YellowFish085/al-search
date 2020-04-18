@@ -36,7 +36,7 @@ import StudiosSearch from '@/views/search/StudiosSearch.vue';
   },
 })
 export default class Search extends Mixins(Vue, MixinI18n) {
-  @State('searchResults') results!: AniSearch.Store.SearchResults | null;
+  @State('searchResults') results!: ALSearch.Store.SearchResults | null;
 
   /** Search types. */
   types = Enum.SearchType;

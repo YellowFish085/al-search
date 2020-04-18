@@ -62,9 +62,9 @@ import MixinSaveActivity from '@/mixins/Activity';
 
 @Component
 export default class Media extends Mixins(Vue, MixinI18n, MixinSaveActivity) {
-  @State('settings') settings!: AniSearch.Settings;
+  @State('settings') settings!: ALSearch.Settings;
 
-  @Prop() readonly data?: AniSearch.AniList.Media;
+  @Prop() readonly data?: ALSearch.AniList.Media;
 
   /** Search types. */
   types = Enum.SearchType;
@@ -134,7 +134,7 @@ export default class Media extends Mixins(Vue, MixinI18n, MixinSaveActivity) {
     e.preventDefault();
 
     if (this.settings.activity.visitedPages) {
-      const activity: AniSearch.Activity.Activity = {
+      const activity: ALSearch.Activity.Activity = {
         type: Enum.ActivityType.VISITED_PAGE,
         label: this.data!.title.userPreferred,
         value: this.data!.siteUrl,

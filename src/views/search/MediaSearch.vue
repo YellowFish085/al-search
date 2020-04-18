@@ -39,18 +39,18 @@ export default class MediaSearch extends Mixins(Vue, MixinI18n) {
   /**
    * Settings from store.
    */
-  @State settings!: AniSearch.Settings;
+  @State settings!: ALSearch.Settings;
 
   /**
    * User from store.
    */
-  @State user!: AniSearch.AniList.User | null;
+  @State user!: ALSearch.AniList.User | null;
 
   /**
    * Search from state.
    */
 
-  @Prop() results!: AniSearch.Store.SearchResults | null;
+  @Prop() results!: ALSearch.Store.SearchResults | null;
 
   /**
    * Get list order string.
