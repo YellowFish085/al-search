@@ -9,9 +9,9 @@
 
       <h3>{{ i18n('S_Links') }}</h3>
       <p class="links row row--justify-start row--items-center">
-        <a href="https://anilist.co" :title="i18n('S_VisitWebsite', 'AniList')" class="anilist"></a>
-        <a href="https://yellowfish085.github.io/al-search/" :title="i18n('S_VisitWebsite', 'AL Search')" class="al-search"></a>
-        <a href="https://github.com/YellowFish085/al-search" :title="i18n('S_VisitRepository', 'AL Search')" class="github"><font-awesome-icon :icon="['fab', 'github']" size="3x" /></a>
+        <a href="https://anilist.co" :title="i18n('S_VisitWebsite', 'AniList')" class="anilist" target="_blank"></a>
+        <a href="https://yellowfish085.github.io/al-search/" :title="i18n('S_VisitWebsite', 'AL Search')" class="al-search" target="_blank"></a>
+        <a href="https://github.com/YellowFish085/al-search" :title="i18n('S_VisitRepository', 'AL Search')" class="github" target="_blank"><font-awesome-icon :icon="['fab', 'github']" size="3x" /></a>
       </p>
 
       <h3>{{ i18n('S_BuildInformation') }}</h3>

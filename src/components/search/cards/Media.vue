@@ -16,7 +16,8 @@
            @click="handleClick">{{ data.title.userPreferred }}</a>
         <div v-if="studio" class="subtitle w-full">
           <a :href="studio.siteUrl"
-             :title="i18n('S_SeeOnAnilist', studio.name)">{{ studio.name }}</a>
+             :title="i18n('S_SeeOnAnilist', studio.name)"
+             target="_blank">{{ studio.name }}</a>
         </div>
       </div>
     </a>
