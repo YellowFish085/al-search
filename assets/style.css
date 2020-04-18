@@ -184,7 +184,7 @@ td {
 
 hr {
   border: 1px solid rgb(var(--color-overlay), 0.1);
-  margin: 8rem 0;
+  margin: 6rem 0;
 }
 
 /* Content */
@@ -193,7 +193,7 @@ section {
 }
 
 section .block:not(:last-child) {
-  margin-bottom: 6rem;
+  margin-bottom: 4rem;
 }
 
 section h1,
@@ -231,7 +231,7 @@ section h4 {
 }
 
 .col > *:first-child {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .screenshot {
