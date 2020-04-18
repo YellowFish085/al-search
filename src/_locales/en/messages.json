@@ -198,6 +198,12 @@
   "S_EnableContextualMenusDescription": {
     "message": "<b>Ani-Search</b> adds contextual actions to quickly search the selected text on a page."
   },
+  "S_EnableWebIntegration": {
+    "message": "Enable web integration"
+  },
+  "S_EnableWebIntegrationDescription": {
+    "message": "<b>Ani-Search</b> comes with a web integration feature that adds a button on the bottom right of the page to some website related to anime and manga culture (e.g. Crunchyroll) with a few actions."
+  },
   "S_Error": {
     "message": "Error"
   },

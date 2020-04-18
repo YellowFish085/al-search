@@ -54,6 +54,14 @@ export namespace Store {
  */
 export namespace AniList {
   /**
+   * A data from any type.
+   */
+  export type Data = AniSearch.AniList.Media
+    | AniSearch.AniList.Studio
+    | AniSearch.AniList.Character
+    | AniSearch.AniList.Staff;
+
+  /**
    * Media schema (anime & manga).
    */
   export interface Media {

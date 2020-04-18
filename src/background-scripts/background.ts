@@ -55,6 +55,10 @@ function handleMessage(request: any, sender: any, sendResponse: Function) { // e
       Search.search(request.data as AniSearch.Search.Search, sendResponse);
       break;
 
+    case 'SEARCH_SINGLE':
+      Search.searchSingle(request.data as AniSearch.Search.Search, sendResponse);
+      break;
+
     default:
       sendResponse({ code: 'UNKNOWN_ACTION' });
       break;

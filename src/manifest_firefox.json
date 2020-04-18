@@ -29,6 +29,12 @@
   "background": {
     "scripts": ["js/background/background.js"]
   },
+  "content_scripts": [
+    {
+      "matches": ["*://www.crunchyroll.com/*"],
+      "js": ["js/content/crunchyroll.js"]
+    }
+  ],
   "chrome_settings_overrides": {
     "search_provider": {
       "name": "__MSG_APP_Name__",

@@ -198,6 +198,12 @@
   "S_EnableContextualMenusDescription": {
     "message": "<b>Ani-Search</b> ajoute des menus contextuels au navigateur pour vous permettre de faire une recherche rapide sur un texte sélectionné."
   },
+  "S_EnableWebIntegration": {
+    "message": "Activer l'integration web"
+  },
+  "S_EnableWebIntegrationDescription": {
+    "message": "<b>Ani-Search</b> ajoute un bouton en bas à droite de la fenêtre du navigateur sur certains sites liés à l'univers anime et manga (comme Crunchyroll). Ce bouton vous donne accès à certaines actions rapides."
+  },
   "S_Error": {
     "message": "Erreur"
   },

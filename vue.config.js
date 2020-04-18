@@ -10,6 +10,7 @@ const scripts = {
   },
   content: {
     // 'script': './src/content-scripts/script.ts',
+    'crunchyroll': './src/content-scripts/crunchyroll.ts',
   },
 };
 

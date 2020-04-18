@@ -5,15 +5,14 @@
 
     <div class="container">
       <div class="col col--justify-start col--items-start">
-        <!-- <div class="field">
+        <div class="field">
           <input type="checkbox"
                  name="web_enabled"
                  id="settings__integration__web_enabled"
                  v-model="webEnabled">
-          <label for="settings__integration__web_enabled">Enable web integration</label>
+          <label for="settings__integration__web_enabled">{{ i18n('S_EnableWebIntegration') }}</label>
         </div>
-        <p><b>Ani-Search</b> comes with a web integration feature that adds buttons and links to some website related to anime and manga culture (e.g. Crunchyroll).</p>
-        <p>For instance, you will see a button near an anime title on Crunchyroll that will allow you to do a quick search on the anime title with <b>Ani-Search</b> (or directly to <b>AniList</b> if you selected the <strong>Open AniList search results page</strong> option).</p> -->
+        <p v-html="i18n('S_EnableWebIntegrationDescription')"></p>
         <div class="field">
           <input type="checkbox"
                  name="menus_enabled"

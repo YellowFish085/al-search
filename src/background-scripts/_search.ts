@@ -30,6 +30,31 @@ async function search(variables: AniSearch.Search.Search, sendResponse: Function
   }
 }
 
+/**
+ * Search something on AniList and return the first result.
+ *
+ * This search is done without the user access token.
+ */
+async function searchSingle(variables: AniSearch.Search.Search, sendResponse: Function) {
+  try {
+    const client = new AniList();
+
+    const searchResult: AniSearch.Store.SearchResults = {
+      loading: false,
+      type: variables.type,
+      results: await client.search(variables),
+    };
+
+    const entry = searchResult.results![0] || null;
+
+    sendResponse({ code: 'SEARCH_SUCCESS', entry });
+  }
+  catch (e) {
+    sendResponse({ code: 'SEARCH_FAILED', message: e.message });
+  }
+}
+
 export default {
   search,
+  searchSingle,
 };
