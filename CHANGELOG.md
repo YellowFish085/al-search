@@ -1,5 +1,17 @@
 # Changelog
 
+## v1.1.0 (18/04/2020)
+
+### New features
+- Added UI translation in English and French (715e60c)
+- Added web integration feature (c73e86f)
+  - Currently only for Crunchyroll
+
+### Changes
+- [Change] Updated logo 128 for Chrome (9da6cf5)
+- [Fix] Fixed notification popup z-index (36338cf)
+- [Fix] Speed up popup opening (635f908)
+
 ## v1.0.4 (16/04/2020)
 
 - [Fix] Fixed header height (54739bc)
