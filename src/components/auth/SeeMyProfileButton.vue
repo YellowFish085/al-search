@@ -5,7 +5,8 @@
       :href="user.siteUrl"
       :title="i18n('S_SeeMyProfile')"
       :class="[ size ]"
-      :style="{ 'background-image': `url(${user.avatar.medium})` }">
+      :style="{ 'background-image': `url(${user.avatar.medium})` }"
+      target="_blank">
     </a>
   </transition>
   <!-- eslint-enable max-len -->

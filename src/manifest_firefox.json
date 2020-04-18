@@ -44,10 +44,5 @@
       "favicon_url": "https://yellowfish085.github.io/al-search/img/logo.svg",
       "is_default": false
     }
-  },
-  "browser_specific_settings": {
-    "gecko": {
-      "id": "dev@theocostantini.com"
-    }
   }
 }
