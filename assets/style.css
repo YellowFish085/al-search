@@ -76,7 +76,8 @@ body {
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
   margin: 0;
 }
 
@@ -92,7 +93,8 @@ h4 {
   margin-bottom: 1.2rem;
 }
 
-p {
+p,
+li {
   color: rgb(var(--color-text-light));
   font-size: 1.4rem;
   line-height: 1.5;
@@ -159,6 +161,32 @@ header .extension-links a {
   margin: 0 0.5em;
 }
 
+table {
+  border-collapse: collapse;
+  font-size: 1.4rem;
+  text-align: left;
+  width: 100%;
+}
+
+th:first-child,
+td:first-child {
+  border-right: 1px solid rgba(var(--color-overlay), 0.2);
+}
+
+th {
+  border-bottom: 1px solid rgba(var(--color-overlay), 0.2);
+  padding: 0.5rem 1rem;
+}
+
+td {
+  padding: 1rem 1rem;
+}
+
+hr {
+  border: 1px solid rgb(var(--color-overlay), 0.1);
+  margin: 8rem 0;
+}
+
 /* Content */
 section {
   margin-top: 4rem;
@@ -166,6 +194,22 @@ section {
 
 section .block:not(:last-child) {
   margin-bottom: 6rem;
+}
+
+section h1,
+section h2,
+section h3,
+section h4 {
+  margin-left: 1rem;
+}
+
+.container h4 {
+  margin-bottom: 2rem;
+  margin-left: 0;
+}
+
+.container h4:not(:first-child) {
+  margin-top: 2rem;
 }
 
 .row {
