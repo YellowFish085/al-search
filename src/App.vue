@@ -36,7 +36,7 @@ import Notifications from '@/components/ui/Notifications.vue';
   },
 })
 export default class App extends Mixins(Vue, MixinChangeTheme) {
-  @State('settings') settings!: AniSearch.Settings;
+  @State('settings') settings!: ALSearch.Settings;
 
   /**
    * Store is initialized.
@@ -56,8 +56,8 @@ export default class App extends Mixins(Vue, MixinChangeTheme) {
 
   @Watch('settings')
   onSettingsChanged(
-    newValue: AniSearch.Settings | null,
-    oldValue: AniSearch.Settings | null,
+    newValue: ALSearch.Settings | null,
+    oldValue: ALSearch.Settings | null,
   ) {
     if (!newValue) return;
 
@@ -326,7 +326,7 @@ a {
     position: absolute;
     top: 0;
     width: 100%;
-    z-index: 9999;
+    z-index: 100;
   }
 
   .grid {

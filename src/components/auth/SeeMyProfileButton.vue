@@ -3,7 +3,7 @@
   <transition name="quick-fade">
     <a v-if="user"
       :href="user.siteUrl"
-      title="See my profile"
+      :title="i18n('S_SeeMyProfile')"
       :class="[ size ]"
       :style="{ 'background-image': `url(${user.avatar.medium})` }">
     </a>
@@ -12,17 +12,23 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import {
+  Component,
+  Mixins,
+  Prop,
+  Vue,
+} from 'vue-property-decorator';
 import { State } from 'vuex-class';
+import MixinI18n from '@/mixins/I18n';
 
 @Component
-export default class SeeMyProfileButton extends Vue {
+export default class SeeMyProfileButton extends Mixins(Vue, MixinI18n) {
   @Prop(String) size?: string;
 
   /**
    * User data from store.
    */
-  @State user!: AniSearch.AniList.User | null;
+  @State user!: ALSearch.AniList.User | null;
 }
 </script>
 

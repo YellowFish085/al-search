@@ -10,6 +10,7 @@ const scripts = {
   },
   content: {
     // 'script': './src/content-scripts/script.ts',
+    'crunchyroll': './src/content-scripts/crunchyroll.ts',
   },
 };
 
@@ -71,6 +72,16 @@ module.exports = {
 
             return JSON.stringify(m, null, 2);
           },
+        },
+      ],
+    ]);
+
+    // Copy locales.
+    config.plugin('copy-locales').use(CopyWebpackPlugin, [
+      [
+        {
+          from: './src/_locales',
+          to: '_locales',
         },
       ],
     ]);

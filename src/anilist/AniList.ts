@@ -2,6 +2,8 @@ import QueriesSearch from '@/anilist/graphql/search';
 import QueryUser, { UserSchemaCheck } from '@/anilist/graphql/user';
 import * as Enum from '@/utils/Enum';
 
+const browser = require('webextension-polyfill') // eslint-disable-line
+
 export default class AniList {
   readonly token: string | null;
 
@@ -28,7 +30,7 @@ export default class AniList {
   /**
    * Get authenticated user data.
    */
-  public async user(): Promise<AniSearch.AniList.User> {
+  public async user(): Promise<ALSearch.AniList.User> {
     try {
       const response = await fetch(process.env.VUE_APP_ANILIST_GRAPHQL_URL, {
         method: 'POST',
@@ -42,13 +44,13 @@ export default class AniList {
 
       // Do we have the user data in the response?
       if (body.data && body.data.Viewer && UserSchemaCheck(body.data.Viewer)) {
-        return body.data.Viewer as AniSearch.AniList.User;
+        return body.data.Viewer as ALSearch.AniList.User;
       }
 
-      throw new Error(`AniList request failed: Response does not contains user data. Response: ${JSON.stringify(body)}`);
+      throw new Error(browser.i18n.getMessage('E_AniListInvalidUser', JSON.stringify(body)));
     }
     catch (e) {
-      throw new Error(`AniList request failed: ${e.message}`);
+      throw new Error(browser.i18n.getMessage('E_AnilistRequest', e.message));
     }
   }
 
@@ -56,9 +58,9 @@ export default class AniList {
    * Search something on AniList.
    */
   public async search(
-    variables: AniSearch.Search.Search,
+    variables: ALSearch.Search.Search,
     onList = false,
-  ): Promise<AniSearch.Search.Results> {
+  ): Promise<ALSearch.Search.Results> {
     // Get correct query based on search type.
     const query = QueriesSearch[variables.type];
 
@@ -88,14 +90,14 @@ export default class AniList {
         || !body.data.Page[Enum.ResponseTypeKeys[variables.type]]
         || !Array.isArray(body.data.Page[Enum.ResponseTypeKeys[variables.type]])
       ) {
-        throw new Error('Invalid search results from AniList');
+        throw new Error(browser.i18n.getMessage('E_AnilistSearchResults'));
       }
 
       // Return results list.
       return body.data.Page[Enum.ResponseTypeKeys[variables.type]];
     }
     catch (e) {
-      throw new Error(`AniList request failed: ${e.message}`);
+      throw new Error(browser.i18n.getMessage('E_AnilistRequest', e.message));
     }
   }
 }

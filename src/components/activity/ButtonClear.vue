@@ -1,7 +1,7 @@
 <template>
   <!-- eslint-disable max-len -->
-  <ButtonBorder content="Clear"
-                title="Clear my activity"
+  <ButtonBorder :content="i18n('S_Clear')"
+                :title="i18n('S_ClearMyActivity')"
                 :onClick="handleClick"
                 :disabled="disabled" />
   <!-- eslint-enable max-len -->
@@ -11,6 +11,7 @@
 import { Component, Mixins, Vue } from 'vue-property-decorator';
 import ButtonBorder from '@/components/ui/buttons/ButtonBorder.vue';
 import MixinNotify from '@/mixins/Notify';
+import MixinI18n from '@/mixins/I18n';
 
 const browser = require('webextension-polyfill'); // eslint-disable-line
 
@@ -19,7 +20,7 @@ const browser = require('webextension-polyfill'); // eslint-disable-line
     ButtonBorder,
   },
 })
-export default class ButtonClear extends Mixins(Vue, MixinNotify) {
+export default class ButtonClear extends Mixins(Vue, MixinI18n, MixinNotify) {
   /**
    * Disable button.
    */
@@ -35,12 +36,12 @@ export default class ButtonClear extends Mixins(Vue, MixinNotify) {
       case 'ACTIVITY_FEED_CLEAR_SUCCESS':
         await this.$store.dispatch('clearActivityFeed');
 
-        this.notify('success', 'Success', 'Your activity feed have been cleared.');
+        this.notify('success', this.i18n('S_Success'), this.i18n('N_ActivityFeedClearSuccess'));
         break;
 
       case 'ACTIVITY_FEED_CLEAR_FAILED':
       default:
-        this.notify('error', 'Failed to clear your activity feed:', response.message);
+        this.notify('error', this.i18n('S_Error'), this.i18n('N_ActivityFeedClearFailed', response.message));
         break;
     }
 

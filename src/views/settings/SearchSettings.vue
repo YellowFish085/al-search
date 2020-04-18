@@ -1,7 +1,7 @@
 <template>
   <!-- eslint-disable max-len -->
   <div>
-    <h2>Search</h2>
+    <h2>{{ i18n('S_Search') }}</h2>
 
     <div class="container">
       <div class="col col--justify-start col--items-start">
@@ -12,9 +12,9 @@
                      name="onListFirst"
                      id="settings__activity__onListFirst"
                      v-model="onListFirst">
-              <label for="settings__activity__onListFirst">Display search from your list first</label>
+              <label for="settings__activity__onListFirst">{{ i18n('S_ResultsOnListFirst') }}</label>
             </div>
-            <p>Wether to display search results from your personal lists or global search results first</p>
+            <p>{{ i18n('S_ResultsOnListFirstDescription') }}</p>
           </div>
         </div>
       </div>
@@ -23,15 +23,16 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Mixins, Vue } from 'vue-property-decorator';
 import { State } from 'vuex-class';
+import MixinI18n from '@/mixins/I18n';
 
 @Component
-export default class SearchSettings extends Vue {
+export default class SearchSettings extends Mixins(Vue, MixinI18n) {
   /**
    * Settings from store.
    */
-  @State settings!: AniSearch.Settings;
+  @State settings!: ALSearch.Settings;
 
   get onListFirst(): boolean {
     return this.settings.search.onListFirst;

@@ -1,6 +1,6 @@
 import * as Enum from '@/utils/Enum';
 
-export as namespace AniSearch;
+export as namespace ALSearch;
 
 /**
  * App settings.
@@ -30,8 +30,8 @@ export namespace Store {
   export interface SearchResults {
     loading: boolean;
     type: Enum.SearchType;
-    results?: AniSearch.Search.Results;
-    resultsOnList?: AniSearch.Search.Results;
+    results?: ALSearch.Search.Results;
+    resultsOnList?: ALSearch.Search.Results;
   }
 
   /**
@@ -42,10 +42,10 @@ export namespace Store {
     critError: Error | null;
     settings: Settings;
     accessToken: string | null;
-    user: AniSearch.AniList.User | null;
-    activityFeed: AniSearch.Activity.Activity[] | null;
-    search: AniSearch.Search.Search | null;
-    searchResults: AniSearch.Store.SearchResults | null;
+    user: ALSearch.AniList.User | null;
+    activityFeed: ALSearch.Activity.Activity[] | null;
+    search: ALSearch.Search.Search | null;
+    searchResults: ALSearch.Store.SearchResults | null;
   }
 }
 
@@ -53,6 +53,14 @@ export namespace Store {
  * AniList.
  */
 export namespace AniList {
+  /**
+   * A data from any type.
+   */
+  export type Data = ALSearch.AniList.Media
+    | ALSearch.AniList.Studio
+    | ALSearch.AniList.Character
+    | ALSearch.AniList.Staff;
+
   /**
    * Media schema (anime & manga).
    */
@@ -116,7 +124,7 @@ export namespace AniList {
     name: string;
     media: {
       edges: {
-        node: AniSearch.AniList.Media;
+        node: ALSearch.AniList.Media;
       }[];
     };
   }
@@ -179,10 +187,10 @@ export namespace Search {
   /**
    * Search results.
    */
-  export type Results = AniSearch.AniList.Media[]
-    | AniSearch.AniList.Studio[]
-    | AniSearch.AniList.Character[]
-    | AniSearch.AniList.Staff[];
+  export type Results = ALSearch.AniList.Media[]
+    | ALSearch.AniList.Studio[]
+    | ALSearch.AniList.Character[]
+    | ALSearch.AniList.Staff[];
 }
 
 /**

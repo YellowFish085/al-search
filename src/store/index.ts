@@ -11,7 +11,7 @@ Vue.use(Vuex);
 /**
  * Default storage state.
  */
-const defaultState: AniSearch.Store.State = {
+const defaultState: ALSearch.Store.State = {
   initialized: false,
   critError: null,
   settings: {
@@ -38,7 +38,7 @@ const defaultState: AniSearch.Store.State = {
 export default new Vuex.Store({
   state: defaultState,
   mutations: {
-    init(state: AniSearch.Store.State, storeData: AniSearch.Store.State): void {
+    init(state: ALSearch.Store.State, storeData: ALSearch.Store.State): void {
       state.initialized = storeData.initialized;
       state.critError = null;
       state.settings = JSON.parse(JSON.stringify(storeData.settings));
@@ -49,7 +49,7 @@ export default new Vuex.Store({
       state.searchResults = null;
     },
 
-    error(state: AniSearch.Store.State, error: Error): void {
+    error(state: ALSearch.Store.State, error: Error): void {
       console.error(error);
       state.critError = error;
     },
@@ -58,8 +58,8 @@ export default new Vuex.Store({
      * Update user data.
      */
     setUserData(
-      state: AniSearch.Store.State,
-      data: { accessToken: string | null; user: AniSearch.AniList.User | null },
+      state: ALSearch.Store.State,
+      data: { accessToken: string | null; user: ALSearch.AniList.User | null },
     ): void {
       state.accessToken = data.accessToken;
       state.user = JSON.parse(JSON.stringify(data.user));
@@ -68,7 +68,7 @@ export default new Vuex.Store({
     /**
      * Update settings.
      */
-    setSettings(state: AniSearch.Store.State, settings: AniSearch.Settings): void {
+    setSettings(state: ALSearch.Store.State, settings: ALSearch.Settings): void {
       state.settings = JSON.parse(JSON.stringify(settings));
     },
 
@@ -76,8 +76,8 @@ export default new Vuex.Store({
      * Update activity feed.
      */
     setActivityFeed(
-      state: AniSearch.Store.State,
-      activityFeed: AniSearch.Activity.Activity[] | null,
+      state: ALSearch.Store.State,
+      activityFeed: ALSearch.Activity.Activity[] | null,
     ): void {
       state.activityFeed = activityFeed;
     },
@@ -85,7 +85,7 @@ export default new Vuex.Store({
     /**
      * Update search data.
      */
-    setSearch(state: AniSearch.Store.State, search: AniSearch.Search.Search | null): void {
+    setSearch(state: ALSearch.Store.State, search: ALSearch.Search.Search | null): void {
       state.search = JSON.parse(JSON.stringify(search));
     },
 
@@ -93,8 +93,8 @@ export default new Vuex.Store({
      * Update search results.
      */
     setSearchResults(
-      state: AniSearch.Store.State,
-      data: AniSearch.Store.SearchResults | null,
+      state: ALSearch.Store.State,
+      data: ALSearch.Store.SearchResults | null,
     ): void {
       state.searchResults = data;
     },
@@ -115,25 +115,26 @@ export default new Vuex.Store({
         // Init settings are not yet stored in storage, save them.
         // This should be done by the background script, but just in case.
         if (!settings) {
-          settings = JSON.parse(JSON.stringify(state.settings)) as AniSearch.Settings;
+          settings = JSON.parse(JSON.stringify(state.settings)) as ALSearch.Settings;
 
           await StorageHelper.setSettings(settings);
         }
 
         // If user exists, check token usability in case token is not usable.
         if (user) {
-          const response = await browser.runtime.sendMessage({ code: 'USER_REFRESH' });
-
-          if (response.code === 'USER_REFRESH_FAILED') {
-            Notifications.create(
-              'auth_failed',
-              'We couldn\'t get your account information, your token might be invalid. Please login again.',
-            );
-          }
+          // As the check is only meant to display a notification to the user,
+          // we don't have to wait for the asynchronous method to finish to
+          // allow the rest of the method to continue.
+          browser.runtime.sendMessage({ code: 'USER_REFRESH' })
+            .then((response: any) => {
+              if (response.code === 'USER_REFRESH_FAILED') {
+                Notifications.create('auth_failed', browser.i18n.getMessage('E_UserRefreshFailed'));
+              }
+            });
         }
 
         // Create state.
-        const newState: AniSearch.Store.State = {
+        const newState: ALSearch.Store.State = {
           initialized: true,
           settings,
           critError: null,
@@ -178,7 +179,7 @@ export default new Vuex.Store({
     /**
      * Update settings.
      */
-    async updateSettings({ commit }, settings: AniSearch.Settings): Promise<void> {
+    async updateSettings({ commit }, settings: ALSearch.Settings): Promise<void> {
       try {
         // Store new settings in storage.
         await StorageHelper.setSettings(settings);
@@ -215,8 +216,8 @@ export default new Vuex.Store({
     /**
      * Start search from an activity item.
      */
-    searchFromActivity({ commit }, data: AniSearch.Activity.Activity): void {
-      const search: AniSearch.Search.Search = {
+    searchFromActivity({ commit }, data: ALSearch.Activity.Activity): void {
+      const search: ALSearch.Search.Search = {
         value: data.value as string,
         type: data.params!.type,
         year: data.params!.year,
@@ -229,7 +230,7 @@ export default new Vuex.Store({
     /**
      * Search results.
      */
-    searchResults({ commit }, data: AniSearch.Store.SearchResults | null): void {
+    searchResults({ commit }, data: ALSearch.Store.SearchResults | null): void {
       commit('setSearchResults', data);
     },
   },

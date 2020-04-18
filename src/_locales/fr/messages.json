@@ -1,0 +1,342 @@
+{
+  "APP_Name": {
+    "message": "AL Search, pour AniList",
+    "description": "Add-on title."
+  },
+  "APP_Description": {
+    "message": "Recherche rapide pour AniList.",
+    "description": "Add-on description."
+  },
+  "AUTH_Success": {
+    "message": "Vous êtes maintenant connecté en tant que $USERNAME$",
+    "description": "Auth success message.",
+    "placeholders": {
+      "username": {
+        "content": "$1",
+        "example": "<John Doe>"
+      }
+    }
+  },
+  "E_AniListInvalidUser": {
+    "message": "La requête AniList a échoué: La réponse ne contient pas de données valides. Réponse: $DATA$",
+    "description": "Error when data from AniList are invalid User.",
+    "placeholders": {
+      "data": {
+        "content": "$1",
+        "example": "{}"
+      }
+    }
+  },
+  "E_AnilistRequest": {
+    "message": "La requête AniList a échoué: $DATA$",
+    "description": "Error when a request on AniList fails.",
+    "placeholders": {
+      "data": {
+        "content": "$1",
+        "example": "<Error message>"
+      }
+    }
+  },
+  "E_AnilistSearchResults": {
+    "message": "Les données renvoyées par AniList sont invalides",
+    "description": "Error when data from AniList are invalid search results."
+  },
+  "E_AuthFailed": {
+    "message": "La connexion a échoué: $DATA$",
+    "description": "Error when authentication failed.",
+    "placeholders": {
+      "data": {
+        "content": "$1",
+        "example": "<Error message>"
+      }
+    }
+  },
+  "E_AuthMissingAccessToken": {
+    "message": "Token d'authentification manquant",
+    "description": "Error when access token is missing from redirect url after auth."
+  },
+  "E_InitFailed": {
+    "message": "L'initialisation de l'extension a échoué: $DATA$",
+    "description": "Error when add-on init failed.",
+    "placeholders": {
+      "data": {
+        "content": "$1",
+        "example": "<Error message>"
+      }
+    }
+  },
+  "E_StorageMissingAccessToken": {
+    "message": "Token d'authentification manquant dans les données locales",
+    "description": "Error when access token is missing from storage."
+  },
+  "E_UserRefreshFailed": {
+    "message": "Impossible de récupérer vos informations, votre token d'authentification est peut-être invalide. Essayez de vous reconnecter."
+  },
+  "ENUM_ANIME": {
+    "message": "Anime"
+  },
+  "ENUM_CHARACTERS": {
+    "message": "Personnages"
+  },
+  "ENUM_FALL": {
+    "message": "Automne"
+  },
+  "ENUM_MANGA": {
+    "message": "Manga"
+  },
+  "ENUM_SPRING": {
+    "message": "Printemps"
+  },
+  "ENUM_SUMMER": {
+    "message": "Eté"
+  },
+  "ENUM_STAFF": {
+    "message": "Staff"
+  },
+  "ENUM_STUDIOS": {
+    "message": "Studios"
+  },
+  "ENUM_WINTER": {
+    "message": "Hiver"
+  },
+  "MENUS_SearchAnime": {
+    "message": "Rechercher l'anime \"%s\" sur AniList",
+    "description": "Contextual menu."
+  },
+  "MENUS_SearchCharacters": {
+    "message": "Rechercher le personnage \"%s\" sur AniList",
+    "description": "Contextual menu."
+  },
+  "MENUS_SearchManga": {
+    "message": "Rechercher le manga \"%s\" sur AniList",
+    "description": "Contextual menu."
+  },
+  "MENUS_SearchStaff": {
+    "message": "Rechercher le staff \"%s\" sur AniList",
+    "description": "Contextual menu."
+  },
+  "MENUS_SearchStudios": {
+    "message": "Rechercher le studio \"%s\" sur AniList",
+    "description": "Contextual menu."
+  },
+  "N_ActivityFeedClearFailed": {
+    "message": "Impossible de vider votre fil d'activité : $DATA$",
+    "description": "Notification sent when activity feed clear failed.",
+    "placeholders": {
+      "data": {
+        "content": "$1",
+        "example": "<Error message>"
+      }
+    }
+  },
+  "N_ActivityFeedClearSuccess": {
+    "message": "Votre fil d'activité a été vidé",
+    "description": "Notification sent when activity feed is cleared."
+  },
+  "N_LogoutSuccess": {
+    "message": "N'oubliez pas de supprimer le token d'authentification sur la page Settings > Apps du site AniList.",
+    "description": "Notification sent when user logged out."
+  },
+  "N_UserRefreshSuccess": {
+    "message": "Vos données locales ont été mises à jour.",
+    "description": "Notification sent when user data are refreshed."
+  },
+  "S_About": {
+    "message": "A propos"
+  },
+  "S_Account": {
+    "message": "Compte"
+  },
+  "S_Activity": {
+    "message": "Activité"
+  },
+  "S_ActivityDescription": {
+    "message": "<b>AL Search</b> peut sauvegarder votre historique de recherche et les pages visitées (anime, manga, studio, personnnage et staff) pour vous permettre d'y accéder de nouveau rapidement."
+  },
+  "S_ActivityEmpty": {
+    "message": "Votre fil d'activité est vide. Recherchez quelque chose !"
+  },
+  "S_ActivitySaveSearch": {
+    "message": "Sauvegarder les recherches"
+  },
+  "S_ActivitySaveVisitedPage": {
+    "message": "Sauvegarder les pages visitées"
+  },
+  "S_AllSeasons": {
+    "message": "Saisons"
+  },
+  "S_AllYears": {
+    "message": "Années"
+  },
+  "S_BackToHome": {
+    "message": "Retourner à l'accueil"
+  },
+  "S_BuildInformation": {
+    "message": "Information de l'extension"
+  },
+  "S_Changelog": {
+    "message": "Changelog"
+  },
+  "S_Clear": {
+    "message": "Vider"
+  },
+  "S_ClearMyActivity": {
+    "message": "Vider mon fil d'acitvité"
+  },
+  "S_CurrentVersion": {
+    "message": "Version actuelle"
+  },
+  "S_Data": {
+    "message": "Données"
+  },
+  "S_DataDescription": {
+    "message": "Aucune donnée n'est collectée. Profitez juste de l'extension :)"
+  },
+  "S_EnableContextualMenus": {
+    "message": "Activer les menus contextuels"
+  },
+  "S_EnableContextualMenusDescription": {
+    "message": "<b>AL Search</b> ajoute des menus contextuels au navigateur pour vous permettre de faire une recherche rapide sur un texte sélectionné."
+  },
+  "S_EnableWebIntegration": {
+    "message": "Activer l'integration web"
+  },
+  "S_EnableWebIntegrationDescription": {
+    "message": "<b>AL Search</b> ajoute un bouton en bas à droite de la fenêtre du navigateur sur certains sites liés à l'univers anime et manga (comme Crunchyroll). Ce bouton vous donne accès à certaines actions rapides."
+  },
+  "S_Error": {
+    "message": "Erreur"
+  },
+  "S_Information": {
+    "message": "Informations"
+  },
+  "S_InformationActivityDescription": {
+    "message": "Les données du fil d'activité sont sauvegardées localement sur le navigateur.<br><br>Si vous installez <b>AL Search</b> sur un autre navigateur de votre ordinateur, ou sur différents ordinateurs, chaque extension aura son propre fil d'activité."
+  },
+  "S_Integration": {
+    "message": "Intégration"
+  },
+  "S_Legal": {
+    "message": "Légal"
+  },
+  "S_LegalDescription": {
+    "message": "<b>AL Search</b> est un projet open-source non affilié à <b>AniList</b>."
+  },
+  "S_Links": {
+    "message": "Liens"
+  },
+  "S_LoggedInAs": {
+    "message": "Connecté en tant que <b>$USERNAME$</b>",
+    "placeholders": {
+      "username": {
+        "content": "$1",
+        "example": "<John Doe>"
+      }
+    }
+  },
+  "S_Login": {
+    "message": "Connexion"
+  },
+  "S_LoginDescription": {
+    "message": "Vous déconnecter ici ne supprimera pas le token d'authentification généré par <b>AniList</b>. Rendez vous sur votre page <a href=\"https: //anilist.co/settings/apps\" title=\"Ouvrir votre page de réglages\"><strong>Settings > Apps</strong></a> pour révoquer le token."
+  },
+  "S_Logout": {
+    "message": "Déconnexion"
+  },
+  "S_FilterBySeason": {
+    "message": "Filtrer pas saison"
+  },
+  "S_FilterByYear": {
+    "message": "Filtrer par année"
+  },
+  "S_NoMediaForStudio": {
+    "message": "Aucun media disponible pour ce studio."
+  },
+  "S_NotLoggedIn": {
+    "message": "Vous n'êtes pas connecté"
+  },
+  "S_NotLoggedInDescription": {
+    "message": "Se connecter active la recherche sur vos listes d'anime et manga."
+  },
+  "S_Refresh": {
+    "message": "Actualiser"
+  },
+  "S_RefreshMyData": {
+    "message": "Actualiser mes données locales"
+  },
+  "S_ResultsGlobalFirst": {
+    "message": "Résultats globaux en premier"
+  },
+  "S_ResultsOnListFirst": {
+    "message": "Résultats de vos listes en premier"
+  },
+  "S_ResultsOnListFirstDescription": {
+    "message": "Souhaitez-vous voir les résultats de recherche globaux en premier, ou ceux de vos listes ?"
+  },
+  "S_Search": {
+    "message": "Recherche"
+  },
+  "S_SearchFor": {
+    "message": "Rechercher \"$DATA$\"",
+    "placeholders": {
+      "data": {
+        "content": "$1",
+        "example": "<Anime name>"
+      }
+    }
+  },
+  "S_SearchPlaceholder": {
+    "message": "Rechercher..."
+  },
+  "S_SearchResults": {
+    "message": "Résultats de recherche"
+  },
+  "S_SeeOnAniList": {
+    "message": "Voir $DATA$ sur AniList",
+    "placeholders": {
+      "data": {
+        "content": "$1",
+        "example": "<Anime name>"
+      }
+    }
+  },
+  "S_SeeMyProfile": {
+    "message": "Voir mon profil"
+  },
+  "S_Settings": {
+    "message": "Reglages"
+  },
+  "S_Success": {
+    "message": "Succès"
+  },
+  "S_Theme": {
+    "message": "Thème"
+  },
+  "S_ThemeContrast": {
+    "message": "Thème contrasté"
+  },
+  "S_ThemeDark": {
+    "message": "Thème sombre"
+  },
+  "S_ThemeDefault": {
+    "message": "Thème par défaut"
+  },
+  "S_VisitRepository": {
+    "message": "Voir le repository de $DATA$",
+    "placeholders": {
+      "data": {
+        "content": "$1",
+        "example": "<Repository name>"
+      }
+    }
+  },
+  "S_VisitWebsite": {
+    "message": "Voir le site $DATA$",
+    "placeholders": {
+      "data": {
+        "content": "$1",
+        "example": "<Site name>"
+      }
+    }
+  }
+}

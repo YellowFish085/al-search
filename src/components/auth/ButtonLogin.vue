@@ -1,7 +1,7 @@
 <template>
   <!-- eslint-disable max-len -->
-  <ButtonBg content="Login"
-            title="Login"
+  <ButtonBg :content="i18n('S_Login')"
+            :title="i18n('S_Login')"
             :onClick="handleClick"
             :disabled="disabled"
             size="lg" />
@@ -9,8 +9,9 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Mixins, Vue } from 'vue-property-decorator';
 import ButtonBg from '@/components/ui/buttons/ButtonBg.vue';
+import MixinI18n from '@/mixins/I18n';
 
 const browser = require('webextension-polyfill'); // eslint-disable-line
 
@@ -19,7 +20,7 @@ const browser = require('webextension-polyfill'); // eslint-disable-line
     ButtonBg,
   },
 })
-export default class ButtonLogin extends Vue {
+export default class ButtonLogin extends Mixins(Vue, MixinI18n) {
   /**
    * Disable button.
    */

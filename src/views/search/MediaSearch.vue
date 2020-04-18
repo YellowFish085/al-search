@@ -20,38 +20,44 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import {
+  Component,
+  Mixins,
+  Prop,
+  Vue,
+} from 'vue-property-decorator';
 import { State } from 'vuex-class';
 import CardMedia from '@/components/search/cards/Media.vue';
+import MixinI18n from '@/mixins/I18n';
 
 @Component({
   components: {
     CardMedia,
   },
 })
-export default class MediaSearch extends Vue {
+export default class MediaSearch extends Mixins(Vue, MixinI18n) {
   /**
    * Settings from store.
    */
-  @State settings!: AniSearch.Settings;
+  @State settings!: ALSearch.Settings;
 
   /**
    * User from store.
    */
-  @State user!: AniSearch.AniList.User | null;
+  @State user!: ALSearch.AniList.User | null;
 
   /**
    * Search from state.
    */
 
-  @Prop() results!: AniSearch.Store.SearchResults | null;
+  @Prop() results!: ALSearch.Store.SearchResults | null;
 
   /**
    * Get list order string.
    */
   get listsOrder() {
     if (this.user) {
-      return this.settings.search.onListFirst ? 'Results from your list first' : 'Global results first';
+      return this.settings.search.onListFirst ? this.i18n('S_ResultsOnListFirst') : this.i18n('S_ResultsGlobalFirst');
     }
 
     // If user not logged in, don't display content.

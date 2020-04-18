@@ -1,7 +1,7 @@
 <template>
   <!-- eslint-disable max-len -->
-  <ButtonBg content="Refresh"
-            title="Refresh my data"
+  <ButtonBg :content="i18n('S_Refresh')"
+            :title="i18n('S_RefreshMyData')"
             :onClick="handleClick"
             :disabled="disabled" />
   <!-- eslint-enable max-len -->
@@ -10,6 +10,7 @@
 <script lang="ts">
 import { Component, Mixins, Vue } from 'vue-property-decorator';
 import ButtonBg from '@/components/ui/buttons/ButtonBg.vue';
+import MixinI18n from '@/mixins/I18n';
 import MixinNotify from '@/mixins/Notify';
 
 const browser = require('webextension-polyfill'); // eslint-disable-line
@@ -19,7 +20,7 @@ const browser = require('webextension-polyfill'); // eslint-disable-line
     ButtonBg,
   },
 })
-export default class ButtonRefresh extends Mixins(Vue, MixinNotify) {
+export default class ButtonRefresh extends Mixins(Vue, MixinI18n, MixinNotify) {
   /**
    * Disable button.
    */
@@ -35,12 +36,12 @@ export default class ButtonRefresh extends Mixins(Vue, MixinNotify) {
       case 'USER_REFRESH_SUCCESS':
         await this.$store.dispatch('refreshUserData');
 
-        this.notify('success', 'Success', 'Your data have successfully been refreshed.');
+        this.notify('success', this.i18n('S_Success'), this.i18n('N_UserRefreshSuccess'));
         break;
 
       case 'USER_REFRESH_FAILED':
       default:
-        this.notify('error', 'Failed to refresh your data:', response.message);
+        this.notify('error', this.i18n('S_Error'), response.message);
         break;
     }
 

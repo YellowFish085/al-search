@@ -1,44 +1,44 @@
 <template>
   <!-- eslint-disable max-len -->
   <div>
-    <h2>Integration</h2>
+    <h2>{{ i18n('S_Integration') }}</h2>
 
     <div class="container">
       <div class="col col--justify-start col--items-start">
-        <!-- <div class="field">
+        <div class="field">
           <input type="checkbox"
                  name="web_enabled"
                  id="settings__integration__web_enabled"
                  v-model="webEnabled">
-          <label for="settings__integration__web_enabled">Enable web integration</label>
+          <label for="settings__integration__web_enabled">{{ i18n('S_EnableWebIntegration') }}</label>
         </div>
-        <p><b>Ani-Search</b> comes with a web integration feature that adds buttons and links to some website related to anime and manga culture (e.g. Crunchyroll).</p>
-        <p>For instance, you will see a button near an anime title on Crunchyroll that will allow you to do a quick search on the anime title with <b>Ani-Search</b> (or directly to <b>AniList</b> if you selected the <strong>Open AniList search results page</strong> option).</p> -->
+        <p v-html="i18n('S_EnableWebIntegrationDescription')"></p>
         <div class="field">
           <input type="checkbox"
                  name="menus_enabled"
                  id="settings__integration__menus_enabled"
                  v-model="menusEnabled">
-          <label for="settings__integration__menus_enabled">Enable contextual menus</label>
+          <label for="settings__integration__menus_enabled">{{ i18n('S_EnableContextualMenus') }}</label>
         </div>
-        <p><b>Ani-Search</b> adds contextual actions to quickly execute a search a selected text on a page.</p>
+        <p v-html="i18n('S_EnableContextualMenusDescription')"></p>
       </div>
   </div>
   <!-- eslint-enable max-len -->
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Mixins, Vue } from 'vue-property-decorator';
 import { State } from 'vuex-class';
+import MixinI18n from '@/mixins/I18n';
 
 const browser = require('webextension-polyfill') // eslint-disable-line
 
 @Component
-export default class IntegrationSettings extends Vue {
+export default class IntegrationSettings extends Mixins(Vue, MixinI18n) {
   /**
    * Settings from store.
    */
-  @State settings!: AniSearch.Settings;
+  @State settings!: ALSearch.Settings;
 
   get webEnabled(): boolean {
     return this.settings.integration.webEnabled;

@@ -11,42 +11,42 @@ export function toggle(show = true) {
   if (show) {
     // Add contextual menus to quick search selected text on AniList.
     browser.contextMenus.create({
-      id: 'Ani-Search__Anime',
+      id: 'AL-Search__Anime',
       type: 'normal',
-      title: 'AniList anime search for "%s"',
+      title: browser.i18n.getMessage('MENUS_SearchAnime'),
       contexts: ['selection'],
     });
     browser.contextMenus.create({
-      id: 'Ani-Search__Manga',
+      id: 'AL-Search__Manga',
       type: 'normal',
-      title: 'AniList manga search for "%s"',
+      title: browser.i18n.getMessage('MENUS_SearchManga'),
       contexts: ['selection'],
     });
     browser.contextMenus.create({
-      id: 'Ani-Search__Studios',
+      id: 'AL-Search__Studios',
       type: 'normal',
-      title: 'AniList studios search for "%s"',
+      title: browser.i18n.getMessage('MENUS_SearchStudios'),
       contexts: ['selection'],
     });
     browser.contextMenus.create({
-      id: 'Ani-Search__Characters',
+      id: 'AL-Search__Characters',
       type: 'normal',
-      title: 'AniList characters search for "%s"',
+      title: browser.i18n.getMessage('MENUS_SearchCharacters'),
       contexts: ['selection'],
     });
     browser.contextMenus.create({
-      id: 'Ani-Search__Staff',
+      id: 'AL-Search__Staff',
       type: 'normal',
-      title: 'AniList staff search for "%s"',
+      title: browser.i18n.getMessage('MENUS_SearchStaff'),
       contexts: ['selection'],
     });
   }
   else {
-    browser.contextMenus.remove('Ani-Search__Anime');
-    browser.contextMenus.remove('Ani-Search__Manga');
-    browser.contextMenus.remove('Ani-Search__Studios');
-    browser.contextMenus.remove('Ani-Search__Characters');
-    browser.contextMenus.remove('Ani-Search__Staff');
+    browser.contextMenus.remove('AL-Search__Anime');
+    browser.contextMenus.remove('AL-Search__Manga');
+    browser.contextMenus.remove('AL-Search__Studios');
+    browser.contextMenus.remove('AL-Search__Characters');
+    browser.contextMenus.remove('AL-Search__Staff');
   }
 }
 
@@ -57,23 +57,23 @@ export async function init() {
     let url = `?sort=SEARCH_MATCH&search=${value}`;
 
     switch (info.menuItemId) {
-      case 'Ani-Search__Anime':
+      case 'AL-Search__Anime':
         url = `${process.env.VUE_APP_ANILIST_ANIME_URL}${url}`;
         break;
 
-      case 'Ani-Search__Manga':
+      case 'AL-Search__Manga':
         url = `${process.env.VUE_APP_ANILIST_MANGA_URL}${url}`;
         break;
 
-      case 'Ani-Search__Studios':
+      case 'AL-Search__Studios':
         url = `${process.env.VUE_APP_ANILIST_STUDIOS_URL}${url}`;
         break;
 
-      case 'Ani-Search__Characters':
+      case 'AL-Search__Characters':
         url = `${process.env.VUE_APP_ANILIST_CHARACTERS_URL}${url}`;
         break;
 
-      case 'Ani-Search__Staff':
+      case 'AL-Search__Staff':
         url = `${process.env.VUE_APP_ANILIST_STAFF_URL}${url}`;
         break;
 

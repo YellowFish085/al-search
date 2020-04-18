@@ -4,21 +4,27 @@
           name="search_season"
           id="search_season"
           :class="{ active: value, disabled: invalidType || disabled }"
-          title="Filter by season"
+          :title="i18n('S_FilterBySeason')"
           :disabled="invalidType || disabled"
           @change="$emit('update:value', $event.target.value || null)">
-    <option :value="null">All seasons</option>
-    <option v-for="y in seasons" :key="y" :value="y">{{ strings[y] }}</option>
+    <option :value="null">{{ i18n('S_AllSeasons') }}</option>
+    <option v-for="y in seasons" :key="y" :value="y">{{ i18n(`ENUM_${y}`) }}</option>
   </select>
   <!-- eslint-enable max-len -->
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import {
+  Component,
+  Mixins,
+  Prop,
+  Vue,
+} from 'vue-property-decorator';
 import * as Enum from '@/utils/Enum';
+import MixinI18n from '@/mixins/I18n';
 
 @Component
-export default class InputSeason extends Vue {
+export default class InputSeason extends Mixins(Vue, MixinI18n) {
   /** Search type */
   @Prop(String) type!: Enum.SearchType;
 
@@ -30,9 +36,6 @@ export default class InputSeason extends Vue {
 
   /** Search season. */
   seasons = Enum.SearchSeason;
-
-  /** Strings */
-  strings = Enum.Strings;
 
   /**
    * Disabled?

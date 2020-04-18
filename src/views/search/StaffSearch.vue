@@ -27,7 +27,7 @@ import CardStaff from '@/components/search/cards/Staff.vue';
   },
 })
 export default class StaffSearch extends Vue {
-  @Prop() results!: AniSearch.Store.SearchResults | null;
+  @Prop() results!: ALSearch.Store.SearchResults | null;
 
   /**
    * Get list to display.

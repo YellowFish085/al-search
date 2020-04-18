@@ -2,14 +2,14 @@
   <!-- eslint-disable max-len -->
   <section>
     <div class="wrapper">
-      <h1>Activity</h1>
+      <h1>{{ i18n('S_Activity') }}</h1>
 
       <div class="activity-feed col col--justify-start col--items-center">
         <Item v-for="data in activityFeed" :key="data" :data="data" />
         <ButtonClear v-if="activityFeed && activityFeed.length > 0" />
         <template v-else>
           <div class="container">
-            <span>Nothing in your activity feed. Search something!</span>
+            <span>{{ i18n('S_ActivityEmpty') }}</span>
           </div>
         </template>
       </div>
@@ -19,10 +19,11 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Mixins, Vue } from 'vue-property-decorator';
 import { State } from 'vuex-class';
 import ButtonClear from '@/components/activity/ButtonClear.vue';
 import Item from '@/components/activity/Item.vue';
+import MixinI18n from '@/mixins/I18n';
 
 @Component({
   components: {
@@ -30,11 +31,11 @@ import Item from '@/components/activity/Item.vue';
     Item,
   },
 })
-export default class Home extends Vue {
+export default class Home extends Mixins(Vue, MixinI18n) {
   /**
    * Activity feed.
    */
-  @State activityFeed!: AniSearch.Activity.Activity[] | null;
+  @State activityFeed!: ALSearch.Activity.Activity[] | null;
 }
 </script>
 

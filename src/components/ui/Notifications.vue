@@ -1,13 +1,13 @@
 <template>
   <!-- eslint-disable max-len -->
-  <notifications group="ani-search" animation-type="css" position="bottom center">
+  <notifications group="al-search" animation-type="css" position="bottom center">
     <template slot="body" slot-scope="props">
       <div class="notification" :class="[props.item.type]">
         <div class="header row row--justify-between row--items-start">
           <div class="title">
             <span>{{ props.item.title }}</span>
           </div>
-          <div class="close" title="Close notification" @click="props.close" >
+          <div class="close" @click="props.close" >
             <font-awesome-icon :icon="['fas', 'times']" size="sm" />
           </div>
         </div>
@@ -21,6 +21,10 @@
 </template>
 
 <style lang="scss" scoped>
+.notification-group {
+  z-index: 9999;
+}
+
 .notification {
   background-color: rgb(var(--color-foreground));
   border-radius: 3px;

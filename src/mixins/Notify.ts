@@ -7,7 +7,7 @@ export default class Notify extends Vue {
    */
   notify(type: string, title: string, message: string): void {
     this.$notify({
-      group: 'ani-search',
+      group: 'al-search',
       type,
       duration: type === 'success' ? 3000 : -1,
       title,

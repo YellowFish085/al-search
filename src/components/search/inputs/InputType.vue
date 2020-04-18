@@ -7,7 +7,7 @@
            :id="`search_type_${types.ANIME}`"
            :disabled="disabled"
            @change="$emit('update:value', $event.target.value)">
-    <label :for="`search_type_${types.ANIME}`" :class="{ active: value === types.ANIME, disabled: disabled }">Anime</label>
+    <label :for="`search_type_${types.ANIME}`" :class="{ active: value === types.ANIME, disabled: disabled }">{{ i18n('ENUM_ANIME') }}</label>
 
     <input v-model="value"
            :value="types.MANGA"
@@ -15,7 +15,7 @@
            :id="`search_type_${types.MANGA}`"
            :disabled="disabled"
            @change="$emit('update:value', $event.target.value)">
-    <label :for="`search_type_${types.MANGA}`" :class="{ active: value === types.MANGA, disabled: disabled }">Manga</label>
+    <label :for="`search_type_${types.MANGA}`" :class="{ active: value === types.MANGA, disabled: disabled }">{{ i18n('ENUM_MANGA') }}</label>
 
     <input v-model="value"
            :value="types.STUDIOS"
@@ -23,7 +23,7 @@
            :id="`search_type_${types.STUDIOS}`"
            :disabled="disabled"
            @change="$emit('update:value', $event.target.value)">
-    <label :for="`search_type_${types.STUDIOS}`" :class="{ active: value === types.STUDIOS, disabled: disabled }">Studios</label>
+    <label :for="`search_type_${types.STUDIOS}`" :class="{ active: value === types.STUDIOS, disabled: disabled }">{{ i18n('ENUM_STUDIOS') }}</label>
 
     <input v-model="value"
            :value="types.CHARACTERS"
@@ -31,7 +31,7 @@
            :id="`search_type_${types.CHARACTERS}`"
            :disabled="disabled"
            @change="$emit('update:value', $event.target.value)">
-    <label :for="`search_type_${types.CHARACTERS}`" :class="{ active: value === types.CHARACTERS, disabled: disabled }">Characters</label>
+    <label :for="`search_type_${types.CHARACTERS}`" :class="{ active: value === types.CHARACTERS, disabled: disabled }">{{ i18n('ENUM_CHARACTERS') }}</label>
 
     <input v-model="value"
            :value="types.STAFF"
@@ -39,17 +39,23 @@
            :id="`search_type_${types.STAFF}`"
            :disabled="disabled"
            @change="$emit('update:value', $event.target.value)">
-    <label :for="`search_type_${types.STAFF}`" :class="{ active: value === types.STAFF, disabled: disabled }">Staff</label>
+    <label :for="`search_type_${types.STAFF}`" :class="{ active: value === types.STAFF, disabled: disabled }">{{ i18n('ENUM_STAFF') }}</label>
   </div>
   <!-- eslint-enable max-len -->
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import {
+  Component,
+  Mixins,
+  Prop,
+  Vue,
+} from 'vue-property-decorator';
 import * as Enum from '@/utils/Enum';
+import MixinI18n from '@/mixins/I18n';
 
 @Component
-export default class InputType extends Vue {
+export default class InputType extends Mixins(Vue, MixinI18n) {
   /** Value */
   @Prop(String) value!: Enum.SearchType;
 

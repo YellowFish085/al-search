@@ -2,7 +2,7 @@
   <!-- eslint-disable max-len -->
   <section>
     <div class="wrapper">
-      <h1>Error</h1>
+      <h1>{{ i18n('S_Error') }}</h1>
 
       <h2>{{ error.message }}</h2>
     </div>
@@ -11,10 +11,16 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import {
+  Component,
+  Mixins,
+  Prop,
+  Vue,
+} from 'vue-property-decorator';
+import MixinI18n from '@/mixins/I18n';
 
 @Component
-export default class ErrorComponent extends Vue {
+export default class ErrorComponent extends Mixins(Vue, MixinI18n) {
   @Prop(Error) error!: Error;
 }
 </script>

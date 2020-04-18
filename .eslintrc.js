@@ -18,5 +18,6 @@ module.exports = {
     'class-methods-use-this': 'off',
     'no-alert': 'off',
     'no-console': 'off',
+    "prefer-destructuring": ["error", { "object": true, "array": false }],
   },
 };
