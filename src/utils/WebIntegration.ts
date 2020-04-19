@@ -126,6 +126,7 @@ function getHtml(
       flex-direction: row;
       height: 100%;
       justify-content: flex-end;
+      margin: 0;
       padding: 0 12px;
     }
 
@@ -135,7 +136,8 @@ function getHtml(
 
     #al-search__menu > ul > li:first-child {
       font-weight: bold;
-      margin-right: 20px;
+      margin: 0 20px 0 0;
+      padding: 0;
       white-space: nowrap;
     }
 

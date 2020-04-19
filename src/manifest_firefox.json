@@ -35,6 +35,10 @@
       "js": ["js/content/crunchyroll.js"]
     },
     {
+      "matches": ["*://www.funimation.com/*"],
+      "js": ["js/content/funimation.js"]
+    },
+    {
       "matches": ["*://www.wakanim.tv/*"],
       "js": ["js/content/wakanim.js"]
     }
