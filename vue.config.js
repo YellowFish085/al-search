@@ -13,6 +13,7 @@ const scripts = {
     crunchyroll: './src/content-scripts/crunchyroll.ts',
     funimation: './src/content-scripts/funimation.ts',
     wakanim: './src/content-scripts/wakanim.ts',
+    animelab: './src/content-scripts/animelab.ts',
   },
 };
 

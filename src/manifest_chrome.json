@@ -37,6 +37,10 @@
     {
       "matches": ["*://www.wakanim.tv/*"],
       "js": ["js/content/wakanim.js"]
+    },
+    {
+      "matches": ["*://www.animelab.com/*"],
+      "js": ["js/content/animelab.js"]
     }
   ]
 }
