@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.1.3 (19/04/2020)
+
+- [Add] Added AnimeLab web integration (PR #5, thanks [SuperSonic16](https://github.com/thesupersonic16))
+- Fixed typos
+
 ## v1.1.2 (19/04/2020)
 
 - [Fix] Fixed media studio link click (c48df95)
