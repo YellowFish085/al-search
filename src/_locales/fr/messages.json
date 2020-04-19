@@ -258,6 +258,9 @@
   "S_NotLoggedInDescription": {
     "message": "Se connecter active la recherche sur vos listes d'anime et manga."
   },
+  "S_OnAniList": {
+    "message": "sur AniList"
+  },
   "S_Refresh": {
     "message": "Actualiser"
   },

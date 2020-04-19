@@ -186,7 +186,7 @@ function getHtml(
     }
   </style>`;
 
-  const content = `<div id="al-search__menu"><ul><li>${title}<span>on AniList</span></li>${showButton}${searchButton}</ul><div id="al-search__arrow"></div></div><span id="al-search__button" title="AL Search"></span>${style}`;
+  const content = `<div id="al-search__menu"><ul><li>${title}<span>${browser.i18n.getMessage('S_OnAniList')}</span></li>${showButton}${searchButton}</ul><div id="al-search__arrow"></div></div><span id="al-search__button" title="AL Search"></span>${style}`;
   // eslint-enable max-len
 
   // Create node and return it.
