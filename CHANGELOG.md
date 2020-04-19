@@ -1,5 +1,15 @@
 # Changelog
 
+## v1.1.2 (19/04/2020)
+
+- [Fix] Fixed media studio link click (c48df95)
+- [Change] Web integration now use different value for display and search (8ada1e1)
+- [Fix] Added missing web integration translations (904b849)
+- [Add] Added Wakanim web integration (be9cfe5, 2296fe3)
+- [Add] Added Funimation web integration (cf42d8e)
+- [Add] Added missing pages for Crunchyroll web integration (2296fe3)
+- Various css fixes
+
 ## v1.1.1 (18/04/2020)
 
 - [Fix] Fixed external links not opening on Chrome (d12df24)
