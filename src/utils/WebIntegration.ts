@@ -44,13 +44,14 @@ function getHtml(
   value: string,
   type: Enum.SearchType,
   entry: ALSearch.AniList.Data | null,
+  title: string,
 ): HTMLDivElement {
   // eslint-disable max-len
 
   // If entry exists, add a "Show on AniList" button.
   const showButton = entry === null ? '' : `
   <li class="action">
-    <a href="${entry.siteUrl}" title="${browser.i18n.getMessage('S_SeeOnAniList', value).replace(/"/g, '')}">
+    <a href="${entry.siteUrl}" title="${browser.i18n.getMessage('S_SeeOnAniList', title).replace(/"/g, '')}">
       <svg data-v-4c80f226="" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="external-link-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
         <path data-v-4c80f226="" fill="currentColor" d="M432,320H400a16,16,0,0,0-16,16V448H64V128H208a16,16,0,0,0,16-16V80a16,16,0,0,0-16-16H48A48,48,0,0,0,0,112V464a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V336A16,16,0,0,0,432,320ZM488,0h-128c-21.37,0-32.05,25.91-17,41l35.73,35.73L135,320.37a24,24,0,0,0,0,34L157.67,377a24,24,0,0,0,34,0L435.28,133.32,471,169c15,15,41,4.5,41-17V24A24,24,0,0,0,488,0Z"></path>
       </svg>
@@ -59,7 +60,7 @@ function getHtml(
 
   const searchButton = `
   <li class="action">
-    <a href="${getSearchUrl(value, type)}" title="${browser.i18n.getMessage('S_SearchFor', value).replace(/"/g, '')}">
+    <a href="${getSearchUrl(value, type)}" title="${browser.i18n.getMessage('S_SearchFor', title).replace(/"/g, '')}">
       <svg data-v-4c80f226="" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
         <path data-v-4c80f226="" fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path>
       </svg>
@@ -185,7 +186,7 @@ function getHtml(
     }
   </style>`;
 
-  const content = `<div id="al-search__menu"><ul><li>${value}<span>on AniList</span></li>${showButton}${searchButton}</ul><div id="al-search__arrow"></div></div><span id="al-search__button" title="AL Search"></span>${style}`;
+  const content = `<div id="al-search__menu"><ul><li>${title}<span>on AniList</span></li>${showButton}${searchButton}</ul><div id="al-search__arrow"></div></div><span id="al-search__button" title="AL Search"></span>${style}`;
   // eslint-enable max-len
 
   // Create node and return it.
@@ -227,11 +228,15 @@ async function isEnabled(): Promise<boolean> {
 /**
  * Display AL Search button on page.
  */
-async function displayButton(value: string, type: Enum.SearchType): Promise<void> {
+async function displayButton(
+  value: string,
+  type: Enum.SearchType,
+  title?: string | null,
+): Promise<void> {
   try {
     const entry = await find(value, type);
 
-    document.body.appendChild(getHtml(value, type, entry));
+    document.body.appendChild(getHtml(value, type, entry, title || value));
   }
   catch (e) {
     console.error(e);
