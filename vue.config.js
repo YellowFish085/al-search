@@ -10,7 +10,9 @@ const scripts = {
   },
   content: {
     // 'script': './src/content-scripts/script.ts',
-    'crunchyroll': './src/content-scripts/crunchyroll.ts',
+    crunchyroll: './src/content-scripts/crunchyroll.ts',
+    funimation: './src/content-scripts/funimation.ts',
+    wakanim: './src/content-scripts/wakanim.ts',
   },
 };
 

@@ -258,6 +258,9 @@
   "S_NotLoggedInDescription": {
     "message": "Log in to enable search on your personal Anime and Manga lists."
   },
+  "S_OnAniList": {
+    "message": "on AniList"
+  },
   "S_Refresh": {
     "message": "Refresh"
   },

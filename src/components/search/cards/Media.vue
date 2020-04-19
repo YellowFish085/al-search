@@ -17,7 +17,8 @@
         <div v-if="studio" class="subtitle w-full">
           <a :href="studio.siteUrl"
              :title="i18n('S_SeeOnAnilist', studio.name)"
-             target="_blank">{{ studio.name }}</a>
+             target="_blank"
+             @click="handleStudioClick">{{ studio.name }}</a>
         </div>
       </div>
     </a>
@@ -134,6 +135,9 @@ export default class Media extends Mixins(Vue, MixinI18n, MixinSaveActivity) {
     e.stopPropagation();
     e.preventDefault();
 
+    // Return if target click is actually studio.
+    if (e.currentTarget !== e.target) return;
+
     if (this.settings.activity.visitedPages) {
       const activity: ALSearch.Activity.Activity = {
         type: Enum.ActivityType.VISITED_PAGE,
@@ -148,6 +152,10 @@ export default class Media extends Mixins(Vue, MixinI18n, MixinSaveActivity) {
     }
 
     window.open(this.data!.siteUrl);
+  }
+
+  handleStudioClick(e: Event): void {
+    window.open(this.data!.studios!.edges[0].node.siteUrl);
   }
 }
 </script>

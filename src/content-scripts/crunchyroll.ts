@@ -2,45 +2,75 @@ import WebIntegration from '@/utils/WebIntegration';
 import * as Enum from '@/utils/Enum';
 
 /**
- * Try to get an anime title from the page.
+ * Display overlay for anime page.
  */
-function getAnimeTitle(): string | null {
+function animePage(): void {
   const titleNode = document.querySelector('#showview-content-header > .ch-left > .ellipsis > span');
 
-  return titleNode ? titleNode.innerHTML : null;
+  const title = titleNode ? titleNode.innerHTML : null;
+
+  if (title) WebIntegration.displayButton(title, Enum.SearchType.ANIME);
 }
 
 /**
- * Try to get a manga title from the page.
+ * Display overlay for anime episode page.
  */
-function getMangaTitle(): string | null {
+function animeEpisodePage(): void {
+  const titleNode = document.querySelector('.showmedia-header > h1.ellipsis > a > span');
+
+  const title = titleNode ? titleNode.innerHTML : null;
+
+  if (title) WebIntegration.displayButton(title, Enum.SearchType.ANIME);
+}
+
+/**
+ * Display overlay for manga page.
+ */
+function mangaPage(): void {
   const titleNode = document.querySelector('#container > h1.ellipsis');
 
   if (titleNode) {
     const split = titleNode.textContent!.split(' > ');
 
-    if (split.length >= 2) return split[1];
-  }
+    const title = split.length >= 2 ? split[1] : null;
 
-  return null;
+    if (title) WebIntegration.displayButton(title, Enum.SearchType.MANGA);
+  }
+}
+
+/**
+ * Display overlay for manga chapter page.
+ */
+function mangaChapterPage(): void {
+  const titleNode = document.querySelector('#showmedia_mangareader_title > h1.ellipsis > a > span');
+
+  const title = titleNode ? titleNode.innerHTML : null;
+
+  if (title) WebIntegration.displayButton(title, Enum.SearchType.MANGA);
 }
 
 async function init() {
   try {
     if (!(await WebIntegration.isEnabled())) return;
 
-    // In case we are on a video page.
+    // In case we are on an anime page.
     if (document.getElementById('main_tab_videos')) {
-      const title = getAnimeTitle();
+      animePage();
+    }
 
-      if (title) WebIntegration.displayButton(title, Enum.SearchType.ANIME);
+    // In case we are on an anime episode page.
+    if (document.getElementById('showmedia_video')) {
+      animeEpisodePage();
     }
 
     // In case we are on a manga page.
     if (document.getElementById('main_tab_volumes')) {
-      const title = getMangaTitle();
+      mangaPage();
+    }
 
-      if (title) WebIntegration.displayButton(title, Enum.SearchType.MANGA);
+    // In case we are on a manga chapter page.
+    if (document.getElementById('showmedia_mangareader_title')) {
+      mangaChapterPage();
     }
   }
   catch (e) {
