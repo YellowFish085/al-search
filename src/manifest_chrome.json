@@ -27,12 +27,12 @@
   },
   "content_scripts": [
     {
-      "matches": [
-        "*://www.crunchyroll.com/*"
-      ],
-      "js": [
-        "js/content/crunchyroll.js"
-      ]
+      "matches": ["*://www.crunchyroll.com/*"],
+      "js": ["js/content/crunchyroll.js"]
+    },
+    {
+      "matches": ["*://www.wakanim.tv/*"],
+      "js": ["js/content/wakanim.js"]
     }
   ]
 }

@@ -91,7 +91,7 @@ function getHtml(
       justify-content: flex-end;
       position: fixed;
       right: 20px;
-      z-index: 99999;
+      z-index: 2147483647;
     }
 
     #al-search__button {
@@ -129,6 +129,10 @@ function getHtml(
       padding: 0 12px;
     }
 
+    #al-search__menu > ul > li {
+      list-style: none !important;
+    }
+
     #al-search__menu > ul > li:first-child {
       font-weight: bold;
       margin-right: 20px;
@@ -160,6 +164,7 @@ function getHtml(
 
     #al-search__menu > ul > li.action > a > svg {
       color: rgb(61,180,242);
+      vertical-align: initial !important; /* Wakanim */
     }
 
     #al-search__arrow {

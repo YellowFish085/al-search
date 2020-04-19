@@ -11,6 +11,7 @@ const scripts = {
   content: {
     // 'script': './src/content-scripts/script.ts',
     'crunchyroll': './src/content-scripts/crunchyroll.ts',
+    'wakanim': './src/content-scripts/wakanim.ts',
   },
 };
 
