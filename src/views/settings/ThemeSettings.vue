@@ -39,6 +39,7 @@ import { Component, Mixins, Vue } from 'vue-property-decorator';
 import { State } from 'vuex-class';
 import * as Enum from '@/utils/Enum';
 import ButtonClear from '@/components/activity/ButtonClear.vue';
+import Helpers from '@/utils/Helpers';
 import MixinChangeTheme from '@/mixins/Theme';
 import MixinI18n from '@/mixins/I18n';
 
@@ -61,7 +62,7 @@ export default class ThemeSettings extends Mixins(Vue, MixinChangeTheme, MixinI1
   }
 
   set theme(value: string) {
-    const s = JSON.parse(JSON.stringify(this.settings));
+    const s = Helpers.deepClone(this.settings);
 
     s.theme = value;
 

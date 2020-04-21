@@ -34,6 +34,7 @@
 import { Component, Mixins, Vue } from 'vue-property-decorator';
 import { State } from 'vuex-class';
 import ButtonClear from '@/components/activity/ButtonClear.vue';
+import Helpers from '@/utils/Helpers';
 import MixinI18n from '@/mixins/I18n';
 
 @Component({
@@ -52,7 +53,7 @@ export default class ActivitySettings extends Mixins(Vue, MixinI18n) {
   }
 
   set search(value: boolean) {
-    const s = JSON.parse(JSON.stringify(this.settings));
+    const s = Helpers.deepClone(this.settings);
 
     s.activity.search = value;
 
@@ -64,7 +65,7 @@ export default class ActivitySettings extends Mixins(Vue, MixinI18n) {
   }
 
   set visitedPages(value: boolean) {
-    const s = JSON.parse(JSON.stringify(this.settings));
+    const s = Helpers.deepClone(this.settings);
 
     s.activity.visitedPages = value;
 

@@ -1,3 +1,4 @@
+import Helpers from '@/utils/Helpers';
 import Notifications from '@/utils/Notifications';
 import Settings from '@/utils/Settings';
 import StorageHelper from '@/utils/StorageHelper';
@@ -14,7 +15,7 @@ Vue.use(Vuex);
 const defaultState: ALSearch.Store.State = {
   initialized: false,
   critError: null,
-  settings: JSON.parse(JSON.stringify(Settings.defaultSettings)),
+  settings: Helpers.deepClone(Settings.defaultSettings),
   accessToken: null,
   user: null,
   activityFeed: null,
@@ -28,10 +29,10 @@ export default new Vuex.Store({
     init(state: ALSearch.Store.State, storeData: ALSearch.Store.State): void {
       state.initialized = storeData.initialized;
       state.critError = null;
-      state.settings = JSON.parse(JSON.stringify(storeData.settings));
+      state.settings = Helpers.deepClone(storeData.settings);
       state.accessToken = storeData.accessToken;
-      state.user = JSON.parse(JSON.stringify(storeData.user));
-      state.activityFeed = JSON.parse(JSON.stringify(storeData.activityFeed));
+      state.user = Helpers.deepClone(storeData.user);
+      state.activityFeed = Helpers.deepClone(storeData.activityFeed);
       state.search = null;
       state.searchResults = null;
     },
@@ -49,14 +50,14 @@ export default new Vuex.Store({
       data: { accessToken: string | null; user: ALSearch.AniList.User | null },
     ): void {
       state.accessToken = data.accessToken;
-      state.user = JSON.parse(JSON.stringify(data.user));
+      state.user = Helpers.deepClone(data.user);
     },
 
     /**
      * Update settings.
      */
     setSettings(state: ALSearch.Store.State, settings: ALSearch.Settings): void {
-      state.settings = JSON.parse(JSON.stringify(settings));
+      state.settings = Helpers.deepClone(settings);
     },
 
     /**
@@ -73,7 +74,7 @@ export default new Vuex.Store({
      * Update search data.
      */
     setSearch(state: ALSearch.Store.State, search: ALSearch.Search.Search | null): void {
-      state.search = JSON.parse(JSON.stringify(search));
+      state.search = Helpers.deepClone(search);
     },
 
     /**

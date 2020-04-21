@@ -29,6 +29,7 @@
 <script lang="ts">
 import { Component, Mixins, Vue } from 'vue-property-decorator';
 import { State } from 'vuex-class';
+import Helpers from '@/utils/Helpers';
 import MixinI18n from '@/mixins/I18n';
 
 const browser = require('webextension-polyfill') // eslint-disable-line
@@ -45,7 +46,7 @@ export default class IntegrationSettings extends Mixins(Vue, MixinI18n) {
   }
 
   set webEnabled(value: boolean) {
-    const s = JSON.parse(JSON.stringify(this.settings));
+    const s = Helpers.deepClone(this.settings);
 
     s.integration.webEnabled = value;
 
@@ -57,7 +58,7 @@ export default class IntegrationSettings extends Mixins(Vue, MixinI18n) {
   }
 
   set menusEnabled(value: boolean) {
-    const s = JSON.parse(JSON.stringify(this.settings));
+    const s = Helpers.deepClone(this.settings);
 
     s.integration.menusEnabled = value;
 

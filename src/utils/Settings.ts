@@ -1,3 +1,4 @@
+import Helpers from '@/utils/Helpers';
 import StorageHelper from '@/utils/StorageHelper';
 import * as Enum from '@/utils/Enum';
 
@@ -21,13 +22,13 @@ class Settings {
    * Processes the given object and returns a valid Settings object.
    */
   private validate(input: any): ALSearch.Settings {
-    if (!input || typeof input !== 'object') return JSON.parse(JSON.stringify(this.defaultSettings));
+    if (!input || typeof input !== 'object') return Helpers.deepClone(this.defaultSettings);
 
-    const validated = JSON.parse(JSON.stringify(this.defaultSettings)) as ALSearch.Settings;
+    const validated = Helpers.deepClone(this.defaultSettings) as ALSearch.Settings;
 
     // Activity
     if (!Object.prototype.hasOwnProperty.call(input, 'activity')) {
-      validated.activity = JSON.parse(JSON.stringify(this.defaultSettings.activity));
+      validated.activity = Helpers.deepClone(this.defaultSettings.activity);
     }
     else {
       if (
@@ -53,7 +54,7 @@ class Settings {
 
     // Integration
     if (!Object.prototype.hasOwnProperty.call(input, 'integration')) {
-      validated.integration = JSON.parse(JSON.stringify(this.defaultSettings.integration));
+      validated.integration = Helpers.deepClone(this.defaultSettings.integration);
     }
     else {
       if (
@@ -79,7 +80,7 @@ class Settings {
 
     // Search
     if (!Object.prototype.hasOwnProperty.call(input, 'search')) {
-      validated.integration = JSON.parse(JSON.stringify(this.defaultSettings.search));
+      validated.integration = Helpers.deepClone(this.defaultSettings.search);
     }
     else if (
       !Object.prototype.hasOwnProperty.call(input.search, 'onListFirst')
@@ -112,7 +113,7 @@ class Settings {
   private async initSettings(): Promise<ALSearch.Settings> {
     await StorageHelper.setSettings(this.defaultSettings);
 
-    return JSON.parse(JSON.stringify(this.defaultSettings));
+    return Helpers.deepClone(this.defaultSettings);
   }
 
   /**

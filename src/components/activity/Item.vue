@@ -20,6 +20,7 @@ import {
   Vue,
 } from 'vue-property-decorator';
 import * as Enum from '@/utils/Enum';
+import Helpers from '@/utils/Helpers';
 import MixinsI18n from '@/mixins/I18n';
 
 @Component
@@ -84,7 +85,7 @@ export default class Item extends Mixins(Vue, MixinsI18n) {
   handleClick() {
     switch (this.data.type) {
       case Enum.ActivityType.SEARCH:
-        this.$store.dispatch('searchFromActivity', JSON.parse(JSON.stringify(this.data)));
+        this.$store.dispatch('searchFromActivity', Helpers.deepClone(this.data));
         break;
 
       case Enum.ActivityType.VISITED_PAGE:
