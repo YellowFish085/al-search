@@ -46,3 +46,20 @@ export enum ResponseTypeKeys {
   CHARACTERS = 'characters',
   STAFF = 'staff',
 }
+
+/**
+ * Web integration button X position.
+ */
+export enum WebIntegrationX {
+  LEFT = 'LEFT',
+  RIGHT = 'RIGHT',
+}
+
+/**
+ * Web integration button Y position.
+ */
+export enum WebIntegrationY {
+  TOP = 'TOP',
+  CENTER = 'CENTER',
+  BOTTOM = 'BOTTOM',
+}

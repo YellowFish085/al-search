@@ -38,14 +38,52 @@ function getSearchUrl(value: string, type: Enum.SearchType): string {
 }
 
 /**
+ * Get classes added to the #al-search node.
+ */
+async function getHtmlClasses(): Promise<string[]> {
+  const settings = await Settings.getSettings();
+  const classes = [];
+
+  // X position.
+  switch (settings.integration.overlay.x) {
+    case Enum.WebIntegrationX.LEFT:
+      classes.push('al-search--left');
+      break;
+
+    case Enum.WebIntegrationX.RIGHT:
+    default:
+      classes.push('al-search--right');
+      break;
+  }
+
+  // Y position.
+  switch (settings.integration.overlay.y) {
+    case Enum.WebIntegrationY.TOP:
+      classes.push('al-search--top');
+      break;
+
+    case Enum.WebIntegrationY.CENTER:
+      classes.push('al-search--center');
+      break;
+
+    case Enum.WebIntegrationY.BOTTOM:
+    default:
+      classes.push('al-search--bottom');
+      break;
+  }
+
+  return classes;
+}
+
+/**
  * Get html content to inject.
  */
-function getHtml(
+async function getHtml(
   value: string,
   type: Enum.SearchType,
   entry: ALSearch.AniList.Data | null,
   title: string,
-): HTMLDivElement {
+): Promise<HTMLDivElement> {
   // eslint-disable max-len
 
   // If entry exists, add a "Show on AniList" button.
@@ -69,7 +107,19 @@ function getHtml(
 
   const style = `
   <style>
-    @keyframes al-search-enter {
+    @keyframes al-search-enter-left {
+      0% {
+        opacity: 0;
+        transform: translateX(-5px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateX(0px);
+      }
+    }
+
+    @keyframes al-search-enter-right {
       0% {
         opacity: 0;
         transform: translateX(5px);
@@ -83,15 +133,40 @@ function getHtml(
 
     #al-search {
       align-items: stretch;
-      animation: al-search-enter 0.2s ease;
-      bottom: 20px;
       display: flex;
-      flex-direction: row;
       font-size: 12px;
-      justify-content: flex-end;
       position: fixed;
-      right: 20px;
       z-index: 2147483647;
+    }
+
+    #al-search.al-search--top {
+      top: 20px;
+    }
+
+    #al-search.al-search--bottom {
+      bottom: 20px;
+    }
+
+    #al-search.al-search--center {
+      top: 50%;
+    }
+
+    #al-search.al-search--left {
+      animation: al-search-enter-left 0.2s ease;
+      left: 20px;
+      flex-direction: row-reverse;
+      justify-content: flex-start;
+    }
+
+    #al-search.al-search--right {
+      animation: al-search-enter-right 0.2s ease;
+      flex-direction: row;
+      justify-content: flex-end;
+      right: 20px;
+    }
+
+    #al-search.al-search--left {
+      left: 20px;
     }
 
     #al-search__button {
@@ -111,12 +186,20 @@ function getHtml(
       background-color: rgb(31, 38, 49);
       border-radius: 3px;
       box-shadow: 0 2px 20px rgba(49, 54, 68, .09);
-      margin-right: 8px;
       opacity: 0;
       pointer-events: none;
       position: relative;
-      transform: translateX(5px);
       width: 0;
+    }
+
+    #al-search.al-search--left #al-search__menu {
+      margin-left: 8px;
+      transform: translateX(-5px);
+    }
+
+    #al-search.al-search--right #al-search__menu {
+      margin-right: 8px;
+      transform: translateX(5px);
     }
 
     #al-search__menu > ul {
@@ -171,17 +254,26 @@ function getHtml(
 
     #al-search__arrow {
       border-color: transparent;
-      border-left-color: rgb(31, 38, 49);
       border-style: solid;
       border-width: 6px;
-      border-right-width: 0;
       display: block;
       height: 0;
       position: absolute;
-      right: -5px;
       top: 10px;
       width: 0;
       z-index: 999999;
+    }
+
+    #al-search.al-search--left #al-search__arrow {
+      border-right-color: rgb(31, 38, 49);
+      border-left-width: 0;
+      left: -5px;
+    }
+
+    #al-search.al-search--right #al-search__arrow {
+      border-left-color: rgb(31, 38, 49);
+      border-right-width: 0;
+      right: -5px;
     }
 
     #al-search:hover #al-search__menu {
@@ -197,8 +289,10 @@ function getHtml(
   // eslint-enable max-len
 
   // Create node and return it.
+  const classes = await getHtmlClasses();
   const node = document.createElement('div');
   node.setAttribute('id', 'al-search');
+  node.classList.add(...classes);
   node.innerHTML = content;
 
   return node;
@@ -242,8 +336,9 @@ async function displayButton(
 ): Promise<void> {
   try {
     const entry = await find(value, type);
+    const node = await getHtml(value, type, entry, title || value);
 
-    document.body.appendChild(getHtml(value, type, entry, title || value));
+    document.body.appendChild(node);
   }
   catch (e) {
     console.error(e);

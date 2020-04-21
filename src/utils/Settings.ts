@@ -11,6 +11,10 @@ class Settings {
     integration: {
       webEnabled: true,
       menusEnabled: true,
+      overlay: {
+        x: Enum.WebIntegrationX.RIGHT,
+        y: Enum.WebIntegrationY.BOTTOM,
+      },
     },
     search: {
       onListFirst: true,
@@ -46,13 +50,23 @@ class Settings {
       if (typeof input.integration.menusEnabled === 'boolean') {
         validated.integration.menusEnabled = input.integration.menusEnabled;
       }
+
+      if (input.integration.overlay && typeof input.integration.overlay === 'object') {
+        if (Object.values(Enum.WebIntegrationX).includes(input.integration.overlay.x)) {
+          validated.integration.overlay.x = input.integration.overlay.x;
+        }
+
+        if (Object.values(Enum.WebIntegrationY).includes(input.integration.overlay.y)) {
+          validated.integration.overlay.y = input.integration.overlay.y;
+        }
+      }
     }
 
     // Search
     if (input.search && typeof input.search === 'object') {
       if (typeof input.search.onListFirst === 'boolean') {
         validated.search.onListFirst = input.search.onListFirst;
-    }
+      }
     }
 
     // Theme

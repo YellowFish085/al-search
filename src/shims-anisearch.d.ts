@@ -14,6 +14,10 @@ export interface Settings {
   integration: {
     webEnabled: boolean;
     menusEnabled: boolean;
+    overlay: {
+      x: Enum.WebIntegrationX;
+      y: Enum.WebIntegrationY;
+    }
   };
 
   search: {
