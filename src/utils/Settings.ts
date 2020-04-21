@@ -27,79 +27,36 @@ class Settings {
     const validated = Helpers.deepClone(this.defaultSettings) as ALSearch.Settings;
 
     // Activity
-    if (!Object.prototype.hasOwnProperty.call(input, 'activity')) {
-      validated.activity = Helpers.deepClone(this.defaultSettings.activity);
-    }
-    else {
-      if (
-        !Object.prototype.hasOwnProperty.call(input.activity, 'search')
-        || typeof input.activity.search !== 'boolean'
-      ) {
-        validated.activity.search = this.defaultSettings.activity.search;
-      }
-      else {
+    if (input.activity && typeof input.activity === 'object') {
+      if (typeof input.activity.search === 'boolean') {
         validated.activity.search = input.activity.search;
       }
 
-      if (
-        !Object.prototype.hasOwnProperty.call(input.activity, 'visitedPages')
-        || typeof input.activity.visitedPages !== 'boolean'
-      ) {
-        validated.activity.visitedPages = this.defaultSettings.activity.visitedPages;
-      }
-      else {
+      if (typeof input.activity.visitedPages === 'boolean') {
         validated.activity.visitedPages = input.activity.visitedPages;
       }
     }
 
     // Integration
-    if (!Object.prototype.hasOwnProperty.call(input, 'integration')) {
-      validated.integration = Helpers.deepClone(this.defaultSettings.integration);
-    }
-    else {
-      if (
-        !Object.prototype.hasOwnProperty.call(input.integration, 'webEnabled')
-        || typeof input.integration.webEnabled !== 'boolean'
-      ) {
-        validated.integration.webEnabled = this.defaultSettings.integration.webEnabled;
-      }
-      else {
+    if (input.integration && typeof input.integration === 'object') {
+      if (typeof input.integration.webEnabled === 'boolean') {
         validated.integration.webEnabled = input.integration.webEnabled;
       }
 
-      if (
-        !Object.prototype.hasOwnProperty.call(input.integration, 'menusEnabled')
-        || typeof input.integration.menusEnabled !== 'boolean'
-      ) {
-        validated.integration.menusEnabled = this.defaultSettings.integration.menusEnabled;
-      }
-      else {
+      if (typeof input.integration.menusEnabled === 'boolean') {
         validated.integration.menusEnabled = input.integration.menusEnabled;
       }
     }
 
     // Search
-    if (!Object.prototype.hasOwnProperty.call(input, 'search')) {
-      validated.integration = Helpers.deepClone(this.defaultSettings.search);
+    if (input.search && typeof input.search === 'object') {
+      if (typeof input.search.onListFirst === 'boolean') {
+        validated.search.onListFirst = input.search.onListFirst;
     }
-    else if (
-      !Object.prototype.hasOwnProperty.call(input.search, 'onListFirst')
-      || typeof input.search.onListFirst !== 'boolean'
-    ) {
-      validated.search.onListFirst = this.defaultSettings.search.onListFirst;
-    }
-    else {
-      validated.search.onListFirst = input.search.onListFirst;
     }
 
     // Theme
-    if (
-      !Object.prototype.hasOwnProperty.call(input, 'search')
-      || !Object.values(Enum.Theme).includes(input.theme)
-    ) {
-      validated.theme = this.defaultSettings.theme;
-    }
-    else {
+    if (Object.values(Enum.Theme).includes(input.theme)) {
       validated.theme = input.theme;
     }
 
