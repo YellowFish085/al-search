@@ -1,4 +1,4 @@
-import StorageHelper from '@/utils/StorageHelper';
+import Settings from '@/utils/Settings';
 import * as Enum from '@/utils/Enum';
 
 const browser = require('webextension-polyfill'); // eslint-disable-line
@@ -227,9 +227,9 @@ async function find(value: string, type: Enum.SearchType): Promise<ALSearch.AniL
  * Is the web integration enabled?
  */
 async function isEnabled(): Promise<boolean> {
-  const settings = await StorageHelper.getSettings();
+  const settings = await Settings.getSettings();
 
-  return settings !== null && settings.integration.webEnabled;
+  return settings.integration.webEnabled;
 }
 
 /**

@@ -1,4 +1,4 @@
-import StorageHelper from '@/utils/StorageHelper';
+import Settings from '@/utils/Settings';
 
 const browser = require('webextension-polyfill'); // eslint-disable-line
 
@@ -86,7 +86,7 @@ export async function init() {
   });
 
   // Add contextual menus.
-  const settings = await StorageHelper.getSettings();
+  const settings = await Settings.getSettings();
 
   toggle(!settings || settings.integration.menusEnabled);
 }
