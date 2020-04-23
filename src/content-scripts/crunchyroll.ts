@@ -1,80 +1,45 @@
-import WebIntegration from '@/utils/WebIntegration';
+import { Button, create } from '@/content-scripts/web-integration/Button';
 import * as Enum from '@/utils/Enum';
 
-/**
- * Display overlay for anime page.
- */
-function animePage(): void {
-  const titleNode = document.querySelector('#showview-content-header > .ch-left > .ellipsis > span');
+class MangaPageButton extends Button {
+  /** @inheritdoc */
+  protected findValue(): string {
+    const split = this.node!.textContent!.split(' > ');
 
-  const title = titleNode ? titleNode.innerHTML : null;
+    return split.length >= 2 ? split[1] : '';
+  }
 
-  if (title) WebIntegration.displayButton(title, Enum.SearchType.ANIME);
-}
-
-/**
- * Display overlay for anime episode page.
- */
-function animeEpisodePage(): void {
-  const titleNode = document.querySelector('.showmedia-header > h1.ellipsis > a > span');
-
-  const title = titleNode ? titleNode.innerHTML : null;
-
-  if (title) WebIntegration.displayButton(title, Enum.SearchType.ANIME);
-}
-
-/**
- * Display overlay for manga page.
- */
-function mangaPage(): void {
-  const titleNode = document.querySelector('#container > h1.ellipsis');
-
-  if (titleNode) {
-    const split = titleNode.textContent!.split(' > ');
-
-    const title = split.length >= 2 ? split[1] : null;
-
-    if (title) WebIntegration.displayButton(title, Enum.SearchType.MANGA);
+  /** @inheritdoc */
+  protected findTitle(): string {
+    return this.findValue();
   }
 }
 
-/**
- * Display overlay for manga chapter page.
- */
-function mangaChapterPage(): void {
-  const titleNode = document.querySelector('#showmedia_mangareader_title > h1.ellipsis > a > span');
-
-  const title = titleNode ? titleNode.innerHTML : null;
-
-  if (title) WebIntegration.displayButton(title, Enum.SearchType.MANGA);
-}
-
-async function init() {
-  try {
-    if (!(await WebIntegration.isEnabled())) return;
-
-    // In case we are on an anime page.
-    if (document.getElementById('main_tab_videos')) {
-      animePage();
-    }
-
-    // In case we are on an anime episode page.
-    if (document.getElementById('showmedia_video')) {
-      animeEpisodePage();
-    }
-
-    // In case we are on a manga page.
-    if (document.getElementById('main_tab_volumes')) {
-      mangaPage();
-    }
-
-    // In case we are on a manga chapter page.
-    if (document.getElementById('showmedia_mangareader_title')) {
-      mangaChapterPage();
-    }
+function init(): void {
+  // In case we are on an anime page.
+  if (document.getElementById('main_tab_videos')) {
+    create({ selector: '#showview-content-header > .ch-left > .ellipsis > span' });
   }
-  catch (e) {
-    console.error(e);
+
+  // In case we are on an anime episode page.
+  if (document.getElementById('showmedia_video')) {
+    create({ selector: '.showmedia-header > h1.ellipsis > a > span' });
+  }
+
+  // In case we are on an manga page.
+  if (document.getElementById('main_tab_volumes')) {
+    create({
+      selector: '#container > h1.ellipsis',
+      type: Enum.SearchType.MANGA,
+    }, MangaPageButton);
+  }
+
+  // In case we are on an manga chapter page.
+  if (document.getElementById('showmedia_mangareader_title')) {
+    create({
+      selector: '#showmedia_mangareader_title > h1.ellipsis > a > span',
+      type: Enum.SearchType.MANGA,
+    });
   }
 }
 

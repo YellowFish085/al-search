@@ -1,44 +1,26 @@
-import WebIntegration from '@/utils/WebIntegration';
-import * as Enum from '@/utils/Enum';
+import { Button, create } from '@/content-scripts/web-integration/Button';
 
-/**
- * Display overlay for anime page.
- */
-function animePage(): void {
-  const titleNode = document.querySelector('#main > .content-series2');
-
-  const title = titleNode ? titleNode.getAttribute('data-title') : null;
-
-  if (title) WebIntegration.displayButton(title, Enum.SearchType.ANIME);
-}
-
-/**
- * Display overlay for anime episode page.
- */
-function animeEpisodePage(): void {
-  const titleNode = document.querySelector('#video-details h1 > a') as HTMLElement;
-
-  const title = titleNode ? titleNode.innerText : null;
-
-  if (title) WebIntegration.displayButton(title, Enum.SearchType.ANIME);
-}
-
-async function init() {
-  try {
-    if (!(await WebIntegration.isEnabled())) return;
-
-    // In case we are on an anime page.
-    if (document.querySelector('#main > .content-series2')) {
-      animePage();
-    }
-
-    // In case we are on an anime episode page.
-    if (document.getElementById('video-details')) {
-      animeEpisodePage();
-    }
+class AnimeButton extends Button {
+  /** @inheritdoc */
+  protected findValue(): string {
+    return this.nodeTitle!.getAttribute('data-title')!;
   }
-  catch (e) {
-    console.error(e);
+
+  /** @inheritdoc */
+  protected findTitle(): string {
+    return this.findValue();
+  }
+}
+
+function init(): void {
+  // In case we are on an anime page.
+  if (document.querySelector('#main > .content-series2')) {
+    create({ selector: '#main > .content-series2' }, AnimeButton);
+  }
+
+  // In case we are on an anime episode page.
+  if (document.getElementById('video-details')) {
+    create({ selector: '#video-details h1 > a' });
   }
 }
 
