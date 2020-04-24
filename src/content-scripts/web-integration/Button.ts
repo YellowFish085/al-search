@@ -471,10 +471,20 @@ export class Button {
 }
 
 interface OverlayParameters {
-  /** CSS selector used to find the search value for the content. */
+  /**
+   * CSS selector used to find the search value for the content.
+   *
+   * The code will look into the content of the corresponding node and use it to search on AniList.
+   */
   selector: string;
 
-  /** CSS selector used to find the title displayed to the user. */
+  /**
+   * CSS selector used to find the title displayed to the user.
+   *
+   * The code will look into the content of the corresponding node and use it as a display.
+   *
+   * If no value is provided, the content from the `selector` node will be used instead.
+   */
   selectorTitle?: string;
 
   /** Data type. */
@@ -482,7 +492,7 @@ interface OverlayParameters {
 }
 
 /**
- * Create a button.
+ * Create and add a button in the page if the user has enabled web integration.
  *
  * @param args Button arguments.
  * @param Klass (optional) Class to instantiate
