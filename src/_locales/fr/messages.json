@@ -276,6 +276,9 @@
   "S_OnAniList": {
     "message": "sur AniList"
   },
+  "S_OverlayNearTitle": {
+    "message": "Placer le bouton à côté du titre de la page"
+  },
   "S_OverlayX": {
     "message": "Position horizontale"
   },

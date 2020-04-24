@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { Button, create } from '@/content-scripts/web-integration/Button';
 import * as Enum from '@/utils/Enum';
 
@@ -15,15 +16,39 @@ class MangaPageButton extends Button {
   }
 }
 
+/**
+ * All pages have the same layout.
+ *
+ * Add button to the left of the title as an inline element.
+ */
+function appendInPage(node: HTMLElement, selector: string): void {
+  node.style.display = 'inline-block';
+  node.style.marginRight = '10px';
+  node.style.verticalAlign = 'middle';
+
+  const target = document.querySelector(selector);
+  if (target) target.prepend(node);
+}
+
 function init(): void {
   // In case we are on an anime page.
   if (document.getElementById('main_tab_videos')) {
-    create({ selector: '#showview-content-header > .ch-left > .ellipsis > span' });
+    create({
+      selector: '#showview-content-header > .ch-left > .ellipsis > span',
+      appendInPage(node: HTMLElement): void {
+        appendInPage(node, '#showview-content-header > .ch-left > .ellipsis > span');
+      },
+    });
   }
 
   // In case we are on an anime episode page.
   if (document.getElementById('showmedia_video')) {
-    create({ selector: '.showmedia-header > h1.ellipsis > a > span' });
+    create({
+      selector: '.showmedia-header > h1.ellipsis > a > span',
+      appendInPage(node: HTMLElement): void {
+        appendInPage(node, '.showmedia-header > h1.ellipsis');
+      },
+    });
   }
 
   // In case we are on an manga page.
@@ -31,6 +56,9 @@ function init(): void {
     create({
       selector: '#container > h1.ellipsis',
       type: Enum.SearchType.MANGA,
+      appendInPage(node: HTMLElement): void {
+        appendInPage(node, '#container > h1.ellipsis');
+      },
     }, MangaPageButton);
   }
 
@@ -39,6 +67,9 @@ function init(): void {
     create({
       selector: '#showmedia_mangareader_title > h1.ellipsis > a > span',
       type: Enum.SearchType.MANGA,
+      appendInPage(node: HTMLElement): void {
+        appendInPage(node, '#showmedia_mangareader_title > h1.ellipsis');
+      },
     });
   }
 }

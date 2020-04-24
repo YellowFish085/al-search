@@ -131,7 +131,9 @@ export class Button {
    * Get label.
    */
   protected getLabel(): string {
-    return `
+    return this.shouldAppendInPage()
+      ? ''
+      : `
     <li class="al-search__title">
       ${this.title}<span>${browser.i18n.getMessage('S_OnAniList')}</span>
     </li>`;
@@ -215,6 +217,10 @@ export class Button {
         line-height: 12px !important;
       }
 
+      #al-search.al-search--page {
+        animation: al-search-enter-left 0.2s ease;
+      }
+
       #al-search.al-search--fixed {
         align-items: stretch;
         display: flex;
@@ -272,6 +278,7 @@ export class Button {
         background-color: rgb(31, 38, 49);
         border-radius: 3px;
         box-shadow: 0 2px 20px rgba(49, 54, 68, .09);
+        display: inline-block;
         height: var(--al-search-size);
         position: relative;
         vertical-align: middle;
@@ -384,6 +391,8 @@ export class Button {
    * Get wrapper classes.
    */
   protected getWrapperClasses(): string[] {
+    if (this.shouldAppendInPage()) return ['al-search--page', 'al-search--left'];
+
     const classes = ['al-search--fixed'];
 
     // X position.
@@ -445,13 +454,16 @@ export class Button {
   }
 
   /**
-   * Display button on page.
-   *
-   * Button will only be displayed if the user has enabled web integration.
+   * Should the button be inserted in a node in the page or as a fixed element?
    */
-  public async display(): Promise<void> {
-    if (!this.settings.integration.webEnabled) return;
+  public shouldAppendInPage(): boolean {
+    return this.settings.integration.overlay.inPage;
+  }
 
+  /**
+   * Create button node and return it.
+   */
+  public async create(): Promise<HTMLElement | null> {
     // Init nodes.
     this.node = this.getNode(this.selector);
     this.nodeTitle = this.getNode(this.selectorTitle);
@@ -464,9 +476,11 @@ export class Button {
       // Try to find AniList related entry.
       this.entry = await this.findEntry();
 
-      // Append button to page.
-      document.body.appendChild(this.getButtonNode());
+      // Create button.
+      return this.getButtonNode();
     }
+
+    return null;
   }
 }
 
@@ -489,6 +503,15 @@ interface OverlayParameters {
 
   /** Data type. */
   type?: Enum.SearchType;
+
+  /**
+   * Custom callback when the button is inserted in a node in the page and not as a fixed element.
+   *
+   * This method is only called when the user settings `inPage` is set to `true`.
+   *
+   * This method receives one parameter which is the button node.
+   */
+  appendInPage: (node: HTMLElement) => void;
 }
 
 /**
@@ -500,24 +523,34 @@ interface OverlayParameters {
 export async function create(
   args: OverlayParameters,
   Klass: typeof Button = Button,
-): Promise<Button | null> {
+): Promise<void> {
   try {
     const settings = await Settings.getSettings();
 
-    const btn = new Klass(
+    // If web integration is disabled, return.
+    if (!settings.integration.webEnabled) return;
+
+    // Create instance and the button node.
+    const creator = new Klass(
       settings,
       args.selector,
       args.selectorTitle || args.selector,
       args.type || Enum.SearchType.ANIME,
     );
 
-    await btn.display();
+    const node = await creator.create();
 
-    return btn;
+    // Append node to document if it was created.
+    if (node) {
+      if (creator.shouldAppendInPage()) {
+        args.appendInPage(node);
+      }
+      else {
+        document.body.appendChild(node);
+      }
+    }
   }
   catch (e) {
     console.error(e);
   }
-
-  return null;
 }

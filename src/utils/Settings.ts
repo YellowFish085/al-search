@@ -12,6 +12,7 @@ class Settings {
       webEnabled: true,
       menusEnabled: true,
       overlay: {
+        inPage: false,
         x: Enum.WebIntegrationX.RIGHT,
         y: Enum.WebIntegrationY.BOTTOM,
       },
@@ -52,6 +53,10 @@ class Settings {
       }
 
       if (input.integration.overlay && typeof input.integration.overlay === 'object') {
+        if (typeof input.integration.overlay.inPage === 'boolean') {
+          validated.integration.overlay.inPage = input.integration.overlay.inPage;
+        }
+
         if (Object.values(Enum.WebIntegrationX).includes(input.integration.overlay.x)) {
           validated.integration.overlay.x = input.integration.overlay.x;
         }

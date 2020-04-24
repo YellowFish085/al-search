@@ -14,7 +14,15 @@
         </div>
 
         <div :class="{ hidden: !webEnabled }">
-          <div class="settings__integration__overlay_position row row--justify-start row--items-start">
+          <div class="field">
+            <input type="checkbox"
+                  name="overlay_near_title"
+                  id="settings__integration__overlay_near_title"
+                  v-model="inPage">
+            <label for="settings__integration__overlay_near_title">{{ i18n('S_OverlayNearTitle') }}</label>
+          </div>
+
+          <div class="settings__integration__overlay_position row row--justify-start row--items-start" :class="{ hidden: inPage}">
             <div class="field field--col">
               <label for="settings__integration__overlay_x">{{ i18n('S_OverlayX') }}</label>
               <select name="overlay_x"
@@ -79,6 +87,18 @@ export default class IntegrationSettings extends Mixins(Vue, MixinI18n) {
     const s = Helpers.deepClone(this.settings);
 
     s.integration.webEnabled = value;
+
+    this.$store.dispatch('updateSettings', s);
+  }
+
+  get inPage(): boolean {
+    return this.settings.integration.overlay.inPage;
+  }
+
+  set inPage(value: boolean) {
+    const s = Helpers.deepClone(this.settings);
+
+    s.integration.overlay.inPage = value;
 
     this.$store.dispatch('updateSettings', s);
   }
