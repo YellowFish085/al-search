@@ -448,7 +448,7 @@ export class Button {
 interface OverlayParameters {
   selector: string;
   selectorTitle?: string;
-  type: Enum.SearchType;
+  type?: Enum.SearchType;
 }
 
 /**
@@ -468,7 +468,7 @@ export async function create(
       settings,
       args.selector,
       args.selectorTitle || args.selector,
-      args.type,
+      args.type || Enum.SearchType.ANIME,
     );
 
     await btn.display();
