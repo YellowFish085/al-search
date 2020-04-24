@@ -167,6 +167,7 @@ export class Button {
    * Get style.
    */
   protected getStyle(): string {
+    // eslint-disable max-len
     return `
     <style>
       @keyframes al-search-enter-left {
@@ -346,6 +347,7 @@ export class Button {
         width: 100%;
       }
     </style>`;
+    // eslint-enable max-len
   }
 
   /**
