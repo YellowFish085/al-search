@@ -128,6 +128,16 @@ export class Button {
   }
 
   /**
+   * Get label.
+   */
+  protected getLabel(): string {
+    return `
+    <li class="al-search__title">
+      ${this.title}<span>${browser.i18n.getMessage('S_OnAniList')}</span>
+    </li>`;
+  }
+
+  /**
    * Get "show on AniList" button if entry exists.
    */
   protected getShowButton(): string {
@@ -196,64 +206,81 @@ export class Button {
         }
       }
 
+      /* Container */
+
       #al-search {
+        --al-search-size: 30px;
+        font-size: 12px !important;
+        height: var(--al-search-size);
+        line-height: 12px !important;
+      }
+
+      #al-search.al-search--fixed {
         align-items: stretch;
         display: flex;
-        font-size: 12px;
         position: fixed;
         z-index: 2147483647;
       }
 
-      #al-search.al-search--top {
+      #al-search.al-search--fixed.al-search--top {
         top: 20px;
       }
 
-      #al-search.al-search--bottom {
+      #al-search.al-search--fixed.al-search--bottom {
         bottom: 20px;
       }
 
-      #al-search.al-search--center {
+      #al-search.al-search--fixed.al-search--center {
         top: 50%;
       }
 
-      #al-search.al-search--left {
+      #al-search.al-search--fixed.al-search--left {
         animation: al-search-enter-left 0.2s ease;
         left: 20px;
-        flex-direction: row-reverse;
+        flex-direction: row;
         justify-content: flex-start;
       }
 
-      #al-search.al-search--right {
+      #al-search.al-search--fixed.al-search--right {
         animation: al-search-enter-right 0.2s ease;
-        flex-direction: row;
+        flex-direction: row-reverse;
         justify-content: flex-end;
         right: 20px;
       }
 
-      #al-search.al-search--left {
-        left: 20px;
-      }
+      /* Main button */
 
       #al-search__button {
         background-color: rgb(31, 38, 49);
         background-image: url('https://yellowfish085.github.io/al-search/img/logo.svg');
         background-position: center;
         background-repeat: no-repeat;
-        background-size: 60%;
+        background-size: 50%;
         border-radius: 3px;
         box-shadow: 0 2px 20px rgba(49, 54, 68, .09);
         cursor: pointer;
         display: inline-block;
-        padding: 15px;
+        flex: 0 0 auto;
+        height: var(--al-search-size);
+        vertical-align: middle;
+        width: var(--al-search-size);
       }
+
+      /* Menu */
 
       #al-search__menu {
         background-color: rgb(31, 38, 49);
         border-radius: 3px;
         box-shadow: 0 2px 20px rgba(49, 54, 68, .09);
+        height: var(--al-search-size);
+        position: relative;
+        vertical-align: middle;
+      }
+
+      /* When fixed */
+      #al-search.al-search--fixed #al-search__menu {
         opacity: 0;
         pointer-events: none;
-        position: relative;
         width: 0;
       }
 
@@ -272,29 +299,26 @@ export class Button {
         color: rgb(237, 241, 245);
         display: flex;
         flex-direction: row;
-        height: 100%;
         justify-content: flex-end;
         margin: 0;
-        padding: 0 12px;
       }
 
       #al-search__menu > ul > li {
         list-style: none !important;
       }
 
-      #al-search__menu > ul > li:first-child {
+      #al-search__menu li.al-search__title {
         font-weight: bold;
-        margin: 0 20px 0 0;
-        padding: 0;
+        padding: 0 12px;
         white-space: nowrap;
       }
 
-      #al-search__menu > ul > li:first-child span {
+      #al-search__menu li.al-search__title span {
         font-weight: normal;
         margin-left: 4px;
       }
 
-      #al-search__menu > ul > li.al-search__action {
+      #al-search__menu li.al-search__action {
         align-items: center;
         display: flex;
         flex-direction: row;
@@ -302,19 +326,20 @@ export class Button {
         white-space: nowrap;
       }
 
-      #al-search__menu > ul > li.al-search__action:not(:last-child) {
-        margin-right: 14px;
+      #al-search__menu li.al-search__action > a {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        height: var(--al-search-size);
+        justify-content: center;
+        width: var(--al-search-size);
       }
 
-      #al-search__menu > ul > li.al-search__action > a {
-        display: block;
-        height: 12px;
-        width: 12px;
-      }
-
-      #al-search__menu > ul > li.al-search__action > a > svg {
+      #al-search__menu li.al-search__action > a > svg {
         color: rgb(61,180,242);
-        vertical-align: initial !important; /* Wakanim */
+        display: block;
+        height: 40%;
+        width: 40%;
       }
 
       #al-search__arrow {
@@ -324,7 +349,8 @@ export class Button {
         display: block;
         height: 0;
         position: absolute;
-        top: 10px;
+        top: 50%;
+        transform: translateY(-50%);
         width: 0;
         z-index: 999999;
       }
@@ -341,7 +367,9 @@ export class Button {
         right: -5px;
       }
 
-      #al-search:hover #al-search__menu {
+      /* Hover */
+
+      #al-search.al-search--fixed:hover #al-search__menu {
         opacity: 1;
         pointer-events: initial;
         transform: translateX(0px);
@@ -356,7 +384,7 @@ export class Button {
    * Get wrapper classes.
    */
   protected getWrapperClasses(): string[] {
-    const classes = [];
+    const classes = ['al-search--fixed'];
 
     // X position.
     switch (this.settings.integration.overlay.x) {
@@ -393,24 +421,17 @@ export class Button {
    * Create button node to inject in the page.
    */
   protected getButtonNode(): HTMLDivElement {
-    // Prepare content.
-    const showButton = this.getShowButton();
-    const searchButton = this.getSearchButton();
-    const style = this.getStyle();
-
     const content = `
+    <span id="al-search__button" title="AL Search"></span>
     <div id="al-search__menu">
       <ul>
-        <li>
-          ${this.title}<span>${browser.i18n.getMessage('S_OnAniList')}</span>
-        </li>
-        ${showButton}
-        ${searchButton}
+        ${this.getLabel()}
+        ${this.getShowButton()}
+        ${this.getSearchButton()}
       </ul>
       <div id="al-search__arrow"></div>
     </div>
-    <span id="al-search__button" title="AL Search"></span>
-    ${style}
+    ${this.getStyle()}
     `;
 
     // Create node.
@@ -450,8 +471,13 @@ export class Button {
 }
 
 interface OverlayParameters {
+  /** CSS selector used to find the search value for the content. */
   selector: string;
+
+  /** CSS selector used to find the title displayed to the user. */
   selectorTitle?: string;
+
+  /** Data type. */
   type?: Enum.SearchType;
 }
 
@@ -459,7 +485,7 @@ interface OverlayParameters {
  * Create a button.
  *
  * @param args Button arguments.
- * @param Klass (optional) Class to instanciate
+ * @param Klass (optional) Class to instantiate
  */
 export async function create(
   args: OverlayParameters,
