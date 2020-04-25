@@ -41,6 +41,10 @@
     {
       "matches": ["*://www.animelab.com/*"],
       "js": ["js/content/animelab.js"]
+    },
+    {
+      "matches": ["*://www.hidive.com/*"],
+      "js": ["js/content/hidive.js"]
     }
   ]
 }

@@ -14,6 +14,7 @@ const scripts = {
     funimation: './src/content-scripts/funimation.ts',
     wakanim: './src/content-scripts/wakanim.ts',
     animelab: './src/content-scripts/animelab.ts',
+    hidive: './src/content-scripts/hidive.ts',
   },
 };
 

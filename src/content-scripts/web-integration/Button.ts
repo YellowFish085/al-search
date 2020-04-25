@@ -275,6 +275,7 @@ export default class Button {
         flex-direction: row;
         justify-content: flex-end;
         margin: 0;
+        padding: 0;
       }
 
       #al-search__menu > ul > li {
