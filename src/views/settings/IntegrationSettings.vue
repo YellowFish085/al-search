@@ -32,7 +32,7 @@
               </select>
             </div>
             <div class="field field--col">
-              <label for="settings__integration__overlay_y">{{ i18n('S_OverlayX') }}</label>
+              <label for="settings__integration__overlay_y">{{ i18n('S_OverlayY') }}</label>
               <select name="overlay_y"
                       id="settings__integration__overlay_y"
                       v-model="y">
