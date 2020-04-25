@@ -1,5 +1,19 @@
 # Changelog
 
+## v1.2.0 (25/04/2020)
+
+### New features
+
+- Web integration button position can now be configured (00ba57b)
+- Web integration button can be inserted near page title instead (7d48f5a)
+
+### Changes
+
+- [Change] Web integration buttons now open links in new tab (6f300d8)
+- [Add] Added Hidive web integration (80d1c6b)
+- [Change] (dev stuff) Rework settings to make it easier to maintain (c0a55a0)
+- Various fixes and code improvement
+
 ## v1.1.3 (19/04/2020)
 
 - [Add] Added AnimeLab web integration (PR #5, thanks [SuperSonic16](https://github.com/thesupersonic16))
