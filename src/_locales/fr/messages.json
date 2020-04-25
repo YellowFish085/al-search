@@ -279,11 +279,14 @@
   "S_OverlayNearTitle": {
     "message": "Placer le bouton à côté du titre de la page"
   },
+  "S_OverlayPositionFixed": {
+    "message": "Le bouton sera placé de manière fixe sur la page :"
+  },
   "S_OverlayX": {
-    "message": "Position horizontale"
+    "message": "(gauche / droite)"
   },
   "S_OverlayY": {
-    "message": "Position verticale"
+    "message": "(haut / centre / bas)"
   },
   "S_Refresh": {
     "message": "Actualiser"

@@ -279,11 +279,14 @@
   "S_OverlayNearTitle": {
     "message": "Place button near the page title"
   },
+  "S_OverlayPositionFixed": {
+    "message": "The button will be placed in a fixed position on the page:"
+  },
   "S_OverlayX": {
-    "message": "Horizontal position"
+    "message": "(left / right)"
   },
   "S_OverlayY": {
-    "message": "Vertical position"
+    "message": "(top / center / bottom)"
   },
   "S_Refresh": {
     "message": "Refresh"
