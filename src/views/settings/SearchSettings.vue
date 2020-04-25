@@ -25,6 +25,7 @@
 <script lang="ts">
 import { Component, Mixins, Vue } from 'vue-property-decorator';
 import { State } from 'vuex-class';
+import Helpers from '@/utils/Helpers';
 import MixinI18n from '@/mixins/I18n';
 
 @Component
@@ -39,7 +40,7 @@ export default class SearchSettings extends Mixins(Vue, MixinI18n) {
   }
 
   set onListFirst(value: boolean) {
-    const s = JSON.parse(JSON.stringify(this.settings));
+    const s = Helpers.deepClone(this.settings);
 
     s.search.onListFirst = value;
 

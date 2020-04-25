@@ -1,80 +1,65 @@
-import WebIntegration from '@/utils/WebIntegration';
+/* eslint-disable no-param-reassign */
+import create from '@/content-scripts/web-integration';
 import * as Enum from '@/utils/Enum';
 
 /**
- * Display overlay for anime page.
+ * All pages have the same layout.
+ *
+ * Add button to the left of the title as an inline element.
  */
-function animePage(): void {
-  const titleNode = document.querySelector('#showview-content-header > .ch-left > .ellipsis > span');
+function appendInPage(node: HTMLElement, selector: string): void {
+  node.style.display = 'inline-block';
+  node.style.marginRight = '10px';
+  node.style.verticalAlign = 'middle';
 
-  const title = titleNode ? titleNode.innerHTML : null;
-
-  if (title) WebIntegration.displayButton(title, Enum.SearchType.ANIME);
+  const target = document.querySelector(selector);
+  if (target) target.prepend(node);
 }
 
 /**
- * Display overlay for anime episode page.
+ * On manga pages, value and title are retrieved the same way.
  */
-function animeEpisodePage(): void {
-  const titleNode = document.querySelector('.showmedia-header > h1.ellipsis > a > span');
+function getMangaValue(node: HTMLElement): string | null {
+  const split = node.textContent!.split(' > ');
 
-  const title = titleNode ? titleNode.innerHTML : null;
-
-  if (title) WebIntegration.displayButton(title, Enum.SearchType.ANIME);
+  return split.length >= 2 ? split[1] : null;
 }
 
-/**
- * Display overlay for manga page.
- */
-function mangaPage(): void {
-  const titleNode = document.querySelector('#container > h1.ellipsis');
-
-  if (titleNode) {
-    const split = titleNode.textContent!.split(' > ');
-
-    const title = split.length >= 2 ? split[1] : null;
-
-    if (title) WebIntegration.displayButton(title, Enum.SearchType.MANGA);
+function init(): void {
+  // In case we are on an anime page.
+  if (document.getElementById('main_tab_videos')) {
+    create({
+      selector: '#showview-content-header > .ch-left > .ellipsis > span',
+      appendInPage: (node: HTMLElement) => appendInPage(node, '#showview-content-header > .ch-left > .ellipsis > span'),
+    });
   }
-}
 
-/**
- * Display overlay for manga chapter page.
- */
-function mangaChapterPage(): void {
-  const titleNode = document.querySelector('#showmedia_mangareader_title > h1.ellipsis > a > span');
-
-  const title = titleNode ? titleNode.innerHTML : null;
-
-  if (title) WebIntegration.displayButton(title, Enum.SearchType.MANGA);
-}
-
-async function init() {
-  try {
-    if (!(await WebIntegration.isEnabled())) return;
-
-    // In case we are on an anime page.
-    if (document.getElementById('main_tab_videos')) {
-      animePage();
-    }
-
-    // In case we are on an anime episode page.
-    if (document.getElementById('showmedia_video')) {
-      animeEpisodePage();
-    }
-
-    // In case we are on a manga page.
-    if (document.getElementById('main_tab_volumes')) {
-      mangaPage();
-    }
-
-    // In case we are on a manga chapter page.
-    if (document.getElementById('showmedia_mangareader_title')) {
-      mangaChapterPage();
-    }
+  // In case we are on an anime episode page.
+  if (document.getElementById('showmedia_video')) {
+    create({
+      selector: '.showmedia-header > h1.ellipsis > a > span',
+      appendInPage: (node: HTMLElement) => appendInPage(node, '.showmedia-header > h1.ellipsis'),
+    });
   }
-  catch (e) {
-    console.error(e);
+
+  // In case we are on an manga page.
+  if (document.getElementById('main_tab_volumes')) {
+    create({
+      selector: '#container > h1.ellipsis',
+      type: Enum.SearchType.MANGA,
+      getValue: getMangaValue,
+      getTitle: getMangaValue,
+      appendInPage: (node: HTMLElement) => appendInPage(node, '#container > h1.ellipsis'),
+    });
+  }
+
+  // In case we are on an manga chapter page.
+  if (document.getElementById('showmedia_mangareader_title')) {
+    create({
+      selector: '#showmedia_mangareader_title > h1.ellipsis > a > span',
+      type: Enum.SearchType.MANGA,
+      appendInPage: (node: HTMLElement) => appendInPage(node, '#showmedia_mangareader_title > h1.ellipsis'),
+    });
   }
 }
 

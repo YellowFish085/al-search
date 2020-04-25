@@ -1,8 +1,9 @@
+import Helpers from '@/utils/Helpers';
 import Notifications from '@/utils/Notifications';
+import Settings from '@/utils/Settings';
 import StorageHelper from '@/utils/StorageHelper';
 import Vue from 'vue';
 import Vuex from 'vuex';
-import * as Enum from '@/utils/Enum';
 
 const browser = require("webextension-polyfill"); // eslint-disable-line
 
@@ -14,20 +15,7 @@ Vue.use(Vuex);
 const defaultState: ALSearch.Store.State = {
   initialized: false,
   critError: null,
-  settings: {
-    activity: {
-      search: true,
-      visitedPages: true,
-    },
-    integration: {
-      webEnabled: true,
-      menusEnabled: true,
-    },
-    search: {
-      onListFirst: true,
-    },
-    theme: Enum.Theme.DEFAULT,
-  },
+  settings: Helpers.deepClone(Settings.defaultSettings),
   accessToken: null,
   user: null,
   activityFeed: null,
@@ -41,10 +29,10 @@ export default new Vuex.Store({
     init(state: ALSearch.Store.State, storeData: ALSearch.Store.State): void {
       state.initialized = storeData.initialized;
       state.critError = null;
-      state.settings = JSON.parse(JSON.stringify(storeData.settings));
+      state.settings = Helpers.deepClone(storeData.settings);
       state.accessToken = storeData.accessToken;
-      state.user = JSON.parse(JSON.stringify(storeData.user));
-      state.activityFeed = JSON.parse(JSON.stringify(storeData.activityFeed));
+      state.user = Helpers.deepClone(storeData.user);
+      state.activityFeed = Helpers.deepClone(storeData.activityFeed);
       state.search = null;
       state.searchResults = null;
     },
@@ -62,14 +50,14 @@ export default new Vuex.Store({
       data: { accessToken: string | null; user: ALSearch.AniList.User | null },
     ): void {
       state.accessToken = data.accessToken;
-      state.user = JSON.parse(JSON.stringify(data.user));
+      state.user = Helpers.deepClone(data.user);
     },
 
     /**
      * Update settings.
      */
     setSettings(state: ALSearch.Store.State, settings: ALSearch.Settings): void {
-      state.settings = JSON.parse(JSON.stringify(settings));
+      state.settings = Helpers.deepClone(settings);
     },
 
     /**
@@ -86,7 +74,7 @@ export default new Vuex.Store({
      * Update search data.
      */
     setSearch(state: ALSearch.Store.State, search: ALSearch.Search.Search | null): void {
-      state.search = JSON.parse(JSON.stringify(search));
+      state.search = Helpers.deepClone(search);
     },
 
     /**
@@ -105,20 +93,12 @@ export default new Vuex.Store({
      */
     async init({ state, commit }): Promise<void> {
       try {
-        let settings = await StorageHelper.getSettings();
-        const [accessToken, user, activityFeed] = await Promise.all([
+        const [settings, accessToken, user, activityFeed] = await Promise.all([
+          Settings.getSettings(),
           StorageHelper.getAccessToken(),
           StorageHelper.getUser(),
           StorageHelper.getActivityFeed(),
         ]);
-
-        // Init settings are not yet stored in storage, save them.
-        // This should be done by the background script, but just in case.
-        if (!settings) {
-          settings = JSON.parse(JSON.stringify(state.settings)) as ALSearch.Settings;
-
-          await StorageHelper.setSettings(settings);
-        }
 
         // If user exists, check token usability in case token is not usable.
         if (user) {
@@ -136,7 +116,7 @@ export default new Vuex.Store({
         // Create state.
         const newState: ALSearch.Store.State = {
           initialized: true,
-          settings,
+          settings: settings as ALSearch.Settings,
           critError: null,
           accessToken,
           user,
@@ -182,7 +162,7 @@ export default new Vuex.Store({
     async updateSettings({ commit }, settings: ALSearch.Settings): Promise<void> {
       try {
         // Store new settings in storage.
-        await StorageHelper.setSettings(settings);
+        await Settings.updateSettings(settings);
 
         // Commit update to store.
         commit('setSettings', settings);

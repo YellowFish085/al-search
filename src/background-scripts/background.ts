@@ -2,8 +2,7 @@ import Activity from '@/background-scripts/_activity';
 import Auth from '@/background-scripts/_auth';
 import Notifications from '@/utils/Notifications';
 import Search from '@/background-scripts/_search';
-import StorageHelper from '@/utils/StorageHelper';
-import * as Enum from '@/utils/Enum';
+import Settings from '@/utils/Settings';
 import * as Menus from '@/background-scripts/_menus';
 
 const browser = require('webextension-polyfill'); // eslint-disable-line
@@ -75,25 +74,7 @@ browser.runtime.onMessage.addListener(handleMessage);
  */
 async function init() {
   try {
-    // Init settings in storage if not yet present.
-    if (!await StorageHelper.getSettings()) {
-      const settings: ALSearch.Settings = {
-        activity: {
-          search: true,
-          visitedPages: true,
-        },
-        integration: {
-          webEnabled: true,
-          menusEnabled: true,
-        },
-        search: {
-          onListFirst: true,
-        },
-        theme: Enum.Theme.DEFAULT,
-      };
-
-      await StorageHelper.setSettings(settings);
-    }
+    await Settings.getSettings();
   }
   catch (e) {
     Notifications.create('init_failed', browser.i18n.getMessage('E_InitFailed', e.message));

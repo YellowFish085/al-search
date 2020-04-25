@@ -75,14 +75,26 @@
   "ENUM_ANIME": {
     "message": "Anime"
   },
+  "ENUM_BOTTOM": {
+    "message": "Bas"
+  },
+  "ENUM_CENTER": {
+    "message": "Centre"
+  },
   "ENUM_CHARACTERS": {
     "message": "Personnages"
   },
   "ENUM_FALL": {
     "message": "Automne"
   },
+  "ENUM_LEFT": {
+    "message": "Gauche"
+  },
   "ENUM_MANGA": {
     "message": "Manga"
+  },
+  "ENUM_RIGHT": {
+    "message": "Droite"
   },
   "ENUM_SPRING": {
     "message": "Printemps"
@@ -95,6 +107,9 @@
   },
   "ENUM_STUDIOS": {
     "message": "Studios"
+  },
+  "ENUM_TOP": {
+    "message": "Haut"
   },
   "ENUM_WINTER": {
     "message": "Hiver"
@@ -202,7 +217,7 @@
     "message": "Activer l'integration web"
   },
   "S_EnableWebIntegrationDescription": {
-    "message": "<b>AL Search</b> ajoute un bouton en bas à droite de la fenêtre du navigateur sur certains sites liés à l'univers anime et manga (comme Crunchyroll). Ce bouton vous donne accès à certaines actions rapides."
+    "message": "<b>AL Search</b> ajoute un bouton dans la fenêtre du navigateur sur certains sites liés à l'univers anime et manga (comme Crunchyroll). Ce bouton vous donne accès à certaines actions rapides."
   },
   "S_Error": {
     "message": "Erreur"
@@ -260,6 +275,18 @@
   },
   "S_OnAniList": {
     "message": "sur AniList"
+  },
+  "S_OverlayNearTitle": {
+    "message": "Placer le bouton à côté du titre de la page"
+  },
+  "S_OverlayPositionFixed": {
+    "message": "Le bouton sera placé de manière fixe sur la page :"
+  },
+  "S_OverlayX": {
+    "message": "(gauche / droite)"
+  },
+  "S_OverlayY": {
+    "message": "(haut / centre / bas)"
   },
   "S_Refresh": {
     "message": "Actualiser"

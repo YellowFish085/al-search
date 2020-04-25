@@ -1,48 +1,38 @@
-import WebIntegration from '@/utils/WebIntegration';
-import * as Enum from '@/utils/Enum';
+/* eslint-disable no-param-reassign */
+import create from '@/content-scripts/web-integration';
 
-/**
- * Display overlay for anime page.
- */
-function animePage(): void {
-  const titleNode = document.querySelector('body > .SerieV2 meta[itemprop="alternativeHeadline"]');
-  const displayTitleNode = document.querySelector('body > .SerieV2 meta[itemprop="name"]');
+function init(): void {
+  // In case we are on an anime page.
+  if (document.querySelector('body > .SerieV2')) {
+    create({
+      selector: 'body > .SerieV2 meta[itemprop="alternativeHeadline"]',
+      selectorTitle: 'body > .SerieV2 meta[itemprop="name"]',
+      getValue: (node: HTMLElement) => node.getAttribute('content'),
+      getTitle: (node: HTMLElement) => node.getAttribute('content'),
+      appendInPage(node: HTMLElement): void {
+        node.style.marginBottom = '10px';
+        node.style.textAlign = 'right';
 
-  const title = titleNode ? titleNode.getAttribute('content') : null;
-  const displayTitle = displayTitleNode ? displayTitleNode.getAttribute('content') : null;
-
-  if (title) WebIntegration.displayButton(title, Enum.SearchType.ANIME, displayTitle);
-}
-
-/**
- * Display overlay for anime episode page.
- */
-function animeEpisodePage(): void {
-  const titleNode = document.querySelector('body > .episode .episode_info > .border-list > li:first-child > span.border-list_text') as HTMLElement;
-  const displayTitleNode = document.querySelector('body > .episode span[itemprop="partOfSeries"] meta[itemprop="name"]');
-
-  const title = titleNode ? titleNode.innerText : null;
-  const displayTitle = displayTitleNode ? displayTitleNode.getAttribute('content') : null;
-
-  if (title) WebIntegration.displayButton(title, Enum.SearchType.ANIME, displayTitle);
-}
-
-async function init() {
-  try {
-    if (!(await WebIntegration.isEnabled())) return;
-
-    // In case we are on an anime page.
-    if (document.querySelector('body > .SerieV2')) {
-      animePage();
-    }
-
-    // In case we are on an anime episode page.
-    if (document.querySelector('body > .episode')) {
-      animeEpisodePage();
-    }
+        const target = document.querySelector('body > .SerieV2 .SerieV2-body');
+        if (target) target.prepend(node);
+      },
+    });
   }
-  catch (e) {
-    console.error(e);
+
+  // In case we are on an anime episode page.
+  if (document.querySelector('body > .episode')) {
+    create({
+      selector: 'body > .episode .episode_info > .border-list > li:first-child > span.border-list_text',
+      selectorTitle: 'body > .episode span[itemprop="partOfSeries"] meta[itemprop="name"]',
+      getTitle: (node: HTMLElement) => node.getAttribute('content'),
+      appendInPage(node: HTMLElement): void {
+        node.style.display = 'block';
+        node.style.marginBottom = '10px';
+
+        const target = document.querySelector('body > .episode h1.episode_h1');
+        if (target) target.prepend(node);
+      },
+    });
   }
 }
 
