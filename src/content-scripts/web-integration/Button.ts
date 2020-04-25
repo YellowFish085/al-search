@@ -1,77 +1,44 @@
-import Settings from '@/utils/Settings';
 import * as Enum from '@/utils/Enum';
 
 const browser = require('webextension-polyfill'); // eslint-disable-line
 
-export class Button {
-  settings: ALSearch.Settings;
+interface ButtonPosition {
+  x: Enum.WebIntegrationX;
+  y: Enum.WebIntegrationY;
+}
 
-  /** Selector for value node. */
-  selector: string;
+export default class Button {
+  /** Is the button meant to be fixed on the page? */
+  fixed: boolean;
 
-  /** Selector for title node. */
-  selectorTitle: string;
+  /** Button position on page when fixed. */
+  position: ButtonPosition;
 
   /** Data type. */
   type: Enum.SearchType;
 
-  /** Document node where the value is. */
-  node: HTMLElement | null;
-
-  /** Document node where the title is. */
-  nodeTitle: HTMLElement | null;
-
   /** Value. */
-  value: string | null;
+  value: string;
 
   /** title. */
-  title: string | null;
+  title: string;
 
   /** AniList data record */
   entry: ALSearch.AniList.Data | null;
 
   constructor(
-    settings: ALSearch.Settings,
-    selector: string,
-    selectorTitle: string,
+    fixed: boolean,
+    position: ButtonPosition,
     type: Enum.SearchType,
+    value: string,
+    title: string,
   ) {
-    this.settings = settings;
-    this.selector = selector;
-    this.selectorTitle = selectorTitle;
+    this.fixed = fixed;
+    this.position = position;
     this.type = type;
-    this.node = null;
-    this.nodeTitle = null;
-    this.value = null;
-    this.title = null;
+    this.value = value;
+    this.title = title;
     this.entry = null;
-  }
-
-  /**
-   * Get a node form the document.
-   */
-  protected getNode(selector: string): HTMLElement | null {
-    const node = document.querySelector(selector);
-
-    return node ? node as HTMLElement : null;
-  }
-
-  /**
-   * Find value from node.
-   *
-   * This method is only called if `this.node` exists.
-   */
-  protected findValue(): string {
-    return this.node!.innerText;
-  }
-
-  /**
-   * Find title from node.
-   *
-   * This method is only called if `this.nodeTitle` exists.
-   */
-  protected findTitle(): string {
-    return this.nodeTitle!.innerText;
   }
 
   /**
@@ -79,8 +46,8 @@ export class Button {
    */
   protected async findEntry(): Promise<ALSearch.AniList.Data | null> {
     const data: ALSearch.Search.Search = {
-      value: this.value!,
-      type: this.type!,
+      value: this.value,
+      type: this.type,
     };
 
     const response = await browser.runtime.sendMessage({
@@ -131,7 +98,7 @@ export class Button {
    * Get label.
    */
   protected getLabel(): string {
-    return this.shouldAppendInPage()
+    return !this.fixed
       ? ''
       : `
     <li class="al-search__title">
@@ -391,12 +358,12 @@ export class Button {
    * Get wrapper classes.
    */
   protected getWrapperClasses(): string[] {
-    if (this.shouldAppendInPage()) return ['al-search--page', 'al-search--left'];
+    if (!this.fixed) return ['al-search--page', 'al-search--left'];
 
     const classes = ['al-search--fixed'];
 
     // X position.
-    switch (this.settings.integration.overlay.x) {
+    switch (this.position.x) {
       case Enum.WebIntegrationX.LEFT:
         classes.push('al-search--left');
         break;
@@ -408,7 +375,7 @@ export class Button {
     }
 
     // Y position.
-    switch (this.settings.integration.overlay.y) {
+    switch (this.position.y) {
       case Enum.WebIntegrationY.TOP:
         classes.push('al-search--top');
         break;
@@ -454,103 +421,13 @@ export class Button {
   }
 
   /**
-   * Should the button be inserted in a node in the page or as a fixed element?
-   */
-  public shouldAppendInPage(): boolean {
-    return this.settings.integration.overlay.inPage;
-  }
-
-  /**
    * Create button node and return it.
    */
-  public async create(): Promise<HTMLElement | null> {
-    // Init nodes.
-    this.node = this.getNode(this.selector);
-    this.nodeTitle = this.getNode(this.selectorTitle);
+  public async create(): Promise<HTMLElement> {
+    // Try to find AniList related entry.
+    this.entry = await this.findEntry();
 
-    // Get values from nodes.
-    if (this.node) this.value = this.findValue();
-    if (this.nodeTitle) this.title = this.findTitle();
-
-    if (this.value && this.title) {
-      // Try to find AniList related entry.
-      this.entry = await this.findEntry();
-
-      // Create button.
-      return this.getButtonNode();
-    }
-
-    return null;
-  }
-}
-
-interface OverlayParameters {
-  /**
-   * CSS selector used to find the search value for the content.
-   *
-   * The code will look into the content of the corresponding node and use it to search on AniList.
-   */
-  selector: string;
-
-  /**
-   * CSS selector used to find the title displayed to the user.
-   *
-   * The code will look into the content of the corresponding node and use it as a display.
-   *
-   * If no value is provided, the content from the `selector` node will be used instead.
-   */
-  selectorTitle?: string;
-
-  /** Data type. */
-  type?: Enum.SearchType;
-
-  /**
-   * Custom callback when the button is inserted in a node in the page and not as a fixed element.
-   *
-   * This method is only called when the user settings `inPage` is set to `true`.
-   *
-   * This method receives one parameter which is the button node.
-   */
-  appendInPage: (node: HTMLElement) => void;
-}
-
-/**
- * Create and add a button in the page if the user has enabled web integration.
- *
- * @param args Button arguments.
- * @param Klass (optional) Class to instantiate
- */
-export async function create(
-  args: OverlayParameters,
-  Klass: typeof Button = Button,
-): Promise<void> {
-  try {
-    const settings = await Settings.getSettings();
-
-    // If web integration is disabled, return.
-    if (!settings.integration.webEnabled) return;
-
-    // Create instance and the button node.
-    const creator = new Klass(
-      settings,
-      args.selector,
-      args.selectorTitle || args.selector,
-      args.type || Enum.SearchType.ANIME,
-    );
-
-    const node = await creator.create();
-
-    // Append node to document if it was created.
-    if (node) {
-      if (creator.shouldAppendInPage()) {
-        args.appendInPage(node);
-      }
-      else {
-        document.body.appendChild(node);
-      }
-    }
-  }
-  catch (e) {
-    console.error(e);
+    // Create button.
+    return this.getButtonNode();
   }
 }

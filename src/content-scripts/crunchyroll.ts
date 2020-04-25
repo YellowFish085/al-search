@@ -1,20 +1,6 @@
 /* eslint-disable no-param-reassign */
-import { Button, create } from '@/content-scripts/web-integration/Button';
+import create from '@/content-scripts/web-integration';
 import * as Enum from '@/utils/Enum';
-
-class MangaPageButton extends Button {
-  /** @inheritdoc */
-  protected findValue(): string {
-    const split = this.node!.textContent!.split(' > ');
-
-    return split.length >= 2 ? split[1] : '';
-  }
-
-  /** @inheritdoc */
-  protected findTitle(): string {
-    return this.findValue();
-  }
-}
 
 /**
  * All pages have the same layout.
@@ -30,14 +16,21 @@ function appendInPage(node: HTMLElement, selector: string): void {
   if (target) target.prepend(node);
 }
 
+/**
+ * On manga pages, value and title are retrieved the same way.
+ */
+function getMangaValue(node: HTMLElement): string | null {
+  const split = node.textContent!.split(' > ');
+
+  return split.length >= 2 ? split[1] : null;
+}
+
 function init(): void {
   // In case we are on an anime page.
   if (document.getElementById('main_tab_videos')) {
     create({
       selector: '#showview-content-header > .ch-left > .ellipsis > span',
-      appendInPage(node: HTMLElement): void {
-        appendInPage(node, '#showview-content-header > .ch-left > .ellipsis > span');
-      },
+      appendInPage: (node: HTMLElement) => appendInPage(node, '#showview-content-header > .ch-left > .ellipsis > span'),
     });
   }
 
@@ -45,9 +38,7 @@ function init(): void {
   if (document.getElementById('showmedia_video')) {
     create({
       selector: '.showmedia-header > h1.ellipsis > a > span',
-      appendInPage(node: HTMLElement): void {
-        appendInPage(node, '.showmedia-header > h1.ellipsis');
-      },
+      appendInPage: (node: HTMLElement) => appendInPage(node, '.showmedia-header > h1.ellipsis'),
     });
   }
 
@@ -56,10 +47,10 @@ function init(): void {
     create({
       selector: '#container > h1.ellipsis',
       type: Enum.SearchType.MANGA,
-      appendInPage(node: HTMLElement): void {
-        appendInPage(node, '#container > h1.ellipsis');
-      },
-    }, MangaPageButton);
+      getValue: getMangaValue,
+      getTitle: getMangaValue,
+      appendInPage: (node: HTMLElement) => appendInPage(node, '#container > h1.ellipsis'),
+    });
   }
 
   // In case we are on an manga chapter page.
@@ -67,9 +58,7 @@ function init(): void {
     create({
       selector: '#showmedia_mangareader_title > h1.ellipsis > a > span',
       type: Enum.SearchType.MANGA,
-      appendInPage(node: HTMLElement): void {
-        appendInPage(node, '#showmedia_mangareader_title > h1.ellipsis');
-      },
+      appendInPage: (node: HTMLElement) => appendInPage(node, '#showmedia_mangareader_title > h1.ellipsis'),
     });
   }
 }

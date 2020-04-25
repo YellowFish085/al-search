@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import { create } from '@/content-scripts/web-integration/Button';
+import create from '@/content-scripts/web-integration';
 
 /**
  * Display overlay for anime page.
