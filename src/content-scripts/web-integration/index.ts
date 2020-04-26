@@ -78,12 +78,12 @@ function getTitle(node: HTMLElement): string {
  *
  * @param args Button arguments.
  */
-export default async function create(args: OverlayParameters): Promise<void> {
+export default async function create(args: OverlayParameters): Promise<Button | null> {
   try {
     const settings = await Settings.getSettings();
 
     // If web integration is disabled, return.
-    if (!settings.integration.webEnabled) return;
+    if (!settings.integration.webEnabled) return null;
 
     /**
      * Try to find search value and title in page.
@@ -98,12 +98,12 @@ export default async function create(args: OverlayParameters): Promise<void> {
     if (nodeTitle) title = args.getTitle ? args.getTitle(nodeTitle) : getTitle(nodeTitle);
 
     // If value or title could not be found, return.
-    if (!value || !title) return;
+    if (!value || !title) return null;
 
     /**
      * Create instance and the button node.
      */
-    const creator = new Button(
+    const button = new Button(
       !settings.integration.overlay.inPage,
       {
         x: settings.integration.overlay.x,
@@ -114,7 +114,7 @@ export default async function create(args: OverlayParameters): Promise<void> {
       title,
     );
 
-    const node = await creator.create();
+    const node = await button.create();
 
     /**
      * Append node to document.
@@ -125,8 +125,12 @@ export default async function create(args: OverlayParameters): Promise<void> {
     else {
       args.appendInPage(node);
     }
+
+    return button;
   }
   catch (e) {
     console.error(e);
   }
+
+  return null;
 }
