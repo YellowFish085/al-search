@@ -2,6 +2,18 @@ import * as Enum from '@/utils/Enum';
 import Button from '@/content-scripts/web-integration/Button';
 import Settings from '@/utils/Settings';
 
+interface Position {
+  inPage: boolean;
+  x: Enum.WebIntegrationX;
+  y: Enum.WebIntegrationY;
+}
+
+interface PositionnOverride {
+  inPage?: boolean;
+  x?: Enum.WebIntegrationX;
+  y?: Enum.WebIntegrationY;
+}
+
 interface OverlayParameters {
   /**
    * CSS selector used to find the search value for the content.
@@ -48,6 +60,14 @@ interface OverlayParameters {
    * This method receives one parameter which is the button node.
    */
   appendInPage: (node: HTMLElement) => void;
+
+  /**
+   * Overrides button position settings.
+   *
+   * If a page needs the button to be placed in a specific way because it can't be placed any other
+   * ways, use this object to override the user settings and force the button position.
+   */
+  positionOverride?: PositionnOverride;
 }
 
 /**
@@ -71,6 +91,31 @@ function getValue(node: HTMLElement): string {
  */
 function getTitle(node: HTMLElement): string {
   return node.innerText;
+}
+
+/**
+ * Get button position.
+ */
+function getPosition(settings: ALSearch.Settings, positionOverride?: PositionnOverride): Position {
+  const p = {
+    inPage: settings.integration.overlay.inPage,
+    x: settings.integration.overlay.x,
+    y: settings.integration.overlay.y,
+  };
+
+  if (positionOverride && Object.prototype.hasOwnProperty.call(positionOverride, 'inPage')) {
+    p.inPage = positionOverride.inPage!;
+  }
+
+  if (positionOverride && Object.prototype.hasOwnProperty.call(positionOverride, 'x')) {
+    p.x = positionOverride.x!;
+  }
+
+  if (positionOverride && Object.prototype.hasOwnProperty.call(positionOverride, 'y')) {
+    p.y = positionOverride.y!;
+  }
+
+  return p;
 }
 
 /**
@@ -103,12 +148,10 @@ export default async function create(args: OverlayParameters): Promise<Button | 
     /**
      * Create instance and the button node.
      */
+    const position = getPosition(settings, args.positionOverride);
+
     const button = new Button(
-      !settings.integration.overlay.inPage,
-      {
-        x: settings.integration.overlay.x,
-        y: settings.integration.overlay.y,
-      },
+      position,
       args.type || Enum.SearchType.ANIME,
       value,
       title,
@@ -119,7 +162,7 @@ export default async function create(args: OverlayParameters): Promise<Button | 
     /**
      * Append node to document.
      */
-    if (!settings.integration.overlay.inPage) {
+    if (!position.inPage) {
       document.body.appendChild(node);
     }
     else {
