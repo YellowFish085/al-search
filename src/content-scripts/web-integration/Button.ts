@@ -26,6 +26,9 @@ export default class Button {
   /** AniList data record */
   entry: ALSearch.AniList.Data | null;
 
+  /** Button node. */
+  button: HTMLElement | null;
+
   constructor(
     fixed: boolean,
     position: ButtonPosition,
@@ -39,6 +42,7 @@ export default class Button {
     this.value = value;
     this.title = title;
     this.entry = null;
+    this.button = null;
   }
 
   /**
@@ -428,7 +432,9 @@ export default class Button {
     // Try to find AniList related entry.
     this.entry = await this.findEntry();
 
-    // Create button.
-    return this.getButtonNode();
+    // Create button and return it.
+    this.button = this.getButtonNode();
+
+    return this.button;
   }
 }
