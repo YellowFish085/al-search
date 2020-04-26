@@ -14,11 +14,7 @@ export interface Settings {
   integration: {
     webEnabled: boolean;
     menusEnabled: boolean;
-    overlay: {
-      inPage: boolean;
-      x: Enum.WebIntegrationX;
-      y: Enum.WebIntegrationY;
-    };
+    overlay: ALSearch.WebIntegration.Overlay;
   };
 
   search: {
@@ -222,5 +218,87 @@ export namespace Github {
     tag_name: string;
     published_at: string;
     body: string;
+  }
+}
+
+/**
+ * Web integration.
+ */
+export namespace WebIntegration {
+  /**
+   * Button position.
+   */
+  export interface Overlay {
+    inPage: boolean;
+    x: Enum.WebIntegrationX;
+    y: Enum.WebIntegrationY;
+  }
+
+  /**
+   * Button position override, same as ButtonPosition but with optional parameters.
+   */
+  export interface OverlayOverride {
+    inPage?: boolean;
+    x?: Enum.WebIntegrationX;
+    y?: Enum.WebIntegrationY;
+  }
+
+  /**
+   * Overlay parameters when a content script creates a button on a page.
+   */
+  export interface OverlayParameters {
+    /**
+     * CSS selector used to find the search value for the content.
+     *
+     * The code will look into the content of the corresponding node and use it to search on AniList.
+     */
+    selector: string;
+
+    /**
+     * CSS selector used to find the title displayed to the user.
+     *
+     * The code will look into the content of the corresponding node and use it as a display.
+     *
+     * If no value is provided, `selector` will be used instead.
+     */
+    selectorTitle?: string;
+
+    /** Data type. */
+    type?: Enum.SearchType;
+
+    /**
+     * Override method used to find the search value from the node corresponding to `selector`.
+     *
+     * By default, the code will use the `innerText` of the node.
+     *
+     * If a specific flow need to be executed for a page, provide this method.
+     */
+    getValue?: (node: HTMLElement) => string | null;
+
+    /**
+     * Override method used to find the title from the node corresponding to `selectorTitle`.
+     *
+     * By default, the code will use the `innerText` of the node.
+     *
+     * If a specific flow need to be executed for a page, provide this method.
+     */
+    getTitle?: (node: HTMLElement) => string | null;
+
+    /**
+     * Custom callback when the button is inserted in a node in the page and not as a fixed element.
+     *
+     * This method is only called when the user settings `inPage` is set to `true`.
+     *
+     * This method receives one parameter which is the button node.
+     */
+    appendInPage: (node: HTMLElement) => void;
+
+    /**
+     * Overrides button overlay settings.
+     *
+     * If a page needs the button to be placed in a specific way because it can't be placed any other
+     * ways, use this object to override the user settings and force the button position.
+     */
+    overlayOverride?: ALSearch.WebIntegration.OverlayOverride;
   }
 }
