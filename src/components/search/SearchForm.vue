@@ -230,7 +230,6 @@ export default class SearchForm extends Mixins(Vue, MixinI18n, MixinNotify, Mixi
 <style lang="scss" scoped>
 .search-row-input,
 .search-row-filters {
-  background-color: rgb(var(--color-overlay));
   position: relative;
 }
 
@@ -240,7 +239,7 @@ export default class SearchForm extends Mixins(Vue, MixinI18n, MixinNotify, Mixi
 }
 
 .search-row-filters {
-  color: rgb(var(--color-text-bright));
+  color: rgb(var(--color-header-text));
   font-size: 1.3rem;
   height: 35px;
   z-index: 9;

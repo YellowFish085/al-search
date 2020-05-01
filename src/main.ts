@@ -9,6 +9,7 @@ import {
   faTimes,
   faUserCircle,
 } from '@fortawesome/free-solid-svg-icons';
+import { faMeh, faFrown, faSmile } from '@fortawesome/free-regular-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import Notifications from 'vue-notification';
@@ -25,7 +26,10 @@ library.add(
   faChevronLeft,
   faCogs,
   faExternalLinkAlt,
+  faFrown,
+  faMeh,
   faSearch,
+  faSmile,
   faTimes,
   faUserCircle,
   // Brands icons.

@@ -39,16 +39,17 @@ button {
   border: none;
   cursor: pointer;
   font-size: 1.1rem;
-  opacity: 0.8;
   padding: 0.5rem;
-  transition: opacity 0.2s ease;
 
   &:hover {
-    opacity: 1;
+    svg {
+      color: rgb(var(--color-header-text-hover));
+    }
   }
 }
 
 svg {
-  color: rgb(var(--color-text-bright));
+  color: rgb(119, 122, 158);
+  transition: color 0.3s ease;
 }
 </style>

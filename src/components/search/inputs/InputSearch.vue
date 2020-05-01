@@ -121,7 +121,7 @@ export default class InputSearch extends Mixins(Vue, MixinI18n) {
 .input {
   background: none;
   border: none;
-  color: rgb(var(--color-text-bright));
+  color: rgb(var(--color-header-text-hover));
   font-size: 1.4rem;
   padding: 0 2rem;
   text-align: center;
@@ -135,10 +135,14 @@ export default class InputSearch extends Mixins(Vue, MixinI18n) {
     opacity: 0.4 !important;
     pointer-events: none !important;
   }
+
+  &::placeholder {
+    color: rgb(var(--color-header-text));
+  }
 }
 
 .underline {
-  background-color: rgb(var(--color-text-bright));
+  background-color: rgb(var(--color-header-text-hover));
   bottom: 8px;
   height: 2px;
   left: 0;
