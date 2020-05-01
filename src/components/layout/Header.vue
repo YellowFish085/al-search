@@ -63,7 +63,8 @@ export default class Header extends Mixins(Vue, MixinI18n) {
 
 <style lang="scss" scoped>
 header {
-  background: rgb(var(--color-overlay));
+  background: rgb(var(--color-header));
+  color: rgb(var(--color-header-text));
   height: 85px;
   left: 0;
   overflow: hidden;

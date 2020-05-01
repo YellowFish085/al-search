@@ -75,10 +75,15 @@ input {
 label {
   cursor: pointer;
   margin: 0 0.2rem;
-  transition: opacity .1s ease-in-out;
+  transition: color 0.3s ease, opacity .1s ease-in-out;
+
+  &:hover,
+  &.active {
+    color: rgb(var(--color-header-text-hover));
+  }
 
   &:not(.active) {
-    opacity: 0.6;
+    opacity: 0.8;
   }
 
   &.disabled {

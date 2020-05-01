@@ -91,7 +91,7 @@ export default class StudiosSearch extends Mixins(Vue, MixinI18n, MixinSaveActiv
 
 <style lang="scss" scoped>
 .studio-link {
-  color: rgb(var(--color-text));
+  color: rgb(var(--color-gray-800));
   font-size: 1.4rem;
   text-decoration: none;
   transition: 0.15s color;
