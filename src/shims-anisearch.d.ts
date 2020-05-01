@@ -90,8 +90,11 @@ export namespace AniList {
       day: number | null;
     };
     season: Enum.SearchSeason | null;
-    format: string | null;
+    format: Enum.Format | null;
     status: string | null;
+    chapters: number | null;
+    episodes: number | null;
+    duration: number | null;
     genres: string[];
     averageScore: number | null;
     popularity: number | null;

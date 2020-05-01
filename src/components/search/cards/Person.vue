@@ -1,26 +1,20 @@
 <template>
   <!-- eslint-disable max-len -->
-  <div v-if="data" class="card card--person" >
-    <a :href="data.siteUrl"
-      :title="i18n('S_SeeOnAnilist', data.name.full)"
-       class="cover col col--justify-end h-full w-full"
-       :style="{ 'background-image' : `url(${data.image.large})` }"
-       @click="onClick">
-      <div class="overlay w-full">
-        <a :href="data.siteUrl"
-           :title="i18n('S_SeeOnAnilist', data.name.full)"
-           class="title w-full"
-           @click="onClick">{{ data.name.full }}</a>
-      </div>
-    </a>
-  </div>
+  <a v-if="data"
+    :href="data.siteUrl"
+    :title="i18n('S_SeeOnAnilist', data.name.full)"
+    class="card card--person"
+    @click="onClick">
+    <div class="cover">
+      <img :src="data.image.large">
+    </div>
+    <div class="name w-full">{{ data.name.full }}</div>
+  </a>
   <!-- Placeholder -->
   <div v-else class="card card--placeholder card--person">
-    <div class="cover col col--justify-end h-full w-full">
-      <div class="overlay w-full">
-        <div class="block block--medium block--no-margin"></div>
-      </div>
+    <div class="cover">
     </div>
+    <div class="name"></div>
   </div>
   <!-- eslint-enable max-len -->
 </template>
@@ -47,19 +41,85 @@ export default class Person extends Mixins(Vue, MixinI18n) {
 
 <style lang="scss" scoped>
 .card {
-  height: 185px;
-  margin-bottom: 12.5px;
+  display: grid;
+  grid-template-rows: min-content auto;
+  position: relative;
+  text-decoration: none;
   width: 130px;
 
+  &:hover {
+    .name {
+      color: rgb(var(--color-gray-900));
+    }
+  }
+
   &--placeholder {
-    .overlay {
-      background-color: rgb(var(--color-foreground));
-      padding: 12px;
+    .cover,
+    .name {
+      background: rgba(var(--color-background-300), 0.8);
+      box-shadow: none;
+      opacity: 1;
+      overflow: hidden;
+
+      &:before {
+        animation: loading-pulse-data 2s linear infinite;
+        background: linear-gradient(
+          90deg,
+          rgba(var(--color-gray-300), 0) 0,
+          rgba(var(--color-blue-700), 0.06) 40%,
+          rgba(var(--color-blue-700), 0.06) 60%,
+          rgba(var(--color-gray-300), 0)
+        );
+        content: '';
+        display: block;
+        height: 100%;
+        transform: translateX(0);
+        width: 200%;
+      }
+    }
+
+    .name {
+      border-radius: 4px;
+      height: 17px;
+      margin-top: 12px;
+      width: 80%;
     }
   }
 }
 
 .cover {
-  background-color: rgb(var(--color-text-lighter));
+  background: rgba(var(--color-background-300), 0.8);
+  border-radius: 4px;
+  box-shadow: 0 14px 30px rgba(var(--color-shadow-blue), 0.15),
+              0 4px 4px rgba(var(--color-shadow-blue), 0.05);
+  cursor: pointer;
+  display: inline-block;
+  height: 185px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  z-index: 5;
+}
+
+img {
+  height: 100%;
+  left: 0;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.name {
+  color: rgb(var(--color-gray-700));
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 21px;
+  margin-top: 10px;
+  overflow: hidden;
+  transition: color .2s ease;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 </style>

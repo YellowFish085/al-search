@@ -50,6 +50,9 @@ query (
       season
       format
       status
+      chapters
+      episodes
+      duration
       genres
       averageScore
       popularity
@@ -127,6 +130,9 @@ query (
             season
             format
             status
+            chapters
+            episodes
+            duration
             genres
             averageScore
             popularity
