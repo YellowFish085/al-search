@@ -19,6 +19,7 @@ class Settings {
     },
     search: {
       onListFirst: true,
+      layout: Enum.CardLayout.COVER,
     },
     theme: Enum.Theme.DEFAULT,
   };
@@ -71,6 +72,13 @@ class Settings {
     if (input.search && typeof input.search === 'object') {
       if (typeof input.search.onListFirst === 'boolean') {
         validated.search.onListFirst = input.search.onListFirst;
+      }
+
+      console.log(input.search.layout);
+      console.log(Object.values(Enum.CardLayout));
+
+      if (Object.values(Enum.CardLayout).includes(input.search.layout)) {
+        validated.search.layout = input.search.layout;
       }
     }
 
