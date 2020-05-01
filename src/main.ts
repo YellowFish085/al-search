@@ -6,6 +6,9 @@ import {
   faCogs,
   faExternalLinkAlt,
   faSearch,
+  faTh,
+  faThLarge,
+  faThList,
   faTimes,
   faUserCircle,
 } from '@fortawesome/free-solid-svg-icons';
@@ -30,6 +33,9 @@ library.add(
   faMeh,
   faSearch,
   faSmile,
+  faTh,
+  faThLarge,
+  faThList,
   faTimes,
   faUserCircle,
   // Brands icons.
