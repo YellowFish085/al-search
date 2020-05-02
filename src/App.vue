@@ -151,7 +151,7 @@ export default class App extends Mixins(Vue, MixinChangeTheme) {
 }
 
 .theme-dark {
-  --color-header: 21,34,50;
+  --color-background: 11,22,34;
   --color-header-text: 160,170,197;
   --color-background: 9,17,27;
   --color-foreground: 21,31,46;
@@ -174,7 +174,7 @@ export default class App extends Mixins(Vue, MixinChangeTheme) {
   --color-background-400: 81,97,112;
   --color-background-300: 30,42,56;
   --color-background-100: 21,31,46;
-  --color-background-200: 9,17,27;
+  --color-background-200: 11,22,34;
   --color-gray-1200: 251,251,251;
   --color-gray-1100: 240,243,246;
   --color-gray-1000: 221,230,238;
@@ -186,7 +186,7 @@ export default class App extends Mixins(Vue, MixinChangeTheme) {
   --color-gray-400: 81,97,112;
   --color-gray-300: 30,42,56;
   --color-gray-100: 21,31,46;
-  --color-gray-200: 9,17,27;
+  --color-gray-200: 11,22,34;
 }
 
 .theme-contrast {
