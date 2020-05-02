@@ -4,7 +4,7 @@
     <div class="results-wrapper">
       <transition appear name="fade">
         <!-- Placeholder -->
-        <div v-if="!results || results.loading" :key="'loading'" class="results-placeholder">
+        <div v-if="!results || results.loading" :key="'loading'" class="results-placeholder" :class="[ settings.search.layout ]">
           <h2>...</h2>
           <div class="grid grid--media w-full">
             <CardMedia v-for="i in [0,1,2]" :key="i" />
@@ -24,7 +24,7 @@
                 <font-awesome-icon :icon="['fas', 'angle-double-right']" size="sm" />
               </a>
             </p>
-            <div class="grid grid--media w-full">
+            <div class="grid grid--media w-full" :class="[ settings.search.layout ]">
               <CardMedia v-for="media in studio.media.edges" :key="media.node.id" :data="media.node" />
               <div v-if="studio.media.edges.length <= 0">
                 <p>{{ i18n('S_NoMediaForStudio') }}</p>
@@ -102,6 +102,22 @@ export default class StudiosSearch extends Mixins(Vue, MixinI18n, MixinSaveActiv
 
   svg {
     margin-left: 0.5em;
+  }
+}
+
+.grid {
+  &.CHART {
+    grid-template-columns: repeat(auto-fill, 100%);
+  }
+
+  &.COVER {
+    column-gap: 5%;
+    grid-template-columns: repeat(auto-fill, 30%);
+  }
+
+  &.TABLE {
+    grid-template-columns: repeat(auto-fill, 100%);
+    row-gap: 16px;
   }
 }
 </style>

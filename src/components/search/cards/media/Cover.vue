@@ -2,16 +2,23 @@
   <!-- eslint-disable max-len -->
   <a v-if="data"
     :href="data.siteUrl"
-    :title="i18n('S_SeeOnAnilist', data.name.full)"
-    class="card card--person"
-    @click="onClick">
+    :title="i18n('S_SeeOnAnilist', data.title.userPreferred)"
+    class="card card--media"
+    :style="mediaColors"
+    @click="handleClick">
     <div class="cover">
-      <img :src="data.image.large">
+      <img :src="data.coverImage.large">
     </div>
-    <div class="name w-full">{{ data.name.full }}</div>
+    <div class="name w-full">
+      <div v-if="data.mediaListEntry && data.mediaListEntry.status"
+          class="list-status"
+          :class="[ data.mediaListEntry.status ]"
+          :title="data.mediaListEntry.status.toLowerCase()"></div>
+      {{ data.title.userPreferred }}
+    </div>
   </a>
   <!-- Placeholder -->
-  <div v-else class="card card--placeholder card--person">
+  <div v-else class="card card--placeholder card--media">
     <div class="cover">
     </div>
     <div class="name"></div>
@@ -20,23 +27,11 @@
 </template>
 
 <script lang="ts">
-import {
-  Component,
-  Mixins,
-  Prop,
-  Vue,
-} from 'vue-property-decorator';
-import MixinI18n from '@/mixins/I18n';
+import { Component, Mixins, Vue } from 'vue-property-decorator';
+import MixinCardMedia from '@/mixins/CardMedia';
 
 @Component
-export default class Person extends Mixins(Vue, MixinI18n) {
-  @Prop() readonly data!: ALSearch.AniList.Character | ALSearch.AniList.Staff;
-
-  /**
-   * Click.
-   */
-  @Prop(Function) readonly onClick!: Function;
-}
+export default class Cover extends Mixins(Vue, MixinCardMedia) {}
 </script>
 
 <style lang="scss" scoped>
@@ -49,7 +44,7 @@ export default class Person extends Mixins(Vue, MixinI18n) {
 
   &:hover {
     .name {
-      color: rgb(var(--color-gray-900));
+      color: var(--media-overlay-text);
     }
   }
 
@@ -121,5 +116,34 @@ img {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+}
+
+.list-status {
+  border-radius: 50%;
+  display: inline-block;
+  height: 10px;
+  margin-right: 5px;
+  width: 10px;
+
+  &.COMPLETED {
+    background-color: rgb(var(--color-green));
+  }
+
+  &.CURRENT,
+  &.REPEATING {
+    background-color: rgb(var(--color-blue));
+  }
+
+  &.DROPPED {
+    background-color: rgb(var(--color-red));
+  }
+
+  &.PAUSED {
+    background-color: rgb(var(--color-peach));
+  }
+
+  &.PLANNING {
+    background-color: rgb(var(--color-orange));
+  }
 }
 </style>

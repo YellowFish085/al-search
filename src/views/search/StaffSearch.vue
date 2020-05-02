@@ -39,5 +39,8 @@ export default class StaffSearch extends Vue {
 </script>
 
 <style lang="scss" scoped>
-
+.grid {
+  column-gap: 5%;
+  grid-template-columns: repeat(auto-fill, 30%);
+}
 </style>
