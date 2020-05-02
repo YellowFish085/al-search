@@ -74,9 +74,6 @@ class Settings {
         validated.search.onListFirst = input.search.onListFirst;
       }
 
-      console.log(input.search.layout);
-      console.log(Object.values(Enum.CardLayout));
-
       if (Object.values(Enum.CardLayout).includes(input.search.layout)) {
         validated.search.layout = input.search.layout;
       }
