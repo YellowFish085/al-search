@@ -5,11 +5,11 @@
     <div class="results-wrapper">
       <transition appear name="fade">
         <!-- Placeholder -->
-        <div v-if="!results || results.loading" :key="'loading'" class="grid grid--media results-placeholder w-full">
+        <div v-if="!results || results.loading" :key="'loading'" class="grid grid--media results-placeholder w-full" :class="[ settings.search.layout ]">
           <CardMedia v-for="i in [0,1,2]" :key="i" />
         </div>
         <!-- Results list -->
-        <div v-else :key="'results'" class="grid grid--media w-full">
+        <div v-else :key="'results'" class="grid grid--media w-full" :class="[ settings.search.layout ]">
           <CardMedia v-for="item in firstList" :key="item.id" :data="item" />
           <CardMedia v-for="item in secondList" :key="item.id" :data="item" />
         </div>
@@ -85,5 +85,19 @@ export default class MediaSearch extends Mixins(Vue, MixinI18n) {
 </script>
 
 <style lang="scss" scoped>
+.grid {
+  &.CHART {
+    grid-template-columns: repeat(auto-fill, 100%);
+  }
 
+  &.COVER {
+    column-gap: 5%;
+    grid-template-columns: repeat(auto-fill, 30%);
+  }
+
+  &.TABLE {
+    grid-template-columns: repeat(auto-fill, 100%);
+    row-gap: 16px;
+  }
+}
 </style>

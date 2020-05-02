@@ -436,17 +436,7 @@ a {
   .grid {
     display: inline-grid;
     row-gap: 30px;
-    padding: 0 12.5px;
-
-    &--media {
-      grid-template-columns: repeat(auto-fill, 100%);
-      margin-bottom: 30px;
-    }
-
-    &--person {
-      column-gap: 20px;
-      grid-template-columns: repeat(auto-fill, 130px);
-    }
+    padding-right: 12.5px;
 
     .card {
       a {

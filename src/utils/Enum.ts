@@ -89,3 +89,12 @@ export enum WebIntegrationY {
   CENTER = 'CENTER',
   BOTTOM = 'BOTTOM',
 }
+
+/**
+ * Card layout on search results pages.
+ */
+export enum CardLayout {
+  CHART = 'CHART',
+  COVER = 'COVER',
+  TABLE = 'TABLE',
+}

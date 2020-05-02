@@ -19,6 +19,7 @@ export interface Settings {
 
   search: {
     onListFirst: boolean;
+    layout: Enum.CardLayout;
   };
 
   theme: Enum.Theme;
