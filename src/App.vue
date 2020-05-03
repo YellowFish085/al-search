@@ -330,6 +330,13 @@ body {
   flex-direction: row;
 }
 
+input,
+select {
+  &:focus {
+    outline: none;
+  }
+}
+
 h1, h2, h3 {
   margin: 0;
 }
