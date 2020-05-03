@@ -1,5 +1,20 @@
 # Changelog
 
+## v1.3.0 (03/05/2020)
+
+### New features
+
+- Added card layout switcher to display cards as cover, chart or table (da45a6e, 1a15d18, 32bf4d2)
+
+### Changes
+
+- [Change] Updated themes and cards layout following AniList recent update (4c5fc14, 38e8e5e, 3b679aa)
+- [Change] (dev stuff) Web integration button postion can be overriden (9c91828)
+- [Fix] Fixed login/logout settings container content overflowing (27e79f5, 7f19a4b)
+- [Fix] Fixed weird bug in Firefox Developer Edition where activity was not stored (23797ce)
+- [Fix] Fixed Chrome inputs and focus style (2eb7939, 8fb0d9f)
+- Various minor fixes and dev stuff
+
 ## v1.2.0 (25/04/2020)
 
 ### New features

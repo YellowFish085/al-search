@@ -14,6 +14,7 @@
           name="search"
           id="search"
           class="input h-full w-full"
+          autocomplete="off"
           :class="{ disabled: disabled }"
           :placeholder="i18n('S_SearchPlaceholder')"
           :disabled="disabled"
