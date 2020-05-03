@@ -36,31 +36,12 @@ module.exports = {
   filenameHashing: false,
 
   // Configure webpack.
-  configureWebpack: (config) => {
-    // Disable code splitting for background and content scripts
-    // because these scripts can't access splitted code.
-    const omitUserScripts = ({ name }) => !userScripts.includes(name);
-    if (config.optimization
-      && config.optimization.splitChunks
-      && config.optimization.splitChunks.cacheGroups
-    ) {
-      if (config.optimization.splitChunks.cacheGroups.vendors) {
-        config.optimization.splitChunks.cacheGroups.vendors.chunks = omitUserScripts; // eslint-disable-line
-      }
-      if (config.optimization.splitChunks.cacheGroups.common) {
-        config.optimization.splitChunks.cacheGroups.common.chunks = omitUserScripts; // eslint-disable-line
-      }
-    }
-  },
+  configureWebpack: (config) => {},
 
   // Add webpack jobs.
   chainWebpack: (config) => {
-    // Provide packages so that we don't have to import them everywhere.
-    // config.plugin('provide-webextension-polyfill').use(webpack.ProvidePlugin, [
-    //   {
-    //     browser: 'webextension-polyfill',
-    //   },
-    // ]);
+    // Disable code splitting.
+    config.optimization.delete('splitChunks');
 
     // Copy manifest.json.
     config.plugin('copy-manifest').use(CopyWebpackPlugin, [
