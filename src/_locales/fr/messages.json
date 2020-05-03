@@ -311,8 +311,8 @@
   },
   "S_NextAiringEpisodeIn": {
     "message": "Ep $DATA$ diffusé dans",
-    "data": {
-      "number": {
+    "placeholders": {
+      "data": {
         "content": "$1",
         "example": "<Episode number>"
       }
