@@ -54,9 +54,14 @@ select {
   appearance: none;
   background: inherit;
   border: none;
-  color: rgb(var(--color-text-bright));
+  color: rgb(var(--color-header-text));
   cursor: pointer;
   display: block;
+  transition: color 0.3s ease, opacity .1s ease-in-out;
+
+  &:hover {
+    color: rgb(var(--color-header-text-hover));
+  }
 
   &:not(.active) {
     font-style: italic;

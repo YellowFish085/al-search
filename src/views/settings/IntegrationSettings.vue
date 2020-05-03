@@ -159,6 +159,7 @@ input {
 }
 
 label {
+  color: rgb(var(--color-text));
   margin-left: 0.5rem;
   font-size: 1.4rem;
 }
@@ -184,7 +185,6 @@ label {
     }
 
     label {
-      color: rgb(var(--color-text-light));
       font-style: italic;
     }
   }

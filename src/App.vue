@@ -72,6 +72,9 @@ export default class App extends Mixins(Vue, MixinChangeTheme) {
 
 /* Theme */
 :root {
+  --color-header: 43,45,66;
+  --color-header-text: 188,190,220;
+  --color-header-text-hover: 211,213,243;
   --color-background: 237,241,245;
   --color-foreground: 250,250,250;
   --color-foreground-grey: 245,246,246;
@@ -96,34 +99,133 @@ export default class App extends Mixins(Vue, MixinChangeTheme) {
   --color-orange: 247,154,99;
   --color-yellow: 247,191,99;
   --color-green: 123,213,85;
+  --color-background-100: 251,251,251;
+  --color-background-200: 237,241,245;
+  --color-background-300: 221,230,238;
+  --color-background-400: 201,215,227;
+  --color-background-500: 173,192,210;
+  --color-background-600: 139,160,178;
+  --color-background-700: 116,136,153;
+  --color-background-800: 100,115,128;
+  --color-background-900: 81,97,112;
+  --color-background-1000: 64,78,92;
+  --color-background-1100: 38,52,63;
+  --color-background-1200: 27,30,31;
+  --color-gray-100: 251,251,251;
+  --color-gray-200: 237,241,245;
+  --color-gray-300: 221,230,238;
+  --color-gray-400: 201,215,227;
+  --color-gray-500: 173,192,210;
+  --color-gray-600: 139,160,178;
+  --color-gray-700: 116,136,153;
+  --color-gray-800: 100,115,128;
+  --color-gray-900: 81,97,112;
+  --color-gray-1000: 64,78,92;
+  --color-gray-1100: 38,52,63;
+  --color-gray-1200: 27,30,31;
+  --color-blue-100: 247,250,252;
+  --color-blue-200: 236,246,254;
+  --color-blue-300: 201,232,255;
+  --color-blue-400: 143,215,255;
+  --color-blue-500: 111,200,255;
+  --color-blue-600: 61,180,242;
+  --color-blue-700: 8,143,214;
+  --color-blue-800: 12,101,166;
+  --color-blue-900: 11,70,113;
+  --color-blue-1000: 16,61,85;
+  --color-green-100: 245,249,243;
+  --color-green-200: 226,246,217;
+  --color-green-300: 160,241,126;
+  --color-green-400: 119,220,76;
+  --color-green-500: 83,175,45;
+  --color-green-600: 56,126,26;
+  --color-green-700: 46,90,27;
+  --color-green-800: 41,66,31;
+  --color-red-100: 255,244,246;
+  --color-red-200: 254,212,220;
+  --color-red-300: 255,140,160;
+  --color-red-400: 236,41,75;
+  --color-red-500: 213,0,37;
+  --color-red-600: 165,1,29;
+  --color-red-700: 117,0,20;
 }
 
 .theme-dark {
-  --color-background: 39,44,56;
-  --color-foreground: 31,35,45;
-  --color-foreground-grey: 25,29,38;
-  --color-foreground-grey-dark: 16,20,25;
-  --color-foreground-blue: 25,29,38;
-  --color-foreground-blue-dark: 19,23,29;
+  --color-header: 21,34,50;
+  --color-header-text: 160,170,197;
+  --color-background: 11,22,34;
+  --color-foreground: 21,31,46;
+  --color-foreground-grey: 15,22,31;
+  --color-foreground-grey-dark: 6,12,19;
+  --color-foreground-blue: 15,22,31;
+  --color-foreground-blue-dark: 6,12,19;
   --color-text: 159,173,189;
-  --color-text-light: 129,140,153;
+  --color-text-light: 114,138,161;
   --color-text-lighter: 133,150,165;
   --color-shadow-blue: 0,5,15;
+  --color-background-1200: 251,251,251;
+  --color-background-1100: 240,243,246;
+  --color-background-1000: 221,230,238;
+  --color-background-900: 201,215,227;
+  --color-background-800: 173,192,210;
+  --color-background-700: 139,160,178;
+  --color-background-600: 116,136,153;
+  --color-background-500: 100,115,128;
+  --color-background-400: 81,97,112;
+  --color-background-300: 30,42,56;
+  --color-background-100: 21,31,46;
+  --color-background-200: 11,22,34;
+  --color-gray-1200: 251,251,251;
+  --color-gray-1100: 240,243,246;
+  --color-gray-1000: 221,230,238;
+  --color-gray-900: 201,215,227;
+  --color-gray-800: 173,192,210;
+  --color-gray-700: 139,160,178;
+  --color-gray-600: 116,136,153;
+  --color-gray-500: 100,115,128;
+  --color-gray-400: 81,97,112;
+  --color-gray-300: 30,42,56;
+  --color-gray-100: 21,31,46;
+  --color-gray-200: 11,22,34;
 }
 
 .theme-contrast {
-  --color-background: 214,224,239;
-  --color-foreground: 245,246,249;
+  --color-background: 229,235,241;
+  --color-foreground: 251,251,251;
   --color-foreground-grey: 229,233,245;
   --color-foreground-grey-dark: 221,225,239;
   --color-foreground-blue: 229,233,245;
   --color-foreground-blue-dark: 221,225,239;
-  --color-text: 0,0,0;
-  --color-text-light: 94,101,111;
-  --color-text-lighter: 94,101,111;
+  --color-text: 38,52,63;
+  --color-text-light: 64,78,92;
+  --color-text-lighter: 81,97,112;
   --color-shadow: 37,41,51;
   --color-blue: 18,172,253;
   --color-blue-dim: 85,144,208;
+  --color-background-100: 251,251,251;
+  --color-background-200: 229,235,241;
+  --color-background-300: 173,192,210;
+  --color-background-400: 139,160,178;
+  --color-background-500: 116,136,153;
+  --color-background-600: 100,115,128;
+  --color-background-700: 64,78,92;
+  --color-background-800: 64,78,92;
+  --color-background-900: 38,52,63;
+  --color-background-1000: 27,30,31;
+  --color-background-1100: 27,30,31;
+  --color-background-1200: 27,30,31;
+  --color-gray-100: 251,251,251;
+  --color-gray-200: 229,235,241;
+  --color-gray-300: 173,192,210;
+  --color-gray-400: 139,160,178;
+  --color-gray-500: 116,136,153;
+  --color-gray-600: 100,115,128;
+  --color-gray-700: 64,78,92;
+  --color-gray-800: 64,78,92;
+  --color-gray-900: 38,52,63;
+  --color-gray-1000: 27,30,31;
+  --color-gray-1100: 27,30,31;
+  --color-gray-1200: 27,30,31;
 }
 
 /* Main */
@@ -139,7 +241,7 @@ html {
 }
 
 body {
-  background: rgb(var(--color-overlay));
+  background: rgb(var(--color-header));
   color: rgb(var(--color-text));
   font-family: 'Roboto',
     '-apple-system',
@@ -166,9 +268,21 @@ body {
 .container {
   background-color: rgb(var(--color-foreground));
   border-radius: 3px;
-  margin-bottom: 15px;
-  padding: 15px;
+  margin-bottom: 20px;
+  padding: 18px;
   width: 100%;
+
+  p {
+    color: rgb(var(--color-text-lighter));
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    & + p {
+      margin-top: 0;
+    }
+  }
 }
 
 .h-full {
@@ -221,15 +335,18 @@ h1, h2, h3 {
 }
 
 h1 {
-  font-size: 1.9rem;
-  font-weight: 400;
-  margin-bottom: 15px;
+  color: rgb(var(--color-gray-800));
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  margin-bottom: 20px;
+  text-transform: uppercase;
 }
 
 h2 {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 500;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 h3 {
@@ -239,18 +356,17 @@ h3 {
 }
 
 h4 {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-style: italic;
   margin-bottom: 5px;
 }
 
 p {
-  color: rgb(var(--color-text-light));
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   line-height: 1.3;
 
   &.note {
-    color: rgb(var(--color-text-lighter));
+    opacity: 0.8;
   }
 }
 
@@ -261,18 +377,6 @@ b {
 
 a {
   color: rgb(var(--color-blue));
-}
-
-.container {
-  p {
-    &:last-child {
-      margin-bottom: 0;
-    }
-
-    & + p {
-      margin-top: 0;
-    }
-  }
 }
 
 .icon {
@@ -332,125 +436,14 @@ a {
   .grid {
     display: inline-grid;
     row-gap: 30px;
-    padding: 0 12.5px;
-
-    &--media {
-      grid-template-columns: repeat(auto-fill, 100%);
-      margin-bottom: 30px;
-    }
-
-    &--person {
-      column-gap: 20px;
-      grid-template-columns: repeat(auto-fill, 130px);
-    }
+    padding-right: 12.5px;
 
     .card {
-      background: rgb(var(--color-foreground));
-      border-radius: 3px;
-      box-shadow: 0 2px 20px rgba(var(--color-shadow), .09);
-      overflow: hidden;
-      position: relative;
-
       a {
         color: inherit;
         outline: 0;
         text-decoration: none;
         transition: 0.15s;
-
-        &:hover {
-          color: rgb(var(--color-blue));
-        }
-      }
-
-      .cover {
-        background-position: 50%;
-        background-repeat: no-repeat;
-        background-size: cover;
-        position: relative;
-
-        .overlay {
-          background: rgba(var(--color-overlay), 0.8);
-          color: rgba(var(--color-text-bright));
-          padding: 12px;
-          position: relative;
-
-          .title {
-            color: rgb(var(--color-text-bright));
-            font-size: 1.4rem;
-            line-height: 17px;
-          }
-
-          .subtitle {
-            color: rgb(var(--color-blue));
-            font-size: 1.2rem;
-            margin-top: 8px;
-          }
-        }
-      }
-
-      &--placeholder {
-        .cover {
-          background-color: rgba(var(--color-background), 0.8);
-          border-radius: 3px;
-          overflow: hidden;
-          padding: relative;
-
-          &:before {
-            animation: loading-pulse-data 2s linear infinite;
-            background: linear-gradient(90deg,
-              rgba(var(--color-background),0) 0,
-              rgba(var(--color-blue-dim),.15) 40%,
-              rgba(var(--color-blue-dim),.15) 60%,
-              rgba(var(--color-background),0));
-            content: '';
-            display: block;
-            height: 100%;
-            transform: translateX(0);
-            width: 200%;
-          }
-        }
-
-        .block {
-          background-color: rgba(var(--color-background), 0.8);
-          border-radius: 2px;
-          margin: 14px 20px;
-          overflow: hidden;
-
-          &:before {
-            animation: loading-pulse-data 2s linear infinite;
-            background: linear-gradient(90deg,
-              rgba(var(--color-background),0) 0,
-              rgba(var(--color-blue-dim),.15) 40%,
-              rgba(var(--color-blue-dim),.15) 60%,
-              rgba(var(--color-background),0));
-            content: '';
-            display: block;
-            height: 100%;
-            transform: translateX(0);
-            width: 200%;
-          }
-
-          &--big {
-            height: 30px;
-            margin: 22px 20px;
-          }
-
-          &--medium {
-            height: 8px;
-            margin-bottom: 0;
-            width: 80%;
-          }
-
-          &--small {
-            height: 8px;
-            margin-bottom: 0;
-            width: 60%;
-          }
-
-          &--no-margin {
-            margin: 0;
-          }
-        }
       }
     }
   }

@@ -64,6 +64,7 @@
   padding: 0.5rem;
 
   p {
+    color: rgb(var(--color-text-lighter));
     margin: 0;
   }
 }

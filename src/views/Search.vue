@@ -1,7 +1,10 @@
 <template>
   <section class="search-results-wrapper vw" :class="{ loading: !results || results.loading }">
     <div class="wrapper">
-      <h1>{{ i18n('S_SearchResults') }}</h1>
+      <div class="title row row--justify-between row--items-start">
+        <h1>{{ i18n('S_SearchResults') }}</h1>
+        <CardLayoutSwitcher v-if="[types.ANIME, types.MANGA, types.STUDIOS].includes(results.type)">
+      </div>
 
       <!-- Anime & Manga search results -->
       <MediaSearch v-if="[types.ANIME, types.MANGA].includes(results.type)" :results="results" />
@@ -21,6 +24,7 @@
 import { Component, Mixins, Vue } from 'vue-property-decorator';
 import { State } from 'vuex-class';
 import * as Enum from '@/utils/Enum';
+import CardLayoutSwitcher from '@/components/ui/CardLayoutSwitcher.vue';
 import CharactersSearch from '@/views/search/CharactersSearch.vue';
 import MediaSearch from '@/views/search/MediaSearch.vue';
 import MixinI18n from '@/mixins/I18n';
@@ -29,6 +33,7 @@ import StudiosSearch from '@/views/search/StudiosSearch.vue';
 
 @Component({
   components: {
+    CardLayoutSwitcher,
     CharactersSearch,
     MediaSearch,
     StaffSearch,
@@ -49,5 +54,9 @@ export default class Search extends Mixins(Vue, MixinI18n) {
     height: 100%;
     overflow: hidden;
   }
+}
+
+.title {
+  padding-right: 12.5px;
 }
 </style>

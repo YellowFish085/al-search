@@ -2,17 +2,9 @@ import * as Enum from '@/utils/Enum';
 
 const browser = require('webextension-polyfill'); // eslint-disable-line
 
-interface ButtonPosition {
-  x: Enum.WebIntegrationX;
-  y: Enum.WebIntegrationY;
-}
-
 export default class Button {
-  /** Is the button meant to be fixed on the page? */
-  fixed: boolean;
-
-  /** Button position on page when fixed. */
-  position: ButtonPosition;
+  /** Overlay config. */
+  overlay: ALSearch.WebIntegration.Overlay;
 
   /** Data type. */
   type: Enum.SearchType;
@@ -26,19 +18,21 @@ export default class Button {
   /** AniList data record */
   entry: ALSearch.AniList.Data | null;
 
+  /** Button node. */
+  button: HTMLElement | null;
+
   constructor(
-    fixed: boolean,
-    position: ButtonPosition,
+    overlay: ALSearch.WebIntegration.Overlay,
     type: Enum.SearchType,
     value: string,
     title: string,
   ) {
-    this.fixed = fixed;
-    this.position = position;
+    this.overlay = overlay;
     this.type = type;
     this.value = value;
     this.title = title;
     this.entry = null;
+    this.button = null;
   }
 
   /**
@@ -98,7 +92,7 @@ export default class Button {
    * Get label.
    */
   protected getLabel(): string {
-    return !this.fixed
+    return this.overlay.inPage
       ? ''
       : `
     <li class="al-search__title">
@@ -359,12 +353,12 @@ export default class Button {
    * Get wrapper classes.
    */
   protected getWrapperClasses(): string[] {
-    if (!this.fixed) return ['al-search--page', 'al-search--left'];
+    if (this.overlay.inPage) return ['al-search--page', 'al-search--left'];
 
     const classes = ['al-search--fixed'];
 
     // X position.
-    switch (this.position.x) {
+    switch (this.overlay.x) {
       case Enum.WebIntegrationX.LEFT:
         classes.push('al-search--left');
         break;
@@ -376,7 +370,7 @@ export default class Button {
     }
 
     // Y position.
-    switch (this.position.y) {
+    switch (this.overlay.y) {
       case Enum.WebIntegrationY.TOP:
         classes.push('al-search--top');
         break;
@@ -428,7 +422,9 @@ export default class Button {
     // Try to find AniList related entry.
     this.entry = await this.findEntry();
 
-    // Create button.
-    return this.getButtonNode();
+    // Create button and return it.
+    this.button = this.getButtonNode();
+
+    return this.button;
   }
 }

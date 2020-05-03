@@ -30,6 +30,8 @@ export default class Character extends Mixins(Vue, MixinSaveActivity) {
     e.stopPropagation();
     e.preventDefault();
 
+    window.open(this.data!.siteUrl);
+
     if (this.settings.activity.visitedPages) {
       const activity: ALSearch.Activity.Activity = {
         type: Enum.ActivityType.VISITED_PAGE,
@@ -42,8 +44,6 @@ export default class Character extends Mixins(Vue, MixinSaveActivity) {
 
       this.saveActivity(activity);
     }
-
-    window.open(this.data!.siteUrl);
   }
 }
 </script>
