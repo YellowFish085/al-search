@@ -298,7 +298,7 @@
     "message": "Connexion"
   },
   "S_LoginDescription": {
-    "message": "Vous déconnecter ici ne supprimera pas le token d'authentification généré par <b>AniList</b>. Rendez vous sur votre page <a href=\"https: //anilist.co/settings/apps\" title=\"Ouvrir votre page de réglages\"><strong>Settings > Apps</strong></a> pour révoquer le token."
+    "message": "Rendez vous sur votre page <a href=\"https: //anilist.co/settings/apps\" title=\"Ouvrir votre page de réglages\"><strong>Settings > Apps</strong></a> pour révoquer le token."
   },
   "S_Logout": {
     "message": "Déconnexion"
