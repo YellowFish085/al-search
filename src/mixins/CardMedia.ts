@@ -183,6 +183,8 @@ export default class CardMedia extends Mixins(Vue, MixinI18n, MixinSaveActivity)
     e.stopPropagation();
     e.preventDefault();
 
+    window.open(this.data!.siteUrl);
+
     if (this.settings.activity.visitedPages) {
       const activity: ALSearch.Activity.Activity = {
         type: Enum.ActivityType.VISITED_PAGE,
@@ -195,8 +197,6 @@ export default class CardMedia extends Mixins(Vue, MixinI18n, MixinSaveActivity)
 
       this.saveActivity(activity);
     }
-
-    window.open(this.data!.siteUrl);
   }
 
   handleStudioClick(e: Event): void {
