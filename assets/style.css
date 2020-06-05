@@ -158,7 +158,24 @@ header .extension-links {
 header .extension-links a {
   display: block;
   font-size: 5em;
-  margin: 0 0.5em;
+  margin: 0 4rem;
+}
+
+header .extension-links a.anilist {
+  color: rgb(var(--color-text-bright));
+  font-size: 1.4rem;
+  line-height: 1.5;
+}
+
+header .extension-links a.anilist:hover {
+  color: rgb(var(--color-blue));
+}
+
+header .extension-links a.anilist img {
+  display: block;
+  height: 50px;
+  margin: 0 auto;
+  width: 50px;
 }
 
 table {
