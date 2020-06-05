@@ -1,0 +1,21 @@
+query (
+  $page: Int = 1,
+  $sort: [CharacterSort] = [SEARCH_MATCH],
+  $search: String,
+) {
+  Page (page: $page, perPage: 20) {
+    characters (
+      sort: $sort,
+      search: $search,
+    ) {
+      id
+      siteUrl
+      name {
+        full
+      }
+      image {
+        large
+      }
+    }
+  }
+}

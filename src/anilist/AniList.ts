@@ -1,5 +1,5 @@
-import QueriesSearch from '@/anilist/graphql/search';
-import QueryUser, { UserSchemaCheck } from '@/anilist/graphql/user';
+import { QueriesSearch, QueryUser } from '@/anilist/graphql';
+import UserSchemaCheck from '@/anilist/graphql/user';
 import * as Enum from '@/utils/Enum';
 
 const browser = require('webextension-polyfill') // eslint-disable-line

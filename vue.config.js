@@ -61,6 +61,13 @@ module.exports = {
       ],
     ]);
 
+    // GraphQL
+    config.module.rule('graphql')
+      .test(/\.graphql$/)
+      .use('raw-loader')
+      .loader('raw-loader')
+      .end();
+
     // Copy locales.
     config.plugin('copy-locales').use(CopyWebpackPlugin, [
       [

@@ -1,0 +1,21 @@
+query (
+  $page: Int = 1,
+  $sort: [StaffSort] = [SEARCH_MATCH],
+  $search: String
+) {
+  Page (page: $page, perPage: 20) {
+    staff (
+      sort: $sort,
+      search: $search
+    ) {
+      id
+      siteUrl
+      name {
+        full
+      }
+      image {
+        large
+      }
+    }
+  }
+}
