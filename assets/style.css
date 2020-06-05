@@ -279,6 +279,12 @@ footer > * {
   margin: 0 1rem;
 }
 
-footer span {
+footer span,
+footer a.anilist {
   font-size: 1.2rem;
+}
+
+footer a.anilist img {
+  height: 18.4px;
+  vertical-align: middle;
 }
