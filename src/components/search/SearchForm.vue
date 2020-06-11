@@ -9,7 +9,7 @@
 
           <div class="search-input-wrapper h-full w-full">
             <!-- Input + clear button -->
-            <InputSearch :value.sync="search" :disabled="disabled" @focus="handleFocus" @blur="handleBlur" @update:value="handleInputChange" >
+            <InputSearch :value.sync="search" :disabled="disabled" @focus="handleFocus" @blur="handleBlur" @update:value="handleInputChange" />
           </div>
 
           <div class="spacer"></div>

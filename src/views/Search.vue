@@ -1,9 +1,10 @@
 <template>
+  <!-- eslint-disable max-len -->
   <section class="search-results-wrapper vw" :class="{ loading: !results || results.loading }">
     <div class="wrapper">
       <div class="title row row--justify-between row--items-start">
         <h1>{{ i18n('S_SearchResults') }}</h1>
-        <CardLayoutSwitcher v-if="[types.ANIME, types.MANGA, types.STUDIOS].includes(results.type)">
+        <CardLayoutSwitcher v-if="[types.ANIME, types.MANGA, types.STUDIOS].includes(results.type)" />
       </div>
 
       <!-- Anime & Manga search results -->
@@ -14,10 +15,9 @@
       <CharactersSearch v-else-if="[types.CHARACTERS].includes(results.type)" :results="results" />
       <!-- Staff search results -->
       <StaffSearch v-else-if="[types.STAFF].includes(results.type)" :results="results" />
-
-
     </div>
   </section>
+  <!-- eslint-enable max-len -->
 </template>
 
 <script lang="ts">

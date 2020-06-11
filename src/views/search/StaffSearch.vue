@@ -11,7 +11,7 @@
         <div v-else :key="'results'" class="grid grid--person w-full">
           <CardStaff v-for="item in list" :key="item.id" :data="item" />
         </div>
-      <transition>
+      </transition>
     </div>
   </div>
   <!-- eslint-enable max-len -->
