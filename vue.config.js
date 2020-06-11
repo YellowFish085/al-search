@@ -31,12 +31,11 @@ Object.keys(scripts.content).forEach((scriptName) => {
 const userScripts = Object.keys(entry);
 
 module.exports = {
+  productionSourceMap: false,
+
   // Ensure we don't hash filenames because we have hard coded paths
   // in index.html.
   filenameHashing: false,
-
-  // Configure webpack.
-  configureWebpack: (config) => {},
 
   // Add webpack jobs.
   chainWebpack: (config) => {
