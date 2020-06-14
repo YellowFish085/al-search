@@ -254,7 +254,8 @@ export namespace WebIntegration {
     /**
      * CSS selector used to find the search value for the content.
      *
-     * The code will look into the content of the corresponding node and use it to search on AniList.
+     * The code will look into the content of the corresponding node and use it to search on
+     * AniList.
      */
     selector: string;
 
@@ -300,8 +301,8 @@ export namespace WebIntegration {
     /**
      * Overrides button overlay settings.
      *
-     * If a page needs the button to be placed in a specific way because it can't be placed any other
-     * ways, use this object to override the user settings and force the button position.
+     * If a page needs the button to be placed in a specific way because it can't be placed any
+     * other ways, use this object to override the user settings and force the button position.
      */
     overlayOverride?: ALSearch.WebIntegration.OverlayOverride;
   }

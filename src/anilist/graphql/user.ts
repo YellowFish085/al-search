@@ -3,7 +3,7 @@
  *
  * @param data Data to check.
  */
-export function UserSchemaCheck(data: any): boolean {
+export default function UserSchemaCheck(data: any): boolean {
   return data !== null
     && typeof data === 'object'
     // id
@@ -16,16 +16,3 @@ export function UserSchemaCheck(data: any): boolean {
     // siteUrl
     && Object.prototype.hasOwnProperty.call(data, 'siteUrl') && typeof data.siteUrl === 'string';
 }
-
-export default `
-query {
-  Viewer {
-    id
-    name
-    avatar {
-      medium
-    }
-    siteUrl
-  }
-}
-`;

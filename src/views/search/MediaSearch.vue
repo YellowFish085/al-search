@@ -13,7 +13,7 @@
           <CardMedia v-for="item in firstList" :key="item.id" :data="item" />
           <CardMedia v-for="item in secondList" :key="item.id" :data="item" />
         </div>
-      <transition>
+      </transition>
     </div>
   </div>
   <!-- eslint-enable max-len -->
