@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.3.1 (14/06/2020)
+
+### Changes
+
+- [Change] (dev stuff) App now use real grpahql files (89b3ffa)
+- (dev stuff) Updated packages & build commands
+
 ## v1.3.0 (03/05/2020)
 
 ### New features
