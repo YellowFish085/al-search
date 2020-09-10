@@ -6,7 +6,7 @@
       <transition appear name="fade">
         <!-- Placeholder -->
         <div v-if="!results || results.loading" :key="'loading'" class="grid grid--media results-placeholder w-full" :class="[ settings.search.layout ]">
-          <CardMedia v-for="i in [0,1,2]" :key="i" />
+          <CardMedia v-for="i in [0,1,2,3,4,5]" :key="i" />
         </div>
         <!-- Results list -->
         <div v-else :key="'results'" class="grid grid--media w-full" :class="[ settings.search.layout ]">
