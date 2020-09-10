@@ -72,7 +72,7 @@ export default class InputSearch extends Mixins(Vue, MixinI18n) {
 
     this.timeout = setTimeout(() => {
       this.emitUpdate(evt);
-    }, 300);
+    }, 400);
   }
 
   /**
