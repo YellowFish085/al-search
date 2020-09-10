@@ -14,7 +14,6 @@ import CardChart from '@/components/search/cards/media/Chart.vue';
 import CardCover from '@/components/search/cards/media/Cover.vue';
 import CardTable from '@/components/search/cards/media/Table.vue';
 
-
 @Component({
   components: {
     CardChart,

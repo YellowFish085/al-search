@@ -48,7 +48,6 @@ export default class App extends Mixins(Vue, MixinChangeTheme) {
    */
   @State('critError') critError?: Error;
 
-
   created(): void {
     // Initialize store state from local storage.
     this.$store.dispatch('init');
