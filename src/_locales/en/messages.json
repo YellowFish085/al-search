@@ -366,11 +366,17 @@
       }
     }
   },
-  "S_ResultsGlobalFirst": {
-    "message": "Global results first"
+  "S_ResultsEmpty": {
+    "message": "No results"
+  },
+  "S_ResultsGlobal": {
+    "message": "Global results"
+  },
+  "S_ResultsOnList": {
+    "message": "Results form your list"
   },
   "S_ResultsOnListFirst": {
-    "message": "Results form your list first"
+    "message": "Results from your list first"
   },
   "S_ResultsOnListFirstDescription": {
     "message": "Wether to display search results from your personal lists or global search results first."
