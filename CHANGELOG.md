@@ -1,5 +1,19 @@
 # Changelog
 
+## v1.3.2 (11/09/2020)
+
+### New features
+
+- Global search results and results from your lists are now displayed in separate foldable lists (606a68a, 4c8ac5d)
+
+### Changes
+
+- [Changes] More placeholder media cards (708398b)
+- [Changes] Delay between keyup and autosearch has been bumped up a bit (ef5756f)
+- [Add] Added text when search results are empty (46966a0)
+- [Add] Added ADN web integration (2348996)
+- (dev stuff) Updated packages
+
 ## v1.3.1 (14/06/2020)
 
 ### Changes
