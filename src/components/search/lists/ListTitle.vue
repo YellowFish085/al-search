@@ -1,13 +1,15 @@
 <template>
+  <!-- eslint-disable max-len -->
   <h2 @click="onClick">
     <span>{{ title }}</span>
     <div class="btn">
       <transition :name="displayed ? 'fall-small' : 'climb-small'">
-        <ButtonIcon v-if="displayed" key="display" icon="chevron-down" :title="i18n('')" size="lg"/>
-        <ButtonIcon v-else icon="chevron-up" key="hide" :title="i18n('')" size="lg"/>
+        <ButtonIcon v-if="displayed" key="display" icon="chevron-down" :title="i18n('S_Close')" size="lg"/>
+        <ButtonIcon v-else icon="chevron-up" key="hide" :title="i18n('S_Open')" size="lg"/>
       </transition>
     </div>
   </h2>
+  <!-- eslint-enable max-len -->
 </template>
 
 <script lang="ts">

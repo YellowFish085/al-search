@@ -240,6 +240,9 @@
   "S_ClearMyActivity": {
     "message": "Clear my activity"
   },
+  "S_Close": {
+    "message": "Close"
+  },
   "S_CurrentVersion": {
     "message": "Current version"
   },
@@ -329,6 +332,9 @@
   },
   "S_OnAniList": {
     "message": "on AniList"
+  },
+  "S_Open": {
+    "message": "Open"
   },
   "S_OverlayNearTitle": {
     "message": "Place button near the page title"

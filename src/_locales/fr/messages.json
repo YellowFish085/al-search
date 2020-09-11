@@ -240,6 +240,9 @@
   "S_ClearMyActivity": {
     "message": "Vider mon fil d'acitvité"
   },
+  "S_Close": {
+    "message": "Fermer"
+  },
   "S_CurrentVersion": {
     "message": "Version actuelle"
   },
@@ -329,6 +332,9 @@
   },
   "S_OnAniList": {
     "message": "sur AniList"
+  },
+  "S_Open": {
+    "message": "Ouvrir"
   },
   "S_OverlayNearTitle": {
     "message": "Placer le bouton à côté du titre de la page"
