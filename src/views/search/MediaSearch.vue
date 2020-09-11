@@ -1,7 +1,7 @@
 <template>
   <!-- eslint-disable max-len -->
   <div class="search-results">
-    <ListTitle :title="firstListLabel" :displayed="firstListDisplayed" :onClick="togleFirstList" />
+    <ListTitle v-if="firstListLabel" :title="firstListLabel" :displayed="firstListDisplayed" :onClick="togleFirstList" />
     <div class="results-wrapper" :class="{ folded: !firstListDisplayed }">
       <div class="folded-overlay"></div>
       <transition appear name="fade">
