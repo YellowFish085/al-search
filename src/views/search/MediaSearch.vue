@@ -12,6 +12,7 @@
         <!-- Results list -->
         <div v-else :key="'results'" class="grid grid--media w-full" :class="[ settings.search.layout ]">
           <CardMedia v-for="item in firstList" :key="item.id" :data="item" />
+          <p v-if="firstList.length === 0">{{ i18n('S_ResultsEmpty') }}</p>
         </div>
       </transition>
     </div>
@@ -23,6 +24,7 @@
           <!-- Results list -->
           <div class="grid grid--media w-full" :class="[ settings.search.layout ]">
             <CardMedia v-for="item in secondList" :key="item.id" :data="item" />
+            <p v-if="secondList.length === 0">{{ i18n('S_ResultsEmpty') }}</p>
           </div>
         </transition>
       </div>

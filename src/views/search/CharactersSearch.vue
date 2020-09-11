@@ -10,6 +10,7 @@
         <!-- Results list -->
         <div v-else :key="'results'" class="grid grid--person w-full">
           <CardCharacter v-for="item in list" :key="item.id" :data="item" />
+          <p v-if="list.length === 0">{{ i18n('S_ResultsEmpty') }}</p>
         </div>
       </transition>
     </div>
@@ -18,15 +19,21 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import {
+  Component,
+  Mixins,
+  Prop,
+  Vue,
+} from 'vue-property-decorator';
 import CardCharacter from '@/components/search/cards/Character.vue';
+import MixinI18n from '@/mixins/I18n';
 
 @Component({
   components: {
     CardCharacter,
   },
 })
-export default class CharactersSearch extends Vue {
+export default class CharactersSearch extends Mixins(Vue, MixinI18n) {
   @Prop() results!: ALSearch.Store.SearchResults | null;
 
   /**
