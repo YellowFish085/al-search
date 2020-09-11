@@ -240,6 +240,9 @@
   "S_ClearMyActivity": {
     "message": "Vider mon fil d'acitvité"
   },
+  "S_Close": {
+    "message": "Fermer"
+  },
   "S_CurrentVersion": {
     "message": "Version actuelle"
   },
@@ -330,6 +333,9 @@
   "S_OnAniList": {
     "message": "sur AniList"
   },
+  "S_Open": {
+    "message": "Ouvrir"
+  },
   "S_OverlayNearTitle": {
     "message": "Placer le bouton à côté du titre de la page"
   },
@@ -366,11 +372,17 @@
       }
     }
   },
-  "S_ResultsGlobalFirst": {
-    "message": "Résultats globaux en premier"
+  "S_ResultsEmpty": {
+    "message": "Aucun résultat"
+  },
+  "S_ResultsGlobal": {
+    "message": "Résultats globaux"
+  },
+  "S_ResultsOnList": {
+    "message": "Résultats dans vos listes"
   },
   "S_ResultsOnListFirst": {
-    "message": "Résultats de vos listes en premier"
+    "message": "Résultats dans vos listes en premier"
   },
   "S_ResultsOnListFirstDescription": {
     "message": "Souhaitez-vous voir les résultats de recherche globaux en premier, ou ceux de vos listes ?"

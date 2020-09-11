@@ -31,6 +31,7 @@
               </div>
             </div>
           </div>
+          <p v-if="list.length === 0">{{ i18n('S_ResultsEmpty') }}</p>
         </div>
       </transition>
     </div>

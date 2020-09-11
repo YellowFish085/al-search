@@ -240,6 +240,9 @@
   "S_ClearMyActivity": {
     "message": "Clear my activity"
   },
+  "S_Close": {
+    "message": "Close"
+  },
   "S_CurrentVersion": {
     "message": "Current version"
   },
@@ -330,6 +333,9 @@
   "S_OnAniList": {
     "message": "on AniList"
   },
+  "S_Open": {
+    "message": "Open"
+  },
   "S_OverlayNearTitle": {
     "message": "Place button near the page title"
   },
@@ -366,11 +372,17 @@
       }
     }
   },
-  "S_ResultsGlobalFirst": {
-    "message": "Global results first"
+  "S_ResultsEmpty": {
+    "message": "No results"
+  },
+  "S_ResultsGlobal": {
+    "message": "Global results"
+  },
+  "S_ResultsOnList": {
+    "message": "Results form your list"
   },
   "S_ResultsOnListFirst": {
-    "message": "Results form your list first"
+    "message": "Results from your list first"
   },
   "S_ResultsOnListFirstDescription": {
     "message": "Wether to display search results from your personal lists or global search results first."

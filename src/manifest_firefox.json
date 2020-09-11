@@ -49,6 +49,10 @@
     {
       "matches": ["*://www.hidive.com/*"],
       "js": ["js/content/hidive.js"]
+    },
+    {
+      "matches": ["*://animedigitalnetwork.fr/*"],
+      "js": ["js/content/adn.js"]
     }
   ],
   "chrome_settings_overrides": {

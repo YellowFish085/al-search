@@ -48,7 +48,6 @@ export default class App extends Mixins(Vue, MixinChangeTheme) {
    */
   @State('critError') critError?: Error;
 
-
   created(): void {
     // Initialize store state from local storage.
     this.$store.dispatch('init');
@@ -473,6 +472,32 @@ a {
 }
 .fade-enter, .fade-leave-to {
   opacity: 0;
+}
+
+.climb-small-enter-active, .climb-small-leave-active {
+  transition: all 0.2s;
+}
+.climb-small-enter, .climb-small-leave-active {
+  opacity: 0;
+}
+.climb-small-enter {
+  transform: translateY(10px);
+}
+.climb-small-leave-active {
+  transform: translateY(-10px);
+}
+
+.fall-small-enter-active, .fall-small-leave-active {
+  transition: all 0.2s;
+}
+.fall-small-enter, .fall-small-leave-active {
+  opacity: 0;
+}
+.fall-small-enter {
+  transform: translateY(-10px);
+}
+.fall-small-leave-active {
+  transform: translateY(10px);
 }
 
 .translate-small-enter-active, .translate-small-leave-active {
