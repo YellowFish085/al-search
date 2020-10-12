@@ -20,15 +20,15 @@ async function animePage(): Promise<void> {
     },
   });
 
-  // Move the uservoice button for consistency
-  if (!settings.integration.overlay.inPage
+  // Move the al-search button above the feedback button for consistency
+  if (document.getElementById('uservoice-trigger')
+   && !settings.integration.overlay.inPage
    && settings.integration.overlay.x === 'RIGHT'
    && settings.integration.overlay.y === 'BOTTOM') {
-    const uservoiceNode = document.getElementById('uservoice-trigger');
-
-    if (uservoiceNode) {
-      uservoiceNode.style.right = '70px';
-      uservoiceNode.style.bottom = '14px';
+    const alSearchButton = document.getElementById('al-search');
+    if (alSearchButton) {
+      alSearchButton.style.right = '6px';
+      alSearchButton.style.bottom = '42px';
     }
   }
 }
