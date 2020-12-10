@@ -15,6 +15,7 @@
           id="search"
           class="input h-full w-full"
           autocomplete="off"
+          autofocus="on"
           :class="{ disabled: disabled }"
           :placeholder="i18n('S_SearchPlaceholder')"
           :disabled="disabled"
@@ -34,6 +35,7 @@ import {
   Mixins,
   Prop,
   Vue,
+  Watch,
 } from 'vue-property-decorator';
 import ButtonIcon from '@/components/ui/buttons/ButtonIcon.vue';
 import MixinI18n from '@/mixins/I18n';
@@ -56,6 +58,20 @@ export default class InputSearch extends Mixins(Vue, MixinI18n) {
 
   /** Search timeout. */
   timeout: number | null = null;
+
+  /**
+   * Watch for disabled state.
+   */
+  @Watch('disabled')
+  onDisabledChanged(newValue: boolean) {
+    // Note: When input is enabled after being disabled, Chrome does not focus the input again.
+    // So we need to force the focus again. We also need a small delay here to let Chrome
+    // correctly remove the `disabled` property on the input, else the focus wont work because
+    // Chrome will still see the input as being disabled.
+    if (!newValue) {
+      setTimeout(this.focusOnInput, 100);
+    }
+  }
 
   /**
    * Force focus on input.
