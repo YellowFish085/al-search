@@ -58,6 +58,13 @@ export default class InputSearch extends Mixins(Vue, MixinI18n) {
   timeout: number | null = null;
 
   /**
+   * Force focus on input.
+   */
+  focusOnInput() {
+    this.$refs.search.focus();
+  }
+
+  /**
    * Emit input update event.
    */
   emitUpdate(evt: any) {
@@ -82,7 +89,12 @@ export default class InputSearch extends Mixins(Vue, MixinI18n) {
     this.$emit('update:value', '');
 
     // Re-set focus on input.
-    this.$refs.search.focus();
+    this.focusOnInput();
+  }
+
+  mounted() {
+    // When component is mounted, force focus on input so that user can quickly start type.
+    this.focusOnInput();
   }
 }
 </script>
