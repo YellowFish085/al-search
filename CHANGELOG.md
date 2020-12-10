@@ -1,10 +1,18 @@
 # Changelog
 
+## v1.3.4 (10/12/2020)
+
+### Changes
+
+- [Changes] Search input autofocus when popup is opened (c14fe22)
+- [Fix] Fixed autofocus on search input after search is done on Chrome (61ee0c5)
+- (dev stuff) Updated packages
+
 ## v1.3.3 (01/11/2020)
 
 ### Changes
 
-- Fixed some issues with AnimeLab web integration (PR #9, thanks [SuperSonic16](https://github.com/thesupersonic16))
+- [Fix] Fixed some issues with AnimeLab web integration (PR #9, thanks [SuperSonic16](https://github.com/thesupersonic16))
 - (dev stuff) Updated packages
 
 ## v1.3.2 (11/09/2020)
