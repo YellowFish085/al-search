@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.3.6 (12/07/2021)
+
+### Changes
+- (dev stuff) Updated packages
+
 ## v1.3.5 (02/04/2021)
 
 ### Changes
