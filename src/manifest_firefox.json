@@ -22,6 +22,9 @@
     "*://anilist.co/*",
     "*://graphql.anilist.co/*"
   ],
+  "commands": {
+    "_execute_browser_action": {}
+  },
   "browser_action": {
     "default_icon": "logo-48.png",
     "default_popup": "index.html"
