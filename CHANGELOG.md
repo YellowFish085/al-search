@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.3.7 (19/03/2022)
+
+### Changes
+- [Add] Add customizable shortcut to open the add-on popup (f8f633b)
+- (dev stuff) Updated packages
+
 ## v1.3.6 (12/07/2021)
 
 ### Changes
