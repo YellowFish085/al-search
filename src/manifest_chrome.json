@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "author": "Theo Costantini",
   "name": "__MSG_APP_Name__",
   "description": "__MSG_APP_Description__",
@@ -14,19 +14,21 @@
     "contextMenus",
     "identity",
     "notifications",
-    "storage",
+    "storage"
+  ],
+  "host_permissions": [
     "*://anilist.co/*",
     "*://graphql.anilist.co/*"
   ],
   "commands": {
     "_execute_browser_action": {}
   },
-  "browser_action": {
+  "action": {
     "default_icon": "logo-48.png",
     "default_popup": "index.html"
   },
   "background": {
-    "scripts": ["js/background/background.js"]
+    "service_worker": "js/background/background.js"
   },
   "content_scripts": [
     {

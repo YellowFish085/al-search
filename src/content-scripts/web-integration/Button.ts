@@ -219,7 +219,7 @@ export default class Button {
 
       #al-search__button {
         background-color: rgb(31, 38, 49);
-        background-image: url('https://yellowfish085.github.io/al-search/img/logo.svg');
+        background-image: url('${browser.runtime.getURL('img/logo.svg')}');
         background-position: center;
         background-repeat: no-repeat;
         background-size: 50%;

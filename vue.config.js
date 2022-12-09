@@ -38,6 +38,30 @@ module.exports = {
   // in index.html.
   filenameHashing: false,
 
+  // Should prevent webpack from injecting `eval()` and `new Function()` calls to comply with
+  // manifest v3 requirements.
+  // See https://github.com/webpack/webpack/issues/5627
+  configureWebpack: {
+    node: {
+      // prevent webpack from injecting eval / new Function through global polyfill
+      global: false,
+    },
+    plugins: [
+      new webpack.DefinePlugin({
+          global: 'window',
+      }),
+    ],
+  },
+
+  // TODO; Il semblerait que le Function("return this") qui reste serait lié a une merde de globalThis.
+  // A enqueter.
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/globalThis
+  // Il faudrait essayer de déterminer si le probleme avec Function("...") dans le manifest v3 est que le code n'est
+  // pas executé ou si le code n'est pas autorisé a étre uploadé, le premier cas étant absolument pas problematique
+  // car les instances de Function("...") qui restent semblent etre du code "normal" (cf. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/globalThis#search_for_the_global_across_environments)
+  //
+  // TODO: Notifications down on Chrome
+
   // Add webpack jobs.
   chainWebpack: (config) => {
     // Disable code splitting.
