@@ -1,0 +1,7 @@
+.search-results--STUDIOS {
+  display: grid;
+  grid-gap: 25px 20px;
+  grid-template-columns: repeat(auto-fill, 260px);
+  justify-content: space-around;
+  margin-bottom: 2rem;
+}

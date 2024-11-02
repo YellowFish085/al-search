@@ -1,0 +1,50 @@
+.card-chart .list-status,
+.card-cover .list-status {
+  border-radius: 50%;
+  display: inline-block;
+  height: 10px;
+  margin-right: 5px;
+  width: 10px;
+}
+
+.card-chart .list-status.COMPLETED,
+.card-cover .list-status.COMPLETED {
+  background-color: rgb(var(--color-green));
+}
+
+.card-chart .list-status.CURRENT,
+.card-chart .list-status.REPEATING,
+.card-cover .list-status.CURRENT,
+.card-cover .list-status.REPEATING {
+  background-color: rgb(var(--color-blue));
+}
+
+.card-chart .list-status.DROPPED,
+.card-cover .list-status.DROPPED {
+  background-color: rgb(var(--color-red));
+}
+
+.card-chart .list-status.PAUSED,
+.card-cover .list-status.PAUSED {
+  background-color: rgb(var(--color-peach));
+}
+
+.card-chart .list-status.PLANNING,
+.card-cover .list-status.PLANNING {
+  background-color: rgb(var(--color-orange));
+}
+
+.card-chart .score .far.fa-smile,
+.card-table .score .far.fa-smile {
+  color: rgb(var(--color-green));
+}
+
+.card-chart .score .far.fa-meh,
+.card-table .score .far.fa-meh {
+  color: rgb(var(--color-orange));
+}
+
+.card-chart .score .far.fa-frown,
+.card-table .score .far.fa-frown {
+  color: rgb(var(--color-red));
+}

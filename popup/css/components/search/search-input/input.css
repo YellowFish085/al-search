@@ -1,0 +1,27 @@
+#search-input__input {
+  background: none;
+  border: none;
+  color: rgb(var(--color-header-text-hover));
+  font-size: 1.7rem;
+  height: 100%;
+  outline: none;
+  padding: 0 2rem;
+  text-align: center;
+  width: 100%;
+}
+
+#search-input__input::-webkit-search-cancel-button {
+  display: none;
+}
+
+#search-input__input:disabled {
+  cursor: initial !important;
+  opacity: 0.2 !important;
+  pointer-events: none !important;
+}
+
+#search-input__input::placeholder {
+  color: rgb(var(--color-header-text));
+  font-style: italic;
+  opacity: 0.6;
+}

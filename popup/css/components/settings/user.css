@@ -1,0 +1,12 @@
+#page-settings__user .row {
+  align-items: center;
+}
+
+#page-settings__user #page-settings__user__actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+#page-settings__user #page-settings__user__actions > * {
+  width: 49%;
+}

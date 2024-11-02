@@ -1,0 +1,12 @@
+#page-settings__integration__overlay {
+  padding-left: 2rem;
+}
+
+#web_integration_x_input,
+#web_integration_y_input {
+  margin-right: 0.5rem;
+}
+
+#web_integration_y_input {
+  margin-left: 1rem;
+}

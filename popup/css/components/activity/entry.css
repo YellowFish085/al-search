@@ -1,0 +1,39 @@
+.activity-feed__entry {
+  align-items: center;
+  background-color: rgb(var(--color-foreground));
+  border-radius: 3px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding: 1.25rem;
+  transition: color 0.15s ease-in-out;
+}
+
+.activity-feed__entry:hover {
+  color: rgb(var(--color-blue));
+}
+
+/* Icon */
+.activity-feed__entry > *:first-child {
+  color: rgb(var(--color-blue));
+  margin-right: 1rem;
+}
+
+/* Label */
+.activity-feed__entry > *:nth-child(2) {
+  font-size: 1.6rem;
+  margin-right: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Params */
+.activity-feed__entry > *:last-child {
+  color: rgb(var(--color-text-lighter));
+  font-size: 1.4rem;
+  font-weight: lighter;
+  text-transform: capitalize;
+  white-space: nowrap;
+}

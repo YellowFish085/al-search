@@ -1,0 +1,23 @@
+/* Chart layout */
+.search-results--ANIME.search-results--CHART {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, 100%);
+  margin-bottom: 2rem;
+}
+
+/* Cover layout */
+.search-results--ANIME.search-results--COVER {
+  display: grid;
+  grid-gap: 25px 14px;
+  grid-template-columns: repeat(auto-fill, 177px);
+  margin-bottom: 2rem;
+}
+
+/* Table layout */
+.search-results--ANIME.search-results--TABLE {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, 100%);
+  margin-bottom: 2rem;
+}

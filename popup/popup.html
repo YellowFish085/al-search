@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../vendors/fontawesome/css/all.css">
+  <link rel="stylesheet" href="./popup.css">
+
+  <script src="../vendors/webextension-polyfill/browser-polyfill.min.js"></script>
+  <script src="../vendors/vue/vue.runtime.global.prod.js"></script>
+  <script src="../vendors/vue-router/vue-router.global.prod.js"></script>
+
+  <!-- Globals -->
+  <script src="../shared/enums.js"></script>
+  <script src="./helpers.js"></script>
+  <script src="./vue/store.js"></script>
+  <script src="./search.js"></script>
+
+  <script src="./vue/components/inputs/setting-checkbox.js"></script>
+  <script src="./vue/components/inputs/setting-select.js"></script>
+  <script src="./vue/components/login-button.js"></script>
+  <script src="./vue/components/logout-button.js"></script>
+  <script src="./vue/components/refresh-user-button.js"></script>
+  <script src="./vue/components/user-avatar.js"></script>
+
+  <!-- Activity feed -->
+  <script src="./vue/components/activity/clear-button.js"></script>
+  <script src="./vue/components/activity/entry.js"></script>
+  <script src="./vue/components/activity/feed.js"></script>
+
+  <!-- Search -->
+  <script src="./vue/components/search/search-input/clear.js"></script>
+  <script src="./vue/components/search/search-input/input.js"></script>
+  <script src="./vue/components/search/search-input/underline.js"></script>
+  <script src="./vue/components/search/search-input.js"></script>
+
+  <script src="./vue/components/search/search-season.js"></script>
+
+  <script src="./vue/components/search/search-type.js"></script>
+
+  <script src="./vue/components/search/search-year.js"></script>
+
+  <script src="./vue/components/search/card-layout-switcher/item.js"></script>
+  <script src="./vue/components/search/card-layout-switcher.js"></script>
+
+  <script src="./vue/components/search/results/cards/layouts/_colored-title.js"></script>
+  <script src="./vue/components/search/results/cards/layouts/_genres.js"></script>
+  <script src="./vue/components/search/results/cards/layouts/_image-link.js"></script>
+  <script src="./vue/components/search/results/cards/layouts/_on-list-status.js"></script>
+  <script src="./vue/components/search/results/cards/layouts/_score.js"></script>
+  <script src="./vue/components/search/results/cards/layouts/button/card.js"></script>
+  <script src="./vue/components/search/results/cards/layouts/button/placeholder.js"></script>
+  <script src="./vue/components/search/results/cards/layouts/chart/card.js"></script>
+  <script src="./vue/components/search/results/cards/layouts/chart/placeholder.js"></script>
+  <script src="./vue/components/search/results/cards/layouts/cover/card.js"></script>
+  <script src="./vue/components/search/results/cards/layouts/cover/placeholder.js"></script>
+  <script src="./vue/components/search/results/cards/layouts/table/card.js"></script>
+  <script src="./vue/components/search/results/cards/layouts/table/placeholder.js"></script>
+  <script src="./vue/components/search/results/cards/anime.js"></script>
+  <script src="./vue/components/search/results/cards/character.js"></script>
+  <script src="./vue/components/search/results/cards/manga.js"></script>
+  <script src="./vue/components/search/results/cards/staff.js"></script>
+  <script src="./vue/components/search/results/cards/studio.js"></script>
+  <script src="./vue/components/search/results/anime.js"></script>
+  <script src="./vue/components/search/results/characters.js"></script>
+  <script src="./vue/components/search/results/manga.js"></script>
+  <script src="./vue/components/search/results/staff.js"></script>
+  <script src="./vue/components/search/results/studios.js"></script>
+  <script src="./vue/components/search/search-results.js"></script>
+
+  <!-- Settings -->
+  <script src="./vue/components/settings/user/logged-in.js"></script>
+  <script src="./vue/components/settings/user/logged-out.js"></script>
+  <script src="./vue/components/settings/user.js"></script>
+
+  <script src="./vue/components/settings/activity.js"></script>
+
+  <script src="./vue/components/settings/integration/overlay/x.js"></script>
+  <script src="./vue/components/settings/integration/overlay/y.js"></script>
+  <script src="./vue/components/settings/integration/overlay.js"></script>
+  <script src="./vue/components/settings/integration/in-page.js"></script>
+  <script src="./vue/components/settings/integration.js"></script>
+
+  <script src="./vue/components/settings/search.js"></script>
+
+  <script src="./vue/components/settings/theme/item.js"></script>
+  <script src="./vue/components/settings/theme.js"></script>
+
+  <script src="./vue/components/settings/information.js"></script>
+
+  <script src="./vue/components/settings/about.js"></script>
+
+  <!-- Header components -->
+  <script src="./vue/components/header/settings-button/to-home.js"></script>
+  <script src="./vue/components/header/settings-button/to-settings.js"></script>
+  <script src="./vue/components/header/settings-button.js"></script>
+  <script src="./vue/components/header.js"></script>
+
+  <!-- Pages -->
+  <script src="./vue/pages/home.js"></script>
+  <script src="./vue/pages/search.js"></script>
+  <script src="./vue/pages/settings.js"></script>
+
+  <!-- App -->
+  <script src="./vue/router.js"></script>
+  <script src="./popup.js"></script>
+</head>
+
+<body>
+  <div id="app"></div>
+</body>
+
+</html>

@@ -1,0 +1,7 @@
+#page-settings p {
+  margin-top: 1rem;
+}
+
+#page-settings p:not(:last-child) {
+  margin-bottom: 1rem;
+}

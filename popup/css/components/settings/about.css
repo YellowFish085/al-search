@@ -1,0 +1,38 @@
+#page-settings__about__links {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+#page-settings__about__links__anilist,
+#page-settings__about__links__al-search,
+#page-settings__about__links__github {
+  background-color: rgb(var(--color-overlay));
+  background-position: center;
+  background-size: cover;
+  border-radius: 3px;
+  display: block;
+  height: 50px;
+  margin-left: 0.5rem;
+  width: 50px;
+}
+
+#page-settings__about__links__anilist {
+  background-image: url('../../../../img/anilist-logo.svg');
+}
+
+#page-settings__about__links__al-search {
+  background-image: url('../../../../img/logo.svg');
+}
+
+#page-settings__about__links__github {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-decoration: none;
+}
+
+#page-settings__about__links__github span {
+  color: white;
+  font-size: 4rem;
+}

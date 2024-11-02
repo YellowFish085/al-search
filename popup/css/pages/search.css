@@ -1,0 +1,9 @@
+#page-search .page-title {
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+#page-search .page-title h1 {
+  margin-bottom: 0;
+}

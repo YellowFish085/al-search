@@ -1,0 +1,24 @@
+#search-input__clear {
+  all: unset;
+  color: rgb(var(--color-header-text));
+  cursor: pointer;
+  opacity: 0.6;
+  position: absolute;
+  right: 3rem;
+  top: 0;
+  transition: opacity 0.15s ease;
+  z-index: 1;
+}
+
+#search-input__clear:hover {
+  opacity: 1;
+}
+
+#search-input__clear.hidden {
+  display: none;
+  opacity: 0;
+}
+
+#search-input__clear span {
+  font-size: 1.5rem;
+}

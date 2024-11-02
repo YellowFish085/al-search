@@ -1,0 +1,525 @@
+{
+  "APP_Name": {
+    "message": "AL Search, pour AniList"
+  },
+  "APP_Description": {
+    "message": "Recherche rapide pour AniList."
+  },
+  "CONTENT_SCRIPT_EntryOnAnilist": {
+    "message": "$name$ sur AniList",
+    "placeholders": {
+      "name" : {
+        "content": "$1"
+      }
+    }
+  },
+  "CONTENT_SCRIPT_SearchFor": {
+    "message": "Rechercher $q$",
+    "placeholders": {
+      "q": {
+        "content": "$1"
+      }
+    }
+  },
+  "CONTENT_SCRIPT_SeeOnAniList": {
+    "message": "Voir $name$ sur AniList",
+    "placeholders": {
+      "name" : {
+        "content": "$1"
+      }
+    }
+  },
+  "CONTEXTUAL_MENU_Anime": {
+    "message": "Recherche anime pour \"%s\"",
+    "placeholders": {
+      "q": {
+        "content": "$1"
+      }
+    }
+  },
+  "CONTEXTUAL_MENU_Characters": {
+    "message": "Recherche personnages pour \"%s\"",
+    "placeholders": {
+      "q": {
+        "content": "$1"
+      }
+    }
+  },
+  "CONTEXTUAL_MENU_Manga": {
+    "message": "Recherche manga pour \"%s\"",
+    "placeholders": {
+      "q": {
+        "content": "$1"
+      }
+    }
+  },
+  "CONTEXTUAL_MENU_Studios": {
+    "message": "Recherche studios pour \"%s\"",
+    "placeholders": {
+      "q": {
+        "content": "$1"
+      }
+    }
+  },
+  "CONTEXTUAL_MENU_Staff": {
+    "message": "Recherche staff pour \"%s\"",
+    "placeholders": {
+      "q": {
+        "content": "$1"
+      }
+    }
+  },
+  "ENUM_FORMAT_MANGA": {
+    "message": "Manga"
+  },
+  "ENUM_FORMAT_MOVIE": {
+    "message": "Film"
+  },
+  "ENUM_FORMAT_MUSIC": {
+    "message": "Musique"
+  },
+  "ENUM_FORMAT_NOVEL": {
+    "message": "Light Novel"
+  },
+  "ENUM_FORMAT_ONA": {
+    "message": "ONA"
+  },
+  "ENUM_FORMAT_OVA": {
+    "message": "OVA"
+  },
+  "ENUM_FORMAT_ONE_SHOT": {
+    "message": "One shot"
+  },
+  "ENUM_FORMAT_SPECIAL": {
+    "message": "Spécial"
+  },
+  "ENUM_FORMAT_TV": {
+    "message": "TV"
+  },
+  "ENUM_FORMAT_TV_SHORT": {
+    "message": "TV Short"
+  },
+  "ENUM_SEASON_FALL": {
+    "message": "Automne"
+  },
+  "ENUM_SEASON_SUMMER": {
+    "message": "Eté"
+  },
+  "ENUM_SEASON_SPRING": {
+    "message": "Printemps"
+  },
+  "ENUM_SEASON_WINTER": {
+    "message": "Hiver"
+  },
+  "ENUM_STATUS_CANCELED": {
+    "message": "Annulé"
+  },
+  "ENUM_STATUS_FINISHED": {
+    "message": "Fini"
+  },
+  "ENUM_STATUS_HIATUS": {
+    "message": "Hiatus"
+  },
+  "ENUM_STATUS_NOT_YET_RELEASED": {
+    "message": "TBA"
+  },
+  "ENUM_STATUS_RELEASING": {
+    "message": "En cours"
+  },
+  "ENUM_TYPE_ANIME": {
+    "message": "Anime"
+  },
+  "ENUM_TYPE_CHARACTERS": {
+    "message": "Personnages"
+  },
+  "ENUM_TYPE_MANGA": {
+    "message": "Manga"
+  },
+  "ENUM_TYPE_STUDIOS": {
+    "message": "Studios"
+  },
+  "ENUM_TYPE_STAFF": {
+    "message": "Staff"
+  },
+  "ENUM_WEBINTEGRATIONX_LEFT": {
+    "message": "Gauche"
+  },
+  "ENUM_WEBINTEGRATIONX_RIGHT": {
+    "message": "Droite"
+  },
+  "ENUM_WEBINTEGRATIONY_BOTTOM": {
+    "message": "Bas"
+  },
+  "ENUM_WEBINTEGRATIONY_CENTER": {
+    "message": "Centre"
+  },
+  "ENUM_WEBINTEGRATIONY_TOP": {
+    "message": "Haut"
+  },
+  "ERROR_AnilistRequestFailed": {
+    "message": "La requête à AniList a échoué : $message$",
+    "placeholders": {
+      "message" : {
+        "content": "$1"
+      }
+    }
+  },
+  "ERROR_InvalidAnilistUser": {
+    "message": "La requête à AniList a retourné un objet utilisateur invalide : $obj$",
+    "placeholders": {
+      "obj" : {
+        "content": "$1"
+      }
+    }
+  },
+  "ERROR_InvalidSearchResults": {
+    "message": "La requête à AniList a retourné des résultats de recherche invalides : $obj$",
+    "placeholders": {
+      "obj" : {
+        "content": "$1"
+      }
+    }
+  },
+  "ERROR_MissingAccessToken": {
+    "message": "Token d'accès pour AniList manquant."
+  },
+  "ERROR_MissingAccessTokenInStorage": {
+    "message": "Token d'accès manquant dans la mémoire locale."
+  },
+  "EVENT_ActivityCleared": {
+    "message": "Fil d'activité vidées!"
+  },
+  "EVENT_Authenticated": {
+    "message": "Vous êtes maintenant connecté en tant que $name$.",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "EVENT_LoggedOut": {
+    "message": "Vous êtes maintenant déconnecté. N'oubliez pas de supprimer le token d'accès dans vos paramètres sur AniList."
+  },
+  "EVENT_UserRefreshed": {
+    "message": "Vos données ont été mises à jour."
+  },
+  "ACTIVITY_Clear": {
+    "message": "Vider mon fil d'activité"
+  },
+  "ACTIVITY_NoActivities": {
+    "message": "Votre fil d'activité est vide."
+  },
+  "AIRING_Airing": {
+    "message": "Diffusé"
+  },
+  "AIRING_AiringSince": {
+    "message": "Diffusé depuis $year$",
+    "placeholders": {
+      "year": {
+        "content": "$1"
+      }
+    }
+  },
+  "AIRING_Chapter": {
+    "message": "$chapter$ chapitre",
+    "placeholders": {
+      "chapter": {
+        "content": "$1"
+      }
+    }
+  },
+  "AIRING_Chapters": {
+    "message": "$chapters$ chapitres",
+    "placeholders": {
+      "chapters": {
+        "content": "$1"
+      }
+    }
+  },
+  "AIRING_Day": {
+    "message": "$day$ jour",
+    "placeholders": {
+      "day": {
+        "content": "$1"
+      }
+    }
+  },
+  "AIRING_Days": {
+    "message": "$days$ jours",
+    "placeholders": {
+      "days": {
+        "content": "$1"
+      }
+    }
+  },
+  "AIRING_Episode": {
+    "message": "$episode$ épisode",
+    "placeholders": {
+      "episode" : {
+        "content": "$1"
+      }
+    }
+  },
+  "AIRING_Episodes": {
+    "message": "$episodes$ épisodes",
+    "placeholders": {
+      "episodes" : {
+        "content": "$1"
+      }
+    }
+  },
+  "AIRING_Hour": {
+    "message": "$hour$ heure",
+    "placeholders": {
+      "hour": {
+        "content": "$1"
+      }
+    }
+  },
+  "AIRING_Hours": {
+    "message": "$hours$ heures",
+    "placeholders": {
+      "hours": {
+        "content": "$1"
+      }
+    }
+  },
+  "AIRING_Min": {
+    "message": "$min$ min",
+    "placeholders": {
+      "min": {
+        "content": "$1"
+      }
+    }
+  },
+  "AIRING_Mins": {
+    "message": "$mins$ mins",
+    "placeholders": {
+      "mins": {
+        "content": "$1"
+      }
+    }
+  },
+  "AIRING_PublishingSince": {
+    "message": "Publié depuis $since$",
+    "placeholders": {
+      "since": {
+        "content": "$1"
+      }
+    }
+  },
+  "AIRING_Volume": {
+    "message": "$volume$ volume",
+    "placeholders": {
+      "volume": {
+        "content": "$1"
+      }
+    }
+  },
+  "AIRING_Volumes": {
+    "message": "$volumes$ volumes",
+    "placeholders": {
+      "volumes": {
+        "content": "$1"
+      }
+    }
+  },
+  "CARD_NextAiringEpisodeIn": {
+    "message": "Ep $episode$ diffusé dans",
+    "placeholders": {
+      "episode": {
+        "content": "$1"
+      }
+    }
+  },
+  "CARD_NextAiringEpisodeOfEpisodesIn": {
+    "message": "Ep $episode$ sur $episodes$ diffusé dans",
+    "placeholders": {
+      "episode": {
+        "content": "$1"
+      },
+      "episodes": {
+        "content": "$2"
+      }
+    }
+  },
+  "CARD_Publishing": {
+    "message": "En publication"
+  },
+  "CARD_SeeOnAnilist": {
+    "message": "Voir $name$ sur AniList",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "HEADER_SETTINGS_BUTTON_ToHome": {
+    "message": "Accueil"
+  },
+  "HEADER_SETTINGS_BUTTON_ToSettings": {
+    "message": "Paramètres"
+  },
+  "HOME_Title": {
+    "message": "Activité"
+  },
+  "LOGIN_BUTTON_Label": {
+    "message": "Login"
+  },
+  "LOGOUT_BUTTON_Label": {
+    "message": "Déconnexion"
+  },
+  "REFRESH_USER_BUTTON_Label": {
+    "message": "Actualiser"
+  },
+  "SEARCH_INPUT_Clear": {
+    "message": "Vider"
+  },
+  "SEARCH_INPUT_Placeholder": {
+    "message": "Rechercher..."
+  },
+  "SEARCH_SEASON_AllSeasons": {
+    "message": "Saison"
+  },
+  "SEARCH_SEASON_Title": {
+    "message": "Filtrer par saison"
+  },
+  "SEARCH_YEAR_AllYears": {
+    "message": "Année"
+  },
+  "SEARCH_YEAR_Title": {
+    "message": "Filtrer par année"
+  },
+  "SEARCH_GlobalResults": {
+    "message": "Résultats globaux"
+  },
+  "SEARCH_ResultsOnList": {
+    "message": "Résultats dans votre liste"
+  },
+  "SEARCH_Title": {
+    "message": "Résultas de recherche"
+  },
+  "SETTINGS_ABOUT_BuildInformation": {
+    "message": "Information sur l'add-on"
+  },
+  "SETTINGS_ABOUT_CurrentVersion": {
+    "message": "Version actuelle"
+  },
+  "SETTINGS_ABOUT_Legal": {
+    "message": "Légal"
+  },
+  "SETTINGS_ABOUT_LegalDescription": {
+    "message": "<b>AL Search</b> est un projet open source non affilé à <b>AniList</b>."
+  },
+  "SETTINGS_ABOUT_Links": {
+    "message": "Liens"
+  },
+  "SETTINGS_ABOUT_Title": {
+    "message": "A propos"
+  },
+  "SETTINGS_ABOUT_VisitRepository": {
+    "message": "Voir le repository"
+  },
+  "SETTINGS_ABOUT_VisitWebsite": {
+    "message": "Voir $website$",
+    "placeholders": {
+      "website": {
+        "content": "$1"
+      }
+    }
+  },
+  "SETTINGS_ACTIVITY_Description": {
+    "message": "<b>AL Search</b> peut sauvegarder votre historique de recherche ainsi que les pages visitées (anime, manga, studios, personnages et staff). Cette fonctionnalité est présente pour vous donner un accès rapide à des précédentes recherches ou pages visitées."
+  },
+  "SETTINGS_ACTIVITY_SaveSearch": {
+    "message": "Sauvegarder les recherches"
+  },
+  "SETTINGS_ACTIVITY_SaveVisitedPages": {
+    "message": "Sauvegarder les pages visitées"
+  },
+  "SETTINGS_ACTIVITY_Title": {
+    "message": "Activité"
+  },
+  "SETTINGS_INFORMATION_Title": {
+    "message": "Information"
+  },
+  "SETTINGS_INFORMATION_Activity": {
+    "message": "Activité"
+  },
+  "SETTINGS_INFORMATION_ActivityDescription": {
+    "message": "Le fil d'activité est sauvegardé locallement dans votre navigateur.<br><br>Cela veut dire que si vous utilisez <b>AL Search</b> sur plusieurs navigateurs ou ordinateurs, chaque navigateur aura son propre fil d'activité."
+  },
+  "SETTINGS_INFORMATION_Data": {
+    "message": "Données"
+  },
+  "SETTINGS_INFORMATION_DataDescription": {
+    "message": "Aucune donnée n'est collectée, on se fiche de ce que vous regardez ou cherchez. Profitez juste de l'add-on :)"
+  },
+  "SETTINGS_INTEGRATION_IN_PAGE_Label": {
+    "message": "Placer le bouton près du titre"
+  },
+  "SETTINGS_INTEGRATION_OVERLAY_Title": {
+    "message": "Le bouton sera placé de manière fixe dans la page :"
+  },
+  "SETTINGS_INTEGRATION_OVERLAY_X_Label": {
+    "message": "(gauche / droite)"
+  },
+  "SETTINGS_INTEGRATION_OVERLAY_Y_Label": {
+    "message": "(haut / centre / bas)"
+  },
+  "SETTINGS_INTEGRATION_ContextualMenuEnabledLabel": {
+    "message": "Activer le menu contextuel"
+  },
+  "SETTINGS_INTEGRATION_ContextualMenuEnabledDescription": {
+    "message": "<b>AL Search</b> ajoute un menu contextuel pour rapidement effectuer une recherche pour le texte sélectionné."
+  },
+  "SETTINGS_INTEGRATION_Title": {
+    "message": "Integration"
+  },
+  "SETTINGS_INTEGRATION_WebEnabledLabel": {
+    "message": "Activer l'integration web"
+  },
+  "SETTINGS_INTEGRATION_WebEnabledDescription": {
+    "message": "<b>AL Search</b> ajoute une integration web, un bouton sur certaines pages de certains sites liées à l'univers des anime et manga (comme Crunchyroll) avec quelques actions."
+  },
+  "SETTINGS_SEARCH_ResultsOnListFirstLabel": {
+    "message": "Résultats de votre liste en premier"
+  },
+  "SETTINGS_SEARCH_ResultsOnListFirstDescription": {
+    "message": "Afficher les résultats de votre liste en premier ou second."
+  },
+  "SETTINGS_SEARCH_Title": {
+    "message": "Recherche"
+  },
+  "SETTINGS_THEME_Title": {
+    "message": "Theme"
+  },
+  "SETTINGS_USER_Title": {
+    "message": "Compte"
+  },
+  "SETTINGS_USER_LoggedInAs": {
+    "message": "Vous êtes connecté en tant que <strong>$name$</strong>",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "SETTINGS_USER_LoggedOut": {
+    "message": "Vous n'êtes pas connecté"
+  },
+  "SETTINGS_USER_LoggedOutDescription": {
+    "message": "Connectez-vous pour activer la recherche sur vos listes."
+  },
+  "USER_AVATAR_SeeMyProfile": {
+    "message": "Voir mon profile sur AniList"
+  },
+  "Error": {
+    "message": "Erreur: $message$",
+    "placeholders": {
+      "message" : {
+        "content": "$1"
+      }
+    }
+  }
+}

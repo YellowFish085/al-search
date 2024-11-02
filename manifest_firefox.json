@@ -1,0 +1,61 @@
+{
+  "manifest_version": 3,
+  "version": "2.0.0",
+  "author": "Theo Costantini",
+  "name": "__MSG_APP_Name__",
+  "description": "__MSG_APP_Description__",
+  "homepage_url": "https://github.com/YellowFish085/al-search",
+  "icons": {
+    "16": "img/logo-16.png",
+    "32": "img/logo-32.png",
+    "48": "img/logo-48.png",
+    "96": "img/logo-96.png",
+    "128": "img/logo-128.png"
+  },
+  "default_locale": "en",
+  "permissions": [
+    "contextMenus",
+    "identity",
+    "nativeMessaging",
+    "notifications",
+    "storage"
+  ],
+  "host_permissions": [
+    "*://anilist.co/*",
+    "*://graphql.anilist.co/*"
+  ],
+  "background": {
+    "scripts": ["service-worker/service-worker.js"],
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://animationdigitalnetwork.com/*",
+        "*://www.crunchyroll.com/*"
+      ],
+      "js": [
+        "vendors/webextension-polyfill/browser-polyfill.min.js",
+        "shared/enums.js",
+        "content-script/content-script.js"
+      ]
+    }
+  ],
+  "action": {
+    "default_popup": "popup/popup.html"
+  },
+  "developer": {
+    "name": "Theo Costantini",
+    "url": "https://github.com/YellowFish085"
+  },
+  "chrome_settings_overrides": {
+    "search_provider": {
+      "name": "__MSG_APP_Name__",
+      "encoding": "UTF-8",
+      "search_url": "https://anilist.co/search/anime?sort=SEARCH_MATCH&search={searchTerms}",
+      "keyword": "ani",
+      "favicon_url": "./img/logo.svg",
+      "is_default": false
+    }
+  }
+}

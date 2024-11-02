@@ -1,0 +1,28 @@
+.user-avatar {
+  border-radius: 3px;
+  border: none;
+  display: inline-block;
+  height: 40px;
+  opacity: 0.8;
+  overflow: hidden;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+  width: 40px;
+}
+
+.user-avatar.lg {
+  height: 60px;
+  width: 60px;
+}
+
+.user-avatar.small {
+  transform: scale(0.8);
+}
+
+.user-avatar:hover {
+  opacity: 1;
+}
+
+.user-avatar img {
+  height: auto;
+  width: 100%;
+}

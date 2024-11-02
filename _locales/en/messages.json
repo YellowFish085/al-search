@@ -1,0 +1,525 @@
+{
+  "APP_Name": {
+    "message": "AL Search, for AniList"
+  },
+  "APP_Description": {
+    "message": "AniList quick search in your browser."
+  },
+  "CONTENT_SCRIPT_EntryOnAnilist": {
+    "message": "$name$ on AniList",
+    "placeholders": {
+      "name" : {
+        "content": "$1"
+      }
+    }
+  },
+  "CONTENT_SCRIPT_SearchFor": {
+    "message": "Search for $q$",
+    "placeholders": {
+      "q": {
+        "content": "$1"
+      }
+    }
+  },
+  "CONTENT_SCRIPT_SeeOnAniList": {
+    "message": "See $name$ on AniList",
+    "placeholders": {
+      "name" : {
+        "content": "$1"
+      }
+    }
+  },
+  "CONTEXTUAL_MENU_Anime": {
+    "message": "Anime search for \"%s\"",
+    "placeholders": {
+      "q": {
+        "content": "$1"
+      }
+    }
+  },
+  "CONTEXTUAL_MENU_Characters": {
+    "message": "Characters search for \"%s\"",
+    "placeholders": {
+      "q": {
+        "content": "$1"
+      }
+    }
+  },
+  "CONTEXTUAL_MENU_Manga": {
+    "message": "Manga search for \"%s\"",
+    "placeholders": {
+      "q": {
+        "content": "$1"
+      }
+    }
+  },
+  "CONTEXTUAL_MENU_Studios": {
+    "message": "Studios search for \"%s\"",
+    "placeholders": {
+      "q": {
+        "content": "$1"
+      }
+    }
+  },
+  "CONTEXTUAL_MENU_Staff": {
+    "message": "Staff search for \"%s\"",
+    "placeholders": {
+      "q": {
+        "content": "$1"
+      }
+    }
+  },
+  "ENUM_FORMAT_MANGA": {
+    "message": "Manga"
+  },
+  "ENUM_FORMAT_MOVIE": {
+    "message": "Movie"
+  },
+  "ENUM_FORMAT_MUSIC": {
+    "message": "Music"
+  },
+  "ENUM_FORMAT_NOVEL": {
+    "message": "Light Novel"
+  },
+  "ENUM_FORMAT_ONA": {
+    "message": "ONA"
+  },
+  "ENUM_FORMAT_OVA": {
+    "message": "OVA"
+  },
+  "ENUM_FORMAT_ONE_SHOT": {
+    "message": "One shot"
+  },
+  "ENUM_FORMAT_SPECIAL": {
+    "message": "Special"
+  },
+  "ENUM_FORMAT_TV": {
+    "message": "TV Show"
+  },
+  "ENUM_FORMAT_TV_SHORT": {
+    "message": "TV Short"
+  },
+  "ENUM_SEASON_FALL": {
+    "message": "Fall"
+  },
+  "ENUM_SEASON_SUMMER": {
+    "message": "Summer"
+  },
+  "ENUM_SEASON_SPRING": {
+    "message": "Spring"
+  },
+  "ENUM_SEASON_WINTER": {
+    "message": "Winter"
+  },
+  "ENUM_STATUS_CANCELED": {
+    "message": "Canceled"
+  },
+  "ENUM_STATUS_FINISHED": {
+    "message": "Finished"
+  },
+  "ENUM_STATUS_HIATUS": {
+    "message": "Hiatus"
+  },
+  "ENUM_STATUS_NOT_YET_RELEASED": {
+    "message": "TBA"
+  },
+  "ENUM_STATUS_RELEASING": {
+    "message": "Releasing"
+  },
+  "ENUM_TYPE_ANIME": {
+    "message": "Anime"
+  },
+  "ENUM_TYPE_CHARACTERS": {
+    "message": "Characters"
+  },
+  "ENUM_TYPE_MANGA": {
+    "message": "Manga"
+  },
+  "ENUM_TYPE_STUDIOS": {
+    "message": "Studios"
+  },
+  "ENUM_TYPE_STAFF": {
+    "message": "Staff"
+  },
+  "ENUM_WEBINTEGRATIONX_LEFT": {
+    "message": "Left"
+  },
+  "ENUM_WEBINTEGRATIONX_RIGHT": {
+    "message": "Right"
+  },
+  "ENUM_WEBINTEGRATIONY_BOTTOM": {
+    "message": "Bottom"
+  },
+  "ENUM_WEBINTEGRATIONY_CENTER": {
+    "message": "Center"
+  },
+  "ENUM_WEBINTEGRATIONY_TOP": {
+    "message": "Top"
+  },
+  "ERROR_AnilistRequestFailed": {
+    "message": "AniList request failed: $message$",
+    "placeholders": {
+      "message" : {
+        "content": "$1"
+      }
+    }
+  },
+  "ERROR_InvalidAnilistUser": {
+    "message": "AniList request returned an invalid user object: $obj$",
+    "placeholders": {
+      "obj" : {
+        "content": "$1"
+      }
+    }
+  },
+  "ERROR_InvalidSearchResults": {
+    "message": "AniList request returned invalid search results: $obj$",
+    "placeholders": {
+      "obj" : {
+        "content": "$1"
+      }
+    }
+  },
+  "ERROR_MissingAccessToken": {
+    "message": "Missing access token after AniList authentication."
+  },
+  "ERROR_MissingAccessTokenInStorage": {
+    "message": "Missing access token in local storage."
+  },
+  "EVENT_ActivityCleared": {
+    "message": "Activity cleared!"
+  },
+  "EVENT_Authenticated": {
+    "message": "You are now logged in as $name$.",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "EVENT_LoggedOut": {
+    "message": "You are now logged out from AL Search. Don't forget to revoke the access token in you AniList settings."
+  },
+  "EVENT_UserRefreshed": {
+    "message": "Your data have been refreshed."
+  },
+  "ACTIVITY_Clear": {
+    "message": "Clear my activity"
+  },
+  "ACTIVITY_NoActivities": {
+    "message": "Your activity feed is empty."
+  },
+  "AIRING_Airing": {
+    "message": "Airing"
+  },
+  "AIRING_AiringSince": {
+    "message": "Airing since $year$",
+    "placeholders": {
+      "year": {
+        "content": "$1"
+      }
+    }
+  },
+  "AIRING_Chapter": {
+    "message": "$chapter$ chapter",
+    "placeholders": {
+      "chapter": {
+        "content": "$1"
+      }
+    }
+  },
+  "AIRING_Chapters": {
+    "message": "$chapters$ chapters",
+    "placeholders": {
+      "chapters": {
+        "content": "$1"
+      }
+    }
+  },
+  "AIRING_Day": {
+    "message": "$day$ day",
+    "placeholders": {
+      "day": {
+        "content": "$1"
+      }
+    }
+  },
+  "AIRING_Days": {
+    "message": "$days$ days",
+    "placeholders": {
+      "days": {
+        "content": "$1"
+      }
+    }
+  },
+  "AIRING_Episode": {
+    "message": "$episode$ episode",
+    "placeholders": {
+      "episode" : {
+        "content": "$1"
+      }
+    }
+  },
+  "AIRING_Episodes": {
+    "message": "$episodes$ episodes",
+    "placeholders": {
+      "episodes" : {
+        "content": "$1"
+      }
+    }
+  },
+  "AIRING_Hour": {
+    "message": "$hour$ hour",
+    "placeholders": {
+      "hour": {
+        "content": "$1"
+      }
+    }
+  },
+  "AIRING_Hours": {
+    "message": "$hours$ hours",
+    "placeholders": {
+      "hours": {
+        "content": "$1"
+      }
+    }
+  },
+  "AIRING_Min": {
+    "message": "$min$ min",
+    "placeholders": {
+      "min": {
+        "content": "$1"
+      }
+    }
+  },
+  "AIRING_Mins": {
+    "message": "$mins$ mins",
+    "placeholders": {
+      "mins": {
+        "content": "$1"
+      }
+    }
+  },
+  "AIRING_PublishingSince": {
+    "message": "Publishing since $since$",
+    "placeholders": {
+      "since": {
+        "content": "$1"
+      }
+    }
+  },
+  "AIRING_Volume": {
+    "message": "$volume$ volume",
+    "placeholders": {
+      "volume": {
+        "content": "$1"
+      }
+    }
+  },
+  "AIRING_Volumes": {
+    "message": "$volumes$ volumes",
+    "placeholders": {
+      "volumes": {
+        "content": "$1"
+      }
+    }
+  },
+  "CARD_NextAiringEpisodeIn": {
+    "message": "Ep $episode$ airing in",
+    "placeholders": {
+      "episode": {
+        "content": "$1"
+      }
+    }
+  },
+  "CARD_NextAiringEpisodeOfEpisodesIn": {
+    "message": "Ep $episode$ of $episodes$ airing in",
+    "placeholders": {
+      "episode": {
+        "content": "$1"
+      },
+      "episodes": {
+        "content": "$2"
+      }
+    }
+  },
+  "CARD_Publishing": {
+    "message": "Publishing"
+  },
+  "CARD_SeeOnAnilist": {
+    "message": "See $name$ on AniList",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "HEADER_SETTINGS_BUTTON_ToHome": {
+    "message": "Home"
+  },
+  "HEADER_SETTINGS_BUTTON_ToSettings": {
+    "message": "Settings"
+  },
+  "HOME_Title": {
+    "message": "Activity"
+  },
+  "LOGIN_BUTTON_Label": {
+    "message": "Login"
+  },
+  "LOGOUT_BUTTON_Label": {
+    "message": "Logout"
+  },
+  "REFRESH_USER_BUTTON_Label": {
+    "message": "Refresh"
+  },
+  "SEARCH_INPUT_Clear": {
+    "message": "Clear"
+  },
+  "SEARCH_INPUT_Placeholder": {
+    "message": "Search..."
+  },
+  "SEARCH_SEASON_AllSeasons": {
+    "message": "Season"
+  },
+  "SEARCH_SEASON_Title": {
+    "message": "Filter by season"
+  },
+  "SEARCH_YEAR_AllYears": {
+    "message": "Year"
+  },
+  "SEARCH_YEAR_Title": {
+    "message": "Filter by year"
+  },
+  "SEARCH_GlobalResults": {
+    "message": "Global results"
+  },
+  "SEARCH_ResultsOnList": {
+    "message": "Results form your list"
+  },
+  "SEARCH_Title": {
+    "message": "Search results"
+  },
+  "SETTINGS_ABOUT_BuildInformation": {
+    "message": "Add-on information"
+  },
+  "SETTINGS_ABOUT_CurrentVersion": {
+    "message": "Current version"
+  },
+  "SETTINGS_ABOUT_Legal": {
+    "message": "Legal"
+  },
+  "SETTINGS_ABOUT_LegalDescription": {
+    "message": "<b>AL Search</b> is an open source project not affiliated with <b>AniList</b>."
+  },
+  "SETTINGS_ABOUT_Links": {
+    "message": "Links"
+  },
+  "SETTINGS_ABOUT_Title": {
+    "message": "About"
+  },
+  "SETTINGS_ABOUT_VisitRepository": {
+    "message": "Visit repository"
+  },
+  "SETTINGS_ABOUT_VisitWebsite": {
+    "message": "Visit $website$",
+    "placeholders": {
+      "website": {
+        "content": "$1"
+      }
+    }
+  },
+  "SETTINGS_ACTIVITY_Description": {
+    "message": "<b>AL Search</b> can save your search history and visited pages (anime, manga, studio, character and staff). This is here to help you quickly go back to a previous search or a previously visited page."
+  },
+  "SETTINGS_ACTIVITY_SaveSearch": {
+    "message": "Save searches"
+  },
+  "SETTINGS_ACTIVITY_SaveVisitedPages": {
+    "message": "Save visited pages"
+  },
+  "SETTINGS_ACTIVITY_Title": {
+    "message": "Activity"
+  },
+  "SETTINGS_INFORMATION_Title": {
+    "message": "Information"
+  },
+  "SETTINGS_INFORMATION_Activity": {
+    "message": "Activity"
+  },
+  "SETTINGS_INFORMATION_ActivityDescription": {
+    "message": "Search history and visited pages are stored locally, on your browser.<br><br>This means that if you have <b>AL Search</b> installed in multiple browsers on the same computer, or in multiple browsers on different computers, each <b>AL Search</b> extension will have its own activity feed."
+  },
+  "SETTINGS_INFORMATION_Data": {
+    "message": "Data"
+  },
+  "SETTINGS_INFORMATION_DataDescription": {
+    "message": "We do not collect any of your data in any way, we don't care what you're watching or reading. Just enjoy this extension :)"
+  },
+  "SETTINGS_INTEGRATION_IN_PAGE_Label": {
+    "message": "Place the button near the page title"
+  },
+  "SETTINGS_INTEGRATION_OVERLAY_Title": {
+    "message": "The button will be fixed on page:"
+  },
+  "SETTINGS_INTEGRATION_OVERLAY_X_Label": {
+    "message": "(left / right)"
+  },
+  "SETTINGS_INTEGRATION_OVERLAY_Y_Label": {
+    "message": "(top / center / bottom)"
+  },
+  "SETTINGS_INTEGRATION_ContextualMenuEnabledLabel": {
+    "message": "Enable contextual menu"
+  },
+  "SETTINGS_INTEGRATION_ContextualMenuEnabledDescription": {
+    "message": "<b>AL Search</b> adds contextual actions to quickly search the selected text on a page."
+  },
+  "SETTINGS_INTEGRATION_Title": {
+    "message": "Integration"
+  },
+  "SETTINGS_INTEGRATION_WebEnabledLabel": {
+    "message": "Enable web integration"
+  },
+  "SETTINGS_INTEGRATION_WebEnabledDescription": {
+    "message": "<b>AL Search</b> comes with a web integration feature that adds a button on the page to some website related to anime and manga culture (e.g. Crunchyroll) with a few actions."
+  },
+  "SETTINGS_SEARCH_ResultsOnListFirstLabel": {
+    "message": "Results on list first"
+  },
+  "SETTINGS_SEARCH_ResultsOnListFirstDescription": {
+    "message": "Wether to display search results from your personal lists or global search results first."
+  },
+  "SETTINGS_SEARCH_Title": {
+    "message": "Search"
+  },
+  "SETTINGS_THEME_Title": {
+    "message": "Theme"
+  },
+  "SETTINGS_USER_Title": {
+    "message": "Account"
+  },
+  "SETTINGS_USER_LoggedInAs": {
+    "message": "You are logged in as <strong>$name$</strong>",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "SETTINGS_USER_LoggedOut": {
+    "message": "You are currently not logged in"
+  },
+  "SETTINGS_USER_LoggedOutDescription": {
+    "message": "Log in to enable search on your personal Anime and Manga lists."
+  },
+  "USER_AVATAR_SeeMyProfile": {
+    "message": "See my profile on AniList"
+  },
+  "Error": {
+    "message": "Error: $message$",
+    "placeholders": {
+      "message" : {
+        "content": "$1"
+      }
+    }
+  }
+}
