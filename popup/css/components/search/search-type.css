@@ -1,0 +1,24 @@
+#type-input input {
+  display: none;
+}
+
+#type-input label {
+  cursor: pointer;
+  margin: 0 0.3rem;
+  transition: color 0.15s ease, opacity 0.15s ease-in-out;
+}
+
+#type-input label:hover,
+#type-input label.active {
+  color: rgb(var(--color-header-text-hover));
+}
+
+#type-input label:not(.active) {
+  opacity: 0.6;
+}
+
+#type-input input:disabled + label {
+  cursor: initial !important;
+  opacity: 0.2 !important;
+  pointer-events: none !important;
+}

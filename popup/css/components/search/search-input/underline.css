@@ -1,0 +1,18 @@
+#search-input__underline {
+  background-color: rgb(var(--color-header-text-hover));
+  bottom: -10px;
+  height: 2px;
+  left: 0;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  right: 0;
+  transition: opacity 0.2s ease-in-out, width 0.2s ease-in-out;
+  width: calc(100% - 4rem);
+  z-index: -1;
+}
+
+#search-input__underline.hidden {
+  opacity: 0;
+  width: 0%;
+}

@@ -1,0 +1,10 @@
+#page-settings .card {
+  width: calc(100% - 36px);
+}
+
+#page-settings h2:not(:first-child),
+#page-settings h3:not(:first-child),
+#page-settings h4:not(:first-child)
+{
+  margin: 20px 0 10px;
+}

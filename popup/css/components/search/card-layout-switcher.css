@@ -1,0 +1,14 @@
+#card-layout-switcher button {
+  background: transparent;
+  border: none;
+  color: rgb(var(--color-gray-500));
+  cursor: pointer;
+  font-size: 1.8rem;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+#card-layout-switcher button:hover,
+#card-layout-switcher button.active {
+  color: rgb(var(--color-gray-600));
+}

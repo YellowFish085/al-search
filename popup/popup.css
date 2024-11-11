@@ -1,0 +1,395 @@
+/* Global */
+@import url('./css/components/inputs/setting-checkbox.css');
+@import url('./css/components/user-avatar.css');
+
+/* Activity */
+@import url('./css/components/activity/entry.css');
+
+/* Search */
+@import url('./css/components/search/search-input.css');
+@import url('./css/components/search/search-input/clear.css');
+@import url('./css/components/search/search-input/input.css');
+@import url('./css/components/search/search-input/underline.css');
+
+@import url('./css/components/search/search-season.css');
+
+@import url('./css/components/search/search-type.css');
+
+@import url('./css/components/search/search-year.css');
+
+@import url('./css/components/search/card-layout-switcher.css');
+
+@import url('./css/components/search/results/anime.css');
+@import url('./css/components/search/results/characters.css');
+@import url('./css/components/search/results/manga.css');
+@import url('./css/components/search/results/staff.css');
+@import url('./css/components/search/results/studios.css');
+@import url('./css/components/search/results/cards/card.css');
+@import url('./css/components/search/results/cards/layouts/button.css');
+@import url('./css/components/search/results/cards/layouts/chart.css');
+@import url('./css/components/search/results/cards/layouts/cover.css');
+@import url('./css/components/search/results/cards/layouts/table.css');
+
+/* Settings */
+@import url('./css/components/settings/user.css');
+
+@import url('./css/components/settings/activity.css');
+
+@import url('./css/components/settings/integration.css');
+@import url('./css/components/settings/integration/in-page.css');
+@import url('./css/components/settings/integration/overlay.css');
+
+@import url('./css/components/settings/theme.css');
+@import url('./css/components/settings/theme/item.css');
+
+@import url('./css/components/settings/about.css');
+
+/* Header */
+@import url('./css/components/header.css');
+@import url('./css/components/header/settings-button.css');
+
+/* Pages */
+@import url('./css/pages/home.css');
+@import url('./css/pages/search.css');
+@import url('./css/pages/settings.css');
+
+:root {
+  --color-header-background: 43,45,66;
+  --color-header-text: 188,190,220;
+  --color-header-text-hover: 211,213,243;
+  --color-background: 237,241,245;
+  --color-foreground: 250,250,250;
+  --color-foreground-grey: 245,246,246;
+  --color-foreground-grey-dark: 234,236,237;
+  --color-foreground-blue: 246,248,251;
+  --color-foreground-blue-dark: 241,243,247;
+  --color-background-blue-dark: 31,35,45;
+  --color-overlay: 31,38,49;
+  --color-shadow: 49,54,68;
+  --color-shadow-dark: 6,13,34;
+  --color-shadow-blue: 103,132,187;
+  --color-text: 92,114,138;
+  --color-text-light: 122,133,143;
+  --color-text-lighter: 146,153,161;
+  --color-text-bright: 237,241,245;
+  --color-blue: 61,180,242;
+  --color-blue-dim: 141,178,219;
+  --color-white: 255,255,255;
+  --color-black: 0,0,0;
+  --color-red: 232,93,117;
+  --color-peach: 250,122,122;
+  --color-orange: 247,154,99;
+  --color-yellow: 247,191,99;
+  --color-green: 123,213,85;
+  --color-background-100: 251,251,251;
+  --color-background-200: 237,241,245;
+  --color-background-300: 221,230,238;
+  --color-background-400: 201,215,227;
+  --color-background-500: 173,192,210;
+  --color-background-600: 139,160,178;
+  --color-background-700: 116,136,153;
+  --color-background-800: 100,115,128;
+  --color-background-900: 81,97,112;
+  --color-background-1000: 64,78,92;
+  --color-background-1100: 38,52,63;
+  --color-background-1200: 27,30,31;
+  --color-gray-100: 251,251,251;
+  --color-gray-200: 237,241,245;
+  --color-gray-300: 221,230,238;
+  --color-gray-400: 201,215,227;
+  --color-gray-500: 173,192,210;
+  --color-gray-600: 139,160,178;
+  --color-gray-700: 116,136,153;
+  --color-gray-800: 100,115,128;
+  --color-gray-900: 81,97,112;
+  --color-gray-1000: 64,78,92;
+  --color-gray-1100: 38,52,63;
+  --color-gray-1200: 27,30,31;
+  --color-blue-100: 247,250,252;
+  --color-blue-200: 236,246,254;
+  --color-blue-300: 201,232,255;
+  --color-blue-400: 143,215,255;
+  --color-blue-500: 111,200,255;
+  --color-blue-600: 61,180,242;
+  --color-blue-700: 8,143,214;
+  --color-blue-800: 12,101,166;
+  --color-blue-900: 11,70,113;
+  --color-blue-1000: 16,61,85;
+  --color-green-100: 245,249,243;
+  --color-green-200: 226,246,217;
+  --color-green-300: 160,241,126;
+  --color-green-400: 119,220,76;
+  --color-green-500: 83,175,45;
+  --color-green-600: 56,126,26;
+  --color-green-700: 46,90,27;
+  --color-green-800: 41,66,31;
+  --color-red-100: 255,244,246;
+  --color-red-200: 254,212,220;
+  --color-red-300: 255,140,160;
+  --color-red-400: 236,41,75;
+  --color-red-500: 213,0,37;
+  --color-red-600: 165,1,29;
+  --color-red-700: 117,0,20;
+}
+
+.theme-dark {
+  --color-header-background: 21,34,50;
+  --color-header-text: 160,177,197;
+  --color-header-text-hover: 211,213,243;
+  --color-background: 11,22,34;
+  --color-foreground: 21,31,46;
+  --color-foreground-grey: 15,22,31;
+  --color-foreground-grey-dark: 6,12,19;
+  --color-foreground-blue: 15,22,31;
+  --color-foreground-blue-dark: 6,12,19;
+  --color-text: 159,173,189;
+  --color-text-light: 114,138,161;
+  --color-text-lighter: 133,150,165;
+  --color-shadow-blue: 0,5,15;
+  --color-background-1200: 251,251,251;
+  --color-background-1100: 240,243,246;
+  --color-background-1000: 221,230,238;
+  --color-background-900: 201,215,227;
+  --color-background-800: 173,192,210;
+  --color-background-700: 139,160,178;
+  --color-background-600: 116,136,153;
+  --color-background-500: 100,115,128;
+  --color-background-400: 81,97,112;
+  --color-background-300: 30,42,56;
+  --color-background-100: 21,31,46;
+  --color-background-200: 11,22,34;
+  --color-gray-1200: 251,251,251;
+  --color-gray-1100: 240,243,246;
+  --color-gray-1000: 221,230,238;
+  --color-gray-900: 201,215,227;
+  --color-gray-800: 173,192,210;
+  --color-gray-700: 139,160,178;
+  --color-gray-600: 116,136,153;
+  --color-gray-500: 100,115,128;
+  --color-gray-400: 81,97,112;
+  --color-gray-300: 30,42,56;
+  --color-gray-100: 21,31,46;
+  --color-gray-200: 11,22,34;
+}
+
+.theme-contrast {
+  --color-background: 229,235,241;
+  --color-foreground: 251,251,251;
+  --color-foreground-grey: 229,233,245;
+  --color-foreground-grey-dark: 221,225,239;
+  --color-foreground-blue: 229,233,245;
+  --color-foreground-blue-dark: 221,225,239;
+  --color-text: 38,52,63;
+  --color-text-light: 64,78,92;
+  --color-text-lighter: 81,97,112;
+  --color-shadow: 37,41,51;
+  --color-blue: 18,172,253;
+  --color-blue-dim: 85,144,208;
+  --color-background-100: 251,251,251;
+  --color-background-200: 229,235,241;
+  --color-background-300: 173,192,210;
+  --color-background-400: 139,160,178;
+  --color-background-500: 116,136,153;
+  --color-background-600: 100,115,128;
+  --color-background-700: 64,78,92;
+  --color-background-800: 64,78,92;
+  --color-background-900: 38,52,63;
+  --color-background-1000: 27,30,31;
+  --color-background-1100: 27,30,31;
+  --color-background-1200: 27,30,31;
+  --color-gray-100: 251,251,251;
+  --color-gray-200: 229,235,241;
+  --color-gray-300: 173,192,210;
+  --color-gray-400: 139,160,178;
+  --color-gray-500: 116,136,153;
+  --color-gray-600: 100,115,128;
+  --color-gray-700: 64,78,92;
+  --color-gray-800: 64,78,92;
+  --color-gray-900: 38,52,63;
+  --color-gray-1000: 27,30,31;
+  --color-gray-1100: 27,30,31;
+  --color-gray-1200: 27,30,31;
+}
+
+html {
+  font-size: 62.5%;
+  line-height: 1.15;
+}
+
+body {
+  background: rgb(var(--color-background));
+  color: rgb(var(--color-text));
+  font-family: 'Roboto', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-size: 1.6rem;
+  margin: 0;
+  overflow: hidden;
+}
+
+#app-container {
+  height: 700px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 600px;
+}
+
+#app-container.searching {
+  overflow-y: hidden;
+}
+
+.content {
+  padding-top: calc(100px + 2rem);
+  padding-bottom: 2rem;
+}
+
+.container {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.row {
+  display: flex;
+}
+
+.card {
+  background: rgb(var(--color-foreground));
+  border-radius: 3px;
+  padding: 18px;
+}
+
+.loading {
+  height: 16px;
+  position: relative;
+  width: 16px;
+}
+
+.loading span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: spin 1s linear infinite;
+}
+
+button.btn {
+  align-items: center;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 1.3rem;
+  justify-content: center;
+  padding: 10px 15px;
+  transition: 0.2s;
+}
+
+button.btn-bg {
+  background: rgb(var(--color-blue));
+  border: none;
+  color: rgb(var(--color-text-bright));
+}
+
+button.btn-bg.btn--red {
+  background: rgb(var(--color-red));
+}
+
+button.btn-border {
+  background-color: rgb(var(--color-foreground));
+  border: 1px solid rgba(var(--color-blue), 0.2);
+  color: rgb(var(--color-blue));
+}
+
+button.btn-border.btn--red {
+  border: 1px solid rgba(var(--color-red), 0.2);
+  color: rgb(var(--color-red));
+}
+
+button.btn.disabled,
+button.btn:disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+button.btn:hover {
+  box-shadow: 0 1px 10px 0 rgba(49, 54, 68, 0.15);
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 2.2rem;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+h2 {
+  font-size: 1.9rem;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+h3 {
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+h4 {
+  font-size: 1.4rem;
+  font-style: italic;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1.4rem;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 900px;
+  padding: 0;
+}
+
+p.note {
+  opacity: 0.8;
+}
+
+b {
+  color: rgb(var(--color-blue));
+  font-style: italic;
+}
+
+a {
+  color: rgb(var(--color-blue));
+}
+
+/* Animations */
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform:rotate(360deg);
+  }
+}
+
+@keyframes card-placeholder {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(50%);
+  }
+}
+
+@keyframes card-appear {
+  0% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    transform: none;
+  }
+}
+

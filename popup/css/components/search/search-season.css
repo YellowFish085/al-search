@@ -1,0 +1,26 @@
+#season-input {
+  appearance: none;
+  background: inherit;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  display: block;
+  font-size: 1.6rem;
+  transition: color 0.15s ease, opacity 0.15s ease-in-out;
+}
+
+#season-input:hover,
+#season-input.active {
+  color: rgb(var(--color-header-text-hover));
+}
+
+#season-input:not(.active) {
+  font-style: italic;
+  opacity: 0.6;
+}
+
+#season-input:disabled {
+  cursor: initial !important;
+  opacity: 0.2 !important;
+  pointer-events: none !important;
+}

@@ -1,0 +1,6 @@
+.search-results--STAFF {
+  display: grid;
+  grid-gap: 25px 14px;
+  grid-template-columns: repeat(auto-fill, 177px);
+  margin-bottom: 2rem;
+}
