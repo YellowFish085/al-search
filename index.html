@@ -1,264 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AL Search</title>
-  <meta name="description" content="AL Search, an unofficial browser extension for AniList which allows you to quickly search information on AniList">
-  <meta name="keywords" content="AL Search,AniList">
-  <link rel="icon" href="img/logo.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="vendor/fontawesome/css/all.min.css">
-  <link rel="stylesheet" href="assets/style.css">
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>AL Search</title>
+    <meta content="AL Search, an unofficial browser extension for AniList which allows you to quickly search information on AniList" name="description">
+    <meta content="AL Search,AniList" name="keywords">
+    <link href="img/logo.svg" rel="icon" type="image/svg+xml">
+    <link href="vendor/fontawesome/css/all.min.css" rel="stylesheet">
+    <link href="assets/style.css" rel="stylesheet">
 </head>
+
 <body>
-  <header>
-    <img src="img/logo.svg" alt="AL Search" lazy="loaded">
-    <h1>AL Search</h1>
-    <h2>Quickly search information on AniList</h2>
-    <div class="extension-links">
-      <a href="https://addons.mozilla.org/en-US/firefox/addon/al-search/" title="AL Search for Firefox">
-        <i class="fab fa-firefox-browser"></i>
-      </a>
-      <a href="https://chrome.google.com/webstore/detail/cfgahmhilacehicbomiciimpemjhpalc" title="AL Search for Chrome">
-        <i class="fab fa-chrome"></i>
-      </a>
-      <a href="https://chrome.google.com/webstore/detail/cfgahmhilacehicbomiciimpemjhpalc" title="AL Search for Edge Chromium">
-        <i class="fab fa-edge"></i>
-      </a>
-      <a href="https://anilist.co/forum/thread/11987" title="AniList thread" class="anilist">
-        <img src="img/anilist.svg">
-        AL thread
-      </a>
-    </div>
-  </header>
-  <section>
-    <div class="wrapper">
-      <h3 id="what-is-it">What is it?</h3>
+    <header>
+        <img alt="AL Search" lazy="loaded" src="img/logo.svg">
 
-      <div class="block">
-        <div class="container">
-          <p class="big"><b>AL Search</b> is an unofficial browser extension for <b>AniList</b> which allows you to quickly search information on <b>AniList</b>.</p>
-          <p class="big">The extension is available on <a href="https://addons.mozilla.org/en-US/firefox/addon/al-search/" title="Firefox add-on page"><i class="fab fa-firefox-browser"></i> Firefox</a>, <a href="https://chrome.google.com/webstore/detail/cfgahmhilacehicbomiciimpemjhpalc" title="Chrome add-on page"><i class="fab fa-chrome"></i> Chrome</a> and <a href="https://chrome.google.com/webstore/detail/cfgahmhilacehicbomiciimpemjhpalc" title="Edge Chromium add-on page"><i class="fab fa-edge"></i> Edge Chromium</a>.</p>
-          <p class="note">For Edge support, see <a href="#about-edge" alt="About Edge Chromium">here</a>.</p>
+        <h1>AL Search</h1>
+
+        <h2>Quickly search information on AniList</h2>
+
+        <div class="extension-links">
+            <a href="https://addons.mozilla.org/en-US/firefox/addon/al-search/" title="AL Search for Firefox">
+                <i class="fab fa-firefox-browser"></i>
+            </a>
+
+            <a href="https://chrome.google.com/webstore/detail/cfgahmhilacehicbomiciimpemjhpalc" title="AL Search for Chrome & any Chromium based browser">
+                <i class="fab fa-chrome"></i>
+            </a>
+
+            <a class="anilist" href="https://anilist.co/forum/thread/11987" title="AniList thread">
+                <img src="img/anilist.svg">
+                AL thread
+            </a>
         </div>
-      </div>
+    </header>
 
-      <h3>What's included?</h3>
+    <section class="wrapper">
+        <h2 id="what-is-it">What is it?</h2>
 
-      <div class="block">
-        <h4>Integrated search</h4>
-        <div class="col">
-          <div class="container">
+        <div class="card">
+            <p><b>AL Search</b> is an unofficial browser extension for <b>AniList</b> which allows you to quickly search information on <b>AniList</b>.</p>
+            <p>The extension is available on <a href="https://addons.mozilla.org/en-US/firefox/addon/al-search/" title="Firefox add-on page"><i class="fab fa-firefox-browser"></i> Firefox</a> and <a href="https://chrome.google.com/webstore/detail/cfgahmhilacehicbomiciimpemjhpalc" title="Chrome add-on page"><i class="fab fa-chrome"></i> Chrome & any Chromium based browser</a>.</p>
+        </div>
+
+        <h2>What's included?</h2>
+
+        <div class="card">
+            <h3>Integrated search</h3>
+
             <p><b>AL Search</b> comes with a light search interface which allows you to quickly search something on <b>AniList</b> and see results without having to go to the website itself.</p>
             <p>You can search for anime, manga, studios, characters and staff. If you need to be a bit more specific with your search, you can also filter results by year and season for anime and manga.</p>
             <p>If your are logged into <b>AniList</b> through <b>AL Search</b>, the extension will also return anime and manga on your lists.</p>
-          </div>
-          <div class="screenshot">
-            <img src="img/search.jpg" alt="AL Search screenshot" lazy="loaded">
-          </div>
-        </div>
-      </div>
 
-      <div class="block">
-        <h4>Contextual menus</h4>
-        <div class="col">
-          <div class="container">
+            <div class="img-center">
+                <img alt="AL Search screenshot" lazy="loaded" src="img/search.png">
+            </div>
+
+            <h3>Contextual menus</h3>
+
             <p><b>AL Search</b> adds a contextual menu that will appear when you select a text on a page.</p>
             <p>This contextual menu lets you immediately search the selected text on <b>AniList</b> for all type of data available.</p>
-          </div>
-          <div class="screenshot">
-            <img src="img/contextual.jpg" alt="Contextual menus screenshot" lazy="loaded">
-          </div>
-        </div>
-      </div>
 
-      <div class="block">
-        <h4>Web integration</h4>
-        <div class="row">
-          <div class="container">
+            <div class="img-center">
+                <img alt="Contextual menus screenshot" class="shadow" lazy="loaded" src="img/contextual.jpg">
+            </div>
+
+            <h3>Web integration</h3>
+
             <p><b>AL Search</b> also adds a button on pages from a few websites related to anime and manga.</p>
-            <p>The button will (almost) always contains two links, the first one <b><i class="fa fa-external-link-alt"></i></b> to visit the related page on <b>AniList</b> and the second one <b><i class="fa fa-search"></i></b> to open <b>AniList</b> search page</p>
+            <p>The button will (almost) always contains two links, the first one <b><i class="fa fa-external-link-alt"></i></b> to visit the related page on <b>AniList</b> and the second one <b><i class="fa fa-search"></i></b> to open <b>AniList</b> search page.</p>
             <p class="note">See more information about this feature in the <a href="#web-integration-details">dedicated section</a> below.</p>
-          </div>
-          <div class="screenshot">
-            <img src="img/web-integration.jpg" alt="Web integration screenshot" lazy="loaded">
-          </div>
-        </div>
-      </div>
 
-      <div class="block">
-        <h4>Browser search provider (Firefox only)</h4>
-        <div class="col">
-          <div class="container">
+            <div class="img-center">
+                <img alt="Web integration screenshot" class="shadow" lazy="loaded" src="img/web-integration.jpg">
+            </div>
+
+            <h3>Browser search provider (Firefox only)</h3>
+
             <p><b>AL Search</b> adds an anime search engine to the browser.</p>
             <p>Starting your search using the keyword <b>ani</b>, the browser will automatically switch to this search engine and execute an anime search on <b>AniList</b>.</p>
             <p class="note">See more information about this feature in the <a href="#search-provider-details">dedicated section</a> below.</p>
-          </div>
-          <div class="screenshot">
-            <img src="img/provider.jpg" alt="Search provider screenshot" lazy="loaded">
-          </div>
+
+            <div class="img-center">
+                <img alt="Search provider screenshot" class="shadow" lazy="loaded" src="img/provider.png">
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
-  <section>
-    <div class="wrapper">
-      <hr>
-      <h3 id="technical">Technical information, limitations and known issues</h3>
+    </section>
 
-      <div id="web-integration-details" class="block">
-        <h4>About the web integration</h4>
-        <div class="container">
-          <h4>Supported websites</h4>
+    <hr>
 
-          <table>
-            <thead>
-              <tr>
-                <th>Website</th>
-                <th>Anime</th>
-                <th>Manga</th>
-                <th>Studios</th>
-                <th>Characters</th>
-                <th>Staff</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><a href="https://animedigitalnetwork.fr" target="_blank">ADN</a></td>
-                <td><b><i class="fa fa-check"></i></b></td>
-                <td>n/a</td>
-                <td>n/a</td>
-                <td>n/a</td>
-                <td>n/a</td>
-              </tr>
-              <tr>
-                <td><a href="https://www.animelab.com" target="_blank">AnimeLab</a></td>
-                <td><b><i class="fa fa-check"></i></b></td>
-                <td>n/a</td>
-                <td>n/a</td>
-                <td>n/a</td>
-                <td>n/a</td>
-              </tr>
-              <tr>
-                <td><a href="https://www.crunchyroll.com" target="_blank">Crunchyroll</a></td>
-                <td><b><i class="fa fa-check"></i></b></td>
-                <td><b><i class="fa fa-check"></i></b></td>
-                <td>n/a</td>
-                <td>n/a</td>
-                <td>n/a</td>
-              </tr>
-              <tr>
-                <td><a href="https://www.funimation.com" target="_blank">Funimation</a></td>
-                <td><b><i class="fa fa-check"></i></b></td>
-                <td>n/a</td>
-                <td>n/a</td>
-                <td>n/a</td>
-                <td>n/a</td>
-              </tr>
-              <tr>
-                <td><a href="https://www.hidive.com" target="_blank">Hidive</a></td>
-                <td><b><i class="fa fa-check"></i></b></td>
-                <td>n/a</td>
-                <td>n/a</td>
-                <td>n/a</td>
-                <td>n/a</td>
-              </tr>
-              <tr>
-                <td><a href="https://www.wakanimt.tv" target="_blank">Wakanim</a></td>
-                <td><b><i class="fa fa-check"></i></b></td>
-                <td>n/a</td>
-                <td>n/a</td>
-                <td>n/a</td>
-                <td>n/a</td>
-              </tr>
-            </tbody>
-          </table>
+    <section class="wrapper">
+        <h2 id="technical">Technical information, limitations and known issues</h2>
 
-          <h4>Planned</h4>
-          <ul>
-            <li>None for now. If you think some websites should be added, feel free to contact me.</li>
-          </ul>
+        <div class="card" id="web-integration-details">
+            <h3>About the web integration</h3>
 
-          <p class="note">The following websites are currently <strong>not</strong> planned as I, the creator of <b>AL Search</b>, do not have access to these websites: <a href="https://www.hulu.com">Hulu</a>.</p>
-          <p class="note">The following websites are currently <strong>not</strong> planned because there is no reliable way to differentiate anime shows from other type of shows available on the service: </strong><a href="https://www.netflix.com" target="_blank">Netflix</a> and <a href="https://www.primevideo.com/" target="_blank">Prime Video</a>.</p>
+            <h4>Supported websites</h4>
 
-          <h4>Known limitations</h4>
-          <p>It is virtually impossible to link every page on every website the extension could support to a related page on <b>AniList</b>. So the extension will always use the best match on <b>AniList</b> based on the page you are currently viewing to generate the <b><i class="fa fa-external-link-alt"></i></b> link. For instance, if you are currently on the <a href="https://www.crunchyroll.com/jojos-bizarre-adventure">Jojo's Bizarre Adventure anime page on <i>Crunchyroll</i></a>, the extension will execute an anime search for "Jojo's Bizarre Adventure" and take the best match from the search results.</p>
-          <p>Be also aware that if you are browsing a website in a different language than English, the search results can return wrong data as <b>AniList</b> database is in English.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Website</th>
+                        <th>Anime</th>
+                        <th>Manga</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="https://animedigitalnetwork.fr" target="_blank">ADN</a></td>
+                        <td><b><i class="fa fa-check"></i></b></td>
+                        <td>n/a</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://www.crunchyroll.com" target="_blank">Crunchyroll</a></td>
+                        <td><b><i class="fa fa-check"></i></b></td>
+                        <td>n/a</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Planned</h4>
+
+            <p>None for now. If you think some websites should be added, feel free to contact me.</p>
+            <p>The following websites are currently <strong>not</strong> planned as I, the creator of <b>AL Search</b>, do not have access to these websites: <a href="https://www.hulu.com">Hulu</a>.</p>
+            <p>The following websites are currently <strong>not</strong> planned because there is no reliable way to differentiate anime shows from other type of shows available on the service: </strong><a href="https://www.netflix.com" target="_blank">Netflix</a> and <a href="https://www.primevideo.com/" target="_blank">Prime Video</a>.</p>
+            <p class="note">Note: </strong><a href="https://www.hidive.com" target="_blank">Hidive</a> was removed with v2 rewrite since I can't test if it still works.</p>
+
+            <h4>Known limitations</h4>
+
+            <p>It is virtually impossible to link every page on every website the extension could support to a related page on <b>AniList</b>. So the extension will always use the best match on <b>AniList</b> based on the page you are currently viewing to generate the <b><i class="fa fa-external-link-alt"></i></b> link. For instance, if you are currently on the <a href="https://www.crunchyroll.com/jojos-bizarre-adventure">Jojo's Bizarre Adventure anime page on <i>Crunchyroll</i></a>, the extension will execute an anime search for "Jojo's Bizarre Adventure" and take the best match from the search results.</p>
+            <p>Be also aware that if you are browsing a website in a different language than English, the search results can return wrong data as <b>AniList</b> database is in English.</p>
         </div>
-      </div>
 
-      <div id="search-provider-details" class="block">
-        <h4>About the search provider</h4>
-        <div class="container">
-          <h4>Why only on Firefox?</h4>
-          <p>The search provider is only available on Firefox due to restrictions on Chrome.</p>
-          <p>To make it short, Chrome does not allow an extension to add a search provider for a website not owned by the creator of the extension. Therefore, it is impossible to add a search provider for <b>AniList</b>, or any other website, if the extension is not developed by the website owner.</p>
+        <div class="card" id="search-provider-details">
+            <h3>About the search provider</h3>
 
-          <h4>Why only anime?</h4>
-          <p>It is impossible to define multiple search providers per extension, and it is impossible to have multiple search urls for a single search provider. Since <b>AniList</b> does not have a global search page, the extension can only add one search provider limited to one type of data.</p>
-          <p>Anime was choosen because it is the main data on the website.</p>
+            <h4>Why only on Firefox?</h4>
+
+            <p>The search provider is only available on Firefox due to restrictions on Chrome.</p>
+            <p>To make it short, Chrome does not allow an extension to add a search provider for a website not owned by the creator of the extension. Therefore, it is impossible to add a search provider for <b>AniList</b>, or any other website, if the extension is not developed by the website owner.</p>
+
+            <h4>Why only anime?</h4>
+
+            <p>It is impossible to define multiple search providers per extension, and it is impossible to have multiple search urls for a single search provider. Since <b>AniList</b> does not have a global search page, the extension can only add one search provider limited to one type of data.</p>
+            <p>Anime was choosen because it is the main data on the website.</p>
         </div>
-      </div>
 
-      <div class="block">
-        <h4>About translation</h4>
-        <div class="container">
-          <p>The extension is currently translated in English and French.</p>
-          <p>Please keep in mind that while the extension is translated, data on <b>AniList</b> are not and will always be in English.</p>
+        <div class="card">
+            <h3>About translation</h3>
+
+            <p>The extension is currently translated in English and French.</p>
+            <p>Please keep in mind that while the extension is translated, data on <b>AniList</b> are not and will always be in English.</p>
         </div>
-      </div>
+    </section>
 
-      <div class="block">
-        <h4 id="about-edge">About Edge Chromium</h4>
-        <div class="container">
-          <p>Chrome extensions from the Chrome web store can be installed on the Chromium version of Edge, so if you use this browser you can install the Chrome version of AL Search on it. Just keep in mind that the extension you'll use will still be the Chrome extension, so for instance if you log in to AniList you'll see the "AL Search Chrome is requesting permission to access your account" message and if you revoke the access token for the app in your settings you'll be logged out from the extension on Chrome and Edge.</p>
+    <hr>
+
+    <section class="wrapper">
+        <h2>Privacy Policy</h2>
+
+        <div class="card">
+            <h3>What information is being stored within the extension?</h3>
+
+            <p>The add-on settings. We'll also store the last searches you did and last results you opened (from within the add-on) if you choose to enable these options.</p>
+            <p>If you are logged in, we'll also store an API token used to interact with the <a href="https://anilist.co" title="AniList">AniList</a> API as well as your username and avatar.</p>
+
+            <h3>What information is collected?</h3>
+
+            <p>No information other than what is required for the extension to function is collected: Your avatar and username will be used to show you which account is logged in, and we'll get anime and manga from your custom list in order to display search results from your lists separately from global search results.</p>
+            <p>However, the add-on uses the <a href="https://anilist.co">AniList</a> API that we do not have control over, please check their <a href="https://anilist.co/terms">terms of service</a> if you want to know more about their policy.</p>
+
+            <h3>How do we use the information?</h3>
+
+            <p>The data stated above are used to provide the core add-on functionalities such as viewing search results from your custom lists.</p>
+
+            <h3>What information/data do we share?</h3>
+
+            <p>None of the collected data are shared with third-parties other than what has already been stated above.</p>
         </div>
-      </div>
-    </div>
-  </section>
-  <section>
-    <div class="wrapper">
-      <hr>
-      <h3>Privacy Policy</h3>
+    </section>
 
-      <div class="block">
-        <div class="container">
-          <h4>What information is being stored within the extension?</h4>
-          <p>The add-on settings. We'll also store the last searches you did and last results you opened (from within the add-on) if you choose to enable these options.</p>
-          <p>If you are logged in, we'll also store an API token used to interact with the <a href="https://anilist.co" title="AniList">AniList</a> API as well as your username and avatar.</p>
+    <footer>
+        <span>© Theo "YellowFish" Costantini 2020 - 2024</span>
 
-          <h4>What information is collected?</h4>
-          <p>No information other than what is required for the extension to function is collected: Your avatar and username will be used to show you which account is logged in, and we'll get anime and manga from your custom list in order to display search results from your lists separately from global search results.</p>
-          <p>However, the add-on uses the <a href="https://anilist.co">AniList</a> API that we do not have control over, please check their <a href="https://anilist.co/terms">terms of service</a> if you want to know more about their policy.</p>
+        <a href="https://github.com/YellowFish085/al-search" title="AL Search on Github">
+            <i class="fab fa-github"></i>
+        </a>
 
-          <h4>How do we use the information?</h4>
-          <p>The data stated above are used to provide the core add-on functionalities such as viewing search results from your custom lists.</p>
+        <a href="https://addons.mozilla.org/en-US/firefox/addon/al-search/" title="AL Search for Firefox">
+            <i class="fab fa-firefox-browser"></i>
+        </a>
 
-          <h4>What information/data do we share?</h4>
-          <p>None of the collected data are shared with third-parties other than what has already been stated above.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+        <a href="https://chrome.google.com/webstore/detail/cfgahmhilacehicbomiciimpemjhpalc" title="AL Search for Chrome & any Chromium based browser">
+            <i class="fab fa-chrome"></i>
+        </a>
 
-  <footer>
-    <span>© Theo "YellowFish" Costantini 2020</span>
-    <a href="https://github.com/YellowFish085/al-search" title="AL Search on Github">
-      <i class="fab fa-github"></i>
-    </a>
-    <a href="https://addons.mozilla.org/en-US/firefox/addon/al-search/" title="AL Search for Firefox">
-      <i class="fab fa-firefox-browser"></i>
-    </a>
-    <a href="https://chrome.google.com/webstore/detail/cfgahmhilacehicbomiciimpemjhpalc" title="AL Search for Chrome">
-      <i class="fab fa-chrome"></i>
-    </a>
-    <a href="https://chrome.google.com/webstore/detail/cfgahmhilacehicbomiciimpemjhpalc" title="AL Search for Edge Chromium">
-      <i class="fab fa-edge"></i>
-    </a>
-    <a href="https://anilist.co/forum/thread/11987" title="AniList thread" class="anilist">
-      <img src="img/anilist.svg">
-    </a>
-  </footer>
+        <a class="anilist" href="https://anilist.co/forum/thread/11987" title="AniList thread">
+            <img src="img/anilist.svg">
+        </a>
+    </footer>
 </body>
+
 </html>
