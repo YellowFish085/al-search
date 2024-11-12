@@ -43,6 +43,9 @@
   "action": {
     "default_popup": "popup/popup.html"
   },
+  "commands": {
+    "_execute_browser_action": {}
+  },
   "developer": {
     "name": "Theo Costantini",
     "url": "https://github.com/YellowFish085"
