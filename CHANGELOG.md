@@ -1,5 +1,23 @@
 # Changelog
 
+## v2.0.1 (12/11/2024)
+
+### Changes
+
+- [Fix] Fixed popup height issue
+- [Fix] Re-added add-on shortcut on Firefox
+
+## v2.0.0 (11/11/2024)
+
+Note: This is mostly a backend update because of code rewrite, but it contains a few minor changes listed below.
+
+- Code rewrite + manifest v3 support.
+- Removed web integration for unavailable websites and fixed web web integration for those still up.
+- More accurate data displayed by search results.
+- Slight changes in UI (font sizes, spacing, ...) due to rewrite.
+- More notifications for important actions + all notifications are now browser notifications.
+
+
 ## v1.3.7 (19/03/2022)
 
 ### Changes
