@@ -1,5 +1,12 @@
 const SearchInputInput = {
   setup() {
+    document.addEventListener('search-done', (evt) => {
+      // Give back focus once search is done.
+      setTimeout(() => {
+        document.getElementById('search-input__input').focus();
+      }, 100);
+    });
+
     return () => Vue.h('input', {
       autocomplete: 'off',
       autofocus:    'on',
