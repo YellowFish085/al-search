@@ -165,7 +165,7 @@
     }
   },
   "ERROR_InvalidAnilistUser": {
-    "message": "AniList request returned an invalid user object: $obj$",
+    "message": "AniList returned an invalid user object: $obj$",
     "placeholders": {
       "obj" : {
         "content": "$1"
@@ -173,7 +173,7 @@
     }
   },
   "ERROR_InvalidSearchResults": {
-    "message": "AniList request returned invalid search results: $obj$",
+    "message": "AniList returned invalid search results: $obj$",
     "placeholders": {
       "obj" : {
         "content": "$1"
@@ -394,7 +394,7 @@
     "message": "Global results"
   },
   "SEARCH_ResultsOnList": {
-    "message": "Results form your list"
+    "message": "Results from your list"
   },
   "SEARCH_Title": {
     "message": "Search results"
