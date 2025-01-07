@@ -28,18 +28,16 @@ class Search {
           year:   store.search.year,
         }});
 
-        setTimeout(() => {
-          // Handle response.
-          if (!response.error) {
-            store.searchResults = response;
-            store.searchState   = 'idle';
-          }
-          else {
-            Notifications.create('search', browser.i18n.getMessage('Error', response.error));
-          }
+        // Handle response.
+        if (!response.error) {
+          store.searchResults = response;
+          store.searchState   = 'idle';
+        }
+        else {
+          Notifications.create('search', browser.i18n.getMessage('Error', response.error));
+        }
 
-          document.dispatchEvent(new CustomEvent('search-done'));
-        }, 1000);
+        document.dispatchEvent(new CustomEvent('search-done'));
       }, delay);
     })();
   }
