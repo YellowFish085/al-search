@@ -164,6 +164,9 @@
       }
     }
   },
+  "ERROR_ExpiredAccessToken": {
+    "message": "Votre token d'accès semble avoir expiré, veuillez vous reconnecter."
+  },
   "ERROR_InvalidAnilistUser": {
     "message": "La requête à AniList a retourné un objet utilisateur invalide : $obj$",
     "placeholders": {

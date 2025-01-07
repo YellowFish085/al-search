@@ -55,6 +55,10 @@ export default class Anilist {
 
       // Ensure data are valid.
       if (!body.data || !body.data.Viewer || !User.schemaIsValid(body.data.Viewer)) {
+        if (body.errors && Array.isArray(body.errors) && body.errors[0] && body.errors[0].message === "Invalid token") {
+          throw new Error(browser.i18n.getMessage('ERROR_ExpiredAccessToken'));
+        }
+
         throw new Error(browser.i18n.getMessage('ERROR_InvalidAnilistUser', JSON.stringify(body)));
       }
 
