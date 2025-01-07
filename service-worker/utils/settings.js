@@ -22,6 +22,7 @@ export default class Settings {
     search: {
       onListFirst: true,
       layout:      Enum.CardLayout.CHART,
+      delay:       400,
     },
 
     theme: Enum.Theme.DEFAULT,
@@ -78,6 +79,10 @@ export default class Settings {
 
       if ([Enum.CardLayout.CHART, Enum.CardLayout.COVER, Enum.CardLayout.TABLE].includes(input.search.layout)) {
         validated.search.layout = input.search.layout;
+      }
+
+      if (!isNaN(input.search.delay)) {
+        validated.search.delay = input.search.delay;
       }
     }
 

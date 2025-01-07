@@ -1,0 +1,10 @@
+.setting-range label {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.setting-range__wrapper {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+}

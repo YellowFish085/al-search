@@ -1,7 +1,7 @@
 class Search {
   static #searchTimer = null;
 
-  static search(delay = 400) {
+  static search(delay = store.settings.search.delay) {
     (() => {
       clearTimeout(Search.#searchTimer);
 
@@ -47,5 +47,5 @@ class Search {
 
 // Launch search on event.
 document.addEventListener('search', (evt) => {
-  Search.search(evt.detail ?? 400);
+  Search.search(evt.detail ?? store.settings.search.delay);
 });

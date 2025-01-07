@@ -12,6 +12,15 @@ const SettingsSearch = {
         }),
 
         Vue.h('p', browser.i18n.getMessage('SETTINGS_SEARCH_ResultsOnListFirstDescription')),
+
+        Vue.h(SettingRange, {
+          label:       browser.i18n.getMessage('SETTINGS_SEARCH_DelayLabel'),
+          name:        'search_delay_input',
+          settingsKey: 'search.delay',
+          value:       store.settings.search.delay,
+          min:         100,
+          max:         1000,
+        }),
       ]),
     ];
   },

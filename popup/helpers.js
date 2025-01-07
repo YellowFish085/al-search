@@ -1,5 +1,16 @@
 class DotObject {
   /**
+   * Get an object property using dot notation.
+   */
+  static get(obj, propPath) {
+    const [head, ...rest] = propPath.split('.');
+
+    return !rest.length
+      ? obj[head]
+      : this.get(obj[head], rest.join('.'));
+  }
+
+  /**
    * Update an object property using dot notation.
    */
   static set(obj, propPath, value) {

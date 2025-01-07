@@ -482,6 +482,9 @@
   "SETTINGS_INTEGRATION_WebEnabledDescription": {
     "message": "<b>AL Search</b> ajoute une integration web, un bouton sur certaines pages de certains sites liées à l'univers des anime et manga (comme Crunchyroll) avec quelques actions."
   },
+  "SETTINGS_SEARCH_DelayLabel": {
+    "message": "Délai de recherche"
+  },
   "SETTINGS_SEARCH_ResultsOnListFirstLabel": {
     "message": "Résultats de votre liste en premier"
   },
