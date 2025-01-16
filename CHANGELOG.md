@@ -1,5 +1,15 @@
 # Changelog
 
+## v2.0.2 (16/01/2025)
+
+### Changes
+
+- [Changes] Re-set focus on search input when search is done.
+- [Changes] Changed some error messages.
+- [Add] Search delay is now configurable.
+- [Add] Invalid access token now display a special error.
+- [Fix] Remove some tests leftovers.
+
 ## v2.0.1 (12/11/2024)
 
 ### Changes
